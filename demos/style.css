@@ -1,4 +1,11 @@
 .card {
 	margin: 1em;
+}
+
+#opinion {
 	width: 20em;
+}
+
+#landscape {
+	width: 30em;
 }

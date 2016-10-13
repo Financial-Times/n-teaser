@@ -1,0 +1,12 @@
+{
+  "name": "n-teaser",
+  "homepage": "https://github.com/financial-times/n-teaser",
+  "description": "n-card's replacement - better styles, simpler combinations & more basic templating",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
