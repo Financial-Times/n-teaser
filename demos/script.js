@@ -22,7 +22,7 @@ const images = {
 };
 
 ['landscape', 'opinion'].forEach(style => {
-	fetch(`../templates/${style}.mustache`)
+	fetch(`../templates/${style}.html`)
 		.then(res => res.text())
 		.then(source => {
 		const template = Handlebars.compile(source);
