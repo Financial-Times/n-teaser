@@ -2,8 +2,14 @@ const data = {
 	img: {
 		alt: 'demo image'
 	},
-	tag: 'Mrs Moneypenny',
-	heading: 'Japan sells negative yield 10-year bonds',
+	tag: {
+		href: '#',
+		text: 'Mrs Moneypenny'
+	},
+	heading: {
+		href: '#',
+		text: 'Japan sells negative yield 10-year bonds'
+	},
 	datetime: {
 		raw: '2016-02-29T12:35:48Z',
 		formatted: '2016-02-29T12:35:48Z'
@@ -16,7 +22,7 @@ const images = {
 };
 
 ['landscape', 'opinion'].forEach(style => {
-	fetch(`../templates/${style}.mustache`)
+	fetch(`../templates/${style}.html`)
 		.then(res => res.text())
 		.then(source => {
 		const template = Handlebars.compile(source);
