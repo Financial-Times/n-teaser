@@ -8,5 +8,8 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "o-teaser": "design-debt"
+  }
 }
