@@ -1,17 +1,17 @@
-<div class="o-card o-card--opinion" data-o-component="o-card">
-	<div class="o-card__content">
-		<div class="o-card__meta">
-			<div class="o-card__meta-image o-card__meta-image--rounded">
-				{{#if img.src}}
-					<img src="{{{img.src}}}" alt="{{img.alt}}"></img>
+<div class="o-teaser o-teaser--opinion" data-o-component="o-teaser">
+	<div class="o-teaser__content">
+		<div class="o-teaser__meta">
+			<div class="o-teaser__meta-image o-teaser__meta-image--rounded">
+				{{#if image.url}}
+					<img src="{{{image.url}}}"></img>
 				{{else}}
-					<div class="card__quote--left"></div>
-					<div class="card__quote--right"></div>
+					<div class="o-teaser__quote--left"></div>
+					<div class="o-teaser__quote--right"></div>
 				{{/if}}
 			</div>
-			<a href="{{{tag.href}}}" class="o-card__tag">{{tag.text}}</a>
+			<a href="{{{tag.url}}}" class="o-teaser__tag">{{tag.name}}</a>
 		</div>
-		<h2 class="o-card__heading"><a href="{{{heading.href}}}">{{heading.text}}</a></h2>
-		<time data-o-component="o-date" class="o-date o-card__timestamp" datetime="{{datetime.raw}}">{{datetime.formatted}}</time>
+		<h2 class="o-teaser__heading"><a href="{{{url}}}">{{title}}</a></h2>
+		<time data-o-component="o-date" class="o-date o-teaser__timestamp" datetime="{{lastPublished}}">{{#dateformat "dddd, d mmmm, yyyy"}}{{lastPublished}}{{/dateformat}}</time>
 	</div>
 </div>

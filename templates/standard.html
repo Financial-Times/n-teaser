@@ -1,9 +1,9 @@
-<div class="o-card" data-o-component="o-card">
-	<div class="o-card__content">
-		<div class="o-card__meta">
-			<a href="{{{tag.href}}}" class="o-card__tag">{{tag.text}}</a>
+<div class="o-teaser" data-o-component="o-teaser">
+	<div class="o-teaser__content">
+		<div class="o-teaser__meta">
+			<a href="{{{tag.href}}}" class="o-teaser__tag">{{tag.name}}</a>
 		</div>
-		<h2 class="o-card__heading"><a href="{{{heading.href}}}">{{heading.text}}</a></h2>
-		<time data-o-component="o-date" class="o-date o-card__timestamp" datetime="{{datetime.raw}}">{{datetime.formatted}}</time>
+		<h2 class="o-teaser__heading"><a href="{{{url}}}">{{title}}</a></h2>
+		<time data-o-component="o-date" class="o-date o-teaser__timestamp" datetime="{{lastPublished}}">{{#dateformat "dddd, d mmmm, yyyy"}}{{lastPublished}}{{/dateformat}}</time>
 	</div>
 </div>
