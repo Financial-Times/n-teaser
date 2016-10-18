@@ -1,17 +1,25 @@
-<div class="o-teaser" data-o-component="o-teaser">
+<div class="o-teaser {{#if size}}o-teaser--{{size}}{{/if}}" data-o-component="o-teaser">
 	<div class="o-teaser__content">
+		{{#unlessEquals contentDensity 'extra-light'}}
 		<div class="o-teaser__meta">
 			<a href="{{{tag.href}}}" class="o-teaser__tag">{{tag.name}}</a>
 		</div>
+		{{/unlessEquals}}
 		<h2 class="o-teaser__heading"><a href="{{{url}}}">{{title}}</a></h2>
 		{{#if summary}}
-		<p class="o-teaser__standfirst">{{summary}}</p>
+			{{#unlessEquals contentDensity 'extra-light'}}
+				{{#unlessEquals contentDensity 'light'}}
+					<p class="o-teaser__standfirst">{{summary}}</p>
+				{{/unlessEquals}}
+			{{/unlessEquals}}
 		{{/if}}
 		<time data-o-component="o-date" class="o-date o-teaser__timestamp" datetime="{{lastPublished}}">{{#dateformat "dddd, d mmmm, yyyy"}}{{lastPublished}}{{/dateformat}}</time>
 		{{#if image}}
-		<div class="o-teaser__image">
-			<img src="{{{image.url}}}"></img>
-		</div>
+			{{#ifEquals contentDensity 'heavy'}}
+				<div class="o-teaser__image">
+					<img src="{{{image.url}}}" alt="{{image.alt}}"></img>
+				</div>
+			{{/ifEquals}}
 		{{/if}}
 	</div>
 </div>
