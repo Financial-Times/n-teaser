@@ -4,7 +4,14 @@
 			<a href="{{{tag.href}}}" class="o-teaser__tag">{{tag.name}}</a>
 		</div>
 		<h2 class="o-teaser__heading"><a href="{{{url}}}">{{title}}</a></h2>
+		{{#if summary}}
 		<p class="o-teaser__standfirst">{{summary}}</p>
+		{{/if}}
 		<time data-o-component="o-date" class="o-date o-teaser__timestamp" datetime="{{lastPublished}}">{{#dateformat "dddd, d mmmm, yyyy"}}{{lastPublished}}{{/dateformat}}</time>
+		{{#if image}}
+		<div class="o-teaser__image">
+			<img src="{{{image.url}}}"></img>
+		</div>
+		{{/if}}
 	</div>
 </div>
