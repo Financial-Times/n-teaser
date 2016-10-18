@@ -1,13 +1,9 @@
-<div class="o-teaser o-teaser--landscape o-teaser--image-left" data-o-component="o-teaser">
-	<div class="o-teaser__image o-teaser__image--left">
-		<img src="{{{image.url}}}"></img>
-	</div>
+<div class="o-teaser {{#if size}}o-teaser--{{size}}{{/if}}" data-o-component="o-teaser">
 	<div class="o-teaser__content">
 		<div class="o-teaser__meta">
 			<a href="{{{tag.url}}}" class="o-teaser__tag">{{tag.name}}</a>
 		</div>
-		<h2 class="o-teaser__heading"><a href="{{{url}}}">{{heading.text}}</a></h2>
-		<p class="o-teaser__standfirst">{{summary}}</p>
+		<h2 class="o-teaser__heading"><a href="{{{url}}}">{{title}}</a></h2>
 		<time data-o-component="o-date" class="o-date o-teaser__timestamp" datetime="{{lastPublished}}">{{#dateformat "dddd, d mmmm, yyyy"}}{{lastPublished}}{{/dateformat}}</time>
 	</div>
 </div>
