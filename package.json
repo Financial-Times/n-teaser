@@ -9,6 +9,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "bower": "^1.7.9"
+    "bower": "^1.7.9",
+    "npm-prepublish": "^1.2.1"
   }
 }
