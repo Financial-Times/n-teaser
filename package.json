@@ -1,0 +1,15 @@
+{
+  "name": "@financial-times/n-teaser",
+  "version": "0.0.0",
+  "description": "n-card’s replacement: improved styles, simpler combinations, more basic templating",
+  "main": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Financial-Times/n-teaser.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "bower": "^1.7.9",
+    "npm-prepublish": "^1.2.1"
+  }
+}
