@@ -1,12 +1,8 @@
-<div class="o-teaser {{#if size}}o-teaser--{{size}}{{/if}}" data-o-component="o-teaser" data-trackable="teaser">
+<div class="o-teaser {{#if size}}o-teaser--{{size}}{{/if}}" data-o-component="o-teaser">
 	<div class="o-teaser__content">
-		<a href="{{{tag.url}}}" class="o-teaser__tag" data-trackable="primary-tag">{{tag.name}}</a>
 		<h2 class="o-teaser__heading">
 			<a href="{{{url}}}" class="o-teaser__heading-link" data-trackable="main-link">{{title}}</a>
 		</h2>
-		{{#if summary}}
-			<p class="o-teaser__standfirst">{{summary}}</p>
-		{{/if}}
 		<time data-o-component="o-date" class="o-date o-teaser__timestamp" datetime="{{lastPublished}}">{{#dateformat "dddd, d mmmm, yyyy"}}{{lastPublished}}{{/dateformat}}</time>
 	</div>
 </div>

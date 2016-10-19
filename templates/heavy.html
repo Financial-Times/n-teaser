@@ -8,5 +8,11 @@
 			<p class="o-teaser__standfirst">{{summary}}</p>
 		{{/if}}
 		<time data-o-component="o-date" class="o-date o-teaser__timestamp" datetime="{{lastPublished}}">{{#dateformat "dddd, d mmmm, yyyy"}}{{lastPublished}}{{/dateformat}}</time>
+		
 	</div>
+	{{#if image}}
+		<div class="o-teaser__image-container">
+			<img src="https://next-geebee.ft.com/image/v1/images/raw/{{{encode image.url}}}?source=next&fit=scale-down&compression=best&width=500" alt="{{image.alt}}">
+		</div>
+	{{/if}}
 </div>
