@@ -12,11 +12,15 @@
 		{{/if}}
 	</div>
 	{{#if image}}
-		{{#presenter 'n-image/src/presenters/image' @this src=image.src srcSet=image.url placeholder=image.ratio colspan=colspan position=position widtsh=widths lazyLoad=true}}
+		{{#presenter 'n-image/src/presenters/image' @this src=image.src srcSet=image.url placeholder=image.ratio colspan=colspan position=position widths=widths lazyLoad=true}}
 			<div class="{{@image.wrapperAttrs.className}} o-teaser__image-container" style="{{@image.wrapperAttrs.style}}">
 				{{#with @image.imgAttrs}}
 					<img
-						{{#if src}} src="{{src}}"{{/if}}
+						{{#if src}}
+							src="{{src}}"
+							{{#if width}} width="{{width}}"{{/if}}
+							{{#if height}} height="{{height}}"{{/if}}
+						{{/if}}
 						{{#if data-src}} data-src="{{data-src}}"{{/if}}
 						{{#if srcSet}} srcSet="{{srcSet}}"{{/if}}
 						{{#if data-srcset}} data-srcset="{{data-srcset}}"{{/if}}
