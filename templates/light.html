@@ -7,5 +7,10 @@
 		{{#if lastPublished}}
 			<time data-o-component="o-date" class="o-date o-teaser__timestamp" datetime="{{lastPublished}}">{{#dateformat "dddd, d mmmm, yyyy"}}{{lastPublished}}{{/dateformat}}</time>
 		{{/if}}
+		{{#actions}}
+			<div class="o-teaser__action">
+				{{{this}}}
+			</div>
+		{{/actions}}
 	</div>
 </div>
