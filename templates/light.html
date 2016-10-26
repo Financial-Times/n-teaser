@@ -1,7 +1,7 @@
 <div class="o-teaser {{#if mod}}o-teaser--{{mod}}{{/if}} {{#if size}}o-teaser--{{size}}{{/if}}" data-o-component="o-teaser">
 	<div class="o-teaser__content">
 		<div class="o-teaser__meta">
-			{{!-- This handles tag objects *and* an array due to myFT’s potential multiple topics in its stream views --}}
+			{{!-- This handles tag objects *and* an array of tag objects, due to myFT’s potential multiple topics in its stream views --}}
 			{{#tag}}
 				<a href="{{{url}}}" class="o-teaser__tag" data-trackable="primary-tag">{{name}}</a>
 			{{/tag}}
