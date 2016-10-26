@@ -1,10 +1,11 @@
-<div class="o-teaser {{#if size}}o-teaser--{{size}}{{/if}}" data-o-component="o-teaser">
+<div class="o-teaser {{#if mod}}o-teaser--{{mod}}{{/if}} {{#if size}}o-teaser--{{size}}{{/if}}" data-o-component="o-teaser">
 	<div class="o-teaser__content">
 		<h2 class="o-teaser__heading">
-			<a href="{{{url}}}" class="o-teaser__heading-link" data-trackable="main-link">{{title}}</a>
+			<a href="{{{url}}}" data-trackable="main-link">{{title}}</a>
 		</h2>
+
 		{{#if lastPublished}}
-		<time data-o-component="o-date" class="o-date o-teaser__timestamp" datetime="{{lastPublished}}">{{#dateformat "dddd, d mmmm, yyyy"}}{{lastPublished}}{{/dateformat}}</time>
+			<time data-o-component="o-date" class="o-date o-teaser__timestamp" data-o-date-format="time-ago-limit-4-hours" datetime="{{lastPublished}}">{{#dateformat "dddd, d mmmm, yyyy"}}{{lastPublished}}{{/dateformat}}</time>
 		{{/if}}
 	</div>
 </div>
