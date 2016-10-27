@@ -2,7 +2,7 @@
   "name": "@financial-times/n-teaser",
   "version": "0.0.0",
   "description": "n-card’s replacement: improved styles, simpler combinations, more basic templating",
-  "main": "",
+  "main": "main.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Financial-Times/n-teaser.git"
