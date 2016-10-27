@@ -2,6 +2,9 @@
 	<div class="o-teaser__content">
 		<div class="o-teaser__meta">
 			{{!-- This handles tag objects *and* an array of tag objects, due to myFT’s potential multiple topics in its stream views --}}
+			{{#brand}}
+				<a href="{{{url}}}" class="o-teaser__tag" data-trackable="primary-tag">{{name}}</a>
+			{{/brand}}
 			{{#tag}}
 				<a href="{{{url}}}" class="o-teaser__tag" data-trackable="primary-tag">{{name}}</a>
 			{{/tag}}

@@ -1,6 +1,9 @@
 <div class="o-teaser  {{#if mod}}o-teaser--{{mod}}{{/if}} {{#if size}}o-teaser--{{size}}{{/if}}" data-o-component="o-teaser" data-trackable="teaser">
 	<div class="o-teaser__content">
 		<div class="o-teaser__meta">
+			{{#brand}}
+				<a href="{{{url}}}" class="o-teaser__tag" data-trackable="primary-tag">{{name}}</a>
+			{{/brand}}
 			{{#tag}}
 				<a href="{{{url}}}" class="o-teaser__tag" data-trackable="primary-tag">{{name}}</a>
 			{{/tag}}
