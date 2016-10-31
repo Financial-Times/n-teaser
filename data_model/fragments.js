@@ -52,19 +52,20 @@ module.exports = {
 		}
 	`,
 	teaserHeavy: `
-		fragment TeaserRelatedContent on Content {
+		fragment TeaserHeavy on Content {
 			storyPackage(limit: 3) {
 				type: __typename
 				relativeUrl
 				isPremium
 				title
 			}
-			primaryThemeTag {
+			primaryTag {
 				latestContent(limit: 4) {
 					type: __typename
 					relativeUrl
 					isPremium
 					title
+					id
 				}
 			}
 		}
