@@ -20,18 +20,21 @@ module.exports = {
 	`,
 	teaserLight: `
 		fragment TeaserLight on Content {
-			idV1
+			id
 			teaserTag {
 				prefLabel
 				relativeUrl
 			}
-			genreTag(only: ["analysis"]) {
+			genreTag(only: ["Analysis"]) {
 				prefLabel
 			}
 			primaryBrandTag {
 				prefLabel
 				relativeUrl
-				attributes
+				attributes(only: ["headshot"]) {
+					key
+					value
+				}
 			}
 		}
 	`,
