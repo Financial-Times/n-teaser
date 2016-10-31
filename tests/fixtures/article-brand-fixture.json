@@ -1,0 +1,61 @@
+{
+  "type": "Article",
+  "isPremium": false,
+  "relativeUrl": "/content/f61b93c8-9f5a-11e6-891e-abe238dee8e2",
+  "title": "FT endorsement: For all her weaknesses, Clinton is the best hope",
+  "publishedDate": "2016-10-31T12:18:18Z",
+  "initialPublishedDate": "2016-10-31T12:18:18Z",
+  "id": "f61b93c8-9f5a-11e6-891e-abe238dee8e2",
+  "teaserTag": {
+    "prefLabel": "FT View",
+    "relativeUrl": "/comment/ft-view"
+  },
+  "genreTag": null,
+  "primaryBrandTag": {
+    "prefLabel": "FT View",
+    "relativeUrl": "/comment/ft-view",
+    "attributes": []
+  },
+  "standfirst": "She is manifestly more competent than Trump and his braggadocio and divisiveness",
+  "mainImage": {
+    "title": "",
+    "description": "",
+    "url": "http://prod-upp-image-read.ft.com/74c26d3a-9f67-11e6-891e-abe238dee8e2",
+    "width": 2048,
+    "height": 1152,
+    "ratio": 1.7777777777777777
+  },
+  "storyPackage": [],
+  "primaryTag": {
+    "latestContent": [
+      {
+        "type": "Article",
+        "relativeUrl": "/content/215e5080-9f50-11e6-86d5-4e36b35c3550",
+        "isPremium": false,
+        "title": "The Clinton email controversy: what we know",
+        "id": "215e5080-9f50-11e6-86d5-4e36b35c3550"
+      },
+      {
+        "type": "Article",
+        "relativeUrl": "/content/f61b93c8-9f5a-11e6-891e-abe238dee8e2",
+        "isPremium": false,
+        "title": "FT endorsement: For all her weaknesses, Clinton is the best hope",
+        "id": "f61b93c8-9f5a-11e6-891e-abe238dee8e2"
+      },
+      {
+        "type": "Article",
+        "relativeUrl": "/content/19a3c8e8-9ebf-11e6-891e-abe238dee8e2",
+        "isPremium": false,
+        "title": "FBI chief may have violated law in Clinton probe, Democrat claims",
+        "id": "19a3c8e8-9ebf-11e6-891e-abe238dee8e2"
+      },
+      {
+        "type": "Article",
+        "relativeUrl": "/content/0b1809e6-9d30-11e6-8324-be63473ce146",
+        "isPremium": false,
+        "title": "Gun control fight heats up beneath flash of election campaign",
+        "id": "0b1809e6-9d30-11e6-8324-be63473ce146"
+      }
+    ]
+  }
+}

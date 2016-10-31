@@ -1,0 +1,57 @@
+{
+  "type": "Article",
+  "isPremium": false,
+  "relativeUrl": "/content/bbcddb7a-9f61-11e6-86d5-4e36b35c3550",
+  "title": "Theresa May backs Mark Carney to stay as Bank of England governor",
+  "publishedDate": "2016-10-31T12:46:49Z",
+  "initialPublishedDate": "2016-10-31T12:46:49Z",
+  "id": "bbcddb7a-9f61-11e6-86d5-4e36b35c3550",
+  "teaserTag": {
+    "prefLabel": "UK Politics & Policy",
+    "relativeUrl": "/world/uk/politics"
+  },
+  "genreTag": null,
+  "primaryBrandTag": null,
+  "standfirst": "Prime minister ‘clear in her support’ despite sustained criticism from Brexiters",
+  "mainImage": {
+    "title": "",
+    "description": "LONDON, ENGLAND - OCTOBER 31:  Bank of England Governor Mark Carney arrives at 10 Downing Street on October 31, 2016 in London, England. Prime Minister Theresa May believes he is the right person to be Bank of England governor, and is \"supportive\" of him continuing in his role until 2021, her official spokeswoman has said.  (Photo by Leon Neal/Getty Images)",
+    "url": "http://prod-upp-image-read.ft.com/c60276ac-9f73-11e6-891e-abe238dee8e2",
+    "width": 2048,
+    "height": 1152,
+    "ratio": 1.7777777777777777
+  },
+  "storyPackage": [],
+  "primaryTag": {
+    "latestContent": [
+      {
+        "type": "Article",
+        "relativeUrl": "/content/8ecc36d0-9f66-11e6-86d5-4e36b35c3550",
+        "isPremium": false,
+        "title": "Bank of England struggles to walk a political tightrope",
+        "id": "8ecc36d0-9f66-11e6-86d5-4e36b35c3550"
+      },
+      {
+        "type": "Article",
+        "relativeUrl": "/content/f1e5e27c-9f5a-11e6-86d5-4e36b35c3550",
+        "isPremium": true,
+        "title": "Mark Carney brings stability in a post-Brexit arena",
+        "id": "f1e5e27c-9f5a-11e6-86d5-4e36b35c3550"
+      },
+      {
+        "type": "Article",
+        "relativeUrl": "http://ftalphaville.ft.com/2016/10/31/2178445/guest-post-dogs-not-barking/",
+        "isPremium": false,
+        "title": "Guest post: Dogs not Barking",
+        "id": "e65632ec-2936-333d-a4dd-cf1005ce125c"
+      },
+      {
+        "type": "Article",
+        "relativeUrl": "/content/bbcddb7a-9f61-11e6-86d5-4e36b35c3550",
+        "isPremium": false,
+        "title": "Theresa May backs Mark Carney to stay as Bank of England governor",
+        "id": "bbcddb7a-9f61-11e6-86d5-4e36b35c3550"
+      }
+    ]
+  }
+}
