@@ -1,4 +1,4 @@
-<div class="o-teaser {{#if mod}}o-teaser--{{mod}}{{/if}} {{#if size}}o-teaser--{{size}}{{/if}}" data-o-component="o-teaser" data-trackable="teaser">
+<div class="o-teaser{{#if mod}} o-teaser--{{mod}}{{/if}}{{#if size}} o-teaser--{{size}}{{/if}}{{#if brand.headshot}} o-teaser--has-headshot{{/if}}" data-o-component="o-teaser" data-trackable="teaser">
 	<div class="o-teaser__content">
 		<div class="o-teaser__meta">
 			{{!-- This #tag/#brand syntax handles single objects *and* arrays of objects. There could be multiple brands, or in myFT pages, multiple tags --}}
@@ -23,5 +23,10 @@
 				{{{this}}}
 			</div>
 		{{/actions}}
+
+		{{#if brand.headshot}}
+			<img src="{{brand.headshot}}?source=origami&amp;width=75&amp;tint=054593,fff1e0" alt="{{#if brand.name}}Photo of {{brand.name}}{{/if}}" class="o-teaser__headshot">
+		{{/if}}
+	
 	</div>
 </div>
