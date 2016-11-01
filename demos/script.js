@@ -1,3 +1,5 @@
+const Handlebars = require('handlebars');
+
 const data = {
 	img: {
 		alt: 'demo image'

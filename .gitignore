@@ -1,2 +1,5 @@
 node_modules/
 bower_components/
+.editorconfig
+.eslintrc.js
+.scss-lint.yml
