@@ -21,7 +21,26 @@
     "height": 1152,
     "ratio": 1.7777777777777777
   },
-  "storyPackage": [],
+  "storyPackage": [
+    {
+      "type": "Article",
+      "relativeUrl": "/content/8ecc36d0-9f66-11e6-86d5-4e36b35c3550",
+      "isPremium": false,
+      "title": "Bank of England struggles to walk a political tightrope"
+    },
+    {
+      "type": "Article",
+      "relativeUrl": "/content/f1e5e27c-9f5a-11e6-86d5-4e36b35c3550",
+      "isPremium": true,
+      "title": "Mark Carney brings stability in a post-Brexit arena"
+    },
+    {
+      "type": "Article",
+      "relativeUrl": "http://ftalphaville.ft.com/2016/10/31/2178445/guest-post-dogs-not-barking/",
+      "isPremium": false,
+      "title": "Guest post: Dogs not Barking"
+    }
+  ],
   "primaryTag": {
     "latestContent": [
       {

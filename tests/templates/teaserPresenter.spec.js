@@ -21,7 +21,7 @@ describe('Teaser Presenter', () => {
 					publishedDate: fiftyNineMinutesAgo,
 					initialPublishedDate: fiftyNineMinutesAgo
 				};
-				const subject = new Presenter(content);
+				subject = new Presenter(content);
 				expect(subject.timeStatus()).to.equal('new');
 			});
 
@@ -30,7 +30,7 @@ describe('Teaser Presenter', () => {
 					publishedDate: Date.now() - FIFTY_NINE_MINUTES,
 					initialPublishedDate: Date.now() - SIXTY_ONE_MINUTES
 				};
-				const subject = new Presenter(content);
+				subject = new Presenter(content);
 				expect(subject.timeStatus()).to.equal('updated');
 			});
 
@@ -44,9 +44,75 @@ describe('Teaser Presenter', () => {
 					publishedDate: sixtyOneMinutesAgo,
 					initialPublishedDate: sixtyOneMinutesAgo
 				};
-				const subject = new Presenter(content);
+				subject = new Presenter(content);
 				expect(subject.timeStatus()).to.be.null;
 			});
+		});
+
+	});
+
+	context('liveBlog', () => {
+
+		it('returns undefined when there is no liveblog property of the content', () => {
+			subject = new Presenter(articleStandardFixture);
+			expect(subject.liveBlog()).to.be.undefined;
+		});
+
+		context('status mapping', () => {
+
+			it('returns status \'last post\' when \'inprogress\'', () => {
+				const content = { liveBlog: { status: 'inprogress' } };
+				subject = new Presenter(content);
+				expect(subject.liveBlog().status).to.equal('last post');
+				expect(subject.liveBlog().originalStatus).to.equal('inprogress');
+			});
+
+			it('returns status \'coming soon\' when \'comingsoon\'', () => {
+				const content = { liveBlog: { status: 'comingsoon' } };
+				subject = new Presenter(content);
+				expect(subject.liveBlog().status).to.equal('coming soon');
+				expect(subject.liveBlog().originalStatus).to.equal('comingsoon');
+			});
+
+			it('returns status \'liveblog closed\' when \'closed\'', () => {
+				const content = { liveBlog: { status: 'closed' } };
+				subject = new Presenter(content);
+				expect(subject.liveBlog().status).to.equal('liveblog closed');
+				expect(subject.liveBlog().originalStatus).to.equal('closed');
+			});
+
+		});
+
+	});
+
+	context('relatedContent', () => {
+
+		it('returns the story package when one exists', () => {
+			subject = new Presenter(articleStandardFixture);
+			expect(subject.relatedContent()).to.deep.equal(articleStandardFixture.storyPackage);
+		});
+
+		it('returns latest content of primary tag when no story package, current article filtered', () => {
+			subject = new Presenter(articleBrandFixture);
+			const relatedContent = subject.relatedContent();
+			expect(relatedContent.length).to.equal(3);
+			relatedContent.map(content => {
+				expect(content.id).to.not.equal(articleBrandFixture.id);
+			});
+		});
+
+	});
+
+	context('headshot', () => {
+
+		it('returns the full headshot file url when a headshot exists', () => {
+			subject = new Presenter(articleOpinionAuthorFicture);
+			expect(subject.headshot()).to.equal('https://next-geebee.ft.com/image/v1/images/raw/fthead:gideon-rachman?source=next&fit=scale-down&compression=best');
+		});
+
+		it('returns null when headshot does not exist', () => {
+			subject = new Presenter(articleBrandFixture);
+			expect(subject.headshot()).to.be.null;
 		});
 
 	});

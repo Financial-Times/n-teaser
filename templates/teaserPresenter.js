@@ -1,6 +1,12 @@
 const ONE_HOUR = 1000 * 60 * 60;
 const MAX_RELATED_CONTENT = 3;
 const HEADSHOT_BASE_URL = 'https://next-geebee.ft.com/image/v1/images/raw/';
+const HEADSHOT_URL_PARAMS = '?source=next&fit=scale-down&compression=best';
+const LIVEBLOG_MAPPING = {
+	inprogress: 'last post',
+	comingsoon: 'coming soon',
+	closed: 'liveblog closed'
+};
 
 const TeaserPresenter = class TeaserPresenter {
 
@@ -24,23 +30,23 @@ const TeaserPresenter = class TeaserPresenter {
 		return status
 	}
 
-	// returns published, state, classModifier
+	// returns publishedDate, status, classModifier
 	liveBlog () {
 		if (this.data.liveBlog && this.data.liveBlog.status) {
 			return {
-				published: this.data.liveBlog.latestUpdate && this.data.liveBlog.latestUpdate.date,
-				state: this.data.liveBlog.status.toLowerCase(),
-				classModifier: this.data.liveBlog.status.replace(' ', '-')
+				publishedDate: this.data.liveBlog.latestUpdate && this.data.liveBlog.latestUpdate.date,
+				status: LIVEBLOG_MAPPING[this.data.liveBlog.status],
+				originalStatus: this.data.liveBlog.status
 			}
 		}
 	}
 
 	// returns an array of content items related to the main article
 	relatedContent () {
-		if (storyPackage.length > 0) {
-			return storyPackage.slice(0, MAX_RELATED_CONTENT);
+		if (this.data.storyPackage.length > 0) {
+			return this.data.storyPackage.slice(0, MAX_RELATED_CONTENT);
 		} else {
-			return primaryTag.latestContent
+			return this.data.primaryTag.latestContent
 				.filter(content => content.id !== this.data.id)
 				.slice(0, MAX_RELATED_CONTENT);
 		}
@@ -48,16 +54,12 @@ const TeaserPresenter = class TeaserPresenter {
 
 	// returns url for author headshot when primary brand tag is an author with a headshot
 	headshot () {
-		if (this.data.primaryBrandTag.attributes.length > 0) {
-			return `${HEADSHOT_BASE_URL}${this.data.primaryBrandTag.attributes[0].value}`;
+		if (this.data.primaryBrandTag && this.data.primaryBrandTag.attributes.length > 0) {
+			const fileName = this.data.primaryBrandTag.attributes[0].value;
+			return `${HEADSHOT_BASE_URL}${fileName}${HEADSHOT_URL_PARAMS}`;
 		} else {
 			return null;
 		}
-	}
-
-	// returns the tag to be displayed between teaserTag & primaryBrandTag
-	displayTag () {
-		return primaryBrandTag ? primaryBrandTag : teaserTag;
 	}
 
 };
