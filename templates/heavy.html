@@ -31,9 +31,9 @@
 
 	{{#if image}}
 		<div class="o-teaser__image-container">
-		{{#presenter 'n-image/src/presenters/image' @this src=image.src srcSet=image.url placeholder=image.ratio colspan=colspan position=position widths=widths lazyLoad=true wrapperClasses="o-teaser__image-placeholder" classes="o-teaser__image"}}
-				{{>'n-image/templates/image'}}
-		{{/presenter}}
+		{{#nImagePresenter src=image.src srcSet=image.url placeholder=image.ratio colspan=colspan position=position widths=widths lazyLoad=true wrapperClasses="o-teaser__image-placeholder" classes="o-teaser__image"}}
+				{{> n-image/templates/image}}
+		{{/nImagePresenter}}
 		</div>
 	{{/if}}
 </div>
