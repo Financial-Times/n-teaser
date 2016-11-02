@@ -107,7 +107,7 @@ describe('Teaser Presenter', () => {
 
 		it('returns the full headshot file url when a headshot exists', () => {
 			subject = new Presenter(articleOpinionAuthorFicture);
-			expect(subject.headshot()).to.equal('https://next-geebee.ft.com/image/v1/images/raw/fthead:gideon-rachman?source=next&fit=scale-down&compression=best&width=75&tint=054593,fff1e0');
+			expect(subject.headshot()).to.equal('https://www.ft.com/__origami/service/image/v2/images/raw/fthead:gideon-rachman?source=next&fit=scale-down&compression=best&width=75&tint=054593,fff1e0');
 		});
 
 		it('returns null when headshot does not exist', () => {
