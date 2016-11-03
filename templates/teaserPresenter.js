@@ -14,6 +14,11 @@ const TeaserPresenter = class TeaserPresenter {
 		this.data = data;
 	}
 
+	//returns tag to be displayed
+	displayTag () {
+		return this.data.primaryBrandTag || this.data.teaserTag || null;
+	}
+
 	//returns prefix for timestamp (null / 'new' / 'updated')
 	timeStatus () {
 		const now = Date.now();

@@ -8,6 +8,31 @@ describe('Teaser Presenter', () => {
 
 	let subject;
 
+	context('displayTag', () => {
+
+		const primaryBrandTag = { primaryBrandTag: { primaryBrandTag: true } };
+		const teaserTag = { teaserTag: { teaserTag: true } };
+
+		it('returns the primaryBrandTag when it exists', () => {
+			const content = Object.assign({}, primaryBrandTag, teaserTag);
+			subject = new Presenter(content);
+			expect(subject.displayTag().primaryBrandTag).to.be.true;
+		});
+
+		it('returns the teaserTag when it exists and when primaryBrandTag does not', () => {
+			const content = Object.assign({}, teaserTag);
+			subject = new Presenter(content);
+			expect(subject.displayTag().teaserTag).to.be.true;
+		});
+
+		it('returns null if neither the primaryBrandTag nor teaserTag exist', () => {
+			const content = {};
+			subject = new Presenter(content);
+			expect(subject.displayTag()).to.be.null;
+		});
+
+	});
+
 	context('timeStatus', () => {
 
 		const FIFTY_NINE_MINUTES = 1000 * 60 * 59;
