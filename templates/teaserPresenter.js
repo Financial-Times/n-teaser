@@ -57,11 +57,14 @@ const TeaserPresenter = class TeaserPresenter {
 		}
 	}
 
-	// returns url for author headshot when primary brand tag is an author with a headshot
+	// returns url and name for author headshot when primary brand tag is an author with a headshot
 	headshot () {
 		if (this.data.primaryBrandTag && this.data.primaryBrandTag.attributes.length > 0) {
 			const fileName = this.data.primaryBrandTag.attributes[0].value;
-			return `${HEADSHOT_BASE_URL}${fileName}${HEADSHOT_URL_PARAMS}`;
+			return {
+				src: `${HEADSHOT_BASE_URL}${fileName}${HEADSHOT_URL_PARAMS}`,
+				alt: this.data.primaryBrandTag.prefLabel
+			};
 		} else {
 			return null;
 		}

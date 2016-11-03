@@ -1,7 +1,7 @@
 const expect = require('chai').expect;
 const Presenter = require('../../templates/teaserPresenter');
 const articleBrandFixture = require('../fixtures/article-brand-fixture');
-const articleOpinionAuthorFicture = require('../fixtures/article-opinion-author-fixture');
+const articleOpinionAuthorFixture = require('../fixtures/article-opinion-author-fixture');
 const articleStandardFixture = require('../fixtures/article-standard-fixture');
 
 describe('Teaser Presenter', () => {
@@ -130,9 +130,10 @@ describe('Teaser Presenter', () => {
 
 	context('headshot', () => {
 
-		it('returns the full headshot file url when a headshot exists', () => {
-			subject = new Presenter(articleOpinionAuthorFicture);
-			expect(subject.headshot()).to.equal('https://www.ft.com/__origami/service/image/v2/images/raw/fthead:gideon-rachman?source=next&fit=scale-down&compression=best&width=75&tint=054593,fff1e0');
+		it('returns the full headshot file url and author name when a headshot exists', () => {
+			subject = new Presenter(articleOpinionAuthorFixture);
+			expect(subject.headshot().src).to.equal('https://www.ft.com/__origami/service/image/v2/images/raw/fthead:gideon-rachman?source=next&fit=scale-down&compression=best&width=75&tint=054593,fff1e0');
+			expect(subject.headshot().alt).to.equal('Gideon Rachman');
 		});
 
 		it('returns null when headshot does not exist', () => {
