@@ -1,4 +1,4 @@
-{{#presenter n-teaser/presenter/teaser-presenter @this template='light'}}
+{{#presenter 'n-teaser/presenters/teaser-presenter' @this template='light'}}
 	<div class="o-teaser{{#@teaserPresenter.classModifiers}} o-teaser--{{this}}{{/@teaserPresenter.classModifiers}}" data-o-component="o-teaser" data-trackable="teaser">
 		<div class="o-teaser__content">
 
@@ -29,7 +29,7 @@
 
 			{{#with @teaserPresenter.headshot}}
 				<img src="{{src}}" alt="Photo of {{alt}}" class="o-teaser__headshot">
-			{{/if}}
+			{{/with}}
 
 		</div>
 	</div>
