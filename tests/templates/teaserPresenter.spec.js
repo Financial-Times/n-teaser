@@ -8,6 +8,70 @@ describe('Teaser Presenter', () => {
 
 	let subject;
 
+	context('classModifiers', () => {
+
+		it('passes through modifiers from collection', () => {
+			const content = {mods: ['mod1', 'mod2']};
+			subject = new Presenter(content);
+			expect(subject.classModifiers()).to.deep.equal(content.mods);
+		});
+
+		it('returns an empty array if there is no relevant data', () => {
+			const content = {};
+			subject = new Presenter(content);
+			expect(subject.classModifiers().length).to.equal(0);
+		});
+
+		it('adds a modifier equal to the size property if it exists', () => {
+			const content = {size: 'this-is-a-size'};
+			subject = new Presenter(content);
+			expect(subject.classModifiers()[0]).to.deep.equal(content.size);
+		});
+
+		context('has-headshot', () => {
+
+			it('returns has-headshot when correct template and has-headshot', () => {
+				const content = Object.assign({}, articleOpinionAuthorFixture, {template: 'standard'});
+				subject = new Presenter(content);
+				expect(subject.classModifiers()).to.deep.equal(['has-headshot']);
+			});
+
+			it('does not add a modifier if wrong template but has headshot', () => {
+				const content = Object.assign({}, articleOpinionAuthorFixture, {template: 'no-headshot'});
+				subject = new Presenter(content);
+				expect(subject.classModifiers().length).to.equal(0);
+			});
+
+			it('does not add a modifier if correct template but does not have a headshot', () => {
+				const content = {template: 'light'};
+				subject = new Presenter(content);
+				expect(subject.classModifiers().length).to.equal(0);
+			});
+
+		});
+
+		context('has-image', () => {
+			it('returns has-image when correct template and there is a mainImage', () => {
+				const content = {mainImage: true, template: 'heavy'};
+				subject = new Presenter(content);
+				expect(subject.classModifiers()).to.deep.equal(['has-image']);
+			});
+
+			it('does not add a modifier if wrong template but has mainImage', () => {
+				const content = {mainImage: true, template: 'standard'};
+				subject = new Presenter(content);
+				expect(subject.classModifiers().length).to.equal(0);
+			});
+
+			it('does not add a modifier if correct template but does not have a mainImage', () => {
+				const content = {template: 'heavy'};
+				subject = new Presenter(content);
+				expect(subject.classModifiers().length).to.equal(0);
+			});
+		});
+
+	});
+
 	context('displayTag', () => {
 
 		const primaryBrandTag = { primaryBrandTag: { primaryBrandTag: true } };

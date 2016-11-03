@@ -2,6 +2,8 @@ const ONE_HOUR = 1000 * 60 * 60;
 const MAX_RELATED_CONTENT = 3;
 const HEADSHOT_BASE_URL = 'https://www.ft.com/__origami/service/image/v2/images/raw/';
 const HEADSHOT_URL_PARAMS = '?source=next&fit=scale-down&compression=best&width=75&tint=054593,fff1e0';
+const TEMPLATES_WITH_HEADSHOTS = ['light','standard'];
+const TEMPLATES_WITH_IMAGES = ['heavy'];
 const LIVEBLOG_MAPPING = {
 	inprogress: 'last post',
 	comingsoon: 'coming soon',
@@ -11,7 +13,26 @@ const LIVEBLOG_MAPPING = {
 const TeaserPresenter = class TeaserPresenter {
 
 	constructor (data) {
-		this.data = data;
+		this.data = data || {};
+	}
+
+	// returns all top level class names appropriate for the teaser
+	classModifiers () {
+		const mods = this.data.mods || [];
+		if (
+			this.headshot() &&
+			TEMPLATES_WITH_HEADSHOTS.some(template => template === this.data.template)
+		) {
+			mods.push('has-headshot');
+		}
+		if (this.data.size) mods.push(this.data.size);
+		if (
+			this.data.mainImage &&
+			TEMPLATES_WITH_IMAGES.some(template => template === this.data.template)
+		) {
+			mods.push('has-image');
+		}
+		return mods;
 	}
 
 	//returns tag to be displayed
