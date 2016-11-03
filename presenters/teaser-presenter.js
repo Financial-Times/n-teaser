@@ -40,6 +40,19 @@ const TeaserPresenter = class TeaserPresenter {
 		return this.data.primaryBrandTag || this.data.teaserTag || null;
 	}
 
+	//returns publishedDate, status, classModifier
+	timeObject () {
+		if (this.data.liveBlog && this.data.liveBlog.status) {
+			return this.liveBlog;
+		} else {
+			return {
+				publishedDate,
+				status: this.timeStatus,
+				classModifier: this.timeStatus
+			}
+		}
+	}
+
 	//returns prefix for timestamp (null / 'new' / 'updated')
 	timeStatus () {
 		const now = Date.now();
@@ -58,12 +71,10 @@ const TeaserPresenter = class TeaserPresenter {
 
 	// returns publishedDate, status, classModifier
 	liveBlog () {
-		if (this.data.liveBlog && this.data.liveBlog.status) {
-			return {
-				publishedDate: this.data.liveBlog.latestUpdate && this.data.liveBlog.latestUpdate.date,
-				status: LIVEBLOG_MAPPING[this.data.liveBlog.status],
-				originalStatus: this.data.liveBlog.status
-			}
+		return {
+			publishedDate: this.data.liveBlog.latestUpdate && this.data.liveBlog.latestUpdate.date,
+			status: LIVEBLOG_MAPPING[this.data.liveBlog.status],
+			classModifier: this.data.liveBlog.status
 		}
 	}
 

@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const Presenter = require('../../templates/teaserPresenter');
+const Presenter = require('../../presenters/teaser-presenter');
 const articleBrandFixture = require('../fixtures/article-brand-fixture');
 const articleOpinionAuthorFixture = require('../fixtures/article-opinion-author-fixture');
 const articleStandardFixture = require('../fixtures/article-standard-fixture');
@@ -142,32 +142,27 @@ describe('Teaser Presenter', () => {
 
 	context('liveBlog', () => {
 
-		it('returns undefined when there is no liveblog property of the content', () => {
-			subject = new Presenter(articleStandardFixture);
-			expect(subject.liveBlog()).to.be.undefined;
-		});
-
 		context('status mapping', () => {
 
 			it('returns status \'last post\' when \'inprogress\'', () => {
 				const content = { liveBlog: { status: 'inprogress' } };
 				subject = new Presenter(content);
 				expect(subject.liveBlog().status).to.equal('last post');
-				expect(subject.liveBlog().originalStatus).to.equal('inprogress');
+				expect(subject.liveBlog().classModifier).to.equal('inprogress');
 			});
 
 			it('returns status \'coming soon\' when \'comingsoon\'', () => {
 				const content = { liveBlog: { status: 'comingsoon' } };
 				subject = new Presenter(content);
 				expect(subject.liveBlog().status).to.equal('coming soon');
-				expect(subject.liveBlog().originalStatus).to.equal('comingsoon');
+				expect(subject.liveBlog().classModifier).to.equal('comingsoon');
 			});
 
 			it('returns status \'liveblog closed\' when \'closed\'', () => {
 				const content = { liveBlog: { status: 'closed' } };
 				subject = new Presenter(content);
 				expect(subject.liveBlog().status).to.equal('liveblog closed');
-				expect(subject.liveBlog().originalStatus).to.equal('closed');
+				expect(subject.liveBlog().classModifier).to.equal('closed');
 			});
 
 		});

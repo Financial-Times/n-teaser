@@ -1,9 +1,17 @@
-<div class="o-teaser{{#mods}} o-teaser--{{this}}{{/mods}}" data-o-component="o-teaser" data-trackable="teaser">
-	<div class="o-teaser__content">
-		{{> n-teaser/templates/partials/heading}}
-
-		{{#if lastPublished}}
-			<time data-o-component="o-date" class="o-date o-teaser__timestamp" data-o-date-format="time-ago-limit-4-hours" datetime="{{lastPublished}}">{{#dateformat "dddd, d mmmm, yyyy"}}{{lastPublished}}{{/dateformat}}</time>
-		{{/if}}
+{{#presenter n-teaser/presenter/teaser-presenter @this template='extra-light'}}
+	<div class="o-teaser{{#@teaserPresenter.classModifiers}} o-teaser--{{this}}{{/@teaserPresenter.classModifiers}}" data-o-component="o-teaser" data-trackable="teaser">
+		<div class="o-teaser__content">
+			<h2 class="o-teaser__heading">
+				<a href="{{{relativeUrl}}}{{{referrerTracking}}}" data-trackable="main-link">{{title}}</a>
+			</h2>
+			{{#with @teaserPresenter.timeObject}}
+				<div class="o-teaser__timestamp">
+					{{#if status}}
+						<span>{{status}}<span>
+					{{/if}}
+					<time data-o-component="o-date" class="o-date" data-o-date-format="time-ago-limit-4-hours" datetime="{{publishedDate}}">{{#dateformat "dddd, d mmmm, yyyy"}}{{publishedDate}}{{/dateformat}}</time>
+				</div>
+			{{/with}}
+		</div>
 	</div>
-</div>
+{{/presenter}}
