@@ -14,6 +14,10 @@
 			<a href="{{{url}}}{{{referrerTracking}}}" data-trackable="main-link">{{title}}</a>
 		</h2>
 
+		{{#if advertiser}}
+			<span class="o-teaser__promoted-prefix">Paid Post</span> by <span class="o-teaser__promoted-by">{{advertiser}}</span>
+		{{/if}}
+
 		{{#if summary}}
 			<p class="o-teaser__standfirst">{{summary}}</p>
 		{{/if}}
