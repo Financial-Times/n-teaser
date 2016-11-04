@@ -9,11 +9,10 @@
 			{{#tag}}
 				<a href="{{{url}}}" class="o-teaser__tag" data-trackable="primary-tag">{{name}}</a>
 			{{/tag}}
+			{{#if advertiser}}
+				<span class="o-teaser__promoted-prefix">{{promotedByPrefix}}</span> by <span class="o-teaser__promoted-by">{{advertiser}}</span>
+			{{/if}}
 		</div>
-
-		{{#if advertiser}}
-			<span class="o-teaser__promoted-prefix">Promoted Content</span> by <span class="o-teaser__promoted-by">{{advertiser}}</span>
-		{{/if}}
 
 		<h2 class="o-teaser__heading">
 			<a href="{{{url}}}{{{referrerTracking}}}" data-trackable="main-link">{{title}}</a>
