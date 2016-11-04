@@ -20,7 +20,7 @@ const TeaserPresenter = class TeaserPresenter {
 	get classModifiers () {
 		const mods = this.data.mods || [];
 		if (
-			this.headshot() &&
+			this.headshot &&
 			TEMPLATES_WITH_HEADSHOTS.some(template => template === this.data.template)
 		) {
 			mods.push('has-headshot');
@@ -46,10 +46,34 @@ const TeaserPresenter = class TeaserPresenter {
 			return this.liveBlog;
 		} else {
 			return {
-				publishedDate,
-				status: this.timeStatus,
-				classModifier: this.timeStatus
+				publishedDate: this.data.publishedDate,
+				status: this.timeStatus(),
+				classModifier: this.timeStatus()
 			}
+		}
+	}
+
+	// returns an array of content items related to the main article
+	get relatedContent () {
+		if (this.data.storyPackage.length > 0) {
+			return this.data.storyPackage.slice(0, MAX_RELATED_CONTENT);
+		} else {
+			return this.data.primaryTag.latestContent
+			.filter(content => content.id !== this.data.id)
+			.slice(0, MAX_RELATED_CONTENT);
+		}
+	}
+
+	// returns url and name for author headshot when primary brand tag is an author with a headshot
+	get headshot () {
+		if (this.data.primaryBrandTag && this.data.primaryBrandTag.attributes.length > 0) {
+			const fileName = this.data.primaryBrandTag.attributes[0].value;
+			return {
+				src: `${HEADSHOT_BASE_URL}${fileName}${HEADSHOT_URL_PARAMS}`,
+				alt: this.data.primaryBrandTag.prefLabel
+			};
+		} else {
+			return null;
 		}
 	}
 
@@ -75,30 +99,6 @@ const TeaserPresenter = class TeaserPresenter {
 			publishedDate: this.data.liveBlog.latestUpdate && this.data.liveBlog.latestUpdate.date,
 			status: LIVEBLOG_MAPPING[this.data.liveBlog.status],
 			classModifier: this.data.liveBlog.status
-		}
-	}
-
-	// returns an array of content items related to the main article
-	get relatedContent () {
-		if (this.data.storyPackage.length > 0) {
-			return this.data.storyPackage.slice(0, MAX_RELATED_CONTENT);
-		} else {
-			return this.data.primaryTag.latestContent
-				.filter(content => content.id !== this.data.id)
-				.slice(0, MAX_RELATED_CONTENT);
-		}
-	}
-
-	// returns url and name for author headshot when primary brand tag is an author with a headshot
-	get headshot () {
-		if (this.data.primaryBrandTag && this.data.primaryBrandTag.attributes.length > 0) {
-			const fileName = this.data.primaryBrandTag.attributes[0].value;
-			return {
-				src: `${HEADSHOT_BASE_URL}${fileName}${HEADSHOT_URL_PARAMS}`,
-				alt: this.data.primaryBrandTag.prefLabel
-			};
-		} else {
-			return null;
 		}
 	}
 

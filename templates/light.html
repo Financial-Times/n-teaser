@@ -1,18 +1,18 @@
 {{#nTeaserPresenter @this template='light' mods=mods}}
-	<div class="o-teaser{{#each classModifiers}} o-teaser--{{this}}{{/each}}" data-o-component="o-teaser" data-trackable="teaser">
+	<div class="o-teaser{{#each @nTeaserPresenter.classModifiers}} o-teaser--{{this}}{{/each}}" data-o-component="o-teaser" data-trackable="teaser">
 		<div class="o-teaser__content">
 
-			<div class="o-teaser__meta">
-				{{#with displayTag}}
-					<a href="{{{relativeUrl}}}" class="o-teaser__tag" data-trackable="primary-tag">{{prefLabel}}</a>
-				{{/with}}
-			</div>
+			{{#with @nTeaserPresenter.displayTag}}
+				<div class="o-teaser__meta">
+						<a href="{{{relativeUrl}}}" class="o-teaser__tag" data-trackable="primary-tag">{{prefLabel}}</a>
+				</div>
+			{{/with}}
 
 			<h2 class="o-teaser__heading">
 				<a href="{{{relativeUrl}}}{{{referrerTracking}}}" data-trackable="main-link">{{title}}</a>
 			</h2>
 
-			{{#with timeObject}}
+			{{#with @nTeaserPresenter.timeObject}}
 				<div class="o-teaser__timestamp">
 					{{#if status}}
 						<span>{{status}}<span>
@@ -27,7 +27,7 @@
 				</div>
 			{{/actions}}
 
-			{{#with headshot}}
+			{{#with @nTeaserPresenter.headshot}}
 				<img src="{{src}}" alt="Photo of {{alt}}" class="o-teaser__headshot">
 			{{/with}}
 
