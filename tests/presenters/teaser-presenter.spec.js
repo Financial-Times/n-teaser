@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const Presenter = require('../../presenters/teaser-presenter');
+const Presenter = require('../../src/presenters/teaser-presenter');
 const articleBrandFixture = require('../fixtures/article-brand-fixture');
 const articleOpinionAuthorFixture = require('../fixtures/article-opinion-author-fixture');
 const articleStandardFixture = require('../fixtures/article-standard-fixture');
@@ -13,19 +13,19 @@ describe('Teaser Presenter', () => {
 		it('passes through modifiers from collection', () => {
 			const content = {mods: ['mod1', 'mod2']};
 			subject = new Presenter(content);
-			expect(subject.classModifiers()).to.deep.equal(content.mods);
+			expect(subject.classModifiers).to.deep.equal(content.mods);
 		});
 
 		it('returns an empty array if there is no relevant data', () => {
 			const content = {};
 			subject = new Presenter(content);
-			expect(subject.classModifiers().length).to.equal(0);
+			expect(subject.classModifiers.length).to.equal(0);
 		});
 
 		it('adds a modifier equal to the size property if it exists', () => {
 			const content = {size: 'this-is-a-size'};
 			subject = new Presenter(content);
-			expect(subject.classModifiers()[0]).to.deep.equal(content.size);
+			expect(subject.classModifiers[0]).to.deep.equal(content.size);
 		});
 
 		context('has-headshot', () => {
@@ -33,19 +33,19 @@ describe('Teaser Presenter', () => {
 			it('returns has-headshot when correct template and has-headshot', () => {
 				const content = Object.assign({}, articleOpinionAuthorFixture, {template: 'standard'});
 				subject = new Presenter(content);
-				expect(subject.classModifiers()).to.deep.equal(['has-headshot']);
+				expect(subject.classModifiers).to.deep.equal(['has-headshot']);
 			});
 
 			it('does not add a modifier if wrong template but has headshot', () => {
 				const content = Object.assign({}, articleOpinionAuthorFixture, {template: 'no-headshot'});
 				subject = new Presenter(content);
-				expect(subject.classModifiers().length).to.equal(0);
+				expect(subject.classModifiers.length).to.equal(0);
 			});
 
 			it('does not add a modifier if correct template but does not have a headshot', () => {
 				const content = {template: 'light'};
 				subject = new Presenter(content);
-				expect(subject.classModifiers().length).to.equal(0);
+				expect(subject.classModifiers.length).to.equal(0);
 			});
 
 		});
@@ -54,19 +54,19 @@ describe('Teaser Presenter', () => {
 			it('returns has-image when correct template and there is a mainImage', () => {
 				const content = {mainImage: true, template: 'heavy'};
 				subject = new Presenter(content);
-				expect(subject.classModifiers()).to.deep.equal(['has-image']);
+				expect(subject.classModifiers).to.deep.equal(['has-image']);
 			});
 
 			it('does not add a modifier if wrong template but has mainImage', () => {
 				const content = {mainImage: true, template: 'standard'};
 				subject = new Presenter(content);
-				expect(subject.classModifiers().length).to.equal(0);
+				expect(subject.classModifiers.length).to.equal(0);
 			});
 
 			it('does not add a modifier if correct template but does not have a mainImage', () => {
 				const content = {template: 'heavy'};
 				subject = new Presenter(content);
-				expect(subject.classModifiers().length).to.equal(0);
+				expect(subject.classModifiers.length).to.equal(0);
 			});
 		});
 
@@ -80,19 +80,19 @@ describe('Teaser Presenter', () => {
 		it('returns the primaryBrandTag when it exists', () => {
 			const content = Object.assign({}, primaryBrandTag, teaserTag);
 			subject = new Presenter(content);
-			expect(subject.displayTag().primaryBrandTag).to.be.true;
+			expect(subject.displayTag.primaryBrandTag).to.be.true;
 		});
 
 		it('returns the teaserTag when it exists and when primaryBrandTag does not', () => {
 			const content = Object.assign({}, teaserTag);
 			subject = new Presenter(content);
-			expect(subject.displayTag().teaserTag).to.be.true;
+			expect(subject.displayTag.teaserTag).to.be.true;
 		});
 
 		it('returns null if neither the primaryBrandTag nor teaserTag exist', () => {
 			const content = {};
 			subject = new Presenter(content);
-			expect(subject.displayTag()).to.be.null;
+			expect(subject.displayTag).to.be.null;
 		});
 
 	});
@@ -173,14 +173,13 @@ describe('Teaser Presenter', () => {
 
 		it('returns the story package when one exists', () => {
 			subject = new Presenter(articleStandardFixture);
-			expect(subject.relatedContent()).to.deep.equal(articleStandardFixture.storyPackage);
+			expect(subject.relatedContent).to.deep.equal(articleStandardFixture.storyPackage);
 		});
 
 		it('returns latest content of primary tag when no story package, current article filtered', () => {
 			subject = new Presenter(articleBrandFixture);
-			const relatedContent = subject.relatedContent();
-			expect(relatedContent.length).to.equal(3);
-			relatedContent.map(content => {
+			expect(subject.relatedContent.length).to.equal(3);
+			subject.relatedContent.map(content => {
 				expect(content.id).to.not.equal(articleBrandFixture.id);
 			});
 		});
@@ -191,13 +190,13 @@ describe('Teaser Presenter', () => {
 
 		it('returns the full headshot file url and author name when a headshot exists', () => {
 			subject = new Presenter(articleOpinionAuthorFixture);
-			expect(subject.headshot().src).to.equal('https://www.ft.com/__origami/service/image/v2/images/raw/fthead:gideon-rachman?source=next&fit=scale-down&compression=best&width=75&tint=054593,fff1e0');
-			expect(subject.headshot().alt).to.equal('Gideon Rachman');
+			expect(subject.headshot.src).to.equal('https://www.ft.com/__origami/service/image/v2/images/raw/fthead:gideon-rachman?source=next&fit=scale-down&compression=best&width=75&tint=054593,fff1e0');
+			expect(subject.headshot.alt).to.equal('Gideon Rachman');
 		});
 
 		it('returns null when headshot does not exist', () => {
 			subject = new Presenter(articleBrandFixture);
-			expect(subject.headshot()).to.be.null;
+			expect(subject.headshot).to.be.null;
 		});
 
 	});

@@ -10,29 +10,17 @@ const LIVEBLOG_MAPPING = {
 	closed: 'liveblog closed'
 };
 
-module.exports = class TeaserPresenter {
+const TeaserPresenter = class TeaserPresenter {
 
 	constructor (data) {
 		this.data = data || {};
-	}
-
-	// returns url and name for author headshot when primary brand tag is an author with a headshot
-	get headshot () {
-		if (this.data.primaryBrandTag && this.data.primaryBrandTag.attributes.length > 0) {
-			const fileName = this.data.primaryBrandTag.attributes[0].value;
-			return {
-				src: `${HEADSHOT_BASE_URL}${fileName}${HEADSHOT_URL_PARAMS}`,
-				alt: this.data.primaryBrandTag.prefLabel
-			}
-		}
-		return null;
 	}
 
 	// returns all top level class names appropriate for the teaser
 	get classModifiers () {
 		const mods = this.data.mods || [];
 		if (
-			this.headshot &&
+			this.headshot() &&
 			TEMPLATES_WITH_HEADSHOTS.some(template => template === this.data.template)
 		) {
 			mods.push('has-headshot');
@@ -50,17 +38,6 @@ module.exports = class TeaserPresenter {
 	//returns tag to be displayed
 	get displayTag () {
 		return this.data.primaryBrandTag || this.data.teaserTag || null;
-	}
-
-	// returns an array of content items related to the main article
-	get relatedContent () {
-		if (this.data.storyPackage.length > 0) {
-			return this.data.storyPackage.slice(0, MAX_RELATED_CONTENT);
-		} else {
-			return this.data.primaryTag.latestContent
-			.filter(content => content.id !== this.data.id)
-			.slice(0, MAX_RELATED_CONTENT);
-		}
 	}
 
 	//returns publishedDate, status, classModifier
@@ -101,4 +78,30 @@ module.exports = class TeaserPresenter {
 		}
 	}
 
+	// returns an array of content items related to the main article
+	get relatedContent () {
+		if (this.data.storyPackage.length > 0) {
+			return this.data.storyPackage.slice(0, MAX_RELATED_CONTENT);
+		} else {
+			return this.data.primaryTag.latestContent
+				.filter(content => content.id !== this.data.id)
+				.slice(0, MAX_RELATED_CONTENT);
+		}
+	}
+
+	// returns url and name for author headshot when primary brand tag is an author with a headshot
+	get headshot () {
+		if (this.data.primaryBrandTag && this.data.primaryBrandTag.attributes.length > 0) {
+			const fileName = this.data.primaryBrandTag.attributes[0].value;
+			return {
+				src: `${HEADSHOT_BASE_URL}${fileName}${HEADSHOT_URL_PARAMS}`,
+				alt: this.data.primaryBrandTag.prefLabel
+			};
+		} else {
+			return null;
+		}
+	}
+
 };
+
+module.exports = TeaserPresenter;

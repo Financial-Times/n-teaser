@@ -1,10 +1,10 @@
-{{#presenter 'n-teaser/presenters/teaser-presenter' @this template='extra-light'}}
-	<div class="o-teaser{{#@teaserPresenter.classModifiers}} o-teaser--{{this}}{{/@teaserPresenter.classModifiers}}" data-o-component="o-teaser" data-trackable="teaser">
+{{#nTeaserPresenter @this template='extra-light' mods=mods}}
+	<div class="o-teaser{{#each classModifiers}} o-teaser--{{this}}{{/each}}" data-o-component="o-teaser" data-trackable="teaser">
 		<div class="o-teaser__content">
 			<h2 class="o-teaser__heading">
 				<a href="{{{relativeUrl}}}{{{referrerTracking}}}" data-trackable="main-link">{{title}}</a>
 			</h2>
-			{{#with @teaserPresenter.timeObject}}
+			{{#with timeObject}}
 				<div class="o-teaser__timestamp">
 					{{#if status}}
 						<span>{{status}}<span>
@@ -14,4 +14,4 @@
 			{{/with}}
 		</div>
 	</div>
-{{/presenter}}
+{{/nTeaserPresenter}}

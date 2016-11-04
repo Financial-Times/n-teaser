@@ -1,9 +1,9 @@
-{{#presenter 'n-teaser/presenters/teaser-presenter' @this template='heavy'}}
-	<div class="o-teaser{{#@teaserPresenter.classModifiers}} o-teaser--{{this}}{{/@teaserPresenter.classModifiers}}" data-o-component="o-teaser" data-trackable="teaser">
+{{#nTeaserPresenter @this template='heavy' mods=mods}}
+	<div class="o-teaser{{#each classModifiers}} o-teaser--{{this}}{{/each}}" data-o-component="o-teaser" data-trackable="teaser">
 		<div class="o-teaser__content">
 
 			<div class="o-teaser__meta">
-				{{#with @teaserPresenter.displayTag}}
+				{{#with displayTag}}
 					<a href="{{{relativeUrl}}}" class="o-teaser__tag" data-trackable="primary-tag">{{prefLabel}}</a>
 				{{/with}}
 			</div>
@@ -27,12 +27,12 @@
 			{{/actions}}
 		</div>
 
-		{{#if image}}
+		{{#with mainImage}}
 			<div class="o-teaser__image-container">
-			{{#nImagePresenter src=image.src srcSet=image.url placeholder=image.ratio colspan=colspan position=position widths=widths lazyLoad=true wrapperClasses="o-teaser__image-placeholder" classes="o-teaser__image"}}
+			{{#nImagePresenter srcSet=url placeholder=ratio colspan=colspan position=position widths=widths lazyLoad=true wrapperClasses="o-teaser__image-placeholder" classes="o-teaser__image"}}
 					{{> n-image/templates/image}}
 			{{/nImagePresenter}}
 			</div>
 		{{/if}}
 	</div>
-{{/presenter}}
+{{/nTeaserPresenter}}
