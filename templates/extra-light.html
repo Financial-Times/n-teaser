@@ -1,17 +1,11 @@
 {{#nTeaserPresenter @this template='extra-light' mods=mods}}
 	<div class="o-teaser{{#each @nTeaserPresenter.classModifiers}} o-teaser--{{this}}{{/each}}" data-o-component="o-teaser" data-trackable="teaser">
 		<div class="o-teaser__content">
-			<h2 class="o-teaser__heading">
-				<a href="{{{relativeUrl}}}{{{referrerTracking}}}" data-trackable="main-link">{{title}}</a>
-			</h2>
-			{{#with @nTeaserPresenter.timeObject}}
-				<div class="o-teaser__timestamp">
-					{{#if status}}
-						<span>{{status}}<span>
-					{{/if}}
-					<time data-o-component="o-date" class="o-date" data-o-date-format="time-ago-limit-4-hours" datetime="{{publishedDate}}">{{#dateformat "dddd, d mmmm, yyyy"}}{{publishedDate}}{{/dateformat}}</time>
-				</div>
-			{{/with}}
+
+			{{> n-teaser/templates/partials/title}}
+
+			{{> n-teaser/templates/partials/timestamp}}
+
 		</div>
 	</div>
 {{/nTeaserPresenter}}

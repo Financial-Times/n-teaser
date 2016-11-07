@@ -2,42 +2,19 @@
 	<div class="o-teaser{{#each @nTeaserPresenter.classModifiers}} o-teaser--{{this}}{{/each}}" data-o-component="o-teaser" data-trackable="teaser">
 		<div class="o-teaser__content">
 
-			{{#with @nTeaserPresenter.displayTag}}
-				<div class="o-teaser__meta">
-						<a href="{{{relativeUrl}}}" class="o-teaser__tag" data-trackable="primary-tag">{{prefLabel}}</a>
-				</div>
-			{{/with}}
+			{{> n-teaser/templates/partials/display-tag}}
 
-			<h2 class="o-teaser__heading">
-				<a href="{{{relativeUrl}}}{{{referrerTracking}}}" data-trackable="main-link">{{title}}</a>
-			</h2>
+			{{> n-teaser/templates/partials/title}}
 
-			{{#if standfirst}}
-				<p class="o-teaser__standfirst">{{standfirst}}</p>
-			{{/if}}
+			{{> n-teaser/templates/partials/standfirst}}
 
-			{{#with @nTeaserPresenter.timeObject}}
-				<div class="o-teaser__timestamp">
-					{{#if status}}
-						<span>{{status}}<span>
-					{{/if}}
-					<time data-o-component="o-date" class="o-date" data-o-date-format="time-ago-limit-4-hours" datetime="{{publishedDate}}">{{#dateformat "dddd, d mmmm, yyyy"}}{{publishedDate}}{{/dateformat}}</time>
-				</div>
-			{{/with}}
+			{{> n-teaser/templates/partials/timestamp}}
 
-			{{#actions}}
-				<div class="o-teaser__action">
-					{{{this}}}
-				</div>
-			{{/actions}}
+			{{> n-teaser/templates/partials/actions}}
+
 		</div>
 
-		{{#if mainImage}}
-			<div class="o-teaser__image-container">
-			{{#nImagePresenter srcSet=mainImage.url placeholder=mainImage.ratio colspan=colspan position=position widths=widths lazyLoad=true wrapperClasses="o-teaser__image-placeholder" classes="o-teaser__image"}}
-					{{> n-image/templates/image}}
-			{{/nImagePresenter}}
-			</div>
-		{{/if}}
+		{{> n-teaser/templates/partials/main-image}}
+
 	</div>
 {{/nTeaserPresenter}}

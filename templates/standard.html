@@ -1,40 +1,19 @@
 {{#nTeaserPresenter @this template='standard' mods=mods}}
 	<div class="o-teaser{{#each @nTeaserPresenter.classModifiers}} o-teaser--{{this}}{{/each}}" data-o-component="o-teaser" data-trackable="teaser">
+
 		<div class="o-teaser__content">
 
-			{{#with @nTeaserPresenter.displayTag}}
-				<div class="o-teaser__meta">
-						<a href="{{{relativeUrl}}}" class="o-teaser__tag" data-trackable="primary-tag">{{prefLabel}}</a>
-				</div>
-			{{/with}}
+			{{> @financial-times/n-teaser/templates/partials/display-tag}}
 
-			<h2 class="o-teaser__heading">
-				<a href="{{{relativeUrl}}}{{{referrerTracking}}}" data-trackable="main-link">{{title}}</a>
-			</h2>
+			{{> @financial-times/n-teaser/templates/partials/title}}
 
-			{{#if standfirst}}
-				<p class="o-teaser__standfirst">{{standfirst}}</p>
-			{{/if}}
+			{{> @financial-times/n-teaser/templates/partials/standfirst}}
 
-			{{#with @nTeaserPresenter.timeObject}}
-				<div class="o-teaser__timestamp">
-					{{#if status}}
-						<span>{{status}}<span>
-					{{/if}}
-					<time data-o-component="o-date" class="o-date" data-o-date-format="time-ago-limit-4-hours" datetime="{{publishedDate}}">{{#dateformat "dddd, d mmmm, yyyy"}}{{publishedDate}}{{/dateformat}}</time>
-				</div>
-			{{/with}}
+			{{> @financial-times/n-teaser/templates/partials/timestamp}}
 
-			{{#actions}}
-				<div class="o-teaser__action">
-					{{{this}}}
-				</div>
-			{{/actions}}
-
-			{{#with @nTeaserPresenter.headshot}}
-				<img src="{{src}}" alt="Photo of {{alt}}" class="o-teaser__headshot">
-			{{/with}}
+			{{> @financial-times/n-teaser/templates/partials/actions}}
 
 		</div>
+
 	</div>
 {{/nTeaserPresenter}}
