@@ -10,6 +10,6 @@
     "tests"
   ],
   "dependencies": {
-    "o-teaser": "#design-debt"
+    "o-teaser": "#design-debt-non-adam"
   }
 }
