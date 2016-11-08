@@ -41,6 +41,10 @@ module.exports = {
 	teaserStandard: `
 		fragment TeaserStandard on Content {
 			standfirst
+		}
+	`,
+	teaserHeavy: `
+		fragment TeaserHeavy on Content {
 			mainImage {
 				title
 				description
@@ -51,8 +55,8 @@ module.exports = {
 			}
 		}
 	`,
-	teaserHeavy: `
-		fragment TeaserHeavy on Content {
+	teaserTopStory: `
+		fragment TeaserTopStory on Content {
 			storyPackage(limit: 3) {
 				type: __typename
 				relativeUrl
