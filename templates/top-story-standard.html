@@ -1,30 +1,20 @@
-<div class="o-teaser o-teaser--top-story o-teaser--standalone{{#mods}} o-teaser--{{this}}{{/mods}}{{#if image}} o-teaser--has-image{{/if}}{{#ifEquals type 'opinion'}} o-teaser--opinion{{/ifEquals}}" data-o-component="o-teaser" data-trackable="teaser">
-	<div class="o-teaser__content">
-		{{> n-teaser/templates/partials/meta}}
-		{{> n-teaser/templates/partials/heading}}
+{{#nTeaserPresenter @this template='top-story-standard' mods=mods}}
+	<div class="o-teaser{{#each classModifiers}} o-teaser--{{this}}{{/each}}" data-o-component="o-teaser" data-trackable="teaser">
+		<div class="o-teaser__content">
 
-		{{#if summary}}
-			<p class="o-teaser__standfirst">{{{summary}}}</p>
-		{{/if}}
+			{{> @financial-times/n-teaser/templates/partials/display-tag}}
 
-		{{#if lastPublished}}
-			<time data-o-component="o-date" class="o-date o-teaser__timestamp" data-o-date-format="time-ago-limit-4-hours" datetime="{{lastPublished}}">{{#dateformat "dddd, d mmmm, yyyy"}}{{lastPublished}}{{/dateformat}}</time>
-		{{/if}}
+			{{> @financial-times/n-teaser/templates/partials/title}}
 
-		{{#actions}}
-			<div class="o-teaser__action">
-				{{{this}}}
-			</div>
-		{{/actions}}
+			{{> @financial-times/n-teaser/templates/partials/standfirst}}
+
+			{{> @financial-times/n-teaser/templates/partials/timestamp}}
+
+			{{> @financial-times/n-teaser/templates/partials/actions}}
+
+		</div>
+
+		{{> @financial-times/related-content}}
+
 	</div>
-
-	{{#if relatedContent}}
-	<ul class="o-teaser__related">
-		{{#each relatedContent}}
-			<li class="o-teaser__related-item">
-				<a href="{{url}}" data-trackable="related">{{title}}</a>
-			</li>
-		{{/each}}
-	</ul>
-	{{/if}}
-</div>
+{{/nTeaserPresenter}}
