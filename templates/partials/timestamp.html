@@ -1,5 +1,5 @@
 {{#with @nTeaserPresenter.timeObject}}
-  <div class="o-teaser__timestamp">
+  <div class="o-teaser__timestamp{{#if classModifier}}o-teaser__timestamp--{{classModifier}}{{/if}}">
     {{#if status}}
       <span>{{status}}<span>
     {{/if}}

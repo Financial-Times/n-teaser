@@ -1,5 +1,11 @@
-{{#with @nTeaserPresenter.displayTag}}
-  <div class="o-teaser__meta">
-      <a href="{{{relativeUrl}}}" class="o-teaser__tag" data-trackable="primary-tag">{{prefLabel}}</a>
-  </div>
-{{/with}}
+<div class="o-teaser__meta{{#if isOpinion}} o-teaser__meta--opinion{{/if}}">
+  {{#if genreTag}}
+    <span class="o-teaser__genre">{{genreTag}}</span>
+  {{/if}}
+  {{#with @nTeaserPresenter.displayTag}}
+    <a href="{{{relativeUrl}}}" class="o-teaser__tag" data-trackable="primary-tag">{{prefLabel}}</a>
+  {{/with}}
+</div>
+{{#if advertiser}}
+  <span class="o-teaser__promoted-prefix">{{promotedByPrefix}}</span> by <span class="o-teaser__promoted-by">{{advertiser}}</span>
+{{/if}}
