@@ -74,25 +74,54 @@ describe('Teaser Presenter', () => {
 
 	context('displayTag', () => {
 
-		const primaryBrandTag = { primaryBrandTag: { primaryBrandTag: true } };
-		const teaserTag = { teaserTag: { teaserTag: true } };
+		context('not on a stream page', () => {
 
-		it('returns the primaryBrandTag when it exists', () => {
-			const content = Object.assign({}, primaryBrandTag, teaserTag);
-			subject = new Presenter(content);
-			expect(subject.displayTag.primaryBrandTag).to.be.true;
+			const primaryBrandTag = { primaryBrandTag: { primaryBrandTag: true } };
+			const teaserTag = { teaserTag: { teaserTag: true } };
+
+			it('returns the primaryBrandTag when it exists', () => {
+				const content = Object.assign({}, primaryBrandTag, teaserTag);
+				subject = new Presenter(content);
+				expect(subject.displayTag.primaryBrandTag).to.be.true;
+			});
+
+			it('returns the teaserTag when it exists and when primaryBrandTag does not', () => {
+				const content = Object.assign({}, teaserTag);
+				subject = new Presenter(content);
+				expect(subject.displayTag.teaserTag).to.be.true;
+			});
+
+			it('returns null if neither the primaryBrandTag nor teaserTag exist', () => {
+				const content = {};
+				subject = new Presenter(content);
+				expect(subject.displayTag).to.be.null;
+			});
+
 		});
 
-		it('returns the teaserTag when it exists and when primaryBrandTag does not', () => {
-			const content = Object.assign({}, teaserTag);
-			subject = new Presenter(content);
-			expect(subject.displayTag.teaserTag).to.be.true;
-		});
+		context('on a stream page', () => {
 
-		it('returns null if neither the primaryBrandTag nor teaserTag exist', () => {
-			const content = {};
-			subject = new Presenter(content);
-			expect(subject.displayTag).to.be.null;
+			const primaryBrandTag = { primaryBrandTag: { primaryBrandTag: true, idV1: 'ABC' } };
+			const teaserTag = { teaserTag: { teaserTag: true } };
+
+			it('returns the primaryBrandTag if not the same as the streamId', () => {
+				const content = Object.assign({streamId: 'XYZ'}, primaryBrandTag, teaserTag);
+				subject = new Presenter(content);
+				expect(subject.displayTag.primaryBrandTag).to.be.true;
+			});
+
+			it('returns the teaserTag if primaryBrandTag is same as streamId', () => {
+				const content = Object.assign({streamId: 'ABC'}, primaryBrandTag, teaserTag);
+				subject = new Presenter(content);
+				expect(subject.displayTag.teaserTag).to.be.true;
+			});
+
+			it('returns the teaserTag if no primaryBrandTag', () => {
+				const content = Object.assign({streamId: 'ABC'}, teaserTag);
+				subject = new Presenter(content);
+				expect(subject.displayTag.teaserTag).to.be.true;
+			});
+
 		});
 
 	});

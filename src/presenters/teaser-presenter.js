@@ -37,6 +37,10 @@ const TeaserPresenter = class TeaserPresenter {
 
 	//returns tag to be displayed
 	get displayTag () {
+		if ((this.data.streamId && this.data.primaryBrandTag) &&
+			(this.data.streamId === this.data.primaryBrandTag.idV1)) {
+			return this.data.teaserTag || null;
+		}
 		return this.data.primaryBrandTag || this.data.teaserTag || null;
 	}
 
