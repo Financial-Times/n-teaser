@@ -36,6 +36,7 @@ module.exports = {
 					value
 				}
 			}
+			isOpinion
 		}
 	`,
 	teaserStandard: `
