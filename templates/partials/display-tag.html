@@ -1,7 +1,7 @@
 <div class="o-teaser__meta{{#if isOpinion}} o-teaser__meta--opinion{{/if}}">
-  {{#if genreTag}}
-    <span class="o-teaser__genre">{{genreTag}}</span>
-  {{/if}}
+  {{#with genreTag}}
+    <span class="o-teaser__genre">{{prefLabel}}</span>
+  {{/with}}
   {{#with @nTeaserPresenter.displayTag}}
     <a href="{{{relativeUrl}}}" class="o-teaser__tag" data-trackable="primary-tag">{{prefLabel}}</a>
   {{/with}}
