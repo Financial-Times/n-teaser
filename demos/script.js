@@ -17,8 +17,8 @@ const data = {
 };
 
 const images = {
-	landscape: 'https://image.webservices.ft.com/v1/images/raw/http%3A%2F%2Fim.ft-static.com%2Fcontent%2Fimages%2Fa60ae24b-b87f-439c-bf1b-6e54946b4cf2.img?source=o-card-demo',
-	opinion: 'http://image.webservices.ft.com/v1/images/raw/fthead:mrs-moneypenny?source=origami&amp;width=60'
+	landscape: 'https://www.ft.com/__origami/service/image/v2/images/raw/http%3A%2F%2Fim.ft-static.com%2Fcontent%2Fimages%2Fa60ae24b-b87f-439c-bf1b-6e54946b4cf2.img?source=o-card-demo',
+	opinion: 'http://www.ft.com/__origami/service/image/v2/images/raw/fthead:mrs-moneypenny?source=origami&amp;width=60'
 };
 
 ['landscape', 'opinion'].forEach(style => {
