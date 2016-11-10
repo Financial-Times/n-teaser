@@ -1,0 +1,14 @@
+<div class="o-teaser__meta">
+	{{!-- This #tag/#brand syntax handles single objects *and* arrays of objects. There could be multiple brands, or in myFT pages, multiple tags --}}
+
+
+	{{#brand}}
+		<a href="{{{url}}}" class="o-teaser__tag" data-trackable="primary-tag">{{#../genreTag}}<strong>{{prefLabel}} </strong>{{/../genreTag}}{{name}}</a>
+	{{/brand}}
+	{{#tag}}
+		<a href="{{{url}}}" class="o-teaser__tag" data-trackable="primary-tag">{{#../genreTag}}<strong>{{prefLabel}} </strong>{{/../genreTag}}{{name}}</a>
+	{{/tag}}
+	{{#if advertiser}}
+		<span class="o-teaser__promoted-prefix">{{promotedByPrefix}}</span> by <span class="o-teaser__promoted-by">{{advertiser}}</span>
+	{{/if}}
+</div>
