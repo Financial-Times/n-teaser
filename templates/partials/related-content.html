@@ -1,9 +1,9 @@
 {{#if @nTeaserPresenter.relatedContent}}
-  <ul class="o-teaser__related">
-    {{#each @nTeaserPresenter.relatedContent}}
-      <li class="o-teaser__related-item">
-        <a data-trackable="related-link" href="{{relativeUrl}}">{{title}}</a>
-      </li>
-    {{/each}}
-  </ul>
+	<ul class="o-teaser__related">
+		{{#each @nTeaserPresenter.relatedContent}}
+			<li class="o-teaser__related-item">
+				<a data-trackable="related-link" href="{{relativeUrl}}">{{title}}</a>
+			</li>
+		{{/each}}
+	</ul>
 {{/if}}

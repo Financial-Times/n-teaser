@@ -1,11 +1,11 @@
 <div class="o-teaser__meta{{#if isOpinion}} o-teaser__meta--opinion{{/if}}">
-  {{#with genreTag}}
-    <span class="o-teaser__genre">{{prefLabel}}</span>
-  {{/with}}
-  {{#with @nTeaserPresenter.displayTag}}
-    <a href="{{{relativeUrl}}}" class="o-teaser__tag" data-trackable="primary-tag">{{prefLabel}}</a>
-  {{/with}}
+	{{#with genreTag}}
+		<span class="o-teaser__genre"><strong>{{prefLabel}}</strong> </span>
+	{{/with}}
+	{{#with @nTeaserPresenter.displayTag}}
+		<a href="{{{relativeUrl}}}" class="o-teaser__tag" data-trackable="primary-tag">{{prefLabel}}</a>
+	{{/with}}
 </div>
 {{#if advertiser}}
-  <span class="o-teaser__promoted-prefix">{{promotedByPrefix}}</span> by <span class="o-teaser__promoted-by">{{advertiser}}</span>
+	<span class="o-teaser__promoted-prefix">{{promotedByPrefix}}</span> by <span class="o-teaser__promoted-by">{{advertiser}}</span>
 {{/if}}
