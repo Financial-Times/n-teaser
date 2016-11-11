@@ -26,7 +26,7 @@ module.exports = {
 				prefLabel
 				relativeUrl
 			}
-			genreTag(only: ["Analysis"]) {
+			genreTag(only: ["MQ==-R2VucmVz", "Mw==-R2VucmVz", "OQ==-R2VucmVz", "NA==-R2VucmVz"]) {
 				prefLabel
 			}
 			primaryBrandTag {
