@@ -44,10 +44,18 @@ const TeaserPresenter = class TeaserPresenter {
 		return this.data.primaryBrandTag || this.data.teaserTag || null;
 	}
 
+	//returns genre prefix
+	get genrePrefix () {
+		if (!this.data.genreTag || this.data.primaryBrandTag === this.displayTag) {
+			return null;
+		}
+		return this.data.genreTag.prefLabel;
+	}
+
 	//returns publishedDate, status, classModifier
 	get timeObject () {
 		if (this.data.liveBlog && this.data.liveBlog.status) {
-			return this.liveBlog;
+			return this.liveBlog();
 		} else {
 			return {
 				publishedDate: this.data.publishedDate,

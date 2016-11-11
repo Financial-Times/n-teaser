@@ -99,6 +99,38 @@ describe('Teaser Presenter', () => {
 
 		});
 
+		context('genrePrefix', () => {
+
+			const genreTag = { genreTag: { prefLabel: 'genre label' } };
+			const primaryBrandTag = { primaryBrandTag: { idV1: 'ABC' } };
+			const streamId = { streamId: 'ABC'};
+
+			it('returns null if there is no genreTag', () => {
+				const content = {};
+				subject = new Presenter(content);
+				expect(subject.genrePrefix).to.be.null;
+			});
+
+			it('returns null if there is a genre tag but the display tag is the primary brand tag', () => {
+				const content = Object.assign({}, genreTag, primaryBrandTag);
+				subject = new Presenter(content);
+				expect(subject.genrePrefix).to.be.null;
+			});
+
+			it('returns the label of the genre tag if it exists and there is no primary brand tag', () => {
+				const content = Object.assign({}, genreTag);
+				subject = new Presenter(content);
+				expect(subject.genrePrefix).to.equal(genreTag.genreTag.prefLabel);
+			});
+
+			it('returns the label of the genre tag if it exists and the primary brand tag is not displayed', () => {
+				const content = Object.assign({}, genreTag, primaryBrandTag, streamId);
+				subject = new Presenter(content);
+				expect(subject.genrePrefix).to.equal(genreTag.genreTag.prefLabel);
+			});
+
+		});
+
 		context('on a stream page', () => {
 
 			const primaryBrandTag = { primaryBrandTag: { primaryBrandTag: true, idV1: 'ABC' } };
