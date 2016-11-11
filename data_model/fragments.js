@@ -14,6 +14,7 @@ module.exports = {
 			isPremium
 			relativeUrl
 			title
+			promotionalTitle
 			publishedDate
 			initialPublishedDate
 		}
@@ -63,6 +64,7 @@ module.exports = {
 				relativeUrl
 				isPremium
 				title
+				promotionalTitle
 			}
 			primaryTag {
 				latestContent(limit: 4) {
@@ -70,6 +72,7 @@ module.exports = {
 					relativeUrl
 					isPremium
 					title
+					promotionalTitle
 					id
 				}
 			}
