@@ -21,15 +21,7 @@
 		{{/actions}}
 	</div>
 
-	{{#if image}}
-		<div class="o-teaser__image-container">
-			<a href="{{{url}}}{{{referrerTracking}}}" data-trackable="image" aria-hidden="true">
-				{{#nImagePresenter src=image.src srcSet=image.url placeholder=image.ratio colspan=colspan position=position widths=widths lazyLoad=true wrapperClasses="o-teaser__image-placeholder" classes="o-teaser__image"}}
-					{{> n-image/templates/image}}
-				{{/nImagePresenter}}
-			</a>
-		</div>
-	{{/if}}
+	{{>n-teaser/templates/partials/image}}
 
 	{{#if relatedContent}}
 	<ul class="o-teaser__related">

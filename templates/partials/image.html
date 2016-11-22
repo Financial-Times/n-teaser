@@ -1,0 +1,15 @@
+{{#if image}}
+	<div class="o-teaser__image-container">
+		<a href="{{{url}}}{{{referrerTracking}}}" data-trackable="image" aria-hidden="true">
+		{{#ifEquals lazyLoad 'false'}}
+			{{#nImagePresenter src=image.src srcSet=image.url placeholder=image.ratio colspan=colspan position=position widths=widths lazyLoad=false wrapperClasses="o-teaser__image-placeholder" classes="o-teaser__image"}}
+				{{> n-image/templates/image}}
+			{{/nImagePresenter}}
+		{{else}}
+			{{#nImagePresenter src=image.src srcSet=image.url placeholder=image.ratio colspan=colspan position=position widths=widths lazyLoad=true wrapperClasses="o-teaser__image-placeholder" classes="o-teaser__image"}}
+				{{> n-image/templates/image}}
+			{{/nImagePresenter}}
+		{{/ifEquals}}
+		</a>
+	</div>
+{{/if}}
