@@ -70,6 +70,34 @@ describe('Teaser Presenter', () => {
 			});
 		});
 
+		context('opinion', () => {
+			it('returns opinion when content has isOpinion set to true', () => {
+				const content = {isOpinion: true};
+				subject = new Presenter(content);
+				expect(subject.classModifiers).to.deep.equal(['opinion']);
+			});
+
+			it('does not return opinion if isOpinion is false', () => {
+				const content = {isOpinion: false};
+				subject = new Presenter(content);
+				expect(subject.classModifiers.length).to.equal(0);
+			});
+		});
+
+		context('highlight', () => {
+			it('returns highlight when content has isEditorsChoice set to true', () => {
+				const content = {isEditorsChoice: true};
+				subject = new Presenter(content);
+				expect(subject.classModifiers).to.deep.equal(['highlight']);
+			});
+
+			it('does not return opinion if isEditorsChoice is false', () => {
+				const content = {isEditorsChoice: false};
+				subject = new Presenter(content);
+				expect(subject.classModifiers.length).to.equal(0);
+			});
+		});
+
 	});
 
 	context('displayTag', () => {

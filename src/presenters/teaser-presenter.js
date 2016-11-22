@@ -32,6 +32,12 @@ const TeaserPresenter = class TeaserPresenter {
 		) {
 			mods.push('has-image');
 		}
+		if (this.data.isOpinion) {
+			mods.push('opinion');
+		}
+		if (this.data.isEditorsChoice) {
+			mods.push('highlight');
+		}
 		return mods;
 	}
 

@@ -17,6 +17,7 @@ module.exports = {
 			promotionalTitle
 			publishedDate
 			initialPublishedDate
+			isEditorsChoice
 		}
 	`,
 	teaserLight: `
@@ -26,7 +27,7 @@ module.exports = {
 				prefLabel
 				relativeUrl
 			}
-			genreTag(only: ["MQ==-R2VucmVz", "Mw==-R2VucmVz", "OQ==-R2VucmVz", "NA==-R2VucmVz"]) {
+			genreTag(only: ["MQ==-R2VucmVz", "Mw==-R2VucmVz", "OQ==-R2VucmVz", "NA==-R2VucmVz", "MTA=-R2VucmVz"]) {
 				prefLabel
 			}
 			primaryBrandTag {
