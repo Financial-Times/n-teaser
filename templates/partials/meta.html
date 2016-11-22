@@ -3,7 +3,9 @@
 
 
 	{{#brand}}
-		<a href="{{{url}}}" class="o-teaser__tag" data-trackable="primary-tag">{{#../genreTag}}<strong>{{prefLabel}} </strong>{{/../genreTag}}{{name}}</a>
+		{{#if name}}
+			<a href="{{{url}}}" class="o-teaser__tag" data-trackable="primary-tag">{{#../genreTag}}<strong>{{prefLabel}} </strong>{{/../genreTag}}{{name}}</a>
+		{{/if}}
 	{{/brand}}
 	{{#tag}}
 		<a href="{{{url}}}" class="o-teaser__tag" data-trackable="primary-tag">{{#../genreTag}}<strong>{{prefLabel}} </strong>{{/../genreTag}}{{name}}</a>
