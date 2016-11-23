@@ -18,15 +18,6 @@ module.exports = {
 			publishedDate
 			initialPublishedDate
 			isEditorsChoice
-		}
-	`,
-	teaserLight: `
-		fragment TeaserLight on Content {
-			id
-			teaserTag {
-				prefLabel
-				relativeUrl
-			}
 			genreTag(only: ["MQ==-R2VucmVz", "Mw==-R2VucmVz", "OQ==-R2VucmVz", "NA==-R2VucmVz", "MTA=-R2VucmVz"]) {
 				prefLabel
 			}
@@ -39,6 +30,15 @@ module.exports = {
 				}
 			}
 			isOpinion
+		}
+	`,
+	teaserLight: `
+		fragment TeaserLight on Content {
+			id
+			teaserTag {
+				prefLabel
+				relativeUrl
+			}
 		}
 	`,
 	teaserStandard: `
