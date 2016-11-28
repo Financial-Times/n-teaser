@@ -42,6 +42,18 @@ module.exports = {
 			}
 		}
 	`,
+	teaserLifestyle: `
+		fragment TeaserLifestyle on Content {
+			mainImage {
+				title
+				description
+				url
+				width
+				height
+				ratio
+			}
+		}
+	`,
 	teaserStandard: `
 		fragment TeaserStandard on Content {
 			standfirst
