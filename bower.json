@@ -10,7 +10,7 @@
     "tests"
   ],
   "dependencies": {
-    "o-teaser": "#design-debt",
+    "o-teaser": "1.0.0-beta.7",
     "o-labels": "^2.0.2"
   }
 }
