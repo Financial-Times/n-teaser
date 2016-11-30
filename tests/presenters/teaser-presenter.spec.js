@@ -159,6 +159,21 @@ describe('Teaser Presenter', () => {
 
 		});
 
+		context('content has a brand and is an opinion piece by an author', () => {
+
+			const primaryBrandTag = { primaryBrandTag: { taxonomy: 'brand', prefLabel: 'brand' } };
+			const authorTags = { authorTags: [ { prefLabel: 'author' } ] };
+			const isOpinion = { isOpinion: true };
+
+			it('returns the brand as the genre tag and the author as the display tag', () => {
+				const content = Object.assign({}, primaryBrandTag, authorTags, isOpinion);
+				subject = new Presenter(content);
+				expect(subject.genrePrefix).to.equal(primaryBrandTag.primaryBrandTag.prefLabel);
+				expect(subject.displayTag.prefLabel).to.equal(authorTags.authorTags[0].prefLabel);
+			});
+
+		});
+
 		context('on a stream page', () => {
 
 			const primaryBrandTag = { primaryBrandTag: { primaryBrandTag: true, idV1: 'ABC' } };

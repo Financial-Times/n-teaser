@@ -10,6 +10,19 @@ const LIVEBLOG_MAPPING = {
 	closed: 'liveblog closed'
 };
 
+const brandAuthorDouble = (data) => {
+	if (
+		data.primaryBrandTag &&
+		data.primaryBrandTag.taxonomy === 'brand' &&
+		data.authorTags &&
+		data.authorTags.length &&
+		data.isOpinion === true
+	) {
+		return true;
+	}
+	return false;
+};
+
 const TeaserPresenter = class TeaserPresenter {
 
 	constructor (data) {
@@ -47,11 +60,17 @@ const TeaserPresenter = class TeaserPresenter {
 			(this.data.streamId === this.data.primaryBrandTag.idV1)) {
 			return this.data.teaserTag || null;
 		}
+		if (this.brandAuthorDouble() === true) {
+			return this.data.authorTags[0];
+		}
 		return this.data.primaryBrandTag || this.data.teaserTag || null;
 	}
 
 	//returns genre prefix
 	get genrePrefix () {
+		if (this.brandAuthorDouble() === true) {
+			return this.data.primaryBrandTag.prefLabel;
+		}
 		if (!this.data.genreTag || this.data.primaryBrandTag === this.displayTag) {
 			return null;
 		}
@@ -118,6 +137,19 @@ const TeaserPresenter = class TeaserPresenter {
 			status: LIVEBLOG_MAPPING[this.data.liveBlog.status],
 			classModifier: this.data.liveBlog.status
 		}
+	}
+
+	brandAuthorDouble () {
+		if (
+			this.data.primaryBrandTag &&
+			this.data.primaryBrandTag.taxonomy === 'brand' &&
+			this.data.authorTags &&
+			this.data.authorTags.length &&
+			this.data.isOpinion === true
+		) {
+			return true;
+		}
+		return false;
 	}
 
 };
