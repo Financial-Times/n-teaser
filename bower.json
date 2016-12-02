@@ -10,7 +10,7 @@
     "tests"
   ],
   "dependencies": {
-    "o-teaser": "1.0.0-beta.7",
+    "o-teaser": "^1.0.0",
     "o-labels": "^2.0.2"
   }
 }
