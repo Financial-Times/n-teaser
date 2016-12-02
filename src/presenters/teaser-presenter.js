@@ -95,6 +95,18 @@ const TeaserPresenter = class TeaserPresenter {
 		}
 	}
 
+	// returns duration in the format mm:ss
+	get formattedDuration () {
+		const duration = this.data.duration;
+		if (duration > 0) {
+			const minutes = Math.floor(duration / 60000);
+			const seconds = Math.round(duration / 1000) - minutes * 60;
+			return `${minutes}.${seconds < 10 ? '0' : ''}${seconds}`;
+		} else {
+			return;
+		}
+	}
+
 	//returns prefix for timestamp (null / 'new' / 'updated')
 	timeStatus () {
 		const now = Date.now();
