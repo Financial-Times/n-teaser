@@ -95,7 +95,7 @@ const TeaserPresenter = class TeaserPresenter {
 		}
 	}
 
-	// returns duration in the format mm:ss
+	// returns duration in the format m:ss
 	get formattedDuration () {
 		const duration = this.data.duration;
 		if (duration > 0) {
