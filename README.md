@@ -92,4 +92,3 @@ Example of a teaser with an image;
 ```
 The `colspan`, `position` and `widths` arguments are passed on to `n-image` to determine the properties of how the image is displayed in the teaser.
 More details on what is supported by `n-image` can be found in that repository.
-
