@@ -1,0 +1,13 @@
+<div class="o-teaser__meta">
+	{{#if @nTeaserPresenter.displayTag}}
+		<a href="{{{@nTeaserPresenter.displayTag.relativeUrl}}}" class="o-teaser__tag" data-trackable="primary-tag">
+			{{#if @nTeaserPresenter.genrePrefix}}
+				<strong>{{@nTeaserPresenter.genrePrefix}} </strong>
+			{{/if}}
+			{{@nTeaserPresenter.displayTag.prefLabel}}
+		</a>
+	{{/if}}
+	{{#if advertiser}}
+		<span class="o-teaser__promoted-prefix">{{promotedByPrefix}}</span> by <span class="o-teaser__promoted-by">{{advertiser}}</span>
+	{{/if}}
+</div>

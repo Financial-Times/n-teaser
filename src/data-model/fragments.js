@@ -11,22 +11,15 @@ module.exports = {
 	teaserExtraLight: `
 		fragment TeaserExtraLight on Content {
 			type: __typename
+			id
 			isPremium
 			relativeUrl
 			title
 			promotionalTitle
 			publishedDate
 			initialPublishedDate
-		}
-	`,
-	teaserLight: `
-		fragment TeaserLight on Content {
-			id
-			teaserTag {
-				prefLabel
-				relativeUrl
-			}
-			genreTag(only: ["Analysis"]) {
+			isEditorsChoice
+			genreTag(only: ["MQ==-R2VucmVz", "Mw==-R2VucmVz", "OQ==-R2VucmVz", "NA==-R2VucmVz", "MTA=-R2VucmVz"]) {
 				prefLabel
 			}
 			primaryBrandTag {
@@ -38,6 +31,27 @@ module.exports = {
 				}
 			}
 			isOpinion
+		}
+	`,
+	teaserLight: `
+		fragment TeaserLight on Content {
+			id
+			teaserTag {
+				prefLabel
+				relativeUrl
+			}
+		}
+	`,
+	teaserLifestyle: `
+		fragment TeaserLifestyle on Content {
+			mainImage {
+				title
+				description
+				url
+				width
+				height
+				ratio
+			}
 		}
 	`,
 	teaserStandard: `

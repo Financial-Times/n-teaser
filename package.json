@@ -8,8 +8,15 @@
     "url": "git+https://github.com/Financial-Times/n-teaser.git"
   },
   "license": "MIT",
+  "dependencies": {
+    
+  },
   "devDependencies": {
     "bower": "^1.7.9",
-    "npm-prepublish": "^1.2.1"
+    "npm-prepublish": "^1.2.1",
+    "chai": "^3.2.0",
+    "eslint": "^2.10.2",
+    "lintspaces-cli": "^0.1.1",
+    "mocha": "^2.2.5"
   }
 }

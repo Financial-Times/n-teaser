@@ -1,5 +1,7 @@
-{{#nTeaserPresenter @this template='standard' mods=mods}}
+{{#nTeaserPresenter @this template='lifestyle' mods=mods}}
 	<div class="o-teaser{{#each @nTeaserPresenter.classModifiers}} o-teaser--{{this}}{{/each}}" data-o-component="o-teaser" data-trackable="teaser">
+
+		{{> n-teaser/templates/partials/main-image}}
 
 		<div class="o-teaser__content">
 
@@ -7,15 +9,10 @@
 
 			{{> n-teaser/templates/partials/title}}
 
-			{{> n-teaser/templates/partials/standfirst}}
-
 			{{> n-teaser/templates/partials/timestamp}}
-
-			{{> n-teaser/templates/partials/actions}}
 
 			{{> n-teaser/templates/partials/headshot}}
 
 		</div>
-
 	</div>
 {{/nTeaserPresenter}}
