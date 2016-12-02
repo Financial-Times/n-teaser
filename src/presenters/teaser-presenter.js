@@ -102,8 +102,6 @@ const TeaserPresenter = class TeaserPresenter {
 			const minutes = Math.floor(duration / (1000 * 60));
 			const seconds = Math.round(duration / 1000) - (minutes * 60);
 			return `${minutes}.${seconds < 10 ? '0' : ''}${seconds}`;
-		} else {
-			return;
 		}
 	}
 
