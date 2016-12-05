@@ -25,10 +25,14 @@ module.exports = {
 			primaryBrandTag {
 				prefLabel
 				relativeUrl
+				taxonomy
 				attributes(only: ["headshot"]) {
 					key
 					value
 				}
+			}
+			authorTags(limit: 1) {
+				prefLabel
 			}
 			isOpinion
 		}

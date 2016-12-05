@@ -184,6 +184,29 @@ describe('Teaser Presenter', () => {
 
 		});
 
+		context('when it is both a brand and an opinion / author', () => {
+
+			const primaryBrandTag = { primaryBrandTag: { prefLabel: 'brandName', taxonomy: 'brand' } };
+			const primaryBrandTagDupe = { primaryBrandTag: { prefLabel: 'authorName', taxonomy: 'brand' } };
+			const authorTags = { authorTags: [ { prefLabel: 'authorName', taxonomy: 'author' } ] };
+			const isOpinion = { isOpinion: true }
+
+			it('returns the brand as genrePrefix and author as displayTag', () => {
+				const content = Object.assign({}, primaryBrandTag, authorTags, isOpinion);
+				subject = new Presenter(content);
+				expect(subject.genrePrefix).to.equal(primaryBrandTag.primaryBrandTag.prefLabel);
+				expect(subject.displayTag).to.deep.equal(authorTags.authorTags[0]);
+			});
+
+			it('returns only the author as displayTag if brand and author are the same', () => {
+				const content = Object.assign({}, primaryBrandTagDupe, authorTags, isOpinion);
+				subject = new Presenter(content);
+				expect(subject.genrePrefix).to.be.null;
+				expect(subject.displayTag).to.deep.equal(authorTags.authorTags[0]);
+			});
+
+		});
+
 	});
 
 	context('timeStatus', () => {
