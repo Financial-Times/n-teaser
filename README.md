@@ -4,7 +4,7 @@ server and client side content teaser templates
 
 ##How to use
 
-In the consuming app;
+In the consuming app:
 
 - Add to package.json
 
