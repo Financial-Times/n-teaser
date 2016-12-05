@@ -1,7 +1,7 @@
 const ONE_HOUR = 1000 * 60 * 60;
 const MAX_RELATED_CONTENT = 3;
 const HEADSHOT_BASE_URL = 'https://www.ft.com/__origami/service/image/v2/images/raw/';
-const HEADSHOT_URL_PARAMS = '?source=next&fit=scale-down&compression=best&width=75&tint=054593,fff1e0';
+const HEADSHOT_URL_PARAMS = '?source=next&fit=scale-down&compression=best&width=75&tint=054593,d6d5d3';
 const TEMPLATES_WITH_HEADSHOTS = ['light','standard','lifestyle'];
 const TEMPLATES_WITH_IMAGES = ['heavy', 'top-story-heavy','lifestyle'];
 const LIVEBLOG_MAPPING = {
