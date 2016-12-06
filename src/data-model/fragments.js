@@ -33,6 +33,7 @@ module.exports = {
 			}
 			authorTags(limit: 1) {
 				prefLabel
+				relativeUrl
 			}
 			isOpinion
 		}
