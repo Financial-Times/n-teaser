@@ -1,10 +1,12 @@
 {{#unless noTag}}
 	<div class="o-teaser__meta">
 		{{#if @nTeaserPresenter.displayTag}}
+			{{#if @nTeaserPresenter.genrePrefix}}
+				<span>
+					{{@nTeaserPresenter.genrePrefix}}
+				</span>
+			{{/if}}
 			<a href="{{{@nTeaserPresenter.displayTag.relativeUrl}}}" class="o-teaser__tag" data-trackable="primary-tag">
-				{{#if @nTeaserPresenter.genrePrefix}}
-					<strong>{{@nTeaserPresenter.genrePrefix}} </strong>
-				{{/if}}
 				<span>{{@nTeaserPresenter.displayTag.prefLabel}}</span>
 			</a>
 		{{/if}}
