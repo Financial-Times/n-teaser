@@ -33,13 +33,13 @@ describe('Teaser Presenter', () => {
 			it('returns has-headshot when correct template and has-headshot', () => {
 				const content = Object.assign({}, articleOpinionAuthorFixture, {template: 'standard'});
 				subject = new Presenter(content);
-				expect(subject.classModifiers).to.deep.equal(['has-headshot']);
+				expect(subject.classModifiers).to.include('has-headshot');
 			});
 
 			it('does not add a modifier if wrong template but has headshot', () => {
 				const content = Object.assign({}, articleOpinionAuthorFixture, {template: 'no-headshot'});
 				subject = new Presenter(content);
-				expect(subject.classModifiers.length).to.equal(0);
+				expect(subject.classModifiers).to.not.include('has-headshot');
 			});
 
 			it('does not add a modifier if correct template but does not have a headshot', () => {
@@ -95,6 +95,26 @@ describe('Teaser Presenter', () => {
 				const content = {isEditorsChoice: false};
 				subject = new Presenter(content);
 				expect(subject.classModifiers.length).to.equal(0);
+			});
+		});
+
+		context('type', () => {
+			it('returns `article` when content has `type` set to `Article`', () => {
+				const content = {type: 'Article'};
+				subject = new Presenter(content);
+				expect(subject.classModifiers).to.deep.equal(['article']);
+			});
+
+			it('returns `video` when content has `type` set to `Video`', () => {
+				const content = {type: 'Video'};
+				subject = new Presenter(content);
+				expect(subject.classModifiers).to.deep.equal(['video']);
+			});
+
+			it('returns `live-blog` when content has `type` set to `LiveBlog`', () => {
+				const content = {type: 'LiveBlog'};
+				subject = new Presenter(content);
+				expect(subject.classModifiers).to.deep.equal(['live-blog']);
 			});
 		});
 

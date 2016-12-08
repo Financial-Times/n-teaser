@@ -10,6 +10,7 @@ module.exports = {
 	`,
 	teaserExtraLight: `
 		fragment TeaserExtraLight on Content {
+			type: __typename
 			id
 			isPremium
 			relativeUrl

@@ -1,3 +1,5 @@
+const hyphenatePascalCase = require('../utils/hyphenate-pascal-case');
+
 const ONE_HOUR = 1000 * 60 * 60;
 const MAX_RELATED_CONTENT = 3;
 const HEADSHOT_BASE_URL = 'https://www.ft.com/__origami/service/image/v2/images/raw/';
@@ -32,7 +34,6 @@ const TeaserPresenter = class TeaserPresenter {
 	// returns all top level class names appropriate for the teaser
 	get classModifiers () {
 		const mods = this.data.mods || [];
-		mods.push(this.data.type.to)
 		if (
 			this.headshot &&
 			TEMPLATES_WITH_HEADSHOTS.some(template => template === this.data.template)
@@ -51,6 +52,9 @@ const TeaserPresenter = class TeaserPresenter {
 		}
 		if (this.data.isEditorsChoice) {
 			mods.push('highlight');
+		}
+		if (this.data.type) {
+			mods.push(hyphenatePascalCase(this.data.type));
 		}
 		return mods;
 	}
