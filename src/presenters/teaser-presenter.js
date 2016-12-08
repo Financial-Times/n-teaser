@@ -32,6 +32,7 @@ const TeaserPresenter = class TeaserPresenter {
 	// returns all top level class names appropriate for the teaser
 	get classModifiers () {
 		const mods = this.data.mods || [];
+		mods.push(this.data.type.to)
 		if (
 			this.headshot &&
 			TEMPLATES_WITH_HEADSHOTS.some(template => template === this.data.template)
