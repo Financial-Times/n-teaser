@@ -277,21 +277,21 @@ describe('Teaser Presenter', () => {
 		context('status mapping', () => {
 
 			it('returns status \'last post\' when \'inprogress\'', () => {
-				const content = { liveBlog: { status: 'inprogress' } };
+				const content = { status: 'InProgress' };
 				subject = new Presenter(content);
 				expect(subject.liveBlog().status).to.equal('last post');
 				expect(subject.liveBlog().classModifier).to.equal('inprogress');
 			});
 
 			it('returns status \'coming soon\' when \'comingsoon\'', () => {
-				const content = { liveBlog: { status: 'comingsoon' } };
+				const content = { status: 'ComingSoon' };
 				subject = new Presenter(content);
 				expect(subject.liveBlog().status).to.equal('coming soon');
 				expect(subject.liveBlog().classModifier).to.equal('comingsoon');
 			});
 
 			it('returns status \'liveblog closed\' when \'closed\'', () => {
-				const content = { liveBlog: { status: 'closed' } };
+				const content = { status: 'Closed' };
 				subject = new Presenter(content);
 				expect(subject.liveBlog().status).to.equal('liveblog closed');
 				expect(subject.liveBlog().classModifier).to.equal('closed');

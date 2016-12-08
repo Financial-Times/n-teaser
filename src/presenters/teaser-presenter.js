@@ -87,7 +87,7 @@ const TeaserPresenter = class TeaserPresenter {
 
 	//returns publishedDate, status, classModifier
 	get timeObject () {
-		if (this.data.liveBlog && this.data.liveBlog.status) {
+		if (this.data.status) {
 			return this.liveBlog();
 		} else {
 			return {
@@ -151,9 +151,9 @@ const TeaserPresenter = class TeaserPresenter {
 	// returns publishedDate, status, classModifier
 	liveBlog () {
 		return {
-			publishedDate: this.data.liveBlog.latestUpdate && this.data.liveBlog.latestUpdate.date,
-			status: LIVEBLOG_MAPPING[this.data.liveBlog.status],
-			classModifier: this.data.liveBlog.status
+			publishedDate: this.data.updates && this.data.updates[0].date,
+			status: LIVEBLOG_MAPPING[this.data.status.toLowerCase()],
+			classModifier: this.data.status.toLowerCase()
 		}
 	}
 
