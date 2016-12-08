@@ -299,6 +299,28 @@ describe('Teaser Presenter', () => {
 
 		});
 
+		context('label modifier', () => {
+
+			it('returns modifier of \'pending\' when \'comingsoon\'', () => {
+				const content = { status: 'ComingSoon' };
+				subject = new Presenter(content);
+				expect(subject.liveBlogLabelModifier).to.equal('pending');
+			});
+
+			it('returns modifier of \'live\' when \'inprogress\'', () => {
+				const content = { status: 'InProgress' };
+				subject = new Presenter(content);
+				expect(subject.liveBlogLabelModifier).to.equal('live');
+			});
+
+			it('returns modifier of \'closed\' when \'closed\'', () => {
+				const content = { status: 'Closed' };
+				subject = new Presenter(content);
+				expect(subject.liveBlogLabelModifier).to.equal('closed');
+			});
+
+		});
+
 	});
 
 	context('relatedContent', () => {
