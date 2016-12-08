@@ -1,5 +1,8 @@
 {{#unless noTag}}
 	<div class="o-teaser__meta">
+		{{#if status}}
+			<span class="o-labels o-labels--{{@nTeaserPresenter.liveBlogLabelModifier}}" aria-label="Live blog with status of {{@nTeaserPresenter.liveBlogLabelModifier}}">Live</span>
+		{{/if}}
 		{{#if @nTeaserPresenter.displayTag}}
 			{{#if @nTeaserPresenter.genrePrefix}}
 				<span>

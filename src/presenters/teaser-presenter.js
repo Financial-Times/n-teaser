@@ -7,9 +7,18 @@ const HEADSHOT_URL_PARAMS = '?source=next&fit=scale-down&compression=best&width=
 const TEMPLATES_WITH_HEADSHOTS = ['light','standard','lifestyle'];
 const TEMPLATES_WITH_IMAGES = ['heavy', 'top-story-heavy','lifestyle'];
 const LIVEBLOG_MAPPING = {
-	inprogress: 'last post',
-	comingsoon: 'coming soon',
-	closed: 'liveblog closed'
+	inprogress: {
+		timestampStatus: 	'last post',
+		labelModifier: 'live'
+	},
+	comingsoon: {
+		timestampStatus: 'coming soon',
+		labelModifier: 'pending'
+	},
+	closed: {
+		timestampStatus: 'liveblog closed',
+		labelModifier: 'closed'
+	}
 };
 
 const brandAuthorDouble = (data) => {
@@ -132,6 +141,11 @@ const TeaserPresenter = class TeaserPresenter {
 		}
 	}
 
+	// returns class modifier for live blog label
+	get liveBlogLabelModifier () {
+		return LIVEBLOG_MAPPING[this.data.status.toLowerCase()].labelModifier;
+	}
+
 	//returns prefix for timestamp (null / 'new' / 'updated')
 	timeStatus () {
 		const now = Date.now();
@@ -152,7 +166,7 @@ const TeaserPresenter = class TeaserPresenter {
 	liveBlog () {
 		return {
 			publishedDate: this.data.updates && this.data.updates[0].date,
-			status: LIVEBLOG_MAPPING[this.data.status.toLowerCase()],
+			status: LIVEBLOG_MAPPING[this.data.status.toLowerCase()].timestampStatus,
 			classModifier: this.data.status.toLowerCase()
 		}
 	}
