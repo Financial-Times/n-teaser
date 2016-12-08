@@ -1,3 +1,5 @@
+const hyphenatePascalCase = require('../utils/hyphenate-pascal-case');
+
 const ONE_HOUR = 1000 * 60 * 60;
 const MAX_RELATED_CONTENT = 3;
 const HEADSHOT_BASE_URL = 'https://www.ft.com/__origami/service/image/v2/images/raw/';
@@ -50,6 +52,9 @@ const TeaserPresenter = class TeaserPresenter {
 		}
 		if (this.data.isEditorsChoice) {
 			mods.push('highlight');
+		}
+		if (this.data.type) {
+			mods.push(hyphenatePascalCase(this.data.type));
 		}
 		return mods;
 	}
