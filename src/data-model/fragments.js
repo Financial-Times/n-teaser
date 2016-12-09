@@ -34,6 +34,10 @@ module.exports = {
 			authorTags(limit: 1) {
 				prefLabel
 				relativeUrl
+				attributes(only: ["headshot"]) {
+					key
+					value
+				}
 			}
 			isOpinion
 		}
