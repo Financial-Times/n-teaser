@@ -353,6 +353,20 @@ describe('Teaser Presenter', () => {
 			expect(subject.headshot).to.be.null;
 		});
 
+		context('author brand combo', () => {
+
+			const primaryBrandTag = { primaryBrandTag: { prefLabel: 'brandName', taxonomy: 'brand', attributes: [] } };
+			const authorTags = { authorTags: [ { prefLabel: 'authorName', attributes: [{key: 'headshot', value:'author-name'} ] } ] };
+			const isOpinion = { isOpinion: true }
+
+			it('returns a headshot when the author has one', () => {
+				const content = Object.assign({}, primaryBrandTag, authorTags, isOpinion);
+				subject = new Presenter(content);
+				expect(subject.headshot.src).to.include('author-name');
+			});
+
+		});
+
 	});
 
 });

@@ -120,8 +120,19 @@ const TeaserPresenter = class TeaserPresenter {
 
 	// returns url and name for author headshot when primary brand tag is an author with a headshot
 	get headshot () {
-		if (this.data.primaryBrandTag && this.data.primaryBrandTag.attributes.length > 0) {
-			const fileName = this.data.primaryBrandTag.attributes[0].value;
+		let fileName;
+		if (this.data.primaryBrandTag
+			&& this.data.primaryBrandTag.attributes.length > 0
+		) {
+			fileName = this.data.primaryBrandTag.attributes[0].value;
+		}
+		if ((brandAuthorDouble(this.data) === true)
+			&& this.data.authorTags.length > 0
+			&& this.data.authorTags[0].attributes.length > 0
+		) {
+			fileName = this.data.authorTags[0].attributes[0].value;
+		}
+		if (fileName) {
 			return {
 				src: `${HEADSHOT_BASE_URL}${fileName}${HEADSHOT_URL_PARAMS}`,
 				alt: this.data.primaryBrandTag.prefLabel
