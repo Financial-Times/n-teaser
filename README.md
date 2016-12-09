@@ -92,3 +92,14 @@ Example of a teaser with an image;
 ```
 The `colspan`, `position` and `widths` arguments are passed on to `n-image` to determine the properties of how the image is displayed in the teaser.
 More details on what is supported by `n-image` can be found in that repository.
+
+###Display options
+Parameters can be passed to suppress some elements of teasers that would otherwise appear.
+
+####Elements that rely on presenter logic
+- Related Content (on TopStory teasers) - set `noRelatedContent = true`
+- Tag (on all teasers) - set `noTag = true`
+- Author Headshot (on Light, Standard and Lifestyle teasers) - set `noHeadshot = true`
+####Elements that are not transformed by presenter logic
+- Standfirst - set `standfirst = false`
+- Main Image - set `mainImage = false`

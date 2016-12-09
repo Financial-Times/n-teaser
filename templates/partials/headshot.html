@@ -1,3 +1,5 @@
-{{#with @nTeaserPresenter.headshot}}
-	<img src="{{src}}" alt="Photo of {{alt}}" class="o-teaser__headshot">
-{{/with}}
+{{#unless noHeadshot}}
+	{{#with @nTeaserPresenter.headshot}}
+		<img src="{{src}}" alt="Photo of {{alt}}" class="o-teaser__headshot">
+	{{/with}}
+{{/unless}}
