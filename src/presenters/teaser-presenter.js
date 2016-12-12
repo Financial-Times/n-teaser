@@ -44,6 +44,7 @@ const TeaserPresenter = class TeaserPresenter {
 	get classModifiers () {
 		const mods = this.data.mods || [];
 		if (
+			!this.data.noHeadshot &&
 			this.headshot &&
 			TEMPLATES_WITH_HEADSHOTS.some(template => template === this.data.template)
 		) {

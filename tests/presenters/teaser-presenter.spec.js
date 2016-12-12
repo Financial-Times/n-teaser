@@ -48,6 +48,12 @@ describe('Teaser Presenter', () => {
 				expect(subject.classModifiers.length).to.equal(0);
 			});
 
+			it('does not add a modifier if noHeadshot parameter passed through', () => {
+				const content = Object.assign({noHeadshot: true}, articleOpinionAuthorFixture, {template: 'standard'});
+				subject = new Presenter(content);
+				expect(subject.classModifiers).to.not.include('has-headshot');
+			});
+
 		});
 
 		context('has-image', () => {
