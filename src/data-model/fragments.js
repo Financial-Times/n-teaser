@@ -30,6 +30,7 @@ module.exports = {
 					key
 					value
 				}
+				idV1
 			}
 			authorTags(limit: 1) {
 				prefLabel
@@ -38,6 +39,7 @@ module.exports = {
 					key
 					value
 				}
+				idV1
 			}
 			isOpinion
 		}
@@ -46,6 +48,10 @@ module.exports = {
 		fragment TeaserLight on Content {
 			id
 			teaserTag {
+				prefLabel
+				relativeUrl
+			}
+			primaryTag {
 				prefLabel
 				relativeUrl
 			}
