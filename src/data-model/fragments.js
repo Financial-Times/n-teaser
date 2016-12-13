@@ -40,6 +40,9 @@ module.exports = {
 				}
 			}
 			isOpinion
+			...on Video {
+				duration
+			}
 		}
 	`,
 	teaserLight: `
@@ -77,9 +80,6 @@ module.exports = {
 				width
 				height
 				ratio
-			}
-			...on Video {
-				duration
 			}
 		}
 	`,
