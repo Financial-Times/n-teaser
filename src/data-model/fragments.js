@@ -40,9 +40,6 @@ module.exports = {
 				}
 			}
 			isOpinion
-			...on Video {
-				duration
-			}
 		}
 	`,
 	teaserLight: `
@@ -51,6 +48,9 @@ module.exports = {
 			teaserTag {
 				prefLabel
 				relativeUrl
+			}
+			...on Video {
+				duration
 			}
 		}
 	`,
