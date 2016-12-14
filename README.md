@@ -25,7 +25,7 @@ In the consuming app:
 
 | *Teaser* | *Tag* | *Title* | *Standfirst* | *Time Stamp* | *Headshot* | *Image* | *Actions* | *Related Content* | *Duration* (video content only) |
 |---|---|---|---|---|---|---|---|---|---|
-| Extra Light | only if opinion or brand | Y | N | Y | N | N | N | N | Y |
+| Extra Light | only if opinion or brand | Y | N | Y | N | N | N | N | N |
 | Light | Y | Y | N | Y | Y | N | Y | N | Y |
 | Lifestyle(1) | Y | Y | N | Y | Y | Y | N | N | Y |
 | Standard | Y | Y | Y | Y | Y | N | Y | N | Y |
