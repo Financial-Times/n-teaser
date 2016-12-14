@@ -1,3 +1,5 @@
+'use strict';
+
 const hyphenatePascalCase = require('../utils/hyphenate-pascal-case');
 
 const ONE_HOUR = 1000 * 60 * 60;
