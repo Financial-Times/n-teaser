@@ -49,6 +49,9 @@ module.exports = {
 				prefLabel
 				relativeUrl
 			}
+			...on Video {
+				duration
+			}
 		}
 	`,
 	teaserLifestyle: `
@@ -77,9 +80,6 @@ module.exports = {
 				width
 				height
 				ratio
-			}
-			...on Video {
-				duration
 			}
 		}
 	`,

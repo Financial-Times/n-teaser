@@ -23,14 +23,14 @@ In the consuming app:
 
 ##Teaser Types
 
-| *Teaser* | *Tag* | *Title* | *Standfirst* | *Time Stamp* | *Headshot* | *Image* | *Actions* | *Related Content* |
-|---|---|---|---|---|---|---|---|---|
-| Extra Light | only if opinion or brand | Y | N | Y | N | N | N | N |
-| Light | Y | Y | N | Y | Y | N | Y | N |
-| Lifestyle(1) | Y | Y | N | Y | Y | Y | N | N |
-| Standard | Y | Y | Y | Y | Y | N | Y | N |
-| Heavy | Y | Y | Y | Y | N | Y | Y | N |
-| TopStory | Y | Y | Y | Y | N | Heavy variant | Y | Y
+| *Teaser* | *Tag* | *Title* | *Standfirst* | *Time Stamp* | *Headshot* | *Image* | *Actions* | *Related Content* | *Duration* (video content only) |
+|---|---|---|---|---|---|---|---|---|---|
+| Extra Light | only if opinion or brand | Y | N | Y | N | N | N | N | N |
+| Light | Y | Y | N | Y | Y | N | Y | N | Y |
+| Lifestyle(1) | Y | Y | N | Y | Y | Y | N | N | Y |
+| Standard | Y | Y | Y | Y | Y | N | Y | N | Y |
+| Heavy | Y | Y | Y | Y | N | Y | Y | N | Y |
+| TopStory | Y | Y | Y | Y | N | Heavy variant | Y | Y | Y |
 
 (1) Lifestyle branches off the hierarchy from Light
 
