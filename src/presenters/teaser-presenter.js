@@ -145,16 +145,6 @@ const TeaserPresenter = class TeaserPresenter {
 		}
 	}
 
-	// returns duration in the format m:ss
-	get formattedDuration () {
-		const duration = this.data.duration;
-		if (duration > 0) {
-			const minutes = Math.floor(duration / (1000 * 60));
-			const seconds = Math.round(duration / 1000) - (minutes * 60);
-			return `${minutes}.${seconds < 10 ? '0' : ''}${seconds}`;
-		}
-	}
-
 	// returns class modifier for live blog label
 	get liveBlogLabelModifier () {
 		return LIVEBLOG_MAPPING[this.data.status.toLowerCase()].labelModifier;

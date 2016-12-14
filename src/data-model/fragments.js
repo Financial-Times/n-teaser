@@ -50,7 +50,7 @@ module.exports = {
 				relativeUrl
 			}
 			...on Video {
-				duration
+				formattedDuration(format: "m:ss[min]")
 			}
 		}
 	`,
