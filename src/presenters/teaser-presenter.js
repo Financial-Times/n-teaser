@@ -121,7 +121,7 @@ const TeaserPresenter = class TeaserPresenter {
 			.slice(0, MAX_RELATED_CONTENT);
 		}
 
-		return relatedContent.map(item => Object.assign({}, item, { type: hyphenatePascalCase(item.type) }))
+		return relatedContent.map(item => ({ data: item, classModifiers: [hyphenatePascalCase(item.type)] }))
 	}
 
 	// returns url and name for author headshot when primary brand tag is an author with a headshot
