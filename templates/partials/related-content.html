@@ -2,7 +2,7 @@
 	{{#if @nTeaserPresenter.relatedContent}}
 		<ul class="o-teaser__related">
 			{{#each @nTeaserPresenter.relatedContent}}
-				<li class="o-teaser__related-item">
+				<li class="o-teaser__related-item o-teaser__related-item--{{type}}">
 					<a data-trackable="related" href="{{relativeUrl}}">{{title}}</a>
 				</li>
 			{{/each}}

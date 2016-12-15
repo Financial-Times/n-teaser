@@ -112,13 +112,16 @@ const TeaserPresenter = class TeaserPresenter {
 
 	// returns an array of content items related to the main article
 	get relatedContent () {
+		let relatedContent;
 		if (this.data.storyPackage.length > 0) {
-			return this.data.storyPackage.slice(0, MAX_RELATED_CONTENT);
+			relatedContent = this.data.storyPackage.slice(0, MAX_RELATED_CONTENT);
 		} else {
-			return this.data.primaryTag.latestContent
+			relatedContent = this.data.primaryTag.latestContent
 			.filter(content => content.id !== this.data.id)
 			.slice(0, MAX_RELATED_CONTENT);
 		}
+
+		return relatedContent.map(item => Object.assign({}, item, { type: hyphenatePascalCase(item.type) }))
 	}
 
 	// returns url and name for author headshot when primary brand tag is an author with a headshot
