@@ -73,11 +73,15 @@ const TeaserPresenter = class TeaserPresenter {
 
 	//returns tag to be displayed
 	get displayTag () {
-		if ((this.data.streamId && this.data.primaryBrandTag) &&
-			(this.data.streamId === this.data.primaryBrandTag.idV1)) {
-			return this.data.teaserTag || null;
+		// Use Primary Tag is Primary Brand Tag the same as stream
+		if (this.data.streamId &&
+			this.data.primaryBrandTag &&
+			this.data.streamId === this.data.primaryBrandTag.idV1) {
+			return this.data.primaryTag || null;
 		}
-		if (brandAuthorDouble(this.data) === true) {
+		// Use Author Tag if Opinion & Branded unless same as stream
+		if (brandAuthorDouble(this.data) === true &&
+			this.data.streamId !== this.data.authorTags[0].idV1 ) {
 			return this.data.authorTags[0];
 		}
 		return this.data.primaryBrandTag || this.data.teaserTag || null;
@@ -86,11 +90,13 @@ const TeaserPresenter = class TeaserPresenter {
 	//returns genre prefix
 	get genrePrefix () {
 		if (brandAuthorDouble(this.data) === true) {
-			// HACK to dedupe authors who are also brands
-			if (this.data.primaryBrandTag.prefLabel !== this.data.authorTags[0].prefLabel) {
+			// dedupe authors who are also brands and where Author = stream
+			if (this.data.primaryBrandTag.prefLabel !== this.data.authorTags[0].prefLabel
+				&& this.data.streamId !== this.data.authorTags[0].idV1) {
 				return this.data.primaryBrandTag.prefLabel;
 			}
 		}
+		// Do not show a genre prefix against brands
 		if (!this.data.genreTag || this.data.primaryBrandTag === this.displayTag) {
 			return null;
 		}
