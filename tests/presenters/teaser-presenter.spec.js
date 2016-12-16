@@ -333,14 +333,14 @@ describe('Teaser Presenter', () => {
 
 		it('returns the story package when one exists', () => {
 			subject = new Presenter(articleStandardFixture);
-			expect(subject.relatedContent).to.deep.equal(articleStandardFixture.storyPackage);
+			expect(subject.relatedContent.map(item => item.data)).to.deep.equal(articleStandardFixture.storyPackage);
 		});
 
 		it('returns latest content of primary tag when no story package, current article filtered', () => {
 			subject = new Presenter(articleBrandFixture);
 			expect(subject.relatedContent.length).to.equal(3);
 			subject.relatedContent.map(content => {
-				expect(content.id).to.not.equal(articleBrandFixture.id);
+				expect(content.data.id).to.not.equal(articleBrandFixture.id);
 			});
 		});
 
