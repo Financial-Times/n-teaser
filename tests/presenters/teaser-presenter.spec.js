@@ -78,7 +78,7 @@ describe('Teaser Presenter', () => {
 
 		context('opinion', () => {
 			it('returns opinion when content has isOpinion set to true', () => {
-				const content = {isOpinion: true};
+				const content = {isOpinion: true, mods: []};
 				subject = new Presenter(content);
 				expect(subject.classModifiers).to.deep.equal(['opinion']);
 			});
@@ -88,11 +88,17 @@ describe('Teaser Presenter', () => {
 				subject = new Presenter(content);
 				expect(subject.classModifiers.length).to.equal(0);
 			});
+
+			it('does not return opinion if it is a hero-image layout', () => {
+				const content = {isOpinion: true, mods: ['hero-image']};
+				subject = new Presenter(content);
+				expect(subject.classModifiers).to.deep.equal(['hero-image']);
+			});
 		});
 
 		context('highlight', () => {
 			it('returns highlight when content has isEditorsChoice set to true', () => {
-				const content = {isEditorsChoice: true};
+				const content = {isEditorsChoice: true, mods: []};
 				subject = new Presenter(content);
 				expect(subject.classModifiers).to.deep.equal(['highlight']);
 			});
@@ -101,6 +107,12 @@ describe('Teaser Presenter', () => {
 				const content = {isEditorsChoice: false};
 				subject = new Presenter(content);
 				expect(subject.classModifiers.length).to.equal(0);
+			});
+
+			it('does not return highlight if it is a hero-image layout', () => {
+				const content = {isEditorsChoice: true, mods: ['hero-image']};
+				subject = new Presenter(content);
+				expect(subject.classModifiers).to.deep.equal(['hero-image']);
 			});
 		});
 
