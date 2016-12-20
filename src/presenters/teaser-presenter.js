@@ -149,6 +149,7 @@ const TeaserPresenter = class TeaserPresenter {
 	get headshot () {
 		let fileName;
 		if (this.data.primaryBrandTag
+			&& this.data.primaryBrandTag.attributes
 			&& this.data.primaryBrandTag.attributes.length > 0
 		) {
 			fileName = this.data.primaryBrandTag.attributes[0].value;
