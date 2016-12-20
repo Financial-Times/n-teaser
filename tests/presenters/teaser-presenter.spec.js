@@ -169,7 +169,9 @@ describe('Teaser Presenter', () => {
 
 			const genreTag = { genreTag: { prefLabel: 'genre label' } };
 			const primaryBrandTag = { primaryBrandTag: { idV1: 'ABC' } };
-			const streamId = { streamId: 'ABC'};
+			const streamProperties = { streamProperties: { idV1: 'ABC'}};
+			const streamPropertiesSpecial = { streamProperties: { taxonomy: 'specialReports'}};
+			const genreTagSpecial = { genreTag: { prefLabel: 'Special Report' } };
 
 			it('returns null if there is no genreTag', () => {
 				const content = {};
@@ -190,9 +192,15 @@ describe('Teaser Presenter', () => {
 			});
 
 			it('returns the label of the genre tag if it exists and the primary brand tag is not displayed', () => {
-				const content = Object.assign({}, genreTag, primaryBrandTag, streamId);
+				const content = Object.assign({}, genreTag, primaryBrandTag, streamProperties);
 				subject = new Presenter(content);
 				expect(subject.genrePrefix).to.equal(genreTag.genreTag.prefLabel);
+			});
+
+			it('returns null when on a special reports stream page', () => {
+				const content = Object.assign({}, genreTagSpecial, streamPropertiesSpecial);
+				subject = new Presenter(content);
+				expect(subject.genrePrefix).to.be.null;
 			});
 
 		});
@@ -202,21 +210,23 @@ describe('Teaser Presenter', () => {
 			const primaryBrandTag = { primaryBrandTag: { primaryBrandTag: true, idV1: 'ABC' } };
 			const primaryTag = { primaryTag: { primaryTag: true } };
 			const teaserTag = { teaserTag: { teaserTag: true } };
+			const streamProperties = { streamProperties: { idV1: 'XYZ'} };
+			const streamPropertiesMatch = { streamProperties: { idV1: 'ABC'} };
 
 			it('returns the primaryBrandTag if not the same as the streamId', () => {
-				const content = Object.assign({streamId: 'XYZ'}, primaryBrandTag, primaryTag, teaserTag);
+				const content = Object.assign({}, streamProperties, primaryBrandTag, primaryTag, teaserTag);
 				subject = new Presenter(content);
 				expect(subject.displayTag.primaryBrandTag).to.be.true;
 			});
 
 			it('returns the primaryTag if primaryBrandTag is same as streamId', () => {
-				const content = Object.assign({streamId: 'ABC'}, primaryBrandTag, primaryTag, teaserTag);
+				const content = Object.assign({}, streamPropertiesMatch, primaryBrandTag, primaryTag, teaserTag);
 				subject = new Presenter(content);
 				expect(subject.displayTag.primaryTag).to.be.true;
 			});
 
 			it('returns the teaserTag if no primaryBrandTag', () => {
-				const content = Object.assign({streamId: 'ABC'}, primaryTag, teaserTag);
+				const content = Object.assign({}, streamPropertiesMatch, primaryTag, teaserTag);
 				subject = new Presenter(content);
 				expect(subject.displayTag.teaserTag).to.be.true;
 			});
@@ -245,7 +255,7 @@ describe('Teaser Presenter', () => {
 			});
 
 			it('returns brand as display tag and no genre prefix if the author is the same as the stream', () => {
-				const content = Object.assign({streamId: 'XYZ'}, primaryBrandTag, authorTags, isOpinion);
+				const content = Object.assign({ streamProperties: { idV1: 'XYZ' } }, primaryBrandTag, authorTags, isOpinion);
 				subject = new Presenter(content);
 				expect(subject.genrePrefix).to.be.null;
 				expect(subject.displayTag).to.deep.equal(primaryBrandTag.primaryBrandTag);
