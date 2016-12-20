@@ -36,6 +36,10 @@ const brandAuthorDouble = (data) => {
 		return false;
 };
 
+const modsDoesNotInclude = (modToTest, modsArray) => {
+	return modsArray.indexOf(modToTest) === -1;
+};
+
 const TeaserPresenter = class TeaserPresenter {
 
 	constructor (data) {
@@ -59,10 +63,10 @@ const TeaserPresenter = class TeaserPresenter {
 		) {
 			mods.push('has-image');
 		}
-		if (this.data.isOpinion) {
+		if (this.data.isOpinion && modsDoesNotInclude('hero-image', this.data.mods)) {
 			mods.push('opinion');
 		}
-		if (this.data.isEditorsChoice) {
+		if (this.data.isEditorsChoice && modsDoesNotInclude('hero-image', this.data.mods)) {
 			mods.push('highlight');
 		}
 		if (this.data.type) {
