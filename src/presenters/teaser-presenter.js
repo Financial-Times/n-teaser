@@ -175,6 +175,14 @@ const TeaserPresenter = class TeaserPresenter {
 		return LIVEBLOG_MAPPING[this.data.status.toLowerCase()].labelModifier;
 	}
 
+	// returns title either standard or promotional based on flag
+	get displayTitle () {
+		if (this.data.flags && this.data.flags.teaserUsePromotionalTitle && this.data.promotionalTitle) {
+			return this.data.promotionalTitle;
+		}
+		return this.data.title;
+	}
+
 	//returns prefix for timestamp (null / 'new' / 'updated')
 	timeStatus () {
 		const now = Date.now();

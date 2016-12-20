@@ -405,4 +405,31 @@ describe('Teaser Presenter', () => {
 
 	});
 
+	context('displayTitle', () => {
+
+		const promotionalTitle = { promotionalTitle: 'promotional' };
+		const title = { title: 'title'};
+		const flagOn = { flags: { teaserUsePromotionalTitle: true } };
+		const flagOff = { flags: { teaserUsePromotionalTitle: false } };
+
+		it('returns the promotional title if it exists and flag is on', () => {
+			const content = Object.assign({}, title, promotionalTitle, flagOn);
+			subject = new Presenter(content);
+			expect(subject.displayTitle).to.equal('promotional');
+		});
+
+		it('returns the title if flag is off', () => {
+			const content = Object.assign({}, title, promotionalTitle, flagOff);
+			subject = new Presenter(content);
+			expect(subject.displayTitle).to.equal('title');
+		});
+
+		it('returns the title if flag is on and no promotional title exists', () => {
+			const content = Object.assign({}, title, flagOn);
+			subject = new Presenter(content);
+			expect(subject.displayTitle).to.equal('title');
+		});
+
+	});
+
 });
