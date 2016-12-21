@@ -37,6 +37,7 @@ const brandAuthorDouble = (data) => {
 };
 
 const modsDoesNotInclude = (modToTest, modsArray) => {
+	if (!modsArray) return true;
 	return modsArray.indexOf(modToTest) === -1;
 };
 
