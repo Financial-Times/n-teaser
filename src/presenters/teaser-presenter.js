@@ -5,7 +5,8 @@ const hyphenatePascalCase = require('../utils/hyphenate-pascal-case');
 const ONE_HOUR = 1000 * 60 * 60;
 const MAX_RELATED_CONTENT = 3;
 const HEADSHOT_BASE_URL = 'https://www.ft.com/__origami/service/image/v2/images/raw/';
-const HEADSHOT_URL_PARAMS = '?source=next&fit=scale-down&compression=best&width=75&tint=054593,d6d5d3';
+const HEADSHOT_URL_PARAMETERS = '?source=next&fit=scale-down&compression=best&tint=054593,d6d5d3';
+const HEADSHOT_WIDTH = 75;
 const TEMPLATES_WITH_HEADSHOTS = ['light','standard','lifestyle'];
 const TEMPLATES_WITH_IMAGES = ['heavy', 'top-story-heavy','lifestyle'];
 const LIVEBLOG_MAPPING = {
@@ -161,10 +162,15 @@ const TeaserPresenter = class TeaserPresenter {
 		) {
 			fileName = this.data.authorTags[0].attributes[0].value;
 		}
+
 		if (fileName) {
 			return {
-				src: `${HEADSHOT_BASE_URL}${fileName}${HEADSHOT_URL_PARAMS}`,
-				alt: this.data.primaryBrandTag.prefLabel
+				url: `${HEADSHOT_BASE_URL}${fileName}${HEADSHOT_URL_PARAMETERS}`,
+				width: HEADSHOT_WIDTH,
+				height: HEADSHOT_WIDTH,
+				sizes: HEADSHOT_WIDTH,
+				widths: [HEADSHOT_WIDTH, 2 * HEADSHOT_WIDTH],
+				alt: `Photo of ${this.data.primaryBrandTag.prefLabel}`
 			};
 		} else {
 			return null;
