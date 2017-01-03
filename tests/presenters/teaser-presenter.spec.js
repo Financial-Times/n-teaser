@@ -380,8 +380,8 @@ describe('Teaser Presenter', () => {
 
 		it('returns the full headshot file url and author name when a headshot exists', () => {
 			subject = new Presenter(articleOpinionAuthorFixture);
-			expect(subject.headshot.src).to.equal('https://www.ft.com/__origami/service/image/v2/images/raw/fthead:gideon-rachman?source=next&fit=scale-down&compression=best&width=75&tint=054593,d6d5d3');
-			expect(subject.headshot.alt).to.equal('Gideon Rachman');
+			expect(subject.headshot.url).to.equal('https://www.ft.com/__origami/service/image/v2/images/raw/fthead:gideon-rachman?source=next&fit=scale-down&compression=best&tint=054593,d6d5d3');
+			expect(subject.headshot.alt).to.equal('Photo of Gideon Rachman');
 		});
 
 		it('returns null when headshot does not exist', () => {
@@ -398,7 +398,7 @@ describe('Teaser Presenter', () => {
 			it('returns a headshot when the author has one', () => {
 				const content = Object.assign({}, primaryBrandTag, authorTags, isOpinion);
 				subject = new Presenter(content);
-				expect(subject.headshot.src).to.include('author-name');
+				expect(subject.headshot.url).to.include('author-name');
 			});
 
 		});
