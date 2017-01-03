@@ -5,6 +5,7 @@ const hyphenatePascalCase = require('../utils/hyphenate-pascal-case');
 const ONE_HOUR = 1000 * 60 * 60;
 const MAX_RELATED_CONTENT = 3;
 const HEADSHOT_BASE_URL = 'https://www.ft.com/__origami/service/image/v2/images/raw/';
+const HEADSHOT_URL_PARAMETERS = '?source=next&fit=scale-down&compression=best&tint=054593,d6d5d3';
 const HEADSHOT_WIDTH = 75;
 const TEMPLATES_WITH_HEADSHOTS = ['light','standard','lifestyle'];
 const TEMPLATES_WITH_IMAGES = ['heavy', 'top-story-heavy','lifestyle'];
@@ -164,7 +165,7 @@ const TeaserPresenter = class TeaserPresenter {
 
 		if (fileName) {
 			return {
-				url: `${HEADSHOT_BASE_URL}${fileName}?source=next&fit=scale-down&compression=best&tint=054593,d6d5d3`,
+				url: `${HEADSHOT_BASE_URL}${fileName}${HEADSHOT_URL_PARAMETERS}`,
 				width: HEADSHOT_WIDTH,
 				height: HEADSHOT_WIDTH,
 				sizes: HEADSHOT_WIDTH,
