@@ -1,0 +1,41 @@
+<div class="o-grid-container">
+<h1>Demos of n-teaser</h1>
+{{#content}}
+	<div class="o-grid-row">
+		<div data-o-grid-colspan="12 M4">
+			<h2>Extra light</h2>
+			{{> n-teaser/templates/extra-light}}
+		</div>
+		<div data-o-grid-colspan="12 M4">
+			<h2>Light</h2>
+			{{> n-teaser/templates/light}}
+		</div>
+		<div data-o-grid-colspan="12 M4">
+			<h2>Standard</h2>
+			{{> n-teaser/templates/standard}}
+		</div>
+		<div data-o-grid-colspan="12 M4">
+			<h2>Heavy</h2>
+			{{> n-teaser/templates/heavy colspan='{"default": 12, "L": 6}' position='{"default": "bottom"}' widths="[500, 332]" lazyLoad=false}}
+		</div>
+	</div>
+	<div class="o-grid-row">
+		<div data-o-grid-colspan="12 M4">
+			<h2>Top Story Standard</h2>
+			{{> n-teaser/templates/top-story-standard colspan='{"default": 12, "L": 6}' position='{"default": "bottom"}' widths="[500, 332]" lazyLoad=false}}
+		</div>
+	</div>
+	<div class="o-grid-row">
+		<div data-o-grid-colspan="12 M6">
+			<h2>Top Story Heavy</h2>
+			{{> n-teaser/templates/top-story-heavy colspan='{"default": 12, "L": 6}' position='{"default": "bottom"}' widths="[500, 332]" lazyLoad=false}}
+		</div>
+	</div>
+	<div class="o-grid-row">
+		<div data-o-grid-colspan="12 M4">
+			<h2>Lifestyle</h2>
+			{{> n-teaser/templates/lifestyle colspan='{"default": 12, "L": 6}' position='{"default": "bottom"}' widths="[500, 332]" lazyLoad=false}}
+		</div>
+	</div>
+{{/content}}
+</div>
