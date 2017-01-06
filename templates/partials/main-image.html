@@ -2,11 +2,11 @@
 	<div class="o-teaser__image-container">
 		<a href="{{{relativeUrl}}}{{{referrerTracking}}}" data-trackable="image" aria-hidden="true" tabindex="-1">
 			{{#ifEquals lazyLoad false}}
-				{{#nImagePresenter srcSet=mainImage.url placeholder=mainImage.ratio colspan=colspan position=position widths=widths lazyLoad=false wrapperClasses="o-teaser__image-placeholder" classes="o-teaser__image"}}
+				{{#nImagePresenter srcSet=mainImage.url placeholder=mainImage.ratio colspan=colspan position=position widths=widths lazyLoad=false wrapperClasses="o-teaser__image-placeholder" classes="o-teaser__image" sourceParam=mainImage.sourceParam}}
 					{{> n-image/templates/image}}
 				{{/nImagePresenter}}
 			{{else}}
-				{{#nImagePresenter srcSet=mainImage.url placeholder=mainImage.ratio colspan=colspan position=position widths=widths lazyLoad=true wrapperClasses="o-teaser__image-placeholder" classes="o-teaser__image"}}
+				{{#nImagePresenter srcSet=mainImage.url placeholder=mainImage.ratio colspan=colspan position=position widths=widths lazyLoad=true wrapperClasses="o-teaser__image-placeholder" classes="o-teaser__image" sourceParam=mainImage.sourceParam}}
 					{{> n-image/templates/image}}
 				{{/nImagePresenter}}
 			{{/ifEquals}}
