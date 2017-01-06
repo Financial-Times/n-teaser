@@ -1,0 +1,70 @@
+{
+	"javascriptBundles": null,
+	"flags": {
+		"premiumContentIndicator": true
+	},
+	"content": [{
+		"type": "Article",
+		"id": "a3d0eff4-c224-11e6-81c2-f57d90f6741a",
+		"isPremium": true,
+		"relativeUrl": "/",
+		"title": "Example content title",
+		"publishedDate": "2016-12-15T05:37:23Z",
+		"isEditorsChoice": false,
+		"genreTag": null,
+		"primaryBrandTag": null,
+		"authorTags": [{
+			"prefLabel": "Jonathan Ford",
+			"relativeUrl": "/"
+		}],
+		"isOpinion": false,
+		"teaserTag": {
+			"prefLabel": "Example tag",
+			"relativeUrl": "/"
+		},
+		"standfirst": "Example standfirst",
+		"mainImage": {
+			"title": "Ringing the changes: inside the Lloyd's of London building",
+			"description": "Lloyds London Insurance City tradition ...Lloyds of London for the big page. Underwriters and brokers cut deals on the trading floor at Lloyds where face to face negotiations still rule.",
+			"url": "http://im.ft-static.com/content/images/a60ae24b-b87f-439c-bf1b-6e54946b4cf2.img",
+			"width": 2048,
+			"height": 1152,
+			"ratio": 1.7777777777778,
+			"sourceParam": "n-teaser"
+		},
+		"storyPackage": [
+
+		],
+		"primaryTag": {
+			"latestContent": [{
+				"type": "Article",
+				"relativeUrl": "\/content\/a3d0eff4-c224-11e6-81c2-f57d90f6741a",
+				"isPremium": false,
+				"title": "Lloyd\u2019s of London to establish EU base in the new year",
+				"promotionalTitle": "Lloyd\u2019s of London to establish EU base in new year",
+				"id": "a3d0eff4-c224-11e6-81c2-f57d90f6741a"
+			}, {
+				"type": "Article",
+				"relativeUrl": "\/content\/00adf2a4-b5ae-11e6-961e-a1acd97f622d",
+				"isPremium": false,
+				"title": "Insurers face extra $15bn asbestos bill",
+				"promotionalTitle": "Insurers face extra $15bn asbestos bill",
+				"id": "00adf2a4-b5ae-11e6-961e-a1acd97f622d"
+			}, {
+				"type": "Article",
+				"relativeUrl": "\/content\/acac3a5e-b255-11e6-a37c-f4a01f1b0fa1",
+				"isPremium": false,
+				"title": "Lloyd\u2019s chief urges UK to share cyber attack data",
+				"promotionalTitle": "Lloyd\u2019s chief urges UK to share cyber attack data",
+				"id": "acac3a5e-b255-11e6-a37c-f4a01f1b0fa1"
+			}, {
+				"type": "Article",
+				"relativeUrl": "\/content\/9942f06c-80ae-11e6-bc52-0c7211ef3198",
+				"isPremium": false,
+				"title": "Li Ka-shing means more ka-ching for Grid",
+				"promotionalTitle": "Li Ka-shing means more ka-ching for Grid",
+				"id": "9942f06c-80ae-11e6-bc52-0c7211ef3198"
+			}]
+		}
+	}]
+}

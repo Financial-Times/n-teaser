@@ -1,8 +1,18 @@
 # n-teaser
 
-server and client side content teaser templates
+Server and client-side teaser templates, along with their respective [next-api](https://github.com/Financial-Times/next-api) query fragments and presenters. Styling for teasers is in [o-teaser](https://github.com/Financial-Times/o-teaser).
+
+##What is a teaser?
+
+A teaser represents content – usually an article. It helps readers to decide if the content is relevant to them and showcases the breadth of FT content. It always links to a content page. Read the [o-teaser docs](http://registry.origami.ft.com/components/o-teaser) for more information.
 
 ##How to use
+
+###Demo
+
+Run `make demo` to serve a set of demo templates on http://localhost:5005.
+
+###Use in an app
 
 In the consuming app:
 
