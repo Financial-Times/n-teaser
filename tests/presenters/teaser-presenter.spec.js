@@ -28,6 +28,12 @@ describe('Teaser Presenter', () => {
 			expect(subject.classModifiers[0]).to.deep.equal(content.size);
 		});
 
+		it('adds a syndication modifier if the given article is available for syndication', () => {
+			const content = {canBeSyndicated:true};
+			subject = new Presenter(content);
+			expect(subject.classModifiers[0]).to.deep.equal('syndicatable');
+		});
+
 		context('has-headshot', () => {
 
 			it('returns has-headshot when correct template and has-headshot', () => {
