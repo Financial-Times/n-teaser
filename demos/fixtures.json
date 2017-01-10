@@ -13,6 +13,7 @@
 		"isEditorsChoice": false,
 		"genreTag": null,
 		"primaryBrandTag": null,
+		"canBeSyndicated": true,
 		"authorTags": [{
 			"prefLabel": "Jonathan Ford",
 			"relativeUrl": "/"

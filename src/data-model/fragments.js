@@ -19,6 +19,7 @@ module.exports = {
 			publishedDate
 			initialPublishedDate
 			isEditorsChoice
+			canBeSyndicated
 			genreTag(only: ["MQ==-R2VucmVz", "Mw==-R2VucmVz", "OQ==-R2VucmVz", "NA==-R2VucmVz", "MTA=-R2VucmVz"]) {
 				prefLabel
 			}
