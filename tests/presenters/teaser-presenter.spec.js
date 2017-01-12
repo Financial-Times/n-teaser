@@ -29,9 +29,15 @@ describe('Teaser Presenter', () => {
 		});
 
 		it('adds a syndication modifier if the given article is available for syndication', () => {
-			const content = {canBeSyndicated:true};
+			const content = {syndicationStatus:'yes'};
 			subject = new Presenter(content);
 			expect(subject.classModifiers[0]).to.deep.equal('syndicatable');
+		});
+
+		it('adds a syndication modifier if the given article is NOT available for syndication', () => {
+			const content = {syndicationStatus:'no'};
+			subject = new Presenter(content);
+			expect(subject.classModifiers[0]).to.deep.equal('not-syndicatable');
 		});
 
 		context('has-headshot', () => {
