@@ -29,13 +29,13 @@ describe('Teaser Presenter', () => {
 		});
 
 		it('adds a syndication modifier if the given article is available for syndication', () => {
-			const content = {syndicationStatus:'yes'};
+			const content = {canBeSyndicated:'yes'};
 			subject = new Presenter(content);
 			expect(subject.classModifiers[0]).to.deep.equal('syndicatable');
 		});
 
 		it('adds a syndication modifier if the given article is NOT available for syndication', () => {
-			const content = {syndicationStatus:'no'};
+			const content = {canBeSyndicated:'no'};
 			subject = new Presenter(content);
 			expect(subject.classModifiers[0]).to.deep.equal('not-syndicatable');
 		});
