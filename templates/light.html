@@ -1,21 +1,17 @@
-<div class="o-teaser{{#mods}} o-teaser--{{this}}{{/mods}}{{#if brand.headshot}} o-teaser--has-headshot{{/if}}{{#ifEquals type 'opinion'}} o-teaser--opinion{{/ifEquals}}{{#ifEquals type 'editors-pick'}} o-teaser--highlight{{/ifEquals}}" data-o-component="o-teaser" data-trackable="teaser">
-	<div class="o-teaser__content">
-		{{> n-teaser/templates/partials/meta}}
-		{{> n-teaser/templates/partials/heading}}
+{{#nTeaserPresenter @this template='light' mods=mods flags=@root.flags}}
+	<div class="o-teaser{{#each @nTeaserPresenter.classModifiers}} o-teaser--{{this}}{{/each}}" data-o-component="o-teaser" data-trackable="teaser">
+		<div class="o-teaser__content">
 
-		{{#if lastPublished}}
-			<time data-o-component="o-date" class="o-date o-teaser__timestamp" data-o-date-format="time-ago-limit-4-hours" datetime="{{lastPublished}}">{{#dateformat "dddd, d mmmm, yyyy"}}{{lastPublished}}{{/dateformat}}</time>
-		{{/if}}
+			{{> n-teaser/templates/partials/display-tag}}
 
-		{{#actions}}
-			<div class="o-teaser__action">
-				{{{this}}}
-			</div>
-		{{/actions}}
+			{{> n-teaser/templates/partials/title}}
 
-		{{#if brand.headshot}}
-			<img src="{{brand.headshot}}?source=next&amp;width=75&amp;tint=054593,fff1e0" alt="{{#if brand.name}}Photo of {{brand.name}}{{/if}}" class="o-teaser__headshot">
-		{{/if}}
-	
+			{{> n-teaser/templates/partials/timestamp}}
+
+			{{> n-teaser/templates/partials/actions}}
+
+			{{> n-teaser/templates/partials/headshot}}
+
+		</div>
 	</div>
-</div>
+{{/nTeaserPresenter}}

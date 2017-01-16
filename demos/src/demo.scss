@@ -1,0 +1,18 @@
+@import 'n-ui/configure';
+
+@include nUiConfigure(
+	$preset: 'complete',
+	$output-critical: true
+);
+
+@import 'n-ui/bootstrap';
+
+//TODO: Add an n-teaser/main.scss file and move these into it
+$o-labels-is-silent: false;
+@import 'o-labels/main';
+$o-teaser-is-silent: false;
+@import 'o-teaser/main';
+
+.o-labels {
+	@include oTypographySansBold('xs');
+}

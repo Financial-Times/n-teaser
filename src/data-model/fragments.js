@@ -11,12 +11,38 @@ module.exports = {
 	teaserExtraLight: `
 		fragment TeaserExtraLight on Content {
 			type: __typename
+			id
 			isPremium
 			relativeUrl
 			title
 			promotionalTitle
 			publishedDate
 			initialPublishedDate
+			isEditorsChoice
+			canBeSyndicated
+			genreTag(only: ["MQ==-R2VucmVz", "Mw==-R2VucmVz", "OQ==-R2VucmVz", "NA==-R2VucmVz", "MTA=-R2VucmVz"]) {
+				prefLabel
+			}
+			primaryBrandTag {
+				prefLabel
+				relativeUrl
+				taxonomy
+				attributes(only: ["headshot"]) {
+					key
+					value
+				}
+				idV1
+			}
+			authorTags(limit: 1) {
+				prefLabel
+				relativeUrl
+				attributes(only: ["headshot"]) {
+					key
+					value
+				}
+				idV1
+			}
+			isOpinion
 		}
 	`,
 	teaserLight: `
@@ -26,18 +52,25 @@ module.exports = {
 				prefLabel
 				relativeUrl
 			}
-			genreTag(only: ["Analysis"]) {
-				prefLabel
-			}
-			primaryBrandTag {
+			primaryTag {
 				prefLabel
 				relativeUrl
-				attributes(only: ["headshot"]) {
-					key
-					value
-				}
 			}
-			isOpinion
+			...on Video {
+				formattedDuration(format: "m:ss")
+			}
+		}
+	`,
+	teaserLifestyle: `
+		fragment TeaserLifestyle on Content {
+			mainImage {
+				title
+				description
+				url
+				width
+				height
+				ratio
+			}
 		}
 	`,
 	teaserStandard: `

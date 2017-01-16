@@ -1,3 +1,4 @@
 module.exports = {
-	fragments: require('./data_model/fragments')
+	fragments: require('./src/data-model/fragments'),
+	presenter: require('./src/handlebars-helpers/nTeaserPresenter')
 }

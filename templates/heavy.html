@@ -1,22 +1,20 @@
-<div class="o-teaser{{#mods}} o-teaser--{{this}}{{/mods}}{{#if image}} o-teaser--has-image{{/if}}{{#ifEquals type 'opinion'}} o-teaser--opinion{{/ifEquals}}{{#ifEquals type 'editors-pick'}} o-teaser--highlight{{/ifEquals}}" data-o-component="o-teaser" data-trackable="teaser">
-	<div class="o-teaser__content">
-		{{> n-teaser/templates/partials/meta}}
-		{{> n-teaser/templates/partials/heading}}
+{{#nTeaserPresenter @this template='heavy' mods=mods flags=@root.flags}}
+	<div class="o-teaser{{#each @nTeaserPresenter.classModifiers}} o-teaser--{{this}}{{/each}}" data-o-component="o-teaser" data-trackable="teaser">
+		<div class="o-teaser__content">
 
-		{{#if summary}}
-			<p class="o-teaser__standfirst">{{{summary}}}</p>
-		{{/if}}
+			{{> n-teaser/templates/partials/display-tag}}
 
-		{{#if lastPublished}}
-			<time data-o-component="o-date" class="o-date o-teaser__timestamp" data-o-date-format="time-ago-limit-4-hours" datetime="{{lastPublished}}">{{#dateformat "dddd, d mmmm, yyyy"}}{{lastPublished}}{{/dateformat}}</time>
-		{{/if}}
+			{{> n-teaser/templates/partials/title}}
 
-		{{#actions}}
-			<div class="o-teaser__action">
-				{{{this}}}
-			</div>
-		{{/actions}}
+			{{> n-teaser/templates/partials/standfirst}}
+
+			{{> n-teaser/templates/partials/timestamp}}
+
+			{{> n-teaser/templates/partials/actions}}
+
+		</div>
+
+		{{> n-teaser/templates/partials/main-image}}
+
 	</div>
-
-	{{>n-teaser/templates/partials/image}}
-</div>
+{{/nTeaserPresenter}}

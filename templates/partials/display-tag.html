@@ -1,0 +1,23 @@
+{{#unless noTag}}
+	<div class="o-teaser__meta">
+		{{#if status}}
+			<span class="o-labels o-labels--{{@nTeaserPresenter.liveBlogLabelModifier}}" aria-label="Live blog with status of {{@nTeaserPresenter.liveBlogLabelModifier}}">Live</span>
+		{{/if}}
+		{{#if @nTeaserPresenter.displayTag}}
+			{{#if @nTeaserPresenter.genrePrefix}}
+				<span>
+					{{@nTeaserPresenter.genrePrefix}}
+				</span>
+			{{/if}}
+			<a href="{{{@nTeaserPresenter.displayTag.relativeUrl}}}" class="o-teaser__tag" data-trackable="primary-tag">
+				<span>{{@nTeaserPresenter.displayTag.prefLabel}}</span>
+			</a>
+		{{/if}}
+		{{#with formattedDuration}}
+			<p class="o-teaser__duration">{{this}}min</p>
+		{{/with}}
+		{{#if advertiser}}
+			<span class="o-teaser__promoted-prefix">{{promotedByPrefix}}</span> by <span class="o-teaser__promoted-by">{{advertiser}}</span>
+		{{/if}}
+	</div>
+{{/unless}}
