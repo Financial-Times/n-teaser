@@ -24,7 +24,7 @@ const images = {
 };
 
 ['landscape', 'opinion'].forEach(style => {
-	fetch(`../templates/deprecated/${style}.html`)
+	fetch(`../templates/${style}.html`)
 		.then(res => res.text())
 		.then(source => {
 		const template = Handlebars.compile(source);
