@@ -148,8 +148,8 @@ const TeaserPresenter = class TeaserPresenter {
 		}
 
 		return relatedContent
-							.slice(0, MAX_RELATED_CONTENT)
-							.map(item => ({ data: item, classModifiers: [hyphenatePascalCase(item.type)] }))
+			.slice(0, MAX_RELATED_CONTENT)
+			.map(item => ({ data: item, classModifiers: [hyphenatePascalCase(item.type)] }))
 	}
 
 	// returns url and name for author headshot when primary brand tag is an author with a headshot
