@@ -113,3 +113,11 @@ Parameters can be passed to suppress some elements of teasers that would otherwi
 ####Elements that are not transformed by presenter logic
 - Standfirst - set `standfirst = false`
 - Main Image - set `mainImage = false`
+
+##Demo page
+`$ make demo`: Serves examples of the component locally, using dummy data and in isolation from an app.
+
+This is done on a simple express app which renders a single demo page that calls the partials to exhibit, populating them with data from a fixture.
+
+##Pa11y
+`$ make a11y`: Serves page of demo components, on which it runs [Pa11y](http://pa11y.org/) accessibility tests (errors flagging up accessibility infringements), which will also be run as part of the Continuous Integration (CI) process.
