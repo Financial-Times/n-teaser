@@ -115,7 +115,7 @@ Parameters can be passed to suppress some elements of teasers that would otherwi
 - Main Image - set `mainImage = false`
 
 ##Demo page
-`$ make demo`: Serves examples of the component locally, using dummy data and in isolation from an app.
+`$ make demo`: Serves examples of the component locally (`http://localhost:5005`), using dummy data and in isolation from an app.
 
 This is done on a simple express app which renders a single demo page that calls the partials to exhibit, populating them with data from a fixture.
 
