@@ -195,6 +195,18 @@ const TeaserPresenter = class TeaserPresenter {
 		return this.data.title;
 	}
 
+	get advertiserPrefix () {
+		if (this.data.advertiser) {
+			if (this.data.type === 'smartmatch') {
+				return ' paid for by ';
+			} else {
+				return ' by ';
+			}
+		} else {
+			return '';
+		}
+	}
+
 	//returns prefix for timestamp (null / 'new' / 'updated')
 	timeStatus () {
 		const now = Date.now();

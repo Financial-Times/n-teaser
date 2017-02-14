@@ -277,6 +277,38 @@ describe('Teaser Presenter', () => {
 
 	});
 
+	context('advertiserPrefix', () => {
+
+		context('has an advertiser and type of smartmatch', () => {
+			const content = {
+				advertiser: 'Nikkei',
+				type: 'smartmatch'
+			};
+
+			subject = new Presenter(content);
+			expect(subject.advertiserPrefix).to.equal(' paid for by ');
+		});
+
+		context('has an advertiser and type of paid post', () => {
+			const content = {
+				advertiser: 'Nikkei',
+				type: 'paid-post'
+			};
+
+			subject = new Presenter(content);
+			expect(subject.advertiserPrefix).to.equal(' by ');
+		});
+
+		context('does not have an advertiser and type is article', () => {
+			const content = {
+				type: 'article'
+			};
+
+			subject = new Presenter(content);
+			expect(subject.advertiserPrefix).to.equal('');
+		});
+	});
+
 	context('timeStatus', () => {
 
 		const FIFTY_NINE_MINUTES = 1000 * 60 * 59;
