@@ -279,10 +279,10 @@ describe('Teaser Presenter', () => {
 
 	context('advertiserPrefix', () => {
 
-		it('paid for by - when has an advertiser and type of smartmatch', () => {
+		it('paid for by - when has an advertiser and type of promoted content', () => {
 			const content = {
 				advertiser: 'Nikkei',
-				type: 'smartmatch'
+				type: 'promoted-content'
 			};
 			subject = new Presenter(content);
 			expect(subject.advertiserPrefix).to.equal(' paid for by ');

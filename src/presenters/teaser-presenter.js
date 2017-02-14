@@ -197,7 +197,7 @@ const TeaserPresenter = class TeaserPresenter {
 
 	get advertiserPrefix () {
 		if (this.data.advertiser) {
-			if (this.data.type === 'smartmatch') {
+			if (this.data.type === 'promoted-content') {
 				return ' paid for by ';
 			} else {
 				return ' by ';
