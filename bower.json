@@ -12,11 +12,9 @@
   "dependencies": {
     "o-teaser": "^1.3.2",
     "o-labels": "^2.0.3",
-    "n-ui": "^v4.0.0-beta.2",
     "n-image": "^4.9.3"
   },
-  "resolutions": {
-    "o-icons": "^5.2.0"
-  },
-  "devDependencies": {}
+  "devDependencies": {
+    "n-ui": "^v4.0.0-beta.6"
+  }
 }
