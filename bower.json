@@ -15,6 +15,6 @@
     "n-image": "^4.9.3"
   },
   "devDependencies": {
-    "n-ui": "^v4.0.0-beta.6"
+    "n-ui": "^4.0.0"
   }
 }
