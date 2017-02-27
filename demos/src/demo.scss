@@ -1,11 +1,4 @@
-@import 'n-ui/configure';
-
-@include nUiConfigure(
-	$preset: 'complete',
-	$output-critical: true
-);
-
-@import 'n-ui/bootstrap';
+@import 'n-ui/main';
 
 //TODO: Add an n-teaser/main.scss file and move these into it
 $o-labels-is-silent: false;
