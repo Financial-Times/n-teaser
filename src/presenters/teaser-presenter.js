@@ -232,6 +232,20 @@ const TeaserPresenter = class TeaserPresenter {
 		}
 	}
 
+	get duration () {
+		if (this.data.duration) {
+			const date = new Date(this.data.duration);
+
+			return {
+				// https://en.wikipedia.org/wiki/ISO_8601#Durations
+				iso: `PT${date.getMinutes()}M${date.getSeconds()}S`,
+				ms: this.data.duration,
+				formatted: this.data.formattedDuration
+			};
+		} else {
+			return null;
+		}
+	}
 };
 
 module.exports = TeaserPresenter;
