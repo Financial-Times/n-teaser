@@ -3,6 +3,7 @@ const Presenter = require('../../src/presenters/teaser-presenter');
 const articleBrandFixture = require('../fixtures/article-brand-fixture');
 const articleOpinionAuthorFixture = require('../fixtures/article-opinion-author-fixture');
 const articleStandardFixture = require('../fixtures/article-standard-fixture');
+const videoFixture = require('../fixtures/video-fixture');
 
 describe('Teaser Presenter', () => {
 
@@ -472,6 +473,33 @@ describe('Teaser Presenter', () => {
 			expect(subject.displayTitle).to.equal('title');
 		});
 
+	});
+
+	context('duration', () => {
+		it('returns null when data is not available', () => {
+			subject = new Presenter({});
+			expect(subject.duration).to.be.null;
+		});
+
+		it('returns an object when data is available', () => {
+			subject = new Presenter(videoFixture);
+			expect(subject.duration).to.be.an('object');
+		});
+
+		it('returns the duration in ISO8601 format', () => {
+			subject = new Presenter(videoFixture);
+			expect(subject.duration.iso).to.equal('PT4M30S');
+		});
+
+		it('returns the duration in mm:ss format', () => {
+			subject = new Presenter(videoFixture);
+			expect(subject.duration.formatted).to.equal('4:30');
+		});
+
+		it('returns the duration in original MS format', () => {
+			subject = new Presenter(videoFixture);
+			expect(subject.duration.ms).to.equal(270655);
+		});
 	});
 
 });
