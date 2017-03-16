@@ -6,13 +6,13 @@ Server and client-side teaser templates, along with their respective [next-api](
 
 A teaser represents content – usually an article. It helps readers to decide if the content is relevant to them and showcases the breadth of FT content. It always links to a content page. Read the [o-teaser docs](http://registry.origami.ft.com/components/o-teaser) for more information.
 
-##How to use
+## How to use
 
-###Demo
+### Demo
 
 Run `make demo` to serve a set of demo templates on http://localhost:5005.
 
-###Use in an app
+### Use in an app
 
 In the consuming app:
 
@@ -31,7 +31,7 @@ In the consuming app:
 
     Should be referenced as `> n-teaser/templates/standard`
 
-##Teaser Types
+## Teaser Types
 
 | *Teaser* | *Tag* | *Title* | *Standfirst* | *Time Stamp* | *Headshot* | *Image* | *Actions* | *Related Content* | *Duration* (video content only) |
 |---|---|---|---|---|---|---|---|---|---|
@@ -44,7 +44,7 @@ In the consuming app:
 
 (1) Lifestyle branches off the hierarchy from Light
 
-##Data Queries
+## Data Queries
 It is recommended that the data to populate n-teasers is sourced from `next-api`.
 The required data properties for each of the teasers is contained in n-teaser.
 
@@ -77,7 +77,7 @@ module.exports = `
 `;
 ```
 
-##Including templates
+## Including templates
 Teasers are added to your template as partials.
 Additional arguments can be passed to control display.
 
@@ -103,21 +103,21 @@ Example of a teaser with an image;
 The `colspan`, `position` and `widths` arguments are passed on to `n-image` to determine the properties of how the image is displayed in the teaser.
 More details on what is supported by `n-image` can be found in that repository.
 
-###Display options
+### Display options
 Parameters can be passed to suppress some elements of teasers that would otherwise appear.
 
-####Elements that rely on presenter logic
+#### Elements that rely on presenter logic
 - Related Content (on TopStory teasers) - set `noRelatedContent = true`
 - Tag (on all teasers) - set `noTag = true`
 - Author Headshot (on Light, Standard and Lifestyle teasers) - set `noHeadshot = true`
-####Elements that are not transformed by presenter logic
+#### Elements that are not transformed by presenter logic
 - Standfirst - set `standfirst = false`
 - Main Image - set `mainImage = false`
 
-##Demo page
+## Demo page
 `$ make demo`: Serves examples of the component locally (`http://localhost:5005`), using dummy data and in isolation from an app.
 
 This is done on a simple express app which renders a single demo page that calls the partials to exhibit, populating them with data from a fixture.
 
-##Pa11y
+## Pa11y
 `$ make a11y`: Serves page of demo components, on which it runs [Pa11y](http://pa11y.org/) accessibility tests (errors flagging up accessibility infringements), which will also be run as part of the Continuous Integration (CI) process.
