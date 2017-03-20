@@ -4,23 +4,10 @@
 		{
 			"type": "promoted-content",
 			"advertiser": "Advertiser Name",
+			"promotedByPrefix": "Promoted Content",
 			"id": "a3d0eff4-c224-11e6-81c2-f57d90f6741a",
 			"relativeUrl": "/",
 			"title": "Example promoted content title",
-			"publishedDate": "2016-12-15T05:37:23Z",
-			"isEditorsChoice": false,
-			"genreTag": null,
-			"primaryBrandTag": null,
-			"canBeSyndicated": true,
-			"authorTags": [{
-				"prefLabel": "Jonathan Ford",
-				"relativeUrl": "/"
-			}],
-			"isOpinion": false,
-			"teaserTag": {
-				"prefLabel": "Example tag",
-				"relativeUrl": "/"
-			},
 			"standfirst": "Example standfirst",
 			"mainImage": {
 				"title": "Ringing the changes: inside the Lloyd's of London building",
@@ -35,23 +22,10 @@
 		{
 			"type": "paid-post",
 			"advertiser": "Advertiser Name",
+			"promotedByPrefix": "Paid Content",
 			"id": "a3d0eff4-c224-11e6-81c2-f57d90f6741a",
 			"relativeUrl": "/",
 			"title": "Example paid post title",
-			"publishedDate": "2016-12-15T05:37:23Z",
-			"isEditorsChoice": false,
-			"genreTag": null,
-			"primaryBrandTag": null,
-			"canBeSyndicated": true,
-			"authorTags": [{
-				"prefLabel": "Jonathan Ford",
-				"relativeUrl": "/"
-			}],
-			"isOpinion": false,
-			"teaserTag": {
-				"prefLabel": "Example tag",
-				"relativeUrl": "/"
-			},
 			"standfirst": "Example standfirst",
 			"mainImage": {
 				"title": "Ringing the changes: inside the Lloyd's of London building",
