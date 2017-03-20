@@ -1,0 +1,19 @@
+<div class="o-grid-container">
+<h1>Demos of n-teaser - Commercial Content Flavours</h1>
+{{#with content.[0]}}
+	<div class="o-grid-row">
+		<div data-o-grid-colspan="12 M4">
+			<h2>Standard</h2>
+			{{> n-teaser/templates/standard}}
+		</div>
+	</div>
+{{/with}}
+{{#with content.[1]}}
+	<div class="o-grid-row">
+		<div data-o-grid-colspan="12 M4">
+			<h2>Heavy</h2>
+			{{> n-teaser/templates/heavy widths="[500, 332]" lazyLoad=false}}
+		</div>
+	</div>
+{{/with}}
+</div>
