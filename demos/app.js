@@ -4,6 +4,7 @@ const express = require('@financial-times/n-express');
 const path = require('path');
 const fixtures = require('./fixtures.json');
 const fixturesCommercial = require('./fixtures-commercial-content');
+const fixturesPackage = require('./fixtures-package');
 const chalk = require('chalk');
 const errorHighlight = chalk.bold.red;
 const highlight = chalk.bold.green;
@@ -19,7 +20,15 @@ const app = module.exports = express({
 	viewsDirectory: '/demos',
 	partialsDirectory: process.cwd(),
 	directory: process.cwd(),
-	helpers:  { nTeaserPresenter: require('../').presenter }
+	helpers:  { nTeaserPresenter: require('../').presenter,
+ 							packageTeaserPresenter: require('../').presenter}
+});
+
+app.get('/package', (req, res) => {
+	res.render('demo-package', Object.assign({
+		title: 'Test App',
+		layout: 'vanilla',
+	}, fixturesPackage));
 });
 
 app.get('/commercial', (req, res) => {
