@@ -1,0 +1,10 @@
+<ul class="package-teaser__list">
+	{{#each @packageTeaserPresenter.packageContent}}
+		<li class="package-teaser__list-item">
+			<a data-trackable="package-list" href="content/{{data.id}}">{{data.title}}</a>
+		</li>
+	{{/each}}
+	<li class="package-teaser__list-item package-teaser__landing-link">
+		<a href='/'>Visit Series</a>
+	</li>
+</ul>

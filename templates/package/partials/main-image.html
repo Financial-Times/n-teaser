@@ -1,0 +1,15 @@
+{{#if mainImage}}
+	<div class="package-teaser__image-container">
+		<a href="{{{relativeUrl}}}{{{referrerTracking}}}" data-trackable="image" aria-hidden="true" tabindex="-1">
+			{{#ifEquals lazyLoad false}}
+				{{#nImagePresenter srcSet=mainImage.url placeholder=mainImage.ratio colspan=colspan position=position widths=widths lazyLoad=false sourceParam=mainImage.sourceParam}}
+					{{> n-image/templates/image}}
+				{{/nImagePresenter}}
+			{{else}}
+				{{#nImagePresenter srcSet=mainImage.url placeholder=mainImage.ratio colspan=colspan position=position widths=widths lazyLoad=true sourceParam=mainImage.sourceParam}}
+					{{> n-image/templates/image}}
+				{{/nImagePresenter}}
+			{{/ifEquals}}
+		</a>
+	</div>
+{{/if}}

@@ -6,6 +6,8 @@ $o-labels-is-silent: false;
 $o-teaser-is-silent: false;
 @import 'o-teaser/main';
 
+@import 'package-style';
+
 .o-labels {
 	@include oTypographySansBold('xs');
 }

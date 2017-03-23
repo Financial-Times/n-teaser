@@ -50,6 +50,7 @@ const TeaserPresenter = class TeaserPresenter {
 
 	// returns all top level class names appropriate for the teaser
 	get classModifiers () {
+		const theme = this.data.design.theme;
 		const mods = this.data.mods || [];
 		// if (
 		// 	!this.data.noHeadshot &&
@@ -59,11 +60,16 @@ const TeaserPresenter = class TeaserPresenter {
 		// 	mods.push('has-headshot');
 		// }
 		if (this.data.size) mods.push(this.data.size);
-		if (
-			this.data.mainImage
-			// TEMPLATES_WITH_IMAGES.some(template => template === this.data.template)
-		) {
-			mods.push('has-image');
+		// if (
+		// 	this.data.mainImage
+		// 	// TEMPLATES_WITH_IMAGES.some(template => template === this.data.template)
+		// ) {
+		// 	mods.push('has-image');
+		// }
+		if (theme && (theme === 'extra-wide' || theme === 'extra')) {
+			mods.push('extra');
+		} else if (theme) {
+			mods.push(theme);
 		}
 		// if (this.data.type) {
 		// 	mods.push(hyphenatePascalCase(this.data.type));
