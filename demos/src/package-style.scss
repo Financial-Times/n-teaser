@@ -1,10 +1,8 @@
-$yellow: #ffec1a;
-$yellowLight: #fff04d;
-$wheat: #f3dec8;
-$claret: #b31147;
-$claretDark: #660a28;
-
 .package-teaser {
+  &__image-placeholder {
+    padding-bottom: 0 !important;
+  }
+
   &__content {
     background: $wheat;
     padding: 20px;
@@ -82,8 +80,19 @@ $claretDark: #660a28;
       color: $claret;
 
       &:hover {
-        color: $claretDark;
+        color: $claretHover;
       }
+    }
+
+    &::after {
+      background-repeat: no-repeat;
+      background-position: center;
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: 30px;
     }
   }
 }
