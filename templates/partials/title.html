@@ -1,5 +1,12 @@
 <div class="o-teaser__heading js-teaser-heading">
-	<a href="{{{relativeUrl}}}{{{referrerTracking}}}" class="js-teaser-heading-link" data-trackable="main-link">{{{@nTeaserPresenter.displayTitle}}}</a>
+	<a
+		href="{{{relativeUrl}}}{{{referrerTracking}}}"
+		class="js-teaser-heading-link"
+		data-trackable="main-link"
+		{{#ifEquals type 'promoted-content'}}target="_blank"{{/ifEquals}}
+	>
+		{{{@nTeaserPresenter.displayTitle}}}
+	</a>
 	{{#if isPremium}}
 		<span class="o-labels o-labels--premium" aria-label="Premium content">Premium</span>
 	{{/if}}
