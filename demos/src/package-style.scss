@@ -4,7 +4,6 @@
   }
 
   &__content {
-    background: $wheat;
     padding: 20px;
     width: calc(100% - 40px);
     position: relative;
@@ -23,10 +22,9 @@
   }
 
   &__tag {
-    font-family: 'Metric-Regular', sans-serif;
+    font-family: MetricWeb, sans-serif;
     font-size: 16px;
     line-height: 24px;
-    color: $claret;
 
     &::after {
       content: "";
@@ -34,22 +32,17 @@
       width: 60px;
       margin-top: 5px;
       margin-bottom: 10px;
-      border-bottom: 4px solid $claret;
     }
   }
 
   &__heading {
-    font-family: 'Metric-Regular', sans-serif;
+    font-family: MetricWeb, sans-serif;
     font-size: 28px;
     line-height: 30px;
+
     > a {
-      color: #333;
       text-decoration: none;
       border: none;
-
-      &:hover{
-        color: #505050;
-      }
     }
   }
 
@@ -61,38 +54,23 @@
 
   &__list-item,
   &__landing-link {
+    font-family: MetricWeb, sans-serif;
     font-size: 18px;
     line-height: 38px;
 
     > a {
       text-decoration: none;
       border: 0;
-      color: inherit;
 
-      &:hover{
-        color: #505050;
-      }
     }
   }
 
   &__landing-link {
-    > a {
-      color: $claret;
-
-      &:hover {
-        color: $claretHover;
-      }
-    }
 
     &::after {
-      background-repeat: no-repeat;
-      background-position: center;
       content: '';
       position: absolute;
-      right: 0;
-      top: 0;
-      height: 100%;
-      width: 30px;
+      bottom: 23px;
     }
   }
 }

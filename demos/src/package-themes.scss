@@ -14,19 +14,76 @@ $themes: (
   'basic': (
     'highlight': $claret,
     'text': $slate,
-    'hover': $claretHover,
+    'hover': $slateHover,
     'background': $wheat
   ),
   'special-report': (
-    'highlight': $claret,
-    'text': $slate,
-    'hover': $claretHover,
-    'background': $wheat
+    'highlight': white,
+    'text': white,
+    'hover': $wheat,
+    'background': $claret
   ),
   'extra': (
-    'highlight': $claret,
-    'text': $slate,
-    'hover': $claretHover,
-    'background': $wheat
+    'highlight': $lemon,
+    'text': white,
+    'hover': $lemonHover,
+    'background': $slate
   )
 );
+
+@function fetchColor($name, $property) {
+  $theme: map-get($themes, $name);
+  @return map-get($theme, $property);
+};
+
+@each $name, $theme in $themes {
+  .package-teaser--#{$name} {
+    .package-teaser {
+      &__content {
+        background: fetchColor($name, 'background');
+      }
+
+      &__tag {
+        color: fetchColor($name, 'highlight');
+
+        &::after {
+          border-bottom: 4px solid fetchColor($name, 'highlight');
+        }
+      }
+
+      &__heading {
+        > a {
+          color: fetchColor($name, 'text');
+
+          &:hover {
+            color: fetchColor($name, 'hover');
+          }
+        }
+      }
+
+      &__list-item {
+        > a {
+          color: fetchColor($name, 'text');
+        }
+
+        &:hover {
+          color: fetchColor($name, 'hover');
+        }
+      }
+
+      &__landing-link {
+        > a {
+          color: fetchColor($name, 'highlight');
+        }
+
+        &::after {
+          @include oIconsGetIcon('arrow-right', fetchColor($name, 'highlight'), 30);
+        }
+
+        &:hover {
+          color: fetchColor($name, 'hover');
+        }
+      }
+    }
+  }
+}
