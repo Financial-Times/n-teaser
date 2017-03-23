@@ -11,7 +11,6 @@ $claretDark: #660a28;
     width: calc(100% - 40px);
     position: relative;
     top: -45px;
-    z-index: 1;
 
     &::after {
       content: '';
@@ -52,6 +51,38 @@ $claretDark: #660a28;
 
       &:hover{
         color: #505050;
+      }
+    }
+  }
+
+  &__list {
+    margin-bottom: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__list-item,
+  &__landing-link {
+    font-size: 18px;
+    line-height: 38px;
+
+    > a {
+      text-decoration: none;
+      border: 0;
+      color: inherit;
+
+      &:hover{
+        color: #505050;
+      }
+    }
+  }
+
+  &__landing-link {
+    > a {
+      color: $claret;
+
+      &:hover {
+        color: $claretDark;
       }
     }
   }

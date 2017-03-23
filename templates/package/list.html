@@ -1,9 +1,9 @@
 {{#packageTeaserPresenter @this mods=mods flags=@root.flags}}
 	<div class="o-teaser {{#each @packageTeaserPresenter.classModifiers}}package-teaser--{{this}}{{/each}}" data-o-component="o-teaser" data-trackable="teaser">
 
-		{{> n-teaser/templates/package/partials/main-image}}
+		{{> n-teaser/templates/partials/main-image}}
 
-		<div class="o-teaser__content">
+		<div class="package-teaser__content">
 
 			{{> n-teaser/templates/package/partials/display-tag}}
 
