@@ -2,17 +2,43 @@
 <h1>Demos of package teasers</h1>
 {{#content}}
 
+<h2>Teaser to Package - Title</h2>
 	<div class="o-grid-row">
-		<div data-o-grid-colspan="6">
-			<h2>Package - Title</h2>
-			{{> n-teaser/templates/package/light widths="[500, 332]" lazyLoad=false}}
+		<div data-o-grid-colspan="4">
+			<h3>Basic</h3>
+			{{> n-teaser/templates/package/light  widths="[500, 332]" lazyLoad=false}}
+		</div>
+		<div data-o-grid-colspan="4">
+			<h3>Special Report</h3>
+			<div class="package-teaser--special-report">
+				{{> n-teaser/templates/package/light widths="[500, 332]" lazyLoad=false}}
+			</div>
+		</div>
+		<div data-o-grid-colspan="4">
+			<h3>Extra</h3>
+			<div class="package-teaser--extra">
+				{{> n-teaser/templates/package/light widths="[500, 332]" lazyLoad=false}}
+			</div>
 		</div>
 	</div>
 
+	<h2>Teaser to Package - List</h2>
 	<div class="o-grid-row">
-		<div data-o-grid-colspan="6">
-			<h2>Package - List</h2>
+		<div data-o-grid-colspan="4">
+			<h3>Basic</h3>
 			{{> n-teaser/templates/package/list widths="[500, 332]" lazyLoad=false}}
+		</div>
+		<div data-o-grid-colspan="4">
+			<h3>Special Report</h3>
+			<div class="package-teaser--special-report">
+				{{> n-teaser/templates/package/list widths="[500, 332]" lazyLoad=false}}
+		</div>
+		</div>
+		<div data-o-grid-colspan="4">
+			<h3>Extra</h3>
+			<div class="package-teaser--extra">
+				{{> n-teaser/templates/package/list widths="[500, 332]" lazyLoad=false}}
+			</div>
 		</div>
 	</div>
 
