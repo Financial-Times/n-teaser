@@ -61,16 +61,12 @@
     > a {
       text-decoration: none;
       border: 0;
-
     }
   }
 
-  &__landing-link {
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 23px;
-    }
+  &__landing-link::after {
+    content: '';
+    position: absolute;
+    bottom: 23px;
   }
 }

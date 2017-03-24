@@ -51,23 +51,14 @@ $themes: (
         }
       }
 
-      &__heading {
+      &__heading,
+      &__list-item {
         > a {
           color: fetchColor($name, 'text');
 
           &:hover {
             color: fetchColor($name, 'hover');
           }
-        }
-      }
-
-      &__list-item {
-        > a {
-          color: fetchColor($name, 'text');
-        }
-
-        &:hover {
-          color: fetchColor($name, 'hover');
         }
       }
 
