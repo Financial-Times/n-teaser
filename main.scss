@@ -3,8 +3,8 @@ $o-labels-is-silent: false;
 $o-teaser-is-silent: false;
 @import 'o-teaser/main';
 
-@import 'package-themes';
-@import 'package-style';
+@import 'client/package-themes';
+@import 'client/package-teaser-main';
 
 .o-labels {
 	@include oTypographySansBold('xs');

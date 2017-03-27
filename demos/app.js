@@ -20,8 +20,10 @@ const app = module.exports = express({
 	viewsDirectory: '/demos',
 	partialsDirectory: process.cwd(),
 	directory: process.cwd(),
-	helpers:  { nTeaserPresenter: require('../').presenter,
- 							packageTeaserPresenter: require('../').presenter}
+	helpers:  {
+		nTeaserPresenter: require('../').presenter,
+		packageTeaserPresenter: require('../').presenter
+	}
 });
 
 app.get('/package', (req, res) => {

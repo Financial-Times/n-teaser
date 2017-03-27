@@ -4,7 +4,7 @@
         "premiumContentIndicator": true
     },
     "content": [{
-        "type": "Article",
+        "type": "Package",
         "id": "a3d0eff4-c224-11e6-81c2-f57d90f6741a",
         "isPremium": true,
         "relativeUrl": "/",
@@ -12,7 +12,9 @@
         "publishedDate": "2016-12-15T05:37:23Z",
         "isEditorsChoice": false,
         "genreTag": null,
-        "primaryBrandTag": null,
+        "primaryBrandTag": {
+          "prefLabel": "FT Series"
+        },
         "canBeSyndicated": true,
         "authorTags": [{
             "prefLabel": "Jonathan Ford",
