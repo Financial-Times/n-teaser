@@ -16,7 +16,7 @@ const app = module.exports = express({
 	withNavigation: false,
 	withAnonMiddleware: false,
 	hasHeadCss: false,
-	layoutsDir: path.join(process.cwd(), '/bower_components/n-ui/browser/layout'),
+	layoutsDir: path.join(process.cwd(), '/bower_components/n-ui/layout'),
 	viewsDirectory: '/demos',
 	partialsDirectory: process.cwd(),
 	directory: process.cwd(),
