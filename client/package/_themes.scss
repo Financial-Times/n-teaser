@@ -1,74 +1,74 @@
 $themes: (
-  'basic': (
-    'tag': $claret,
-    'text': $black,
-    'hover': $blackHover,
-    'link': $claret,
-    'linkHover': $blackHover,
-    'background': $wheat
-  ),
-  'special-report': (
-    'tag': white,
-    'text': white,
-    'hover': $wheat,
-    'link': $whiter,
-    'linkHover': $wheat,
-    'background': $claret
-  ),
-  'extra': (
-    'tag': $lemon,
-    'text': white,
-    'hover': $lemon,
-    'link': $lemon,
-    'linkHover': white,
-    'background': $slate
-  )
+	'basic': (
+		'tag': $claret,
+		'text': $black,
+		'hover': $blackHover,
+		'link': $claret,
+		'linkHover': $blackHover,
+		'background': $wheat
+		),
+		'special-report': (
+		'tag': white,
+		'text': white,
+		'hover': $wheat,
+		'link': $whiter,
+		'linkHover': $wheat,
+		'background': $claret
+		),
+		'extra': (
+		'tag': $lemon,
+		'text': white,
+		'hover': $lemon,
+		'link': $lemon,
+		'linkHover': white,
+		'background': $slate
+		)
 );
 
 @function fetchColor($name, $property) {
-  $theme: map-get($themes, $name);
-  @return map-get($theme, $property);
+	$theme: map-get($themes, $name);
+	@return map-get($theme, $property);
 };
 
 @each $name, $theme in $themes {
-  .package-teaser--#{$name} {
-    .package-teaser {
-      &__content {
-        background: fetchColor($name, 'background');
-      }
+	.package-teaser--#{$name} {
+			.package-teaser {
+				&__content {
+				background: fetchColor($name, 'background');
+			}
 
-      &__tag {
-        color: fetchColor($name, 'tag');
+			&__tag {
+				color: fetchColor($name, 'tag');
 
-        &::after {
-          border-bottom: 4px solid fetchColor($name, 'tag');
-        }
-      }
+				&::after {
+					border-bottom: 4px solid fetchColor($name, 'tag');
+			}
+			}
 
-      &__heading,
-      &__list-item {
-        > a {
-          color: fetchColor($name, 'text');
+			&__heading,
+			&__list-item {
+				> a {
+					color: fetchColor($name, 'text');
 
-          &:hover {
-            color: fetchColor($name, 'hover');
-          }
-        }
-      }
+					&:hover {
+				color: fetchColor($name, 'hover');
+			}
+		}
+			}
 
-      &__landing-link {
-        > a {
-          color: fetchColor($name, 'link');
-        }
+			&__landing-link {
+				> a {
+					color: fetchColor($name, 'link');
+			}
 
-        &::after {
-          @include oIconsGetIcon('arrow-right', fetchColor($name, 'link'), 30);
-        }
+			&::after {
+				@include oIconsGetIcon('arrow-right', fetchColor($name, 'link'), 30);
+		}
 
-        &:hover {
-          color: fetchColor($name, 'linkHover');
-        }
-      }
-    }
-  }
+		&:hover {
+			color: fetchColor($name, 'linkHover');
+		}
+			}
+		}
+	}
 }
