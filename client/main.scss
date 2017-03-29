@@ -21,7 +21,7 @@
 			left: 0;
 			right: -40px;
 			z-index: -1;
-	}
+		}
 	}
 
 	&__tag {
@@ -35,7 +35,7 @@
 			width: 60px;
 			margin-top: 5px;
 			margin-bottom: 10px;
-	}
+		}
 	}
 
 	&__heading {
@@ -46,7 +46,7 @@
 		> a {
 			text-decoration: none;
 			border: none;
-	}
+		}
 	}
 
 	&__list {
@@ -64,7 +64,7 @@
 		> a {
 			text-decoration: none;
 			border: 0;
-	}
+		}
 	}
 
 	&__landing-link::after {

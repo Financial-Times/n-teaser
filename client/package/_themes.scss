@@ -6,23 +6,23 @@ $themes: (
 		'link': $claret,
 		'linkHover': $blackHover,
 		'background': $wheat
-		),
-		'special-report': (
+	),
+	'special-report': (
 		'tag': white,
 		'text': white,
 		'hover': $wheat,
 		'link': $whiter,
 		'linkHover': $wheat,
 		'background': $claret
-		),
-		'extra': (
+	),
+	'extra': (
 		'tag': $lemon,
 		'text': white,
 		'hover': $lemon,
 		'link': $lemon,
 		'linkHover': white,
 		'background': $slate
-		)
+	)
 );
 
 @function fetchColor($name, $property) {
@@ -32,8 +32,8 @@ $themes: (
 
 @each $name, $theme in $themes {
 	.package-teaser--#{$name} {
-			.package-teaser {
-				&__content {
+		.package-teaser {
+			&__content {
 				background: fetchColor($name, 'background');
 			}
 
@@ -42,7 +42,7 @@ $themes: (
 
 				&::after {
 					border-bottom: 4px solid fetchColor($name, 'tag');
-			}
+				}
 			}
 
 			&__heading,
@@ -52,22 +52,22 @@ $themes: (
 
 					&:hover {
 				color: fetchColor($name, 'hover');
-			}
-		}
+					}
+				}
 			}
 
 			&__landing-link {
 				> a {
 					color: fetchColor($name, 'link');
-			}
+				}
 
-			&::after {
-				@include oIconsGetIcon('arrow-right', fetchColor($name, 'link'), 30);
-		}
+				&::after {
+					@include oIconsGetIcon('arrow-right', fetchColor($name, 'link'), 30);
+				}
 
-		&:hover {
-			color: fetchColor($name, 'linkHover');
-		}
+				&:hover {
+					color: fetchColor($name, 'linkHover');
+				}
 			}
 		}
 	}
