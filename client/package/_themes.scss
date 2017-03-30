@@ -47,22 +47,22 @@ $pkg-themes: (
 				position: relative;
 				top: -48px;
 				background: inherit;
-			}
 
-			&__tag {
-				font-family: MetricWeb, sans-serif;
-				font-size: 16px;
-				line-height: 24px;
-				font-weight: 400;
-				color: fetchColor($name, 'tag');
+				span {
+					font-family: MetricWeb, sans-serif;
+					font-size: 16px;
+					line-height: 24px;
+					font-weight: 400;
+					color: fetchColor($name, 'tag');
 
-				&::after {
-					content: "";
-					display: block;
-					margin-top: 5px;
-					width: 60px;
-					border-bottom: 4px solid fetchColor($name, 'tag');
-				}
+					&::after {
+						content: "";
+						display: block;
+						margin-top: 5px;
+						width: 60px;
+						border-bottom: 4px solid fetchColor($name, 'tag');
+					}
+				}	
 			}
 
 			&__heading	{

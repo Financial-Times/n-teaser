@@ -31,10 +31,10 @@ const TeaserPresenter = class TeaserPresenter {
 	}
 
 	//returns FT Series or Special Reports
-	get displayTag () {
+	get genrePrefix () {
 		if (this.data.primaryBrandTag) {
 			if (this.data.primaryBrandTag.prefLabel === 'Special Reports' || this.data.primaryBrandTag.prefLabel === 'FT Series') {
-				return this.data.primaryBrandTag;
+				return this.data.primaryBrandTag.prefLabel;
 			}
 		}
 	}
