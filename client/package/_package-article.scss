@@ -1,0 +1,33 @@
+@each $name, $theme in $article-themes {
+	.article-teaser--#{$name} {
+		.o-teaser__content {
+			background: fetchColor($name, 'background');
+		}
+
+		.o-teaser__image-container::after {
+			background: fetchColor($name, 'background');
+		}
+
+		.o-teaser__meta {
+			font-family: MetricWeb, sans-serif;
+			color: fetchColor($name, 'tag');
+
+			.o-teaser__tag::hover {
+				color: fetchColor($name, 'hover')
+			}
+		}
+
+		.o-teaser__heading {
+			font-family: MetricWeb, sans-serif;
+			color: fetchColor($name, 'heading');
+			&:hover {
+				color: fetchColor($name, 'hover');
+			}
+		}
+
+		.o-teaser__standfirst {
+			font-family: MetricWeb, sans-serif;
+			color: fetchColor($name, 'standfirst');
+		}
+	}
+}

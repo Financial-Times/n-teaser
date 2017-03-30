@@ -1,0 +1,81 @@
+@each $name, $theme in $pkg-themes {
+	.package-teaser--#{$name} {
+		.o-teaser {
+			&__image-placeholder {
+				z-index: -1;
+			}
+
+			&__content {
+				background: fetchColor($name, 'background');
+			}
+
+			&__meta {
+				padding: 15px 0 0 20px;
+				width: calc(100% - 40px);
+				position: relative;
+				top: -48px;
+				background: inherit;
+
+				span {
+					font-family: MetricWeb, sans-serif;
+					font-size: 16px;
+					line-height: 24px;
+					font-weight: 400;
+					color: fetchColor($name, 'tag');
+
+					&::after {
+						content: "";
+						display: block;
+						margin-top: 5px;
+						width: 60px;
+						border-bottom: 4px solid fetchColor($name, 'tag');
+					}
+				}
+			}
+
+			&__heading	{
+				background: inherit;
+				padding: 20px;
+				margin-top: -55px;
+				width: 100%;
+
+				> a {
+					font-family: MetricWeb, sans-serif;
+					font-size: 28px;
+					line-height: 30px;
+					color: fetchColor($name, 'text');
+
+					&:hover {
+						color: fetchColor($name, 'hover');
+					}
+				}
+			}
+		}
+
+		.package-teaser {
+			&__list-item {
+				> a {
+					color: fetchColor($name, 'text');
+
+					&:hover {
+				color: fetchColor($name, 'hover');
+					}
+				}
+			}
+
+			&__landing-link {
+				> a {
+					color: fetchColor($name, 'link');
+				}
+
+				&::after {
+					@include oIconsGetIcon('arrow-right', fetchColor($name, 'link'), 30);
+				}
+
+				&:hover {
+					color: fetchColor($name, 'linkHover');
+				}
+			}
+		}
+	}
+}
