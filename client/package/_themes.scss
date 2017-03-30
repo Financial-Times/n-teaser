@@ -65,7 +65,7 @@ $pkg-themes: (
 				}
 			}
 
-			&__heading{
+			&__heading	{
 				background: inherit;
 				padding: 20px;
 				margin-top: -55px;
@@ -77,36 +77,37 @@ $pkg-themes: (
 					line-height: 30px;
 					color: fetchColor($name, 'text');
 
-				&:hover {
-					color: fetchColor($name, 'hover');
+					&:hover {
+						color: fetchColor($name, 'hover');
+					}
 				}
 			}
 		}
-	}
-			.package-teaser {
-				&__list-item {
-					> a {
-						color: fetchColor($name, 'text');
 
-						&:hover {
-					color: fetchColor($name, 'hover');
-						}
-					}
-				}
-
-				&__landing-link {
-					> a {
-						color: fetchColor($name, 'link');
-					}
-
-					&::after {
-						@include oIconsGetIcon('arrow-right', fetchColor($name, 'link'), 30);
-					}
+		.package-teaser {
+			&__list-item {
+				> a {
+					color: fetchColor($name, 'text');
 
 					&:hover {
-						color: fetchColor($name, 'linkHover');
+				color: fetchColor($name, 'hover');
 					}
 				}
 			}
+
+			&__landing-link {
+				> a {
+					color: fetchColor($name, 'link');
+				}
+
+				&::after {
+					@include oIconsGetIcon('arrow-right', fetchColor($name, 'link'), 30);
+				}
+
+				&:hover {
+					color: fetchColor($name, 'linkHover');
+				}
+			}
+		}
 	}
 }
