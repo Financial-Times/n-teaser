@@ -1,0 +1,12 @@
+{{#if @nTeaserPresenter.packageContent}}
+	<ul class="package-teaser__list">
+		{{#each @nTeaserPresenter.packageContent}}
+			<li class="package-teaser__list-item">
+				<a data-trackable="package-list" href="content/{{this.id}}">{{this.title}}</a>
+			</li>
+		{{/each}}
+		<li class="package-teaser__list-item package-teaser__landing-link">
+			<a href='/'>Visit Series</a>
+		</li>
+	</ul>
+{{/if}}

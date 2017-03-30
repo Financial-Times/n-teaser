@@ -1,0 +1,26 @@
+.package-teaser {
+	&__list {
+		margin: -10px 0;
+		padding: 0 20px 10px 20px;
+		background: inherit;
+		list-style: none;
+	}
+
+	&__list-item,
+	&__landing-link {
+		font-family: MetricWeb, sans-serif;
+		font-size: 18px;
+		line-height: 38px;
+
+		> a {
+			text-decoration: none;
+			border: 0;
+		}
+	}
+
+	&__landing-link::after {
+		content: '';
+		position: absolute;
+		bottom: 13px;
+	}
+}

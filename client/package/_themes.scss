@@ -1,74 +1,112 @@
-$themes: (
+$pkg-themes: (
 	'basic': (
-		'tag': $claret,
-		'text': $black,
-		'hover': $blackHover,
-		'link': $claret,
-		'linkHover': $blackHover,
-		'background': $wheat
+		'tag': $pkg-claret,
+		'text': $pkg-black,
+		'hover': $pkg-blackHover,
+		'link': $pkg-claret,
+		'linkHover': $pkg-blackHover,
+		'background': $pkg-wheat
 	),
 	'special-report': (
 		'tag': white,
 		'text': white,
-		'hover': $wheat,
-		'link': $whiter,
-		'linkHover': $wheat,
-		'background': $claret
+		'hover': $pkg-wheat,
+		'link': $pkg-whiter,
+		'linkHover': $pkg-wheat,
+		'background': $pkg-claret
 	),
 	'extra': (
-		'tag': $lemon,
+		'tag': $pkg-lemon,
 		'text': white,
-		'hover': $lemon,
-		'link': $lemon,
+		'hover': $pkg-lemon,
+		'link': $pkg-lemon,
 		'linkHover': white,
-		'background': $slate
+		'background': $pkg-slate
 	)
 );
 
 @function fetchColor($name, $property) {
-	$theme: map-get($themes, $name);
+	$theme: map-get($pkg-themes, $name);
 	@return map-get($theme, $property);
 };
 
-@each $name, $theme in $themes {
+@each $name, $theme in $pkg-themes {
 	.package-teaser--#{$name} {
-		.package-teaser {
+		.o-teaser {
+			&__image-placeholder {
+				z-index: -1;
+			}
+
 			&__content {
 				background: fetchColor($name, 'background');
 			}
 
+			&__meta {
+				padding: 15px 0 0 20px;
+				width: calc(100% - 40px);
+				position: relative;
+				top: -48px;
+				background: inherit;
+			}
+
 			&__tag {
+				font-family: MetricWeb, sans-serif;
+				font-size: 16px;
+				line-height: 24px;
+				font-weight: 400;
 				color: fetchColor($name, 'tag');
 
 				&::after {
+					content: "";
+					display: block;
+					margin-top: 5px;
+					width: 60px;
 					border-bottom: 4px solid fetchColor($name, 'tag');
 				}
 			}
 
-			&__heading,
-			&__list-item {
+			&__heading{
+				background: inherit;
+				padding: 20px;
+				margin-top: -55px;
+				width: 100%;
+
 				> a {
+					font-family: MetricWeb, sans-serif;
+					font-size: 28px;
+					line-height: 30px;
 					color: fetchColor($name, 'text');
 
-					&:hover {
-				color: fetchColor($name, 'hover');
-					}
-				}
-			}
-
-			&__landing-link {
-				> a {
-					color: fetchColor($name, 'link');
-				}
-
-				&::after {
-					@include oIconsGetIcon('arrow-right', fetchColor($name, 'link'), 30);
-				}
-
 				&:hover {
-					color: fetchColor($name, 'linkHover');
+					color: fetchColor($name, 'hover');
 				}
 			}
 		}
+	}
+			.package-teaser {
+				&__list-item {
+					> a {
+						color: fetchColor($name, 'text');
+
+						&:hover {
+					color: fetchColor($name, 'hover');
+						}
+					}
+				}
+
+				&__landing-link {
+					> a {
+						color: fetchColor($name, 'link');
+					}
+
+					&::after {
+						@include oIconsGetIcon('arrow-right', fetchColor($name, 'link'), 30);
+					}
+
+					&:hover {
+						color: fetchColor($name, 'linkHover');
+					}
+				}
+			}
 	}
 }

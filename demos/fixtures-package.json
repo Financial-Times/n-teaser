@@ -6,8 +6,8 @@
     "content": [{
         "type": "Package",
         "id": "a3d0eff4-c224-11e6-81c2-f57d90f6741a",
-        "isPremium": true,
-        "relativeUrl": "/",
+        "canBePackage": true,
+        "relativeUrl": "/package",
         "title": "Example content title",
         "publishedDate": "2016-12-15T05:37:23Z",
         "isEditorsChoice": false,
@@ -18,7 +18,7 @@
         "canBeSyndicated": true,
         "authorTags": [{
             "prefLabel": "Jonathan Ford",
-            "relativeUrl": "/"
+            "relativeUrl": "/package"
         }],
         "isOpinion": false,
         "teaserTag": {
