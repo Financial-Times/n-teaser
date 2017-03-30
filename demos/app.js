@@ -49,7 +49,7 @@ app.get('/commercial', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-	res.render('templates/demo', Object.assign({
+	res.render('demo', Object.assign({
 		title: 'Test App',
 		layout: 'vanilla',
 	}, fixtures));

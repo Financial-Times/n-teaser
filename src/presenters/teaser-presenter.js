@@ -51,6 +51,9 @@ const TeaserPresenter = class TeaserPresenter {
 	// returns all top level class names appropriate for the teaser
 	get classModifiers () {
 		const mods = this.data.mods || [];
+		if (this.data.containedIn) {
+			mods.push('package-article')
+		}
 		if (
 			!this.data.noHeadshot &&
 			this.headshot &&
