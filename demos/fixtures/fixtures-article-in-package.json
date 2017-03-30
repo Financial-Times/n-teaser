@@ -1,0 +1,47 @@
+{
+  "javascriptBundles": null,
+  "flags": {
+    "premiumContentIndicator": true
+  },
+  "content": [{
+    "type": "Article",
+    "id": "57371736-4b69-11e6-88c5-db83e98a590a",
+    "canBePackage": false,
+    "relativeUrl": "/package",
+    "title": "Example content title",
+    "publishedDate": "2016-12-15T05:37:23Z",
+    "isEditorsChoice": false,
+    "genreTag": null,
+    "canBeSyndicated": true,
+    "authorTags": [{
+      "prefLabel": "Jonathan Ford",
+      "relativeUrl": "/package"
+    }],
+    "isOpinion": false,
+    "teaserTag": {
+      "prefLabel": "Example tag",
+      "relativeUrl": "/"
+    },
+    "standfirst": "Example standfirst",
+    "mainImage": {
+      "title": "Ringing the changes: inside the Lloyd's of London building",
+      "description": "Lloyds London Insurance City tradition ...Lloyds of London for the big page. Underwriters and brokers cut deals on the trading floor at Lloyds where face to face negotiations still rule.",
+      "url": "http://im.ft-static.com/content/images/a60ae24b-b87f-439c-bf1b-6e54946b4cf2.img",
+      "width": 2048,
+      "height": 1152,
+      "ratio": 1.7777777777778,
+      "sourceParam": "n-teaser"
+    },
+    "containedIn": [{
+			"title": "Xi’s China",
+      "url": "https://www.ft.com/content/8b4d2118-0e51-11e7-a88c-50ba212dce4d",
+			"design": {
+				"theme": "basic"
+			},
+			"primaryBrandTag": {
+	      "prefLabel": "FT Series",
+				"relativeUrl": "/"
+	    }
+		}]
+  }]
+}

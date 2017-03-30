@@ -2,9 +2,10 @@
 
 const express = require('@financial-times/n-express');
 const path = require('path');
-const fixtures = require('./fixtures.json');
-const fixturesCommercial = require('./fixtures-commercial-content');
-const fixturesPackage = require('./fixtures-package');
+const fixtures = require('./fixtures/fixtures.json');
+const fixturesCommercial = require('./fixtures/fixtures-commercial-content');
+const fixturesPackage = require('./fixtures/fixtures-package');
+const fixturesPackageArticle = require('./fixtures/fixtures-article-in-package');
 const chalk = require('chalk');
 const errorHighlight = chalk.bold.red;
 const highlight = chalk.bold.green;
@@ -17,13 +18,20 @@ const app = module.exports = express({
 	withAnonMiddleware: false,
 	hasHeadCss: false,
 	layoutsDir: path.join(process.cwd(), '/bower_components/n-ui/layout'),
-	viewsDirectory: '/demos',
+	viewsDirectory: '/demos/templates',
 	partialsDirectory: process.cwd(),
 	directory: process.cwd(),
 	helpers:  {
 		nTeaserPresenter: require('../').presenter,
 		packageTeaserPresenter: require('../').presenter
 	}
+});
+
+app.get('/package-article', (req, res) => {
+	res.render('demo-package-article', Object.assign({
+		title: 'Test App',
+		layout: 'vanilla',
+	}, fixturesPackageArticle));
 });
 
 app.get('/package', (req, res) => {
@@ -41,7 +49,7 @@ app.get('/commercial', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-	res.render('demo', Object.assign({
+	res.render('templates/demo', Object.assign({
 		title: 'Test App',
 		layout: 'vanilla',
 	}, fixtures));
