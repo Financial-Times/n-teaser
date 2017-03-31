@@ -66,14 +66,14 @@
 			&__landing-link {
 				> a {
 					color: fetchColor($name, 'link');
+
+					&:hover {
+						color: fetchColor($name, 'linkHover');
+					}
 				}
 
 				&::after {
 					@include oIconsGetIcon('arrow-right', fetchColor($name, 'link'), 30);
-				}
-
-				&:hover {
-					color: fetchColor($name, 'linkHover');
 				}
 			}
 		}

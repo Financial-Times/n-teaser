@@ -3,49 +3,31 @@ $pkg-themes: (
 		'tag': $pkg-claret,
 		'text': $pkg-black,
 		'hover': $pkg-blackHover,
+		'standfirst': $pkg-blackHover,
 		'link': $pkg-claret,
 		'linkHover': $pkg-blackHover,
-		'background': $pkg-wheat
+		'background': $pkg-wheat,
+		'border': $pkg-wheat
 	),
 	'special-report': (
 		'tag': white,
 		'text': white,
 		'hover': $pkg-wheat,
+		'standfirst': $pkg-whiter,
 		'link': $pkg-whiter,
 		'linkHover': $pkg-wheat,
-		'background': $pkg-claret
+		'background': $pkg-claret,
+		'border': $pkg-claret
 	),
 	'extra': (
 		'tag': $pkg-lemon,
 		'text': white,
 		'hover': $pkg-lemon,
+		'standfirst': $pkg-whiter,
 		'link': $pkg-lemon,
 		'linkHover': white,
-		'background': $pkg-slate
-	)
-);
-
-$article-themes: (
-	'basic': (
-		'tag': $pkg-claret,
-		'hover': $pkg-blackHover,
-		'heading': $pkg-black,
-		'standfirst': $pkg-claret,
-		'background': $pkg-wheat
-	),
-	'special-report': (
-		'tag': white,
-		'hover': $pkg-wheat,
-		'heading': white,
-		'standfirst': white,
-		'background': $pkg-claret
-	),
-	'extra': (
-		'tag': $pkg-lemon,
-		'hover': white,
-		'heading': white,
-		'standfirst': white,
-		'background': $pkg-slate
+		'background': $pkg-slate,
+		'border': $pkg-lemon
 	)
 );
 
