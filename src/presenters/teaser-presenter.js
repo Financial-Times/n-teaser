@@ -74,11 +74,19 @@ const TeaserPresenter = class TeaserPresenter {
 		if (this.data.type) {
 			mods.push(hyphenatePascalCase(this.data.type));
 		}
-		if (this.data.canBeSyndicated === 'yes') {
-			mods.push('syndicatable');
-		}else if(this.data.canBeSyndicated === 'no') {
-			mods.push('not-syndicatable');
+
+		switch (this.data.canBeSyndicated) {
+			case 'yes':
+				mods.push('syndicatable');
+				break;
+			case 'no':
+				mods.push('not-syndicatable');
+				break;
+			case 'verify':
+				mods.push('verify-syndicatable');
+				break;
 		}
+
 		return mods;
 	}
 
