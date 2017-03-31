@@ -11,7 +11,7 @@
   "dependencies": {},
   "devDependencies": {
     "@financial-times/n-express": "^17.20.2",
-    "@financial-times/n-ui": "^5.3.7",
+    "@financial-times/n-ui": "^4.0.0",
     "bower": "^1.7.9",
     "chai": "^3.2.0",
     "chalk": "^1.1.3",
