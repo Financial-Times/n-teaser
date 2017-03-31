@@ -18,4 +18,7 @@ a11y: demo-build
 	@PA11Y=true node demos/app
 	@$(DONE)
 
-test: verify unit-test a11y
+test:
+	make verify
+	make unit-test
+	make a11y
