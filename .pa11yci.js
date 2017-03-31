@@ -14,28 +14,28 @@ const viewports = [
 ];
 
 const urls = [
-	`http://localhost:5005`
-]
+	'http://localhost:5005'
+];
 
 const config = {
 	defaults: {
 		page: {
 			headers: {
-				"Cookie": "next-flags=ads:off,cookieMessage:off; secure=true"
+				'Cookie': 'next-flags=ads:off,cookieMessage:off; secure=true'
 			}
 		},
 		timeout: 25000
 	},
 	urls: []
-}
+};
 
-for (viewport of viewports) {
-	for (url of urls) {
+for (const viewport of viewports) {
+	for (const url of urls) {
 		config.urls.push({
 			url: url,
 			viewport: viewport
 		})
 	}
-}
+};
 
 module.exports = config;
