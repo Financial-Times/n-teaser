@@ -14,8 +14,6 @@ const TeaserPresenter = class TeaserPresenter {
 		const theme = this.data.design.theme;
 		const mods = this.data.mods || [];
 
-		if (this.data.size) mods.push(this.data.size);
-
 		if (theme && (theme === 'extra-wide' || theme === 'extra')) {
 			mods.push('extra');
 		} else if (theme) {

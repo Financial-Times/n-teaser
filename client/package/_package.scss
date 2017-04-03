@@ -1,5 +1,7 @@
 @each $name, $theme in $pkg-themes {
-	.package-teaser--#{$name} {
+	.o-teaser--#{$name} {
+		width: 100%;
+
 		.o-teaser {
 			&__image-placeholder {
 				z-index: -1;
@@ -13,7 +15,7 @@
 				padding: 15px 0 0 20px;
 				width: calc(100% - 40px);
 				position: relative;
-				top: -48px;
+				top: -50px;
 				background: inherit;
 
 				span {
@@ -36,7 +38,7 @@
 			&__heading	{
 				background: inherit;
 				padding: 20px;
-				margin-top: -55px;
+				margin-top: -50px;
 				width: 100%;
 
 				> a {

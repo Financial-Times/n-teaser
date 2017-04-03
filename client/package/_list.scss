@@ -1,6 +1,6 @@
 .package-teaser {
 	&__list {
-		margin: -10px 0;
+		margin: -10px 0 0 0;
 		padding: 0 20px 10px 20px;
 		background: inherit;
 		list-style: none;
@@ -9,8 +9,9 @@
 	&__list-item,
 	&__landing-link {
 		font-family: MetricWeb, sans-serif;
-		font-size: 18px;
-		line-height: 38px;
+		font-size: 16px;
+		line-height: 1.2;
+		padding: 10px 0;
 
 		> a {
 			text-decoration: none;

@@ -89,7 +89,7 @@ const TeaserPresenter = class TeaserPresenter {
 	get displayTag () {
 		//use package title as display tag if article belongs to package
 		let packageArticle = this.data.containedIn
-		if (packageArticle && packageArticle[0].title) {
+		if (packageArticle && packageArticle[0] && packageArticle[0].title) {
 			return Object.assign(this, { prefLabel: packageArticle[0].title });
 		} else {
 			// Use Primary Tag is Primary Brand Tag the same as stream
@@ -113,8 +113,9 @@ const TeaserPresenter = class TeaserPresenter {
 	//returns genre prefix
 	get genrePrefix () {
 		//use package brand if article belongs to package
-		if (this.data.containedIn && this.data.containedIn[0].title) {
-			return this.data.containedIn[0].primaryBrandTag.prefLabel;
+		let packageArticle = this.data.containedIn
+		if (packageArticle && packageArticle[0] && packageArticle[0].title) {
+			return packageArticle[0].primaryBrandTag.prefLabel;
 		} else {
 			if (brandAuthorDouble(this.data) === true) {
 				// dedupe authors who are also brands and where Author = stream
