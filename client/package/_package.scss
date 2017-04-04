@@ -1,5 +1,5 @@
 @each $name, $theme in $pkg-themes {
-	.o-teaser--#{$name} {
+	.package-teaser--#{$name} {
 		width: 100%;
 
 		.o-teaser {
