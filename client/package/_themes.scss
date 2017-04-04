@@ -1,0 +1,37 @@
+$pkg-themes: (
+	'basic': (
+		'tag': $pkg-claret,
+		'text': $pkg-black,
+		'hover': $pkg-blackHover,
+		'standfirst': $pkg-blackHover,
+		'link': $pkg-claret,
+		'linkHover': $pkg-blackHover,
+		'background': $pkg-wheat,
+		'border': $pkg-wheat
+	),
+	'special-report': (
+		'tag': white,
+		'text': white,
+		'hover': $pkg-wheat,
+		'standfirst': $pkg-whiter,
+		'link': $pkg-whiter,
+		'linkHover': $pkg-wheat,
+		'background': $pkg-claret,
+		'border': $pkg-claret
+	),
+	'extra': (
+		'tag': $pkg-lemon,
+		'text': white,
+		'hover': $pkg-lemon,
+		'standfirst': $pkg-whiter,
+		'link': $pkg-lemon,
+		'linkHover': white,
+		'background': $pkg-slate,
+		'border': $pkg-lemon
+	)
+);
+
+@function fetchColor($name, $property) {
+	$theme: map-get($pkg-themes, $name);
+	@return map-get($theme, $property);
+};

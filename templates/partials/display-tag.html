@@ -3,12 +3,12 @@
 		{{#if status}}
 			<span class="o-labels o-labels--{{@nTeaserPresenter.liveBlogLabelModifier}}" aria-label="Live blog with status of {{@nTeaserPresenter.liveBlogLabelModifier}}">Live</span>
 		{{/if}}
+		{{#if @nTeaserPresenter.genrePrefix}}
+			<span>
+				{{@nTeaserPresenter.genrePrefix}}
+			</span>
+		{{/if}}
 		{{#if @nTeaserPresenter.displayTag}}
-			{{#if @nTeaserPresenter.genrePrefix}}
-				<span>
-					{{@nTeaserPresenter.genrePrefix}}
-				</span>
-			{{/if}}
 			<a href="{{{@nTeaserPresenter.displayTag.relativeUrl}}}" class="o-teaser__tag" data-trackable="primary-tag">
 				<span>{{@nTeaserPresenter.displayTag.prefLabel}}</span>
 			</a>

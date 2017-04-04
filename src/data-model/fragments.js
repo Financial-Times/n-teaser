@@ -111,5 +111,21 @@ module.exports = {
 				}
 			}
 		}
+	`,
+	packageTeaser: `
+		fragment PackageTeaserLight on Package {
+			design {
+				theme
+			}
+		}
+	`,
+	packageTeaserList: `
+		fragment PackageTeaserList on Package {
+			contains {
+				title
+				promotionalTitle
+				relativeUrl
+			}
+		}
 	`
 };

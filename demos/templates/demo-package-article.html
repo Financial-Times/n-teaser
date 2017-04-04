@@ -1,0 +1,27 @@
+<div class="o-grid-container">
+<h1>Demos of package teasers</h1>
+{{#content}}
+
+<h2>Teaser to Article - Title</h2>
+	<div class="o-grid-row">
+		<div data-o-grid-colspan="4">
+			<h3>Basic</h3>
+			<div class="article-teaser--basic">
+				{{> n-teaser/templates/heavy mods=(array 'hero' 'centre')  widths="[500, 332]" lazyLoad=false}}
+			</div>
+		</div>
+		<div data-o-grid-colspan="4">
+			<h3>Special Report</h3>
+			<div class="article-teaser--special-report">
+				{{> n-teaser/templates/heavy mods=(array 'hero' 'centre') widths="[500, 332]" lazyLoad=false}}
+			</div>
+		</div>
+		<div data-o-grid-colspan="4">
+			<h3>Extra</h3>
+			<div class="article-teaser--extra">
+				{{> n-teaser/templates/heavy mods=(array 'hero' 'centre') widths="[500, 332]" lazyLoad=false}}
+			</div>
+		</div>
+	</div>
+{{/content}}
+</div>

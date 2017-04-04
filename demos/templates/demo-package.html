@@ -1,0 +1,38 @@
+<div class="o-grid-container">
+<h1>Demos of package teasers</h1>
+{{#content}}
+
+<h2>Teaser to Package - Title</h2>
+	<div class="o-grid-row">
+		<div data-o-grid-colspan="4">
+			<h3>Basic</h3>
+				{{> n-teaser/templates/package-list widths="[500, 332]" lazyLoad=false}}
+		</div>
+		<div data-o-grid-colspan="4">
+			<h3>Special Report</h3>
+				{{> n-teaser/templates/package-list widths="[500, 332]" lazyLoad=false}}
+		</div>
+		<div data-o-grid-colspan="4">
+			<h3>Extra</h3>
+				{{> n-teaser/templates/package-list widths="[500, 332]" lazyLoad=false}}
+		</div>
+	</div>
+
+	<h2>Teaser to Package - List</h2>
+	<div class="o-grid-row">
+		<div data-o-grid-colspan="4">
+			<h3>Basic</h3>
+				{{> n-teaser/templates/package-list packageList=true widths="[500, 332]" lazyLoad=false}}
+		</div>
+		<div data-o-grid-colspan="4">
+			<h3>Special Report</h3>
+				{{> n-teaser/templates/package-list packageList=true widths="[500, 332]" lazyLoad=false}}
+		</div>
+		<div data-o-grid-colspan="4">
+			<h3>Extra</h3>
+				{{> n-teaser/templates/package-list packageList=true widths="[500, 332]" lazyLoad=false}}
+		</div>
+	</div>
+
+{{/content}}
+</div>
