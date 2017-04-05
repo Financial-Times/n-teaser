@@ -81,6 +81,15 @@ module.exports = {
 	`,
 	teaserHeavy: `
 		fragment TeaserHeavy on Content {
+			containedIn(limit: 1) {
+				design {
+					theme
+				}
+				primaryBrandTag {
+					prefLabel
+					relativeUrl
+				}
+			}
 			mainImage {
 				title
 				description
@@ -113,7 +122,7 @@ module.exports = {
 		}
 	`,
 	packageTeaser: `
-		fragment PackageTeaserLight on Package {
+		fragment PackageTeaser on Package {
 			design {
 				theme
 			}
@@ -121,7 +130,7 @@ module.exports = {
 	`,
 	packageTeaserList: `
 		fragment PackageTeaserList on Package {
-			contains {
+			contains(limit: 3) {
 				title
 				promotionalTitle
 				relativeUrl
