@@ -82,8 +82,10 @@ module.exports = {
 	teaserHeavy: `
 		fragment TeaserHeavy on Content {
 			containedIn(limit: 1) {
-				design {
-					theme
+				...on Package {
+					design {
+						theme
+					}
 				}
 				primaryBrandTag {
 					prefLabel
