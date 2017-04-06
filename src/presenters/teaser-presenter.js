@@ -98,7 +98,7 @@ const TeaserPresenter = class TeaserPresenter {
 		//use package title as display tag if article belongs to package
 		let packageArticle = this.data.containedIn
 		if (packageArticle && packageArticle[0] && packageArticle[0].title) {
-			return Object.assign(this, { prefLabel: packageArticle[0].title });
+			return Object.assign(this, { prefLabel: packageArticle[0].title, relativeUrl: packageArticle[0].relativeUrl});
 		} else {
 			// Use Primary Tag is Primary Brand Tag the same as stream
 			if (this.data.streamProperties &&
