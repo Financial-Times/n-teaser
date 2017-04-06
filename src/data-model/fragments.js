@@ -82,6 +82,7 @@ module.exports = {
 	teaserHeavy: `
 		fragment TeaserHeavy on Content {
 			containedIn(limit: 1) {
+				title
 				...on Package {
 					design {
 						theme
