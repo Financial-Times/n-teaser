@@ -114,7 +114,7 @@ const TeaserPresenter = class TeaserPresenter {
 	get genrePrefix () {
 		//use package brand if article belongs to package
 		let packageArticle = this.data.containedIn
-		if (packageArticle && packageArticle[0] && packageArticle[0].title) {
+		if (packageArticle && packageArticle[0] && packageArticle[0].title && packageArticle[0].primaryBrandTag) {
 			return packageArticle[0].primaryBrandTag.prefLabel;
 		} else {
 			if (brandAuthorDouble(this.data) === true) {
