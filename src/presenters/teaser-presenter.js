@@ -55,8 +55,8 @@ const TeaserPresenter = class TeaserPresenter {
 			let theme = this.data.containedIn[0].design.theme;
 			if (theme && (theme === 'extra-wide' || theme === 'extra')) {
 				mods.push('extra-article');
-			} else if (theme) {
-				mods.push(`${theme}-article`);
+			} else if (theme === 'special-report') {
+				mods.push('highlight');
 			}
 		}
 

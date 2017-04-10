@@ -60,7 +60,7 @@
 					color: fetchColor($name, 'text');
 
 					&:hover {
-				color: fetchColor($name, 'hover');
+						color: fetchColor($name, 'hover');
 					}
 				}
 			}
