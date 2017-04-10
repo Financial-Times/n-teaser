@@ -51,9 +51,15 @@ const TeaserPresenter = class TeaserPresenter {
 	// returns all top level class names appropriate for the teaser
 	get classModifiers () {
 		const mods = this.data.mods || [];
-		if (this.data.containedIn) {
-			mods.push('package-article')
+		if (this.data.containedIn && (this.data.containedIn.length > 0)) {
+			let theme = this.data.containedIn[0].design.theme;
+			if (theme && (theme === 'extra-wide' || theme === 'extra')) {
+				mods.push('extra-article');
+			} else if (theme) {
+				mods.push(`${theme}-article`);
+			}
 		}
+
 		if (
 			!this.data.noHeadshot &&
 			this.headshot &&
@@ -61,27 +67,32 @@ const TeaserPresenter = class TeaserPresenter {
 		) {
 			mods.push('has-headshot');
 		}
+
 		if (this.data.size) mods.push(this.data.size);
-		if (
-			this.data.mainImage &&
-			TEMPLATES_WITH_IMAGES.some(template => template === this.data.template)
-		) {
+
+		if ( this.data.mainImage &&
+			TEMPLATES_WITH_IMAGES.some(template => template === this.data.template) ) {
 			mods.push('has-image');
 		}
+
 		if (this.data.isOpinion && modsDoesNotInclude('hero-image', this.data.mods)) {
 			mods.push('opinion');
 		}
+
 		if (this.data.isEditorsChoice && modsDoesNotInclude('hero-image', this.data.mods)) {
 			mods.push('highlight');
 		}
+
 		if (this.data.type) {
 			mods.push(hyphenatePascalCase(this.data.type));
 		}
+
 		if (this.data.canBeSyndicated === 'yes') {
 			mods.push('syndicatable');
-		}else if(this.data.canBeSyndicated === 'no') {
+		} else if (this.data.canBeSyndicated === 'no') {
 			mods.push('not-syndicatable');
 		}
+
 		return mods;
 	}
 
