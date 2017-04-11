@@ -15,9 +15,9 @@ const TeaserPresenter = class TeaserPresenter {
 		const mods = this.data.mods || [];
 
 		if (theme && (theme === 'extra-wide' || theme === 'extra')) {
-			mods.push('extra');
+			mods.push('extra-package');
 		} else if (theme) {
-			mods.push(theme);
+			mods.push(`${theme}-package`);
 		}
 
 		if (this.data.canBeSyndicated === 'yes') {
