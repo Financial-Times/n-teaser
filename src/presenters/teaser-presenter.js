@@ -51,8 +51,9 @@ const TeaserPresenter = class TeaserPresenter {
 	// returns all top level class names appropriate for the teaser
 	get classModifiers () {
 		const mods = this.data.mods || [];
-		if (this.data.containedIn && (this.data.containedIn.length > 0)) {
-			let theme = this.data.containedIn[0].design.theme;
+		if (this.data.containedIn && this.data.containedIn.length) {
+			const { theme } = this.data.containedIn[0].design || {};
+
 			if (theme && (theme === 'extra-wide' || theme === 'extra')) {
 				mods.push('extra-article');
 			} else if (theme === 'special-report') {
