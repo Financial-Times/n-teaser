@@ -1,0 +1,35 @@
+{
+	"type": "Article",
+	"id": "dd9a528e-1abc-11e7-bcac-6d03d067f81f",
+	"isEditorsChoice": false,
+	"relativeUrl": "/content/dd9a528e-1abc-11e7-bcac-6d03d067f81f",
+	"title": "Women in finance discuss the gender pay and promotion gap",
+	"promotionalTitle": "Women in finance discuss the gender gap",
+	"publishedDate": "2017-04-09T08:23:47.000Z",
+	"initialPublishedDate": "2017-04-09T08:23:47Z",
+	"isEditorsChoice": false,
+	"canBeSyndicated": "verify",
+	"genreTag": null,
+	"containedIn": [
+		{
+			"title": "Management’s missing women",
+			"url": "https://www.ft.com/content/a2e41aa4-146c-11e7-80f4-13e067d5072c",
+			"descriptionHTML": "<p>Gender equality has become a highly publicised corporate goal, but exclusive FT data show how slow progress has been. Interviews with executives charged with creating diversity and women trying to break the glass ceiling illustrate the challenges</p>",
+			"design": {
+				"theme": "extra"
+			},
+			"primaryTag": {
+				"idV1": "YmQ3ZmFiNjctZjZlYS00Yzc1LTliZDEtMTZjYzBkYzliZjk4-VG9waWNz",
+				"prefLabel": "Equality in workplace",
+				"taxonomy": "topics",
+				"url": "https://www.ft.com/topics/themes/Equality_in_workplace"
+			},
+			"primaryBrandTag": {
+				"idV1": "ZjIwNzVmMDQtNzU3OC00NDY4LTg3MmItNGUyYmQ5ZjY3NGY3-QnJhbmRz",
+				"prefLabel": "FT Series",
+				"taxonomy": "brand",
+				"url": "https://www.ft.com/stream/brandId/ZjIwNzVmMDQtNzU3OC00NDY4LTg3MmItNGUyYmQ5ZjY3NGY3-QnJhbmRz"
+			}
+		}
+	]
+}

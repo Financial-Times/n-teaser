@@ -56,7 +56,8 @@ const TeaserPresenter = class TeaserPresenter {
 
 			if (theme && (theme === 'extra-wide' || theme === 'extra')) {
 				mods.push('extra-article');
-			} else if (theme === 'special-report') {
+			// overrides special report teaser styling on package landing page
+			} else if (!this.data.isLandingPage && theme === 'special-report') {
 				mods.push('highlight');
 			}
 		}
@@ -71,7 +72,7 @@ const TeaserPresenter = class TeaserPresenter {
 
 		if (this.data.size) mods.push(this.data.size);
 
-		if ( this.data.mainImage &&
+		if (this.data.mainImage &&
 			TEMPLATES_WITH_IMAGES.some(template => template === this.data.template) ) {
 			mods.push('has-image');
 		}
