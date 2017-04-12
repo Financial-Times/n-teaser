@@ -55,6 +55,12 @@ describe('Teaser Presenter', () => {
 			})
 		})
 
+		it('adds a syndication modifier if the given article’s syndication status needs verifying', () => {
+			const content = {canBeSyndicated:'verify'};
+			subject = new Presenter(content);
+			expect(subject.classModifiers[0]).to.deep.equal('verify-syndicatable');
+		});
+
 		context('has-headshot', () => {
 
 			it('returns has-headshot when correct template and has-headshot', () => {
