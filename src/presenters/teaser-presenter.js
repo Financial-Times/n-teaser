@@ -55,7 +55,8 @@ const TeaserPresenter = class TeaserPresenter {
 			let theme = this.data.containedIn[0].design.theme;
 			if (theme && (theme === 'extra-wide' || theme === 'extra')) {
 				mods.push('extra-article');
-			} else if (theme === 'special-report') {
+			// overrides special report teaser styling on package landing page
+			} else if (!this.data.isLandingPage && theme === 'special-report') {
 				mods.push('highlight');
 			}
 		}
