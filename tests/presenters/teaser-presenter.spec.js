@@ -429,7 +429,7 @@ describe('Teaser Presenter', () => {
 
 		it('returns the full headshot file url and author name when a headshot exists', () => {
 			subject = new Presenter(articleOpinionAuthorFixture);
-			expect(subject.headshot.url).to.equal('https://www.ft.com/__origami/service/image/v2/images/raw/fthead:gideon-rachman?source=next&fit=scale-down&compression=best&tint=054593,d6d5d3');
+			expect(subject.headshot.url).to.equal('https://www.ft.com/__origami/service/image/v2/images/raw/fthead:gideon-rachman?source=next&width=150&fit=scale-down&compression=best&tint=054593,d6d5d3');
 			expect(subject.headshot.alt).to.equal('Photo of Gideon Rachman');
 		});
 

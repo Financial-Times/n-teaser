@@ -5,8 +5,8 @@ const hyphenatePascalCase = require('../utils/hyphenate-pascal-case');
 const ONE_HOUR = 1000 * 60 * 60;
 const MAX_RELATED_CONTENT = 3;
 const HEADSHOT_BASE_URL = 'https://www.ft.com/__origami/service/image/v2/images/raw/';
-const HEADSHOT_URL_PARAMETERS = '?source=next&fit=scale-down&compression=best&tint=054593,d6d5d3';
 const HEADSHOT_WIDTH = 75;
+const HEADSHOT_URL_PARAMETERS = `?source=next&width=${HEADSHOT_WIDTH * 2}&fit=scale-down&compression=best&tint=054593,d6d5d3`;
 const TEMPLATES_WITH_HEADSHOTS = ['light','standard','lifestyle'];
 const TEMPLATES_WITH_IMAGES = ['heavy', 'top-story-heavy','lifestyle'];
 const LIVEBLOG_MAPPING = {
