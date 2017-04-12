@@ -2,7 +2,7 @@ const expect = require('chai').expect;
 const Presenter = require('../../src/presenters/package-teaser-presenter');
 const packageFixture = require('../fixtures/package-fixture');
 
-describe.only('Package Teaser Presenter', () => {
+describe('Package Teaser Presenter', () => {
 
 	let subject;
 
