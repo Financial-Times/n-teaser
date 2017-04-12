@@ -11,8 +11,8 @@ const TeaserPresenter = class TeaserPresenter {
 
 	// returns all top level class names appropriate for the teaser
 	get classModifiers () {
-		const theme = this.data.design.theme;
 		const mods = this.data.mods || [];
+		const theme = this.data.design ? this.data.design.theme : 'basic';
 
 		if (theme && (theme === 'extra-wide' || theme === 'extra')) {
 			mods.push('extra-package');
