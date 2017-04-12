@@ -71,7 +71,7 @@ const TeaserPresenter = class TeaserPresenter {
 
 		if (this.data.size) mods.push(this.data.size);
 
-		if ( this.data.mainImage &&
+		if (this.data.mainImage &&
 			TEMPLATES_WITH_IMAGES.some(template => template === this.data.template) ) {
 			mods.push('has-image');
 		}

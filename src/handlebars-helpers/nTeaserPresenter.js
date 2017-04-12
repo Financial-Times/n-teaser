@@ -1,4 +1,3 @@
-
 const TeaserPresenter = require('../presenters/teaser-presenter');
 const PackagePresenter = require('../presenters/package-teaser-presenter');
 

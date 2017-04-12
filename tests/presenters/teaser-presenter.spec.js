@@ -3,6 +3,7 @@ const Presenter = require('../../src/presenters/teaser-presenter');
 const articleBrandFixture = require('../fixtures/article-brand-fixture');
 const articleOpinionAuthorFixture = require('../fixtures/article-opinion-author-fixture');
 const articleStandardFixture = require('../fixtures/article-standard-fixture');
+const articlePackageFixture = require('../fixtures/article-package-fixture');
 const videoFixture = require('../fixtures/video-fixture');
 
 describe('Teaser Presenter', () => {
@@ -40,6 +41,19 @@ describe('Teaser Presenter', () => {
 			subject = new Presenter(content);
 			expect(subject.classModifiers[0]).to.deep.equal('not-syndicatable');
 		});
+
+		context('has theme', () => {
+			it('returns extra-article when package theme is extra', () => {
+				subject = new Presenter(articlePackageFixture);
+				expect(subject.classModifiers).to.include('extra-article');
+			})
+
+			it('returns highlight when package theme is special-report', () => {
+				const content = Object.assign({}, articlePackageFixture, { containedIn: [ { design: { theme: 'special-report'} } ] })
+				subject = new Presenter(content);
+				expect(subject.classModifiers).to.include('highlight');
+			})
+		})
 
 		context('has-headshot', () => {
 
@@ -178,6 +192,13 @@ describe('Teaser Presenter', () => {
 
 		});
 
+		context('package article', () => {
+			it('renders as display tag for package article', () => {
+				subject = new Presenter(articlePackageFixture);
+				expect(subject.displayTag.prefLabel).to.equal('Management’s missing women')
+			});
+		});
+
 		context('genrePrefix', () => {
 
 			const genreTag = { genreTag: { prefLabel: 'genre label' } };
@@ -215,6 +236,11 @@ describe('Teaser Presenter', () => {
 				subject = new Presenter(content);
 				expect(subject.genrePrefix).to.be.null;
 			});
+
+			it('returns the package brand if article in package', () => {
+				subject = new Presenter(articlePackageFixture);
+				expect(subject.genrePrefix).to.equal('FT Series')
+			})
 
 		});
 
