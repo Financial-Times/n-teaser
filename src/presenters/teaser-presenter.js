@@ -50,7 +50,9 @@ const TeaserPresenter = class TeaserPresenter {
 
 	// returns all top level class names appropriate for the teaser
 	get classModifiers () {
-		const mods = this.data.mods || [];
+		//avoids modifier repetition
+		const mods = this.data.mods ? [].concat(this.data.mods) : [];
+
 		if (this.data.containedIn && this.data.containedIn.length) {
 			const { theme } = this.data.containedIn[0].design || {};
 
