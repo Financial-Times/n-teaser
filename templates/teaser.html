@@ -1,0 +1,34 @@
+{{! TODO: setting template=template is superfluous for now, (duplicates work done
+	in each of the individual templates), but in the next major version it can
+	be dropped from them (and move the templates into a private subdirectory)}}
+{{#ifEquals template "standard"}}
+	{{>n-teaser/templates/standard template=template mods=mods widths=widths}}
+{{/ifEquals}}
+
+{{#ifEquals template "extra-light"}}
+	{{>n-teaser/templates/extra-light template=template mods=mods widths=widths}}
+{{/ifEquals}}
+
+{{#ifEquals template "light"}}
+	{{>n-teaser/templates/light template=template mods=mods widths=widths}}
+{{/ifEquals}}
+
+{{#ifEquals template "heavy"}}
+	{{>n-teaser/templates/heavy template=template mods=mods widths=widths}}
+{{/ifEquals}}
+
+{{#ifEquals template "top-story-standard"}}
+	{{>n-teaser/templates/top-story-standard template=template mods=mods widths=widths}}
+{{/ifEquals}}
+
+{{#ifEquals template "top-story-heavy"}}
+	{{>n-teaser/templates/top-story-heavy template=template mods=mods widths=widths}}
+{{/ifEquals}}
+
+{{#ifEquals template "package-list"}}
+	{{>n-teaser/templates/package-list template=template mods=mods widths=widths}}
+{{/ifEquals}}
+
+{{#ifEquals template "lifestyle"}}
+	{{>n-teaser/templates/lifestyle template=template mods=mods widths=widths}}
+{{/ifEquals}}
