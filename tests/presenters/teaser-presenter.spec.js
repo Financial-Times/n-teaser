@@ -18,6 +18,15 @@ describe('Teaser Presenter', () => {
 			expect(subject.classModifiers).to.deep.equal([]);
 		});
 
+		it('does not save previous teaser modifiers to new teaser', () => {
+			const content = { isOpinion: true };
+			let teaser1 = new Presenter(content);
+			let teaser2 =new Presenter(content);
+
+			expect(teaser1.classModifiers).to.deep.equal(['opinion']);
+			expect(teaser2.classModifiers).to.deep.equal(['opinion']);
+		});
+
 		it('passes through modifiers from collection', () => {
 			const content = {mods: ['mod1', 'mod2']};
 			subject = new Presenter(content);
