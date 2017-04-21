@@ -1,0 +1,44 @@
+{
+    "javascriptBundles": null,
+    "flags": {
+        "premiumContentIndicator": true
+    },
+    "content": [
+        {
+            "type": "Video",
+            "id": "b135ff23-b289-3471-9162-71f0a147e7f2",
+            "isPremium": false,
+            "relativeUrl": "/content/b135ff23-b289-3471-9162-71f0a147e7f2",
+            "title": "Turkey’s constitutional changes",
+            "promotionalTitle": null,
+            "publishedDate": "2017-04-18T16:36:48.149Z",
+            "initialPublishedDate": null,
+            "isEditorsChoice": null,
+            "canBeSyndicated": "true",
+            "genreTag": null,
+            "primaryBrandTag": null,
+            "authorTags": [],
+            "isOpinion": false,
+            "teaserTag": {
+                "prefLabel": "Turkish referendum",
+                "relativeUrl": "/stream/topicsId/YTMyNzkzMDMtMTM1MS00N2U5LTg0ZjEtMWI2MmJiNTYwN2My-VG9waWNz"
+            },
+            "primaryTag": {
+                "prefLabel": "Turkish referendum",
+                "relativeUrl": "/stream/topicsId/YTMyNzkzMDMtMTM1MS00N2U5LTg0ZjEtMWI2MmJiNTYwN2My-VG9waWNz"
+            },
+            "duration": 110313,
+            "formattedDuration": "1:50",
+            "standfirst": "Donald Trump congratulates Erdogan on referendum victory",
+            "containedIn": [],
+            "mainImage": {
+                "title": "Video still for Turkey’s constitutional changes",
+                "description": "",
+                "url": "https://bcsecure01-a.akamaihd.net/13/47628783001/201704/3456/47628783001_5402074813001_5402065329001-vs.jpg?pubId=47628783001&videoId=5402065329001",
+                "width": 640,
+                "height": 360,
+                "ratio": 1.7777777777777777
+            }
+        }
+    ]
+}

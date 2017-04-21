@@ -1,11 +1,11 @@
 'use strict';
 
 const express = require('@financial-times/n-express');
-const path = require('path');
 const fixtures = require('./fixtures/fixtures.json');
 const fixturesCommercial = require('./fixtures/fixtures-commercial-content');
 const fixturesPackage = require('./fixtures/fixtures-package');
 const fixturesPackageArticle = require('./fixtures/fixtures-article-in-package');
+const fixturesVideo = require('./fixtures/fixtures-video');
 const chalk = require('chalk');
 const errorHighlight = chalk.bold.red;
 const highlight = chalk.bold.green;
@@ -17,7 +17,7 @@ const app = module.exports = express({
 	withNavigation: false,
 	withAnonMiddleware: false,
 	hasHeadCss: false,
-	layoutsDir: path.join(process.cwd(), '/bower_components/n-ui/layout'),
+	layoutsDir: 'demos/templates',
 	viewsDirectory: '/demos/templates',
 	partialsDirectory: process.cwd(),
 	directory: process.cwd(),
@@ -29,29 +29,36 @@ const app = module.exports = express({
 
 app.get('/package-article', (req, res) => {
 	res.render('demo-package-article', Object.assign({
-		title: 'Test App',
-		layout: 'vanilla',
+		title: 'Content from package teasers',
+		layout: 'demo-layout',
 	}, fixturesPackageArticle));
 });
 
 app.get('/package', (req, res) => {
 	res.render('demo-package', Object.assign({
-		title: 'Test App',
-		layout: 'vanilla',
+		title: 'Package with content teasers',
+		layout: 'demo-layout',
 	}, fixturesPackage));
+});
+
+app.get('/videos', (req, res) => {
+	res.render('demo', Object.assign({
+		title: 'Video teasers',
+		layout: 'demo-layout',
+	}, fixturesVideo));
 });
 
 app.get('/commercial', (req, res) => {
 	res.render('demo-commercial-content', Object.assign({
-		title: 'Test App',
-		layout: 'vanilla',
+		title: 'Commercial teasers',
+		layout: 'demo-layout',
 	}, fixturesCommercial));
 });
 
 app.get('/', (req, res) => {
 	res.render('demo', Object.assign({
-		title: 'Test App',
-		layout: 'vanilla',
+		title: 'Article teasers',
+		layout: 'demo-layout',
 	}, fixtures));
 });
 
