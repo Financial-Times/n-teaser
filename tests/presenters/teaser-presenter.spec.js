@@ -12,6 +12,20 @@ describe('Teaser Presenter', () => {
 
 	context('classModifiers', () => {
 
+		it('produces an empty array if mods undefined', () => {
+			const content = { mods: undefined };
+			subject = new Presenter(content);
+			expect(subject.classModifiers).to.deep.equal([]);
+		});
+
+		it('does not mutate original mods object', () => {
+			const mods = ['test'];
+			const content = { mods, isOpinion:true };
+			const subject = new Presenter(content);
+			expect(subject.classModifiers).to.contain('opinion');
+			expect(mods).to.not.contain('opinion');
+		})
+
 		it('passes through modifiers from collection', () => {
 			const content = {mods: ['mod1', 'mod2']};
 			subject = new Presenter(content);
