@@ -41,7 +41,7 @@ app.get('/package', (req, res) => {
 	}, fixturesPackage));
 });
 
-app.get('/videos', (req, res) => {
+app.get('/video', (req, res) => {
 	res.render('demo', Object.assign({
 		title: 'Video teasers',
 		layout: 'demo-layout',
@@ -55,7 +55,7 @@ app.get('/commercial', (req, res) => {
 	}, fixturesCommercial));
 });
 
-app.get('/', (req, res) => {
+app.get('/article', (req, res) => {
 	res.render('demo', Object.assign({
 		title: 'Article teasers',
 		layout: 'demo-layout',

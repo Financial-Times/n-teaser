@@ -11,7 +11,7 @@ const TEMPLATES_WITH_HEADSHOTS = ['light','standard','lifestyle'];
 const TEMPLATES_WITH_IMAGES = ['heavy', 'top-story-heavy','lifestyle'];
 const LIVEBLOG_MAPPING = {
 	inprogress: {
-		timestampStatus: 	'last post',
+		timestampStatus: 'last post',
 		labelModifier: 'live'
 	},
 	comingsoon: {
@@ -88,7 +88,6 @@ const TeaserPresenter = class TeaserPresenter {
 		if (this.data.type) {
 			mods.push(hyphenatePascalCase(this.data.type));
 		}
-
 
 		switch (this.data.canBeSyndicated) {
 			case 'yes':
