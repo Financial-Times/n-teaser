@@ -4,13 +4,13 @@
 			<span class="o-labels o-labels--{{@nTeaserPresenter.liveBlogLabelModifier}}" aria-label="Live blog with status of {{@nTeaserPresenter.liveBlogLabelModifier}}">Live</span>
 		{{/if}}
 		{{#if @nTeaserPresenter.genrePrefix}}
-			<span>
+			<span class="o-teaser__tag-prefix">
 				{{@nTeaserPresenter.genrePrefix}}
 			</span>
 		{{/if}}
 		{{#if @nTeaserPresenter.teaserConcept}}
 			<a href="{{{@nTeaserPresenter.teaserConcept.relativeUrl}}}" class="o-teaser__tag" data-trackable="primary-concept">
-				<span>{{@nTeaserPresenter.teaserConcept.prefLabel}}</span>
+				{{@nTeaserPresenter.teaserConcept.prefLabel}}
 			</a>
 		{{/if}}
 		{{#if @nTeaserPresenter.duration}}
