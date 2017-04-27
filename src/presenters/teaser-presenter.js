@@ -9,6 +9,7 @@ const HEADSHOT_WIDTH = 75;
 const HEADSHOT_URL_PARAMETERS = `?source=next&width=${HEADSHOT_WIDTH * 2}&fit=scale-down&compression=best&tint=054593,d6d5d3`;
 const TEMPLATES_WITH_HEADSHOTS = ['light','standard','lifestyle'];
 const TEMPLATES_WITH_IMAGES = ['heavy', 'top-story-heavy','lifestyle'];
+const TEMPLATES_WITH_VIDEO = ['heavy'];
 const LIVEBLOG_MAPPING = {
 	inprogress: {
 		timestampStatus: 'last post',
@@ -72,16 +73,20 @@ const TeaserPresenter = class TeaserPresenter {
 		if (
 			!this.data.noHeadshot &&
 			this.headshot &&
-			TEMPLATES_WITH_HEADSHOTS.some(template => template === this.data.template)
+			TEMPLATES_WITH_HEADSHOTS.includes(this.data.template)
 		) {
 			mods.push('has-headshot');
 		}
 
 		if (this.data.size) mods.push(this.data.size);
 
-		if (this.data.mainImage &&
-			TEMPLATES_WITH_IMAGES.some(template => template === this.data.template) ) {
-			mods.push('has-image');
+		// if it's an in-situ video card, don't add the overflowing image effect!
+		if (this.data.mainImage) {
+			if (this.isBigVideo) {
+				mods.push('big-video');
+			} else if (TEMPLATES_WITH_IMAGES.includes(this.data.template)) {
+				mods.push('has-image');
+			}
 		}
 
 		if (this.data.isOpinion && modsDoesNotInclude('hero-image', this.data.mods)) {
@@ -235,6 +240,15 @@ const TeaserPresenter = class TeaserPresenter {
 			return this.data.promotionalTitle;
 		}
 		return this.data.title;
+	}
+
+	get isBigVideo () {
+		return Boolean(
+			this.data.flags
+			&& this.data.flags.inlineVideoTeaser
+			&& this.data.type === 'Video'
+			&& TEMPLATES_WITH_VIDEO.includes(this.data.template)
+		);
 	}
 
 	get advertiserPrefix () {

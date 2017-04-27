@@ -1,9 +1,12 @@
 {{#nTeaserPresenter @this template='heavy' mods=mods flags=@root.flags}}
 	<div class="o-teaser{{#each @nTeaserPresenter.classModifiers}} o-teaser--{{this}}{{/each}}" data-o-component="o-teaser" data-trackable="teaser">
-
 		<div class="o-teaser__content">
 
 			{{> n-teaser/templates/partials/display-concept}}
+
+			{{#if @nTeaserPresenter.isBigVideo}}
+				{{> n-teaser/templates/partials/big-video}}
+			{{/if}}
 
 			{{> n-teaser/templates/partials/title}}
 
@@ -15,7 +18,9 @@
 
 		</div>
 
-		{{> n-teaser/templates/partials/main-image}}
+		{{#unless @nTeaserPresenter.isBigVideo}}
+			{{> n-teaser/templates/partials/main-image}}
+		{{/unless}}
 
 	</div>
 {{/nTeaserPresenter}}
