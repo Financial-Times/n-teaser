@@ -10,6 +10,7 @@ const HEADSHOT_URL_PARAMETERS = `?source=next&width=${HEADSHOT_WIDTH * 2}&fit=sc
 const TEMPLATES_WITH_HEADSHOTS = ['light','standard','lifestyle'];
 const TEMPLATES_WITH_IMAGES = ['heavy', 'top-story-heavy','lifestyle'];
 const TEMPLATES_WITH_VIDEO = ['heavy'];
+const VARIATIONS_WITH_VIDEO = ['large', 'hero'];
 const LIVEBLOG_MAPPING = {
 	inprogress: {
 		timestampStatus: 'last post',
@@ -148,31 +149,51 @@ const TeaserPresenter = class TeaserPresenter {
 	get genrePrefix () {
 		//use package brand if article belongs to package
 		let packageArticle = this.data.containedIn
+
 		if (packageArticle && packageArticle[0] && packageArticle[0].title && packageArticle[0].brand) {
 			return packageArticle[0].brand.prefLabel;
-		} else {
-			if (brandAuthorDouble(this.data) === true) {
-				// dedupe authors who are also brands and where Author = stream
-				if (this.data.brandConcept &&
-					this.data.brandConcept.prefLabel !== this.data.authors[0].prefLabel &&
-					(!this.data.streamProperties ||
-					(this.data.streamProperties &&
-					this.data.streamProperties.id !== this.data.authors[0].id))) {
-					return this.data.brandConcept.prefLabel;
-				}
-			}
-			// Do not show a genre prefix against brands
-			if (!this.genre || this.data.brandConcept === this.teaserConcept) {
-				return null;
-			}
-			// Do not show a prefix if the stream is a special report
-			if (this.genre && this.data.genre.prefLabel === 'Special Report' &&
-				this.data.streamProperties &&
-				this.data.streamProperties.directType === 'http://www.ft.com/ontology/SpecialReport') {
-				return null;
-			}
-			return this.data.genre.prefLabel;
 		}
+
+		if (this.data.type === 'Video') {
+			return 'Video';
+		}
+
+		if (brandAuthorDouble(this.data) === true) {
+			// dedupe authors who are also brands and where Author = stream
+			if (this.data.brandConcept &&
+				this.data.brandConcept.prefLabel !== this.data.authors[0].prefLabel &&
+				(!this.data.streamProperties ||
+				(this.data.streamProperties &&
+				this.data.streamProperties.id !== this.data.authors[0].id))) {
+				return this.data.brandConcept.prefLabel;
+			}
+		}
+
+		// Do not show a genre prefix against brands
+		if (!this.genre || this.data.brandConcept === this.teaserConcept) {
+			return null;
+		}
+
+		// Do not show a prefix if the stream is a special report
+		if (this.genre && this.data.genre.prefLabel === 'Special Report' &&
+			this.data.streamProperties &&
+			this.data.streamProperties.directType === 'http://www.ft.com/ontology/SpecialReport') {
+			return null;
+		}
+
+		// Do not show a genre prefix against brands
+		if (!this.genre || this.data.brand === this.teaserConcept) {
+			return null;
+		}
+
+		// Do not show a prefix if the stream is a special report
+		if (this.genre && this.data.genre.prefLabel === 'Special Report' &&
+			this.data.streamProperties &&
+			this.data.streamProperties.directType === 'http://www.ft.com/ontology/SpecialReport') {
+			return null;
+		}
+
+		return this.data.genre.prefLabel;
 	}
 
 	//returns publishedDate, status, classModifier
@@ -248,6 +269,7 @@ const TeaserPresenter = class TeaserPresenter {
 			&& this.data.flags.inlineVideoTeaser
 			&& this.data.type === 'Video'
 			&& TEMPLATES_WITH_VIDEO.includes(this.data.template)
+			&& VARIATIONS_WITH_VIDEO.some((variation) => this.data.mods.includes(variation))
 		);
 	}
 
