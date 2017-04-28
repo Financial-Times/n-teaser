@@ -14,7 +14,11 @@
 
 		</div>
 
-		{{> n-teaser/templates/partials/main-image}}
+		{{#if @nTeaserPresenter.isBigVideo}}
+			{{> n-teaser/templates/partials/big-video}}
+		{{else}}
+			{{> n-teaser/templates/partials/main-image}}
+		{{/if}}
 
 		{{> n-teaser/templates/partials/related-content}}
 

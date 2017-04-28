@@ -9,8 +9,6 @@ const HEADSHOT_WIDTH = 75;
 const HEADSHOT_URL_PARAMETERS = `?source=next&width=${HEADSHOT_WIDTH * 2}&fit=scale-down&compression=best&tint=054593,d6d5d3`;
 const TEMPLATES_WITH_HEADSHOTS = ['light','standard','lifestyle'];
 const TEMPLATES_WITH_IMAGES = ['heavy', 'top-story-heavy','lifestyle'];
-const TEMPLATES_WITH_VIDEO = ['heavy'];
-const VARIATIONS_WITH_VIDEO = ['large', 'hero'];
 const LIVEBLOG_MAPPING = {
 	inprogress: {
 		timestampStatus: 'last post',
@@ -37,9 +35,12 @@ const brandAuthorDouble = (data) => {
 		return false;
 };
 
-const modsDoesNotInclude = (modToTest, modsArray) => {
-	if (!modsArray) return true;
-	return modsArray.indexOf(modToTest) === -1;
+const modsDoesInclude = (modToTest, modsArray = []) => {
+	return modsArray.includes(modToTest);
+};
+
+const modsDoesNotInclude = (modToTest, modsArray = []) => {
+	return !modsArray.includes(modToTest);
 };
 
 const TeaserPresenter = class TeaserPresenter {
@@ -264,12 +265,16 @@ const TeaserPresenter = class TeaserPresenter {
 	}
 
 	get isBigVideo () {
+		const isTopStory = this.data.template === 'top-story-heavy';
+		const isBigStory = modsDoesInclude('big-story', this.data.mods);
+		const isHeavy = this.data.template === 'heavy';
+		const isLarge = modsDoesInclude('large', this.data.mods) || modsDoesInclude('hero', this.data.mods);
+
 		return Boolean(
 			this.data.flags
 			&& this.data.flags.inlineVideoTeaser
 			&& this.data.type === 'Video'
-			&& TEMPLATES_WITH_VIDEO.includes(this.data.template)
-			&& VARIATIONS_WITH_VIDEO.some((variation) => this.data.mods.includes(variation))
+			&& ((isTopStory && !isBigStory) || (isHeavy && isLarge))
 		);
 	}
 
