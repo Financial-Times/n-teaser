@@ -44,6 +44,4 @@ for (const viewport of viewports) {
 	}
 };
 
-console.log(JSON.stringify(config, null, 2))
-
 module.exports = config;
