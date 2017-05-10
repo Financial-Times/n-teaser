@@ -35,7 +35,8 @@ for (const viewport of viewports) {
 	for (const url of urls) {
 		config.urls.push({
 			url: url,
-			viewport: viewport
+			viewport: viewport,
+			screenCapture: `./pa11y_screenCapture/${url || 'root'}.png`
 		})
 	}
 };
