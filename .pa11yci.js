@@ -26,7 +26,8 @@ const config = {
 				'Cookie': 'next-flags=ads:off,cookieMessage:off; secure=true'
 			}
 		},
-		timeout: 25000
+		timeout: 25000,
+		rules: ['Principle1.Guideline1_3.1_3_1_AAA']
 	},
 	urls: []
 };
