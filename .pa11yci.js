@@ -33,9 +33,13 @@ const config = {
 
 for (const viewport of viewports) {
 	for (const url of urls) {
+
+		const path = `${url.substring(url.lastIndexOf('/'))}@${viewport.width}x${viewport.height}`;
+
 		config.urls.push({
 			url: url,
-			viewport: viewport
+			viewport: viewport,
+			screenCapture: `./pa11y_screenCapture/${path}.png`
 		})
 	}
 };
