@@ -7,8 +7,9 @@ const MAX_RELATED_CONTENT = 3;
 const HEADSHOT_BASE_URL = 'https://www.ft.com/__origami/service/image/v2/images/raw/';
 const HEADSHOT_WIDTH = 75;
 const HEADSHOT_URL_PARAMETERS = `?source=next&width=${HEADSHOT_WIDTH * 2}&fit=scale-down&compression=best&tint=054593,d6d5d3`;
-const TEMPLATES_WITH_HEADSHOTS = ['light','standard','lifestyle'];
+const TEMPLATES_WITH_HEADSHOTS = ['light', 'standard', 'lifestyle'];
 const TEMPLATES_WITH_IMAGES = ['heavy', 'top-story-heavy','lifestyle'];
+const BIG_VIDEO_INVALID_MODS = ['centre', 'has-image'];
 const LIVEBLOG_MAPPING = {
 	inprogress: {
 		timestampStatus: 'last post',
@@ -83,12 +84,8 @@ const TeaserPresenter = class TeaserPresenter {
 		if (this.data.size) mods.push(this.data.size);
 
 		// if it's an in-situ video card, don't add the overflowing image effect!
-		if (this.data.mainImage) {
-			if (this.isBigVideo) {
-				mods.push('big-video');
-			} else if (TEMPLATES_WITH_IMAGES.includes(this.data.template)) {
-				mods.push('has-image');
-			}
+		if (this.data.mainImage && TEMPLATES_WITH_IMAGES.includes(this.data.template)) {
+			mods.push('has-image');
 		}
 
 		if (this.data.isOpinion && modsDoesNotInclude('hero-image', this.data.mods)) {
@@ -97,6 +94,16 @@ const TeaserPresenter = class TeaserPresenter {
 
 		if (this.data.isEditorsChoice && modsDoesNotInclude('hero-image', this.data.mods)) {
 			mods.push('highlight');
+		}
+
+		if (this.isBigVideo) {
+			mods.push('big-video');
+
+			// don't allow these mods! (mutates original array)
+			BIG_VIDEO_INVALID_MODS.forEach((invalid) => {
+				const i = mods.indexOf(invalid);
+				i > -1 && mods.splice(i, 1);
+			});
 		}
 
 		if (this.data.type) {
