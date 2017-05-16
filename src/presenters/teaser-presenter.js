@@ -26,10 +26,10 @@ const LIVEBLOG_MAPPING = {
 
 const brandAuthorDouble = (data) => {
 	if (
-		data.primaryBrandTag &&
-		data.primaryBrandTag.taxonomy === 'brand' &&
-		data.authorTags &&
-		data.authorTags.length &&
+		data.displayConcept &&
+		data.displayConcept.directType === 'http://www.ft.com/ontology/Brand' &&
+		data.authorConcepts &&
+		data.authorConcepts.length &&
 		data.isOpinion === true
 	) {
 		return true;
@@ -105,58 +105,58 @@ const TeaserPresenter = class TeaserPresenter {
 		return mods;
 	}
 
-	//returns tag to be displayed
-	get displayTag () {
-		//use package title as display tag if article belongs to package
+	//returns concept to be displayed
+	get displayConcept () {
+		//use package title as display concept if article belongs to package
 		let packageArticle = this.data.containedIn
 		if (packageArticle && packageArticle[0] && packageArticle[0].title) {
 			return Object.assign(this, { prefLabel: packageArticle[0].title, relativeUrl: packageArticle[0].relativeUrl});
 		} else {
-			// Use Primary Tag is Primary Brand Tag the same as stream
+			// Use Display Concept if Display Concept is the same as stream
 			if (this.data.streamProperties &&
-				this.data.streamProperties.idV1 &&
-				this.data.primaryBrandTag &&
-				this.data.streamProperties.idV1 === this.data.primaryBrandTag.idV1) {
-				return this.data.primaryTag || null;
+				this.data.streamProperties.id &&
+				this.data.displayConcept &&
+				this.data.streamProperties.id === this.data.displayConcept.id) {
+				return this.data.displayConcept || null;
 			}
-			// Use Author Tag if Opinion & Branded unless same as stream
+			// Use Author Concept if Opinion & Branded unless same as stream
 			if (brandAuthorDouble(this.data) === true &&
 				(!this.data.streamProperties ||
 				(this.data.streamProperties &&
-				this.data.streamProperties.idV1 !== this.data.authorTags[0].idV1 ))) {
-				return this.data.authorTags[0];
+				this.data.streamProperties.id !== this.data.authorConcepts[0].id ))) {
+				return this.data.authorConcepts[0];
 			}
-			return this.data.primaryBrandTag || this.data.teaserTag || null;
+			return this.data.displayConcept || null;
 		}
 	}
 
 	//returns genre prefix
 	get genrePrefix () {
-		//use package brand if article belongs to package
+		//use package display concept if article belongs to package
 		let packageArticle = this.data.containedIn
-		if (packageArticle && packageArticle[0] && packageArticle[0].title && packageArticle[0].primaryBrandTag) {
-			return packageArticle[0].primaryBrandTag.prefLabel;
+		if (packageArticle && packageArticle[0] && packageArticle[0].title && packageArticle[0].displayConcept) {
+			return packageArticle[0].displayConcept.prefLabel;
 		} else {
 			if (brandAuthorDouble(this.data) === true) {
-				// dedupe authors who are also brands and where Author = stream
-				if (this.data.primaryBrandTag.prefLabel !== this.data.authorTags[0].prefLabel &&
+				// dedupe authors who are also on display and where Author = stream
+				if (this.data.displayConcept.prefLabel !== this.data.authorConcepts[0].prefLabel &&
 					(!this.data.streamProperties ||
 					(this.data.streamProperties &&
-					this.data.streamProperties.idV1 !== this.data.authorTags[0].idV1))) {
-					return this.data.primaryBrandTag.prefLabel;
+					this.data.streamProperties.id !== this.data.authorConcepts[0].id))) {
+					return this.data.displayConcept.prefLabel;
 				}
 			}
 			// Do not show a genre prefix against brands
-			if (!this.data.genreTag || this.data.primaryBrandTag === this.displayTag) {
+			if (!this.data.genreConcept || this.data.displayConcept === this.displayConcept) {
 				return null;
 			}
 			// Do not show a prefix if the stream is a special report
-			if (this.data.genreTag && this.data.genreTag.prefLabel === 'Special Report' &&
+			if (this.data.genreConcept && this.data.genreConcept.prefLabel === 'Special Report' &&
 				this.data.streamProperties &&
-				this.data.streamProperties.taxonomy === 'specialReports') {
+				this.data.streamProperties.directType === 'http://www.ft.com/ontology/SpecialReport') {
 				return null;
 			}
-			return this.data.genreTag.prefLabel;
+			return this.data.genreConcept.prefLabel;
 		}
 	}
 
@@ -178,8 +178,8 @@ const TeaserPresenter = class TeaserPresenter {
 		let relatedContent = [];
 		if (Array.isArray(this.data.storyPackage) && this.data.storyPackage.length > 0) {
 			relatedContent = this.data.storyPackage;
-		} else if (this.data.primaryTag && Array.isArray(this.data.primaryTag.latestContent)) {
-			relatedContent = this.data.primaryTag.latestContent.filter(content => content.id !== this.data.id);
+		} else if (this.data.displayConcept && Array.isArray(this.data.displayConcept.latestContent)) {
+			relatedContent = this.data.displayConcept.latestContent.filter(content => content.id !== this.data.id);
 		}
 
 		return relatedContent
@@ -187,20 +187,20 @@ const TeaserPresenter = class TeaserPresenter {
 			.map(item => ({ data: item, classModifiers: [hyphenatePascalCase(item.type)] }))
 	}
 
-	// returns url and name for author headshot when primary brand tag is an author with a headshot
+	// returns url and name for author headshot when display concept is an author with a headshot
 	get headshot () {
 		let fileName;
-		if (this.data.primaryBrandTag
-			&& this.data.primaryBrandTag.attributes
-			&& this.data.primaryBrandTag.attributes.length > 0
+		if (this.data.displayConcept
+			&& this.data.displayConcept.attributes
+			&& this.data.displayConcept.attributes.length > 0
 		) {
-			fileName = this.data.primaryBrandTag.attributes[0].value;
+			fileName = this.data.displayConcept.attributes[0].value;
 		}
 		if ((brandAuthorDouble(this.data) === true)
-			&& this.data.authorTags.length > 0
-			&& this.data.authorTags[0].attributes.length > 0
+			&& this.data.authorConcepts.length > 0
+			&& this.data.authorConcepts[0].attributes.length > 0
 		) {
-			fileName = this.data.authorTags[0].attributes[0].value;
+			fileName = this.data.authorConcepts[0].attributes[0].value;
 		}
 
 		if (fileName) {
@@ -210,7 +210,7 @@ const TeaserPresenter = class TeaserPresenter {
 				height: HEADSHOT_WIDTH,
 				sizes: HEADSHOT_WIDTH,
 				widths: [HEADSHOT_WIDTH, 2 * HEADSHOT_WIDTH],
-				alt: `Photo of ${this.data.primaryBrandTag.prefLabel}`
+				alt: `Photo of ${this.data.displayConcept.prefLabel}`
 			};
 		} else {
 			return null;
