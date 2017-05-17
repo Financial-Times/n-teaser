@@ -137,7 +137,8 @@ const TeaserPresenter = class TeaserPresenter {
 		} else {
 			if (brandAuthorDouble(this.data) === true) {
 				// dedupe authors who are also brands and where Author = stream
-				if (this.data.brandConcept && this.data.brandConcept.prefLabel !== this.data.authorConcepts[0].prefLabel &&
+				if (this.data.brandConcept &&
+					this.data.brandConcept.prefLabel !== this.data.authorConcepts[0].prefLabel &&
 					(!this.data.streamProperties ||
 					(this.data.streamProperties &&
 					this.data.streamProperties.id !== this.data.authorConcepts[0].id))) {
@@ -188,17 +189,21 @@ const TeaserPresenter = class TeaserPresenter {
 	// returns url and name for author headshot when brand concept is an author with a headshot
 	get headshot () {
 		let fileName;
+		let concept;
+
 		if (this.data.brandConcept
 			&& this.data.brandConcept.attributes
 			&& this.data.brandConcept.attributes.length > 0
 		) {
 			fileName = this.data.brandConcept.attributes[0].value;
+			concept = this.data.brandConcept;
 		}
 		if ((brandAuthorDouble(this.data) === true)
 			&& this.data.authorConcepts.length > 0
 			&& this.data.authorConcepts[0].attributes.length > 0
 		) {
 			fileName = this.data.authorConcepts[0].attributes[0].value;
+			concept = this.data.authorConcepts[0];
 		}
 
 		if (fileName) {
@@ -208,7 +213,7 @@ const TeaserPresenter = class TeaserPresenter {
 				height: HEADSHOT_WIDTH,
 				sizes: HEADSHOT_WIDTH,
 				widths: [HEADSHOT_WIDTH, 2 * HEADSHOT_WIDTH],
-				alt: `Photo of ${this.data.brandConcept.prefLabel}`
+				alt: `Photo of ${concept.prefLabel}`
 			};
 		} else {
 			return null;
