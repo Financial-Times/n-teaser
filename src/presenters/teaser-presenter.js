@@ -26,7 +26,6 @@ const LIVEBLOG_MAPPING = {
 
 const brandAuthorDouble = (data) => {
 	if (
-		data.brandConcept &&
 		data.authorConcepts &&
 		data.authorConcepts.length &&
 		data.isOpinion === true
