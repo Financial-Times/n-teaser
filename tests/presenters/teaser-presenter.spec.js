@@ -185,7 +185,7 @@ describe('Teaser Presenter', () => {
 
 	});
 
-	context('displayConcept', () => {
+	context('teaserConcept', () => {
 
 		context('not on a stream page', () => {
 
@@ -195,19 +195,19 @@ describe('Teaser Presenter', () => {
 			it('returns the brandConcept when it exists', () => {
 				const content = Object.assign({}, brandConcept, displayConcept);
 				subject = new Presenter(content);
-				expect(subject.displayConcept.brandConcept).to.be.true;
+				expect(subject.teaserConcept.brandConcept).to.be.true;
 			});
 
 			it('returns the displayConcept when it exists and when brandConcept does not', () => {
 				const content = Object.assign({}, displayConcept);
 				subject = new Presenter(content);
-				expect(subject.displayConcept.displayConcept).to.be.true;
+				expect(subject.teaserConcept.displayConcept).to.be.true;
 			});
 
 			it('returns null if neither the brandConcept nor displayConcept exist', () => {
 				const content = {};
 				subject = new Presenter(content);
-				expect(subject.displayConcept).to.be.null;
+				expect(subject.teaserConcept).to.be.null;
 			});
 
 		});
@@ -215,7 +215,7 @@ describe('Teaser Presenter', () => {
 		context('package article', () => {
 			it('renders as display concept for package article', () => {
 				subject = new Presenter(articlePackageFixture);
-				expect(subject.displayConcept.prefLabel).to.equal('Management’s missing women')
+				expect(subject.teaserConcept.prefLabel).to.equal('Management’s missing women')
 			});
 		});
 
@@ -274,19 +274,19 @@ describe('Teaser Presenter', () => {
 			it('returns the brandConcept if not the same as the streamId', () => {
 				const content = Object.assign({}, streamProperties, brandConcept, displayConcept);
 				subject = new Presenter(content);
-				expect(subject.displayConcept.brandConcept).to.be.true;
+				expect(subject.teaserConcept.brandConcept).to.be.true;
 			});
 
 			it('returns the displayConcept if brandConcept is same as streamId', () => {
 				const content = Object.assign({}, streamPropertiesMatch, brandConcept, displayConcept);
 				subject = new Presenter(content);
-				expect(subject.displayConcept.displayConcept).to.be.true;
+				expect(subject.teaserConcept.displayConcept).to.be.true;
 			});
 
 			it('returns the displayConcept if no brandConcept', () => {
 				const content = Object.assign({}, streamPropertiesMatch, displayConcept);
 				subject = new Presenter(content);
-				expect(subject.displayConcept.displayConcept).to.be.true;
+				expect(subject.teaserConcept.displayConcept).to.be.true;
 			});
 
 		});
@@ -302,21 +302,21 @@ describe('Teaser Presenter', () => {
 				const content = Object.assign({}, brandConcept, authorConcepts, isOpinion);
 				subject = new Presenter(content);
 				expect(subject.genrePrefix).to.equal(brandConcept.brandConcept.prefLabel);
-				expect(subject.displayConcept).to.deep.equal(authorConcepts.authorConcepts[0]);
+				expect(subject.teaserConcept).to.deep.equal(authorConcepts.authorConcepts[0]);
 			});
 
 			it('returns only the author as displayConcept if brand and author are the same', () => {
 				const content = Object.assign({}, brandConceptDupe, authorConcepts, isOpinion);
 				subject = new Presenter(content);
 				expect(subject.genrePrefix).to.be.null;
-				expect(subject.displayConcept).to.deep.equal(authorConcepts.authorConcepts[0]);
+				expect(subject.teaserConcept).to.deep.equal(authorConcepts.authorConcepts[0]);
 			});
 
 			it('returns brand as display concept and no genre prefix if the author is the same as the stream', () => {
 				const content = Object.assign({ streamProperties: { id: 'XYZ' } }, brandConcept, authorConcepts, isOpinion);
 				subject = new Presenter(content);
 				expect(subject.genrePrefix).to.be.null;
-				expect(subject.displayConcept).to.deep.equal(brandConcept.brandConcept);
+				expect(subject.teaserConcept).to.deep.equal(brandConcept.brandConcept);
 			});
 
 		});

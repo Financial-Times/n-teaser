@@ -105,7 +105,7 @@ const TeaserPresenter = class TeaserPresenter {
 	}
 
 	//returns concept to be displayed
-	get displayConcept () {
+	get teaserConcept () {
 		//use package title as display concept if article belongs to package
 		let packageArticle = this.data.containedIn
 		if (packageArticle && packageArticle[0] && packageArticle[0].title) {
@@ -146,7 +146,7 @@ const TeaserPresenter = class TeaserPresenter {
 				}
 			}
 			// Do not show a genre prefix against brands
-			if (!this.data.genreConcept || this.data.brandConcept === this.displayConcept) {
+			if (!this.data.genreConcept || this.data.brandConcept === this.teaserConcept) {
 				return null;
 			}
 			// Do not show a prefix if the stream is a special report
