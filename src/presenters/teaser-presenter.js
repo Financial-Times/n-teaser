@@ -137,7 +137,7 @@ const TeaserPresenter = class TeaserPresenter {
 		} else {
 			if (brandAuthorDouble(this.data) === true) {
 				// dedupe authors who are also brands and where Author = stream
-				if (this.data.brandConcept.prefLabel !== this.data.authorConcepts[0].prefLabel &&
+				if (this.data.brandConcept && this.data.brandConcept.prefLabel !== this.data.authorConcepts[0].prefLabel &&
 					(!this.data.streamProperties ||
 					(this.data.streamProperties &&
 					this.data.streamProperties.id !== this.data.authorConcepts[0].id))) {
