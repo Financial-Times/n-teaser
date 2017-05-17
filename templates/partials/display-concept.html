@@ -8,9 +8,9 @@
 				{{@nTeaserPresenter.genrePrefix}}
 			</span>
 		{{/if}}
-		{{#if @nTeaserPresenter.displayTag}}
-			<a href="{{{@nTeaserPresenter.displayTag.relativeUrl}}}" class="o-teaser__tag" data-trackable="primary-tag">
-				<span>{{@nTeaserPresenter.displayTag.prefLabel}}</span>
+		{{#if @nTeaserPresenter.displayConcept}}
+			<a href="{{{@nTeaserPresenter.displayConcept.relativeUrl}}}" class="o-teaser__tag" data-trackable="primary-concept">
+				<span>{{@nTeaserPresenter.displayConcept.prefLabel}}</span>
 			</a>
 		{{/if}}
 		{{#if @nTeaserPresenter.duration}}
