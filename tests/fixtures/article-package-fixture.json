@@ -6,10 +6,10 @@
 	"title": "Women in finance discuss the gender pay and promotion gap",
 	"promotionalTitle": "Women in finance discuss the gender gap",
 	"publishedDate": "2017-04-09T08:23:47.000Z",
-	"initialPublishedDate": "2017-04-09T08:23:47Z",
+	"firstPublishedDate": "2017-04-09T08:23:47Z",
 	"isEditorsChoice": false,
 	"canBeSyndicated": "verify",
-	"genreTag": null,
+	"genreConcept": null,
 	"containedIn": [
 		{
 			"title": "Management’s missing women",
@@ -18,17 +18,17 @@
 			"design": {
 				"theme": "extra"
 			},
-			"primaryTag": {
-				"idV1": "YmQ3ZmFiNjctZjZlYS00Yzc1LTliZDEtMTZjYzBkYzliZjk4-VG9waWNz",
+			"displayConcept": {
+				"id": "3a34141d-e886-3c6f-8985-551ed91e994a",
 				"prefLabel": "Equality in workplace",
-				"taxonomy": "topics",
-				"url": "https://www.ft.com/topics/themes/Equality_in_workplace"
+				"directType": "http://www.ft.com/ontology/Topic",
+				"url": "https://www.ft.com/stream/3a34141d-e886-3c6f-8985-551ed91e994a"
 			},
-			"primaryBrandTag": {
-				"idV1": "ZjIwNzVmMDQtNzU3OC00NDY4LTg3MmItNGUyYmQ5ZjY3NGY3-QnJhbmRz",
+			"brandConcept": {
+				"idV1": "fb491676-5024-3111-a959-1fbce2fbecc1",
 				"prefLabel": "FT Series",
-				"taxonomy": "brand",
-				"url": "https://www.ft.com/stream/brandId/ZjIwNzVmMDQtNzU3OC00NDY4LTg3MmItNGUyYmQ5ZjY3NGY3-QnJhbmRz"
+				"taxonomy": "http://www.ft.com/ontology/product/Brand",
+				"url": "https://www.ft.com/stream/fb491676-5024-3111-a959-1fbce2fbecc1"
 			}
 		}
 	]

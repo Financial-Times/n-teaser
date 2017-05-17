@@ -185,74 +185,74 @@ describe('Teaser Presenter', () => {
 
 	});
 
-	context('displayTag', () => {
+	context('displayConcept', () => {
 
 		context('not on a stream page', () => {
 
-			const primaryBrandTag = { primaryBrandTag: { primaryBrandTag: true } };
-			const teaserTag = { teaserTag: { teaserTag: true } };
+			const brandConcept = { brandConcept: { brandConcept: true } };
+			const displayConcept = { displayConcept: { displayConcept: true } };
 
-			it('returns the primaryBrandTag when it exists', () => {
-				const content = Object.assign({}, primaryBrandTag, teaserTag);
+			it('returns the brandConcept when it exists', () => {
+				const content = Object.assign({}, brandConcept, displayConcept);
 				subject = new Presenter(content);
-				expect(subject.displayTag.primaryBrandTag).to.be.true;
+				expect(subject.displayConcept.brandConcept).to.be.true;
 			});
 
-			it('returns the teaserTag when it exists and when primaryBrandTag does not', () => {
-				const content = Object.assign({}, teaserTag);
+			it('returns the displayConcept when it exists and when brandConcept does not', () => {
+				const content = Object.assign({}, displayConcept);
 				subject = new Presenter(content);
-				expect(subject.displayTag.teaserTag).to.be.true;
+				expect(subject.displayConcept.displayConcept).to.be.true;
 			});
 
-			it('returns null if neither the primaryBrandTag nor teaserTag exist', () => {
+			it('returns null if neither the brandConcept nor displayConcept exist', () => {
 				const content = {};
 				subject = new Presenter(content);
-				expect(subject.displayTag).to.be.null;
+				expect(subject.displayConcept).to.be.null;
 			});
 
 		});
 
 		context('package article', () => {
-			it('renders as display tag for package article', () => {
+			it('renders as display concept for package article', () => {
 				subject = new Presenter(articlePackageFixture);
-				expect(subject.displayTag.prefLabel).to.equal('Management’s missing women')
+				expect(subject.displayConcept.prefLabel).to.equal('Management’s missing women')
 			});
 		});
 
 		context('genrePrefix', () => {
 
-			const genreTag = { genreTag: { prefLabel: 'genre label' } };
-			const primaryBrandTag = { primaryBrandTag: { idV1: 'ABC' } };
-			const streamProperties = { streamProperties: { idV1: 'ABC'}};
-			const streamPropertiesSpecial = { streamProperties: { taxonomy: 'specialReports'}};
-			const genreTagSpecial = { genreTag: { prefLabel: 'Special Report' } };
+			const genreConcept = { genreConcept: { prefLabel: 'genre label' } };
+			const brandConcept = { brandConcept: { id: 'ABC' } };
+			const streamProperties = { streamProperties: { id: 'ABC'}};
+			const streamPropertiesSpecial = { streamProperties: { directType: 'http://www.ft.com/ontology/SpecialReport'}};
+			const genreConceptSpecial = { genreConcept: { prefLabel: 'Special Report' } };
 
-			it('returns null if there is no genreTag', () => {
+			it('returns null if there is no genreConcept', () => {
 				const content = {};
 				subject = new Presenter(content);
 				expect(subject.genrePrefix).to.be.null;
 			});
 
-			it('returns null if there is a genre tag but the display tag is the primary brand tag', () => {
-				const content = Object.assign({}, genreTag, primaryBrandTag);
+			it('returns null if there is a genre concept but the display concept is the brand concept', () => {
+				const content = Object.assign({}, genreConcept, brandConcept);
 				subject = new Presenter(content);
 				expect(subject.genrePrefix).to.be.null;
 			});
 
-			it('returns the label of the genre tag if it exists and there is no primary brand tag', () => {
-				const content = Object.assign({}, genreTag);
+			it('returns the label of the genre concept if it exists and there is no brand concept', () => {
+				const content = Object.assign({}, genreConcept);
 				subject = new Presenter(content);
-				expect(subject.genrePrefix).to.equal(genreTag.genreTag.prefLabel);
+				expect(subject.genrePrefix).to.equal(genreConcept.genreConcept.prefLabel);
 			});
 
-			it('returns the label of the genre tag if it exists and the primary brand tag is not displayed', () => {
-				const content = Object.assign({}, genreTag, primaryBrandTag, streamProperties);
+			it('returns the label of the genre concept if it exists and the brand concept is not displayed', () => {
+				const content = Object.assign({}, genreConcept, brandConcept, streamProperties);
 				subject = new Presenter(content);
-				expect(subject.genrePrefix).to.equal(genreTag.genreTag.prefLabel);
+				expect(subject.genrePrefix).to.equal(genreConcept.genreConcept.prefLabel);
 			});
 
 			it('returns null when on a special reports stream page', () => {
-				const content = Object.assign({}, genreTagSpecial, streamPropertiesSpecial);
+				const content = Object.assign({}, genreConceptSpecial, streamPropertiesSpecial);
 				subject = new Presenter(content);
 				expect(subject.genrePrefix).to.be.null;
 			});
@@ -266,58 +266,57 @@ describe('Teaser Presenter', () => {
 
 		context('on a stream page', () => {
 
-			const primaryBrandTag = { primaryBrandTag: { primaryBrandTag: true, idV1: 'ABC' } };
-			const primaryTag = { primaryTag: { primaryTag: true } };
-			const teaserTag = { teaserTag: { teaserTag: true } };
-			const streamProperties = { streamProperties: { idV1: 'XYZ'} };
-			const streamPropertiesMatch = { streamProperties: { idV1: 'ABC'} };
+			const brandConcept = { brandConcept: { brandConcept: true, id: 'ABC' } };
+			const displayConcept = { displayConcept: { displayConcept: true } };
+			const streamProperties = { streamProperties: { id: 'XYZ'} };
+			const streamPropertiesMatch = { streamProperties: { id: 'ABC'} };
 
-			it('returns the primaryBrandTag if not the same as the streamId', () => {
-				const content = Object.assign({}, streamProperties, primaryBrandTag, primaryTag, teaserTag);
+			it('returns the brandConcept if not the same as the streamId', () => {
+				const content = Object.assign({}, streamProperties, brandConcept, displayConcept);
 				subject = new Presenter(content);
-				expect(subject.displayTag.primaryBrandTag).to.be.true;
+				expect(subject.displayConcept.brandConcept).to.be.true;
 			});
 
-			it('returns the primaryTag if primaryBrandTag is same as streamId', () => {
-				const content = Object.assign({}, streamPropertiesMatch, primaryBrandTag, primaryTag, teaserTag);
+			it('returns the displayConcept if brandConcept is same as streamId', () => {
+				const content = Object.assign({}, streamPropertiesMatch, brandConcept, displayConcept);
 				subject = new Presenter(content);
-				expect(subject.displayTag.primaryTag).to.be.true;
+				expect(subject.displayConcept.displayConcept).to.be.true;
 			});
 
-			it('returns the teaserTag if no primaryBrandTag', () => {
-				const content = Object.assign({}, streamPropertiesMatch, primaryTag, teaserTag);
+			it('returns the displayConcept if no brandConcept', () => {
+				const content = Object.assign({}, streamPropertiesMatch, displayConcept);
 				subject = new Presenter(content);
-				expect(subject.displayTag.teaserTag).to.be.true;
+				expect(subject.displayConcept.displayConcept).to.be.true;
 			});
 
 		});
 
 		context('when it is both a brand and an opinion / author', () => {
 
-			const primaryBrandTag = { primaryBrandTag: { prefLabel: 'brandName', taxonomy: 'brand' } };
-			const primaryBrandTagDupe = { primaryBrandTag: { prefLabel: 'authorName', taxonomy: 'brand' } };
-			const authorTags = { authorTags: [ { prefLabel: 'authorName', taxonomy: 'author', idV1: 'XYZ' } ] };
+			const brandConcept = { brandConcept: { prefLabel: 'brandName', directType: 'http://www.ft.com/ontology/Brand' } };
+			const brandConceptDupe = { brandConcept: { prefLabel: 'authorName', directType: 'http://www.ft.com/ontology/Brand' } };
+			const authorConcepts = { authorConcepts: [ { prefLabel: 'authorName', directType: 'http://www.ft.com/ontology/Person', id: 'XYZ' } ] };
 			const isOpinion = { isOpinion: true }
 
-			it('returns the brand as genrePrefix and author as displayTag', () => {
-				const content = Object.assign({}, primaryBrandTag, authorTags, isOpinion);
+			it('returns the brand as genrePrefix and author as displayConcept', () => {
+				const content = Object.assign({}, brandConcept, authorConcepts, isOpinion);
 				subject = new Presenter(content);
-				expect(subject.genrePrefix).to.equal(primaryBrandTag.primaryBrandTag.prefLabel);
-				expect(subject.displayTag).to.deep.equal(authorTags.authorTags[0]);
+				expect(subject.genrePrefix).to.equal(brandConcept.brandConcept.prefLabel);
+				expect(subject.displayConcept).to.deep.equal(authorConcepts.authorConcepts[0]);
 			});
 
-			it('returns only the author as displayTag if brand and author are the same', () => {
-				const content = Object.assign({}, primaryBrandTagDupe, authorTags, isOpinion);
+			it('returns only the author as displayConcept if brand and author are the same', () => {
+				const content = Object.assign({}, brandConceptDupe, authorConcepts, isOpinion);
 				subject = new Presenter(content);
 				expect(subject.genrePrefix).to.be.null;
-				expect(subject.displayTag).to.deep.equal(authorTags.authorTags[0]);
+				expect(subject.displayConcept).to.deep.equal(authorConcepts.authorConcepts[0]);
 			});
 
-			it('returns brand as display tag and no genre prefix if the author is the same as the stream', () => {
-				const content = Object.assign({ streamProperties: { idV1: 'XYZ' } }, primaryBrandTag, authorTags, isOpinion);
+			it('returns brand as display concept and no genre prefix if the author is the same as the stream', () => {
+				const content = Object.assign({ streamProperties: { id: 'XYZ' } }, brandConcept, authorConcepts, isOpinion);
 				subject = new Presenter(content);
 				expect(subject.genrePrefix).to.be.null;
-				expect(subject.displayTag).to.deep.equal(primaryBrandTag.primaryBrandTag);
+				expect(subject.displayConcept).to.deep.equal(brandConcept.brandConcept);
 			});
 
 		});
@@ -361,20 +360,20 @@ describe('Teaser Presenter', () => {
 
 		context('less than an hour since the article published', () => {
 
-			it('returns new when publishedDate and initialPublishedDate are the same', () => {
+			it('returns new when publishedDate and firstPublishedDate are the same', () => {
 				const fiftyNineMinutesAgo = Date.now() - FIFTY_NINE_MINUTES;
 				const content = {
 					publishedDate: fiftyNineMinutesAgo,
-					initialPublishedDate: fiftyNineMinutesAgo
+					firstPublishedDate: fiftyNineMinutesAgo
 				};
 				subject = new Presenter(content);
 				expect(subject.timeStatus()).to.equal('new');
 			});
 
-			it('returns updated when published date and initialPublishedDate differ', () => {
+			it('returns updated when published date and firstPublishedDate differ', () => {
 				const content = {
 					publishedDate: Date.now() - FIFTY_NINE_MINUTES,
-					initialPublishedDate: Date.now() - SIXTY_ONE_MINUTES
+					firstPublishedDate: Date.now() - SIXTY_ONE_MINUTES
 				};
 				subject = new Presenter(content);
 				expect(subject.timeStatus()).to.equal('updated');
@@ -388,7 +387,7 @@ describe('Teaser Presenter', () => {
 				const sixtyOneMinutesAgo = Date.now() - SIXTY_ONE_MINUTES;
 				const content = {
 					publishedDate: sixtyOneMinutesAgo,
-					initialPublishedDate: sixtyOneMinutesAgo
+					firstPublishedDate: sixtyOneMinutesAgo
 				};
 				subject = new Presenter(content);
 				expect(subject.timeStatus()).to.be.null;
@@ -455,7 +454,7 @@ describe('Teaser Presenter', () => {
 			expect(subject.relatedContent.map(item => item.data)).to.deep.equal(articleStandardFixture.storyPackage);
 		});
 
-		it('returns latest content of primary tag when no story package, current article filtered', () => {
+		it('returns latest content of display concept when no story package, current article filtered', () => {
 			subject = new Presenter(articleBrandFixture);
 			expect(subject.relatedContent.length).to.equal(3);
 			subject.relatedContent.map(content => {
@@ -480,12 +479,12 @@ describe('Teaser Presenter', () => {
 
 		context('author brand combo', () => {
 
-			const primaryBrandTag = { primaryBrandTag: { prefLabel: 'brandName', taxonomy: 'brand', attributes: [] } };
-			const authorTags = { authorTags: [ { prefLabel: 'authorName', attributes: [{key: 'headshot', value:'author-name'} ] } ] };
+			const brandConcept = { brandConcept: { prefLabel: 'brandName', directType: 'http://www.ft.com/ontology/Brand', attributes: [] } };
+			const authorConcepts = { authorConcepts: [ { prefLabel: 'authorName', attributes: [{key: 'headshot', value:'author-name'} ] } ] };
 			const isOpinion = { isOpinion: true }
 
 			it('returns a headshot when the author has one', () => {
-				const content = Object.assign({}, primaryBrandTag, authorTags, isOpinion);
+				const content = Object.assign({}, brandConcept, authorConcepts, isOpinion);
 				subject = new Presenter(content);
 				expect(subject.headshot.url).to.include('author-name');
 			});

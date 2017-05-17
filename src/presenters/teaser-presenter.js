@@ -26,8 +26,7 @@ const LIVEBLOG_MAPPING = {
 
 const brandAuthorDouble = (data) => {
 	if (
-		data.displayConcept &&
-		data.displayConcept.directType === 'http://www.ft.com/ontology/Brand' &&
+		data.brandConcept &&
 		data.authorConcepts &&
 		data.authorConcepts.length &&
 		data.isOpinion === true
@@ -112,11 +111,11 @@ const TeaserPresenter = class TeaserPresenter {
 		if (packageArticle && packageArticle[0] && packageArticle[0].title) {
 			return Object.assign(this, { prefLabel: packageArticle[0].title, relativeUrl: packageArticle[0].relativeUrl});
 		} else {
-			// Use Display Concept if Display Concept is the same as stream
+			// Use Display concept if Brand concept is the same as stream
 			if (this.data.streamProperties &&
 				this.data.streamProperties.id &&
-				this.data.displayConcept &&
-				this.data.streamProperties.id === this.data.displayConcept.id) {
+				this.data.brandConcept &&
+				this.data.streamProperties.id === this.data.brandConcept.id) {
 				return this.data.displayConcept || null;
 			}
 			// Use Author Concept if Opinion & Branded unless same as stream
@@ -126,28 +125,28 @@ const TeaserPresenter = class TeaserPresenter {
 				this.data.streamProperties.id !== this.data.authorConcepts[0].id ))) {
 				return this.data.authorConcepts[0];
 			}
-			return this.data.displayConcept || null;
+			return this.data.brandConcept || this.data.displayConcept || null;
 		}
 	}
 
 	//returns genre prefix
 	get genrePrefix () {
-		//use package display concept if article belongs to package
+		//use package brand if article belongs to package
 		let packageArticle = this.data.containedIn
-		if (packageArticle && packageArticle[0] && packageArticle[0].title && packageArticle[0].displayConcept) {
-			return packageArticle[0].displayConcept.prefLabel;
+		if (packageArticle && packageArticle[0] && packageArticle[0].title && packageArticle[0].brandConcept) {
+			return packageArticle[0].brandConcept.prefLabel;
 		} else {
 			if (brandAuthorDouble(this.data) === true) {
-				// dedupe authors who are also on display and where Author = stream
-				if (this.data.displayConcept.prefLabel !== this.data.authorConcepts[0].prefLabel &&
+				// dedupe authors who are also brands and where Author = stream
+				if (this.data.brandConcept.prefLabel !== this.data.authorConcepts[0].prefLabel &&
 					(!this.data.streamProperties ||
 					(this.data.streamProperties &&
 					this.data.streamProperties.id !== this.data.authorConcepts[0].id))) {
-					return this.data.displayConcept.prefLabel;
+					return this.data.brandConcept.prefLabel;
 				}
 			}
 			// Do not show a genre prefix against brands
-			if (!this.data.genreConcept || this.data.displayConcept === this.displayConcept) {
+			if (!this.data.genreConcept || this.data.brandConcept === this.displayConcept) {
 				return null;
 			}
 			// Do not show a prefix if the stream is a special report
@@ -187,14 +186,14 @@ const TeaserPresenter = class TeaserPresenter {
 			.map(item => ({ data: item, classModifiers: [hyphenatePascalCase(item.type)] }))
 	}
 
-	// returns url and name for author headshot when display concept is an author with a headshot
+	// returns url and name for author headshot when brand concept is an author with a headshot
 	get headshot () {
 		let fileName;
-		if (this.data.displayConcept
-			&& this.data.displayConcept.attributes
-			&& this.data.displayConcept.attributes.length > 0
+		if (this.data.brandConcept
+			&& this.data.brandConcept.attributes
+			&& this.data.brandConcept.attributes.length > 0
 		) {
-			fileName = this.data.displayConcept.attributes[0].value;
+			fileName = this.data.brandConcept.attributes[0].value;
 		}
 		if ((brandAuthorDouble(this.data) === true)
 			&& this.data.authorConcepts.length > 0
@@ -210,7 +209,7 @@ const TeaserPresenter = class TeaserPresenter {
 				height: HEADSHOT_WIDTH,
 				sizes: HEADSHOT_WIDTH,
 				widths: [HEADSHOT_WIDTH, 2 * HEADSHOT_WIDTH],
-				alt: `Photo of ${this.data.displayConcept.prefLabel}`
+				alt: `Photo of ${this.data.brandConcept.prefLabel}`
 			};
 		} else {
 			return null;
@@ -246,10 +245,10 @@ const TeaserPresenter = class TeaserPresenter {
 	timeStatus () {
 		const now = Date.now();
 		const publishedDate = new Date(this.data.publishedDate).getTime();
-		const initialPublishedDate = new Date(this.data.initialPublishedDate).getTime();
+		const firstPublishedDate = new Date(this.data.firstPublishedDate).getTime();
 		let status = null;
 		if (now - publishedDate < ONE_HOUR) {
-			if (publishedDate === initialPublishedDate) {
+			if (publishedDate === firstPublishedDate) {
 				status = 'new';
 			} else {
 				status = 'updated';
