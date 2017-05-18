@@ -1,6 +1,6 @@
 'use strict';
 
-const express = require('@financial-times/n-express');
+const express = require('@financial-times/n-internal-tool');
 const fixtures = require('./fixtures/fixtures.json');
 const fixturesCommercial = require('./fixtures/fixtures-commercial-content');
 const fixturesPackage = require('./fixtures/fixtures-package');
@@ -12,6 +12,7 @@ const highlight = chalk.bold.green;
 
 const app = module.exports = express({
 	name: 'public',
+	systemCode: 'n-teaser-demo',
 	withFlags: false,
 	withHandlebars: true,
 	withNavigation: false,
@@ -21,6 +22,8 @@ const app = module.exports = express({
 	viewsDirectory: '/demos/templates',
 	partialsDirectory: process.cwd(),
 	directory: process.cwd(),
+	demo: true,
+	s3o: false,
 	helpers:  {
 		nTeaserPresenter: require('../').presenter,
 		packageTeaserPresenter: require('../').presenter
