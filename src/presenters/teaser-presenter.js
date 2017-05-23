@@ -175,8 +175,8 @@ const TeaserPresenter = class TeaserPresenter {
 	// returns an array of content items related to the main article
 	get relatedContent () {
 		let relatedContent = [];
-		if (Array.isArray(this.data.storyPackage) && this.data.storyPackage.length > 0) {
-			relatedContent = this.data.storyPackage;
+		if (Array.isArray(this.data.curatedRelatedContent) && this.data.curatedRelatedContent.length > 0) {
+			relatedContent = this.data.curatedRelatedContent;
 		} else if (this.data.displayConcept && Array.isArray(this.data.displayConcept.latestContent)) {
 			relatedContent = this.data.displayConcept.latestContent.filter(content => content.id !== this.data.id);
 		}
