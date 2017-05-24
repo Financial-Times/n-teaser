@@ -12,7 +12,9 @@
 
 			{{> n-teaser/templates/partials/standfirst}}
 
-			{{> n-teaser/templates/partials/timestamp}}
+			{{#unless @nTeaserPresenter.isBigVideo}}
+				{{> n-teaser/templates/partials/timestamp}}
+			{{/unless}}
 
 			{{> n-teaser/templates/partials/actions}}
 
