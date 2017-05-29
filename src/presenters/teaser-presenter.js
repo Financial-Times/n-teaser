@@ -200,6 +200,7 @@ const TeaserPresenter = class TeaserPresenter {
 		}
 		if ((brandAuthorDouble(this.data) === true)
 			&& this.data.authorConcepts.length > 0
+			&& this.data.authorConcepts[0].attributes
 			&& this.data.authorConcepts[0].attributes.length > 0
 		) {
 			fileName = this.data.authorConcepts[0].attributes[0].value;
