@@ -1,5 +1,5 @@
 {
-  "name": "@financial-times/n-teaser-v2",
+  "name": "@financial-times/n-teaser",
   "version": "0.0.0",
   "description": "n-card’s replacement: improved styles, simpler combinations, more basic templating",
   "main": "main.js",
