@@ -4,14 +4,10 @@
   "relativeUrl": "/content/bbcddb7a-9f61-11e6-86d5-4e36b35c3550",
   "title": "Theresa May backs Mark Carney to stay as Bank of England governor",
   "publishedDate": "2016-10-31T12:46:49Z",
-  "initialPublishedDate": "2016-10-31T12:46:49Z",
+  "firstPublishedDate": "2016-10-31T12:46:49Z",
   "id": "bbcddb7a-9f61-11e6-86d5-4e36b35c3550",
-  "teaserTag": {
-    "prefLabel": "UK Politics & Policy",
-    "relativeUrl": "/world/uk/politics"
-  },
-  "genreTag": null,
-  "primaryBrandTag": null,
+  "genreConcept": null,
+  "brandConcept": null,
   "standfirst": "Prime minister ‘clear in her support’ despite sustained criticism from Brexiters",
   "mainImage": {
     "title": "",
@@ -21,7 +17,7 @@
     "height": 1152,
     "ratio": 1.7777777777777777
   },
-  "storyPackage": [
+  "curatedRelatedContent": [
     {
       "type": "Article",
       "relativeUrl": "/content/8ecc36d0-9f66-11e6-86d5-4e36b35c3550",
@@ -41,7 +37,9 @@
       "title": "Guest post: Dogs not Barking"
     }
   ],
-  "primaryTag": {
+  "displayConcept": {
+    "prefLabel": "UK Politics & Policy",
+    "relativeUrl": "/world/uk/politics",
     "latestContent": [
       {
         "type": "Article",

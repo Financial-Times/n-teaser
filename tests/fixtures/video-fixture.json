@@ -10,13 +10,9 @@
         "width": 640,
         "height": 360
     },
-    "teaserTag": {
+    "displayConcept": {
         "prefLabel": "Week Ahead",
-        "relativeUrl": "/stream/brandId/MGY3OTBkZGEtYjIyZC00MDkxLWI1Y2EtZWJlNTVkYzk1YjZh-QnJhbmRz"
-    },
-    "primaryTag": {
-        "prefLabel": "Week Ahead",
-        "relativeUrl": "/stream/brandId/MGY3OTBkZGEtYjIyZC00MDkxLWI1Y2EtZWJlNTVkYzk1YjZh-QnJhbmRz"
+        "relativeUrl": "/stream/c24d6335-076a-366a-98e2-500bb26401d6"
     },
     "duration": 270655,
     "formattedDuration": "4:30"

@@ -26,10 +26,8 @@ const LIVEBLOG_MAPPING = {
 
 const brandAuthorDouble = (data) => {
 	if (
-		data.primaryBrandTag &&
-		data.primaryBrandTag.taxonomy === 'brand' &&
-		data.authorTags &&
-		data.authorTags.length &&
+		data.authorConcepts &&
+		data.authorConcepts.length &&
 		data.isOpinion === true
 	) {
 		return true;
@@ -105,28 +103,28 @@ const TeaserPresenter = class TeaserPresenter {
 		return mods;
 	}
 
-	//returns tag to be displayed
-	get displayTag () {
-		//use package title as display tag if article belongs to package
+	//returns concept to be displayed
+	get teaserConcept () {
+		//use package title as display concept if article belongs to package
 		let packageArticle = this.data.containedIn
 		if (packageArticle && packageArticle[0] && packageArticle[0].title) {
 			return Object.assign(this, { prefLabel: packageArticle[0].title, relativeUrl: packageArticle[0].relativeUrl});
 		} else {
-			// Use Primary Tag is Primary Brand Tag the same as stream
+			// Use Display concept if Brand concept is the same as stream
 			if (this.data.streamProperties &&
-				this.data.streamProperties.idV1 &&
-				this.data.primaryBrandTag &&
-				this.data.streamProperties.idV1 === this.data.primaryBrandTag.idV1) {
-				return this.data.primaryTag || null;
+				this.data.streamProperties.id &&
+				this.data.brandConcept &&
+				this.data.streamProperties.id === this.data.brandConcept.id) {
+				return this.data.displayConcept || null;
 			}
-			// Use Author Tag if Opinion & Branded unless same as stream
+			// Use Author Concept if Opinion & Branded unless same as stream
 			if (brandAuthorDouble(this.data) === true &&
 				(!this.data.streamProperties ||
 				(this.data.streamProperties &&
-				this.data.streamProperties.idV1 !== this.data.authorTags[0].idV1 ))) {
-				return this.data.authorTags[0];
+				this.data.streamProperties.id !== this.data.authorConcepts[0].id ))) {
+				return this.data.authorConcepts[0];
 			}
-			return this.data.primaryBrandTag || this.data.teaserTag || null;
+			return this.data.brandConcept || this.data.displayConcept || null;
 		}
 	}
 
@@ -134,29 +132,30 @@ const TeaserPresenter = class TeaserPresenter {
 	get genrePrefix () {
 		//use package brand if article belongs to package
 		let packageArticle = this.data.containedIn
-		if (packageArticle && packageArticle[0] && packageArticle[0].title && packageArticle[0].primaryBrandTag) {
-			return packageArticle[0].primaryBrandTag.prefLabel;
+		if (packageArticle && packageArticle[0] && packageArticle[0].title && packageArticle[0].brandConcept) {
+			return packageArticle[0].brandConcept.prefLabel;
 		} else {
 			if (brandAuthorDouble(this.data) === true) {
 				// dedupe authors who are also brands and where Author = stream
-				if (this.data.primaryBrandTag.prefLabel !== this.data.authorTags[0].prefLabel &&
+				if (this.data.brandConcept &&
+					this.data.brandConcept.prefLabel !== this.data.authorConcepts[0].prefLabel &&
 					(!this.data.streamProperties ||
 					(this.data.streamProperties &&
-					this.data.streamProperties.idV1 !== this.data.authorTags[0].idV1))) {
-					return this.data.primaryBrandTag.prefLabel;
+					this.data.streamProperties.id !== this.data.authorConcepts[0].id))) {
+					return this.data.brandConcept.prefLabel;
 				}
 			}
 			// Do not show a genre prefix against brands
-			if (!this.data.genreTag || this.data.primaryBrandTag === this.displayTag) {
+			if (!this.data.genreConcept || this.data.brandConcept === this.teaserConcept) {
 				return null;
 			}
 			// Do not show a prefix if the stream is a special report
-			if (this.data.genreTag && this.data.genreTag.prefLabel === 'Special Report' &&
+			if (this.data.genreConcept && this.data.genreConcept.prefLabel === 'Special Report' &&
 				this.data.streamProperties &&
-				this.data.streamProperties.taxonomy === 'specialReports') {
+				this.data.streamProperties.directType === 'http://www.ft.com/ontology/SpecialReport') {
 				return null;
 			}
-			return this.data.genreTag.prefLabel;
+			return this.data.genreConcept.prefLabel;
 		}
 	}
 
@@ -176,10 +175,10 @@ const TeaserPresenter = class TeaserPresenter {
 	// returns an array of content items related to the main article
 	get relatedContent () {
 		let relatedContent = [];
-		if (Array.isArray(this.data.storyPackage) && this.data.storyPackage.length > 0) {
-			relatedContent = this.data.storyPackage;
-		} else if (this.data.primaryTag && Array.isArray(this.data.primaryTag.latestContent)) {
-			relatedContent = this.data.primaryTag.latestContent.filter(content => content.id !== this.data.id);
+		if (Array.isArray(this.data.curatedRelatedContent) && this.data.curatedRelatedContent.length > 0) {
+			relatedContent = this.data.curatedRelatedContent;
+		} else if (this.data.displayConcept && Array.isArray(this.data.displayConcept.latestContent)) {
+			relatedContent = this.data.displayConcept.latestContent.filter(content => content.id !== this.data.id);
 		}
 
 		return relatedContent
@@ -187,20 +186,25 @@ const TeaserPresenter = class TeaserPresenter {
 			.map(item => ({ data: item, classModifiers: [hyphenatePascalCase(item.type)] }))
 	}
 
-	// returns url and name for author headshot when primary brand tag is an author with a headshot
+	// returns url and name for author headshot when brand concept is an author with a headshot
 	get headshot () {
 		let fileName;
-		if (this.data.primaryBrandTag
-			&& this.data.primaryBrandTag.attributes
-			&& this.data.primaryBrandTag.attributes.length > 0
+		let concept;
+
+		if (this.data.brandConcept
+			&& this.data.brandConcept.attributes
+			&& this.data.brandConcept.attributes.length > 0
 		) {
-			fileName = this.data.primaryBrandTag.attributes[0].value;
+			fileName = this.data.brandConcept.attributes[0].value;
+			concept = this.data.brandConcept;
 		}
 		if ((brandAuthorDouble(this.data) === true)
-			&& this.data.authorTags.length > 0
-			&& this.data.authorTags[0].attributes.length > 0
+			&& this.data.authorConcepts.length > 0
+			&& this.data.authorConcepts[0].attributes
+			&& this.data.authorConcepts[0].attributes.length > 0
 		) {
-			fileName = this.data.authorTags[0].attributes[0].value;
+			fileName = this.data.authorConcepts[0].attributes[0].value;
+			concept = this.data.authorConcepts[0];
 		}
 
 		if (fileName) {
@@ -210,7 +214,7 @@ const TeaserPresenter = class TeaserPresenter {
 				height: HEADSHOT_WIDTH,
 				sizes: HEADSHOT_WIDTH,
 				widths: [HEADSHOT_WIDTH, 2 * HEADSHOT_WIDTH],
-				alt: `Photo of ${this.data.primaryBrandTag.prefLabel}`
+				alt: `Photo of ${concept.prefLabel}`
 			};
 		} else {
 			return null;
@@ -246,10 +250,10 @@ const TeaserPresenter = class TeaserPresenter {
 	timeStatus () {
 		const now = Date.now();
 		const publishedDate = new Date(this.data.publishedDate).getTime();
-		const initialPublishedDate = new Date(this.data.initialPublishedDate).getTime();
+		const firstPublishedDate = new Date(this.data.firstPublishedDate).getTime();
 		let status = null;
 		if (now - publishedDate < ONE_HOUR) {
-			if (publishedDate === initialPublishedDate) {
+			if (publishedDate === firstPublishedDate) {
 				status = 'new';
 			} else {
 				status = 'updated';

@@ -17,30 +17,30 @@ module.exports = {
 			title
 			promotionalTitle
 			publishedDate
-			initialPublishedDate
+			firstPublishedDate
 			isEditorsChoice
 			canBeSyndicated
-			genreTag(only: ["MQ==-R2VucmVz", "Mw==-R2VucmVz", "OQ==-R2VucmVz", "NA==-R2VucmVz", "MTA=-R2VucmVz"]) {
+			genreConcept(only: ["61d707b5-6fab-3541-b017-49b72de80772", "9c2af23a-ee61-303f-97e8-2026fb031bd5", "dc9332a7-453d-3b80-a53d-5a19579d9359", "b3ecdf0e-68bb-3303-8773-ec9c05e80234", "3094f0a9-1e1c-3ec3-b7e3-4d4885a826ed"]) {
 				prefLabel
 			}
-			primaryBrandTag {
+			brandConcept {
 				prefLabel
 				relativeUrl
-				taxonomy
+				directType
 				attributes(only: ["headshot"]) {
 					key
 					value
 				}
-				idV1
+				id
 			}
-			authorTags(limit: 1) {
+			authorConcepts(limit: 1) {
 				prefLabel
 				relativeUrl
 				attributes(only: ["headshot"]) {
 					key
 					value
 				}
-				idV1
+				id
 			}
 			isOpinion
 		}
@@ -48,11 +48,7 @@ module.exports = {
 	teaserLight: `
 		fragment TeaserLight on Content {
 			id
-			teaserTag {
-				prefLabel
-				relativeUrl
-			}
-			primaryTag {
+			displayConcept {
 				prefLabel
 				relativeUrl
 			}
@@ -89,7 +85,7 @@ module.exports = {
 						theme
 					}
 				}
-				primaryBrandTag {
+				brandConcept {
 					prefLabel
 					relativeUrl
 				}
@@ -106,14 +102,14 @@ module.exports = {
 	`,
 	teaserTopStory: `
 		fragment TeaserTopStory on Content {
-			storyPackage(limit: 3) {
+			curatedRelatedContent(limit: 3) {
 				type: __typename
 				relativeUrl
 				isPremium
 				title
 				promotionalTitle
 			}
-			primaryTag {
+			displayConcept {
 				latestContent(limit: 4) {
 					type: __typename
 					relativeUrl

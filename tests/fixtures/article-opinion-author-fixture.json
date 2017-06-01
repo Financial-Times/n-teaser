@@ -4,14 +4,10 @@
   "relativeUrl": "/content/39da343a-9f4b-11e6-891e-abe238dee8e2",
   "title": "Trump, Putin, Xi and the cult of the strongman leader",
   "publishedDate": "2016-10-31T11:49:56Z",
-  "initialPublishedDate": "2016-10-31T11:49:56Z",
+  "firstPublishedDate": "2016-10-31T11:49:56Z",
   "id": "39da343a-9f4b-11e6-891e-abe238dee8e2",
-  "teaserTag": {
-    "prefLabel": "Global politics",
-    "relativeUrl": "/topics/themes/Global_politics"
-  },
-  "genreTag": null,
-  "primaryBrandTag": {
+  "genreConcept": null,
+  "brandConcept": {
     "prefLabel": "Gideon Rachman",
     "relativeUrl": "/comment/columnists/gideonrachman",
     "attributes": [
@@ -30,8 +26,10 @@
     "height": 1152,
     "ratio": 1.7777777777777777
   },
-  "storyPackage": [],
-  "primaryTag": {
+  "curatedRelatedContent": [],
+  "displayConcept": {
+    "prefLabel": "Global politics",
+    "relativeUrl": "/topics/themes/Global_politics",
     "latestContent": [
       {
         "type": "Article",
