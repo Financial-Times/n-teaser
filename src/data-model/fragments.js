@@ -35,7 +35,9 @@ module.exports = {
 				prefLabel
 				relativeUrl
 				id
-				headshot
+				headshot {
+					name
+				}
 			}
 		}
 	`,
