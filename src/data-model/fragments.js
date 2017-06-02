@@ -20,29 +20,23 @@ module.exports = {
 			firstPublishedDate
 			isEditorsChoice
 			canBeSyndicated
-			genreConcept(only: ["61d707b5-6fab-3541-b017-49b72de80772", "9c2af23a-ee61-303f-97e8-2026fb031bd5", "dc9332a7-453d-3b80-a53d-5a19579d9359", "b3ecdf0e-68bb-3303-8773-ec9c05e80234", "3094f0a9-1e1c-3ec3-b7e3-4d4885a826ed"]) {
+			isOpinion
+			genre {
+				id
 				prefLabel
 			}
-			brandConcept {
+			brand {
 				prefLabel
 				relativeUrl
 				directType
-				attributes(only: ["headshot"]) {
-					key
-					value
-				}
 				id
 			}
-			authorConcepts(limit: 1) {
+			authors {
 				prefLabel
 				relativeUrl
-				attributes(only: ["headshot"]) {
-					key
-					value
-				}
 				id
+				headshot
 			}
-			isOpinion
 		}
 	`,
 	teaserLight: `
@@ -85,7 +79,7 @@ module.exports = {
 						theme
 					}
 				}
-				brandConcept {
+				brand {
 					prefLabel
 					relativeUrl
 				}

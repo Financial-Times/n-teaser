@@ -26,8 +26,8 @@ const LIVEBLOG_MAPPING = {
 
 const brandAuthorDouble = (data) => {
 	if (
-		data.authorConcepts &&
-		data.authorConcepts.length &&
+		data.authors &&
+		data.authors.length &&
 		data.isOpinion === true
 	) {
 		return true;
@@ -44,6 +44,14 @@ const TeaserPresenter = class TeaserPresenter {
 
 	constructor (data) {
 		this.data = data || {};
+		const allowedGenres = [
+			'61d707b5-6fab-3541-b017-49b72de80772',
+			'9c2af23a-ee61-303f-97e8-2026fb031bd5',
+			'dc9332a7-453d-3b80-a53d-5a19579d9359',
+			'b3ecdf0e-68bb-3303-8773-ec9c05e80234',
+			'3094f0a9-1e1c-3ec3-b7e3-4d4885a826ed'
+		];
+		this.genre = (this.data.genre && allowedGenres.includes(this.data.genre.id)) ? this.data.genre : undefined;
 	}
 
 	// returns all top level class names appropriate for the teaser
@@ -113,18 +121,18 @@ const TeaserPresenter = class TeaserPresenter {
 			// Use Display concept if Brand concept is the same as stream
 			if (this.data.streamProperties &&
 				this.data.streamProperties.id &&
-				this.data.brandConcept &&
-				this.data.streamProperties.id === this.data.brandConcept.id) {
+				this.data.brand &&
+				this.data.streamProperties.id === this.data.brand.id) {
 				return this.data.displayConcept || null;
 			}
 			// Use Author Concept if Opinion & Branded unless same as stream
 			if (brandAuthorDouble(this.data) === true &&
 				(!this.data.streamProperties ||
 				(this.data.streamProperties &&
-				this.data.streamProperties.id !== this.data.authorConcepts[0].id ))) {
-				return this.data.authorConcepts[0];
+				this.data.streamProperties.id !== this.data.authors[0].id ))) {
+				return this.data.authors[0];
 			}
-			return this.data.brandConcept || this.data.displayConcept || null;
+			return this.data.brand || this.data.displayConcept || null;
 		}
 	}
 
@@ -132,30 +140,30 @@ const TeaserPresenter = class TeaserPresenter {
 	get genrePrefix () {
 		//use package brand if article belongs to package
 		let packageArticle = this.data.containedIn
-		if (packageArticle && packageArticle[0] && packageArticle[0].title && packageArticle[0].brandConcept) {
-			return packageArticle[0].brandConcept.prefLabel;
+		if (packageArticle && packageArticle[0] && packageArticle[0].title && packageArticle[0].brand) {
+			return packageArticle[0].brand.prefLabel;
 		} else {
 			if (brandAuthorDouble(this.data) === true) {
 				// dedupe authors who are also brands and where Author = stream
-				if (this.data.brandConcept &&
-					this.data.brandConcept.prefLabel !== this.data.authorConcepts[0].prefLabel &&
+				if (this.data.brand &&
+					this.data.brand.prefLabel !== this.data.authors[0].prefLabel &&
 					(!this.data.streamProperties ||
 					(this.data.streamProperties &&
-					this.data.streamProperties.id !== this.data.authorConcepts[0].id))) {
-					return this.data.brandConcept.prefLabel;
+					this.data.streamProperties.id !== this.data.authors[0].id))) {
+					return this.data.brand.prefLabel;
 				}
 			}
 			// Do not show a genre prefix against brands
-			if (!this.data.genreConcept || this.data.brandConcept === this.teaserConcept) {
+			if (!this.genre || this.data.brand === this.teaserConcept) {
 				return null;
 			}
 			// Do not show a prefix if the stream is a special report
-			if (this.data.genreConcept && this.data.genreConcept.prefLabel === 'Special Report' &&
+			if (this.genre && this.data.genre.prefLabel === 'Special Report' &&
 				this.data.streamProperties &&
 				this.data.streamProperties.directType === 'http://www.ft.com/ontology/SpecialReport') {
 				return null;
 			}
-			return this.data.genreConcept.prefLabel;
+			return this.data.genre.prefLabel;
 		}
 	}
 
@@ -188,33 +196,25 @@ const TeaserPresenter = class TeaserPresenter {
 
 	// returns url and name for author headshot when brand concept is an author with a headshot
 	get headshot () {
-		let fileName;
-		let concept;
+		let headshotName;
+		let author;
 
-		if (this.data.brandConcept
-			&& this.data.brandConcept.attributes
-			&& this.data.brandConcept.attributes.length > 0
-		) {
-			fileName = this.data.brandConcept.attributes[0].value;
-			concept = this.data.brandConcept;
-		}
 		if ((brandAuthorDouble(this.data) === true)
-			&& this.data.authorConcepts.length > 0
-			&& this.data.authorConcepts[0].attributes
-			&& this.data.authorConcepts[0].attributes.length > 0
+			&& this.data.authors.length > 0
+			&& this.data.authors[0].headshot
 		) {
-			fileName = this.data.authorConcepts[0].attributes[0].value;
-			concept = this.data.authorConcepts[0];
+			headshotName = this.data.authors[0].headshot.name;
+			author = this.data.authors[0];
 		}
 
-		if (fileName) {
+		if (headshotName) {
 			return {
-				url: `${HEADSHOT_BASE_URL}${fileName}${HEADSHOT_URL_PARAMETERS}`,
+				url: `${HEADSHOT_BASE_URL}fthead:${headshotName}${HEADSHOT_URL_PARAMETERS}`,
 				width: HEADSHOT_WIDTH,
 				height: HEADSHOT_WIDTH,
 				sizes: HEADSHOT_WIDTH,
 				widths: [HEADSHOT_WIDTH, 2 * HEADSHOT_WIDTH],
-				alt: `Photo of ${concept.prefLabel}`
+				alt: `Photo of ${author.prefLabel}`
 			};
 		} else {
 			return null;

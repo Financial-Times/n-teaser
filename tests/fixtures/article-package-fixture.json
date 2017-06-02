@@ -9,7 +9,7 @@
 	"firstPublishedDate": "2017-04-09T08:23:47Z",
 	"isEditorsChoice": false,
 	"canBeSyndicated": "verify",
-	"genreConcept": null,
+	"genre": null,
 	"containedIn": [
 		{
 			"title": "Management’s missing women",
@@ -24,7 +24,7 @@
 				"directType": "http://www.ft.com/ontology/Topic",
 				"url": "https://www.ft.com/stream/3a34141d-e886-3c6f-8985-551ed91e994a"
 			},
-			"brandConcept": {
+			"brand": {
 				"idV1": "fb491676-5024-3111-a959-1fbce2fbecc1",
 				"prefLabel": "FT Series",
 				"taxonomy": "http://www.ft.com/ontology/product/Brand",

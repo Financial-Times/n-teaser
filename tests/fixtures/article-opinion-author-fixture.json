@@ -6,17 +6,15 @@
   "publishedDate": "2016-10-31T11:49:56Z",
   "firstPublishedDate": "2016-10-31T11:49:56Z",
   "id": "39da343a-9f4b-11e6-891e-abe238dee8e2",
-  "genreConcept": null,
-  "brandConcept": {
+  "isOpinion": true,
+  "genre": null,
+  "authors": [{
     "prefLabel": "Gideon Rachman",
     "relativeUrl": "/comment/columnists/gideonrachman",
-    "attributes": [
-      {
-        "key": "headshot",
-        "value": "fthead:gideon-rachman"
-      }
-    ]
-  },
+    "headshot": {
+        "name": "gideon-rachman"
+    }
+  }],
   "standfirst": null,
   "mainImage": {
     "title": "",
