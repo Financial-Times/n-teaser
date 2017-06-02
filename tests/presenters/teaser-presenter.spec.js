@@ -189,22 +189,22 @@ describe('Teaser Presenter', () => {
 
 		context('not on a stream page', () => {
 
-			const brandConcept = { brandConcept: { brandConcept: true } };
+			const brand = { brand: { brand: true } };
 			const displayConcept = { displayConcept: { displayConcept: true } };
 
-			it('returns the brandConcept when it exists', () => {
-				const content = Object.assign({}, brandConcept, displayConcept);
+			it('returns the brand when it exists', () => {
+				const content = Object.assign({}, brand, displayConcept);
 				subject = new Presenter(content);
-				expect(subject.teaserConcept.brandConcept).to.be.true;
+				expect(subject.teaserConcept.brand).to.be.true;
 			});
 
-			it('returns the displayConcept when it exists and when brandConcept does not', () => {
+			it('returns the displayConcept when it exists and when brand does not', () => {
 				const content = Object.assign({}, displayConcept);
 				subject = new Presenter(content);
 				expect(subject.teaserConcept.displayConcept).to.be.true;
 			});
 
-			it('returns null if neither the brandConcept nor displayConcept exist', () => {
+			it('returns null if neither the brand nor displayConcept exist', () => {
 				const content = {};
 				subject = new Presenter(content);
 				expect(subject.teaserConcept).to.be.null;
@@ -221,38 +221,43 @@ describe('Teaser Presenter', () => {
 
 		context('genrePrefix', () => {
 
-			const genreConcept = { genreConcept: { prefLabel: 'genre label' } };
-			const brandConcept = { brandConcept: { id: 'ABC' } };
+			const genre = {
+				genre: {
+					id: '61d707b5-6fab-3541-b017-49b72de80772',
+					prefLabel: 'genre label'
+				}
+			};
+			const brand = { brand: { id: 'ABC' } };
 			const streamProperties = { streamProperties: { id: 'ABC'}};
 			const streamPropertiesSpecial = { streamProperties: { directType: 'http://www.ft.com/ontology/SpecialReport'}};
-			const genreConceptSpecial = { genreConcept: { prefLabel: 'Special Report' } };
+			const genreSpecial = { genre: { prefLabel: 'Special Report' } };
 
-			it('returns null if there is no genreConcept', () => {
+			it('returns null if there is no genre', () => {
 				const content = {};
 				subject = new Presenter(content);
 				expect(subject.genrePrefix).to.be.null;
 			});
 
 			it('returns null if there is a genre concept but the display concept is the brand concept', () => {
-				const content = Object.assign({}, genreConcept, brandConcept);
+				const content = Object.assign({}, genre, brand);
 				subject = new Presenter(content);
 				expect(subject.genrePrefix).to.be.null;
 			});
 
 			it('returns the label of the genre concept if it exists and there is no brand concept', () => {
-				const content = Object.assign({}, genreConcept);
+				const content = Object.assign({}, genre);
 				subject = new Presenter(content);
-				expect(subject.genrePrefix).to.equal(genreConcept.genreConcept.prefLabel);
+				expect(subject.genrePrefix).to.equal(genre.genre.prefLabel);
 			});
 
 			it('returns the label of the genre concept if it exists and the brand concept is not displayed', () => {
-				const content = Object.assign({}, genreConcept, brandConcept, streamProperties);
+				const content = Object.assign({}, genre, brand, streamProperties);
 				subject = new Presenter(content);
-				expect(subject.genrePrefix).to.equal(genreConcept.genreConcept.prefLabel);
+				expect(subject.genrePrefix).to.equal(genre.genre.prefLabel);
 			});
 
 			it('returns null when on a special reports stream page', () => {
-				const content = Object.assign({}, genreConceptSpecial, streamPropertiesSpecial);
+				const content = Object.assign({}, genreSpecial, streamPropertiesSpecial);
 				subject = new Presenter(content);
 				expect(subject.genrePrefix).to.be.null;
 			});
@@ -266,24 +271,24 @@ describe('Teaser Presenter', () => {
 
 		context('on a stream page', () => {
 
-			const brandConcept = { brandConcept: { brandConcept: true, id: 'ABC' } };
+			const brand = { brand: { brand: true, id: 'ABC' } };
 			const displayConcept = { displayConcept: { displayConcept: true } };
 			const streamProperties = { streamProperties: { id: 'XYZ'} };
 			const streamPropertiesMatch = { streamProperties: { id: 'ABC'} };
 
-			it('returns the brandConcept if not the same as the streamId', () => {
-				const content = Object.assign({}, streamProperties, brandConcept, displayConcept);
+			it('returns the brand if not the same as the streamId', () => {
+				const content = Object.assign({}, streamProperties, brand, displayConcept);
 				subject = new Presenter(content);
-				expect(subject.teaserConcept.brandConcept).to.be.true;
+				expect(subject.teaserConcept.brand).to.be.true;
 			});
 
-			it('returns the displayConcept if brandConcept is same as streamId', () => {
-				const content = Object.assign({}, streamPropertiesMatch, brandConcept, displayConcept);
+			it('returns the displayConcept if brand is same as streamId', () => {
+				const content = Object.assign({}, streamPropertiesMatch, brand, displayConcept);
 				subject = new Presenter(content);
 				expect(subject.teaserConcept.displayConcept).to.be.true;
 			});
 
-			it('returns the displayConcept if no brandConcept', () => {
+			it('returns the displayConcept if no brand', () => {
 				const content = Object.assign({}, streamPropertiesMatch, displayConcept);
 				subject = new Presenter(content);
 				expect(subject.teaserConcept.displayConcept).to.be.true;
@@ -293,30 +298,30 @@ describe('Teaser Presenter', () => {
 
 		context('when it is both a brand and an opinion / author', () => {
 
-			const brandConcept = { brandConcept: { prefLabel: 'brandName', directType: 'http://www.ft.com/ontology/Brand' } };
-			const brandConceptDupe = { brandConcept: { prefLabel: 'authorName', directType: 'http://www.ft.com/ontology/Brand' } };
-			const authorConcepts = { authorConcepts: [ { prefLabel: 'authorName', directType: 'http://www.ft.com/ontology/Person', id: 'XYZ' } ] };
+			const brand = { brand: { prefLabel: 'brandName', directType: 'http://www.ft.com/ontology/Brand' } };
+			const brandDupe = { brand: { prefLabel: 'authorName', directType: 'http://www.ft.com/ontology/Brand' } };
+			const authors = { authors: [ { prefLabel: 'authorName', directType: 'http://www.ft.com/ontology/Person', id: 'XYZ' } ] };
 			const isOpinion = { isOpinion: true }
 
 			it('returns the brand as genrePrefix and author as displayConcept', () => {
-				const content = Object.assign({}, brandConcept, authorConcepts, isOpinion);
+				const content = Object.assign({}, brand, authors, isOpinion);
 				subject = new Presenter(content);
-				expect(subject.genrePrefix).to.equal(brandConcept.brandConcept.prefLabel);
-				expect(subject.teaserConcept).to.deep.equal(authorConcepts.authorConcepts[0]);
+				expect(subject.genrePrefix).to.equal(brand.brand.prefLabel);
+				expect(subject.teaserConcept).to.deep.equal(authors.authors[0]);
 			});
 
 			it('returns only the author as displayConcept if brand and author are the same', () => {
-				const content = Object.assign({}, brandConceptDupe, authorConcepts, isOpinion);
+				const content = Object.assign({}, brandDupe, authors, isOpinion);
 				subject = new Presenter(content);
 				expect(subject.genrePrefix).to.be.null;
-				expect(subject.teaserConcept).to.deep.equal(authorConcepts.authorConcepts[0]);
+				expect(subject.teaserConcept).to.deep.equal(authors.authors[0]);
 			});
 
 			it('returns brand as display concept and no genre prefix if the author is the same as the stream', () => {
-				const content = Object.assign({ streamProperties: { id: 'XYZ' } }, brandConcept, authorConcepts, isOpinion);
+				const content = Object.assign({ streamProperties: { id: 'XYZ' } }, brand, authors, isOpinion);
 				subject = new Presenter(content);
 				expect(subject.genrePrefix).to.be.null;
-				expect(subject.teaserConcept).to.deep.equal(brandConcept.brandConcept);
+				expect(subject.teaserConcept).to.deep.equal(brand.brand);
 			});
 
 		});
@@ -479,12 +484,26 @@ describe('Teaser Presenter', () => {
 
 		context('author brand combo', () => {
 
-			const brandConcept = { brandConcept: { prefLabel: 'brandName', directType: 'http://www.ft.com/ontology/Brand', attributes: [] } };
-			const authorConcepts = { authorConcepts: [ { prefLabel: 'authorName', attributes: [{key: 'headshot', value:'author-name'} ] } ] };
-			const isOpinion = { isOpinion: true }
+			const brand = {
+				brand: {
+					prefLabel: 'brandName',
+					directType: 'http://www.ft.com/ontology/Brand'
+				}
+			};
+			const authors = {
+				authors: [{
+					prefLabel: 'authorName',
+					headshot: {
+						name: 'author-name'
+					}
+				}]
+			};
+			const isOpinion = {
+				isOpinion: true
+			};
 
 			it('returns a headshot when the author has one', () => {
-				const content = Object.assign({}, brandConcept, authorConcepts, isOpinion);
+				const content = Object.assign({}, brand, authors, isOpinion);
 				subject = new Presenter(content);
 				expect(subject.headshot.url).to.include('author-name');
 			});
