@@ -279,7 +279,7 @@ const TeaserPresenter = class TeaserPresenter {
 
 		return Boolean(
 			this.data.flags
-			&& this.data.flags.inlineVideoTeaser
+			&& this.data.flags.insituVideoTeaser
 			&& this.data.type === 'Video'
 			&& ((isTopStory && !isBigStory) || (isHeavy && isLarge))
 		);
