@@ -515,28 +515,75 @@ describe('Teaser Presenter', () => {
 	context('displayTitle', () => {
 
 		const promotionalTitle = { promotionalTitle: 'promotional' };
+		const alternativeTitles = { alternativeTitles: { contentPackageTitle: 'contentTitle' }};
+		const noContentPackageTitle = { alternativeTitles: { contentPackageTitle: null }};
 		const title = { title: 'title'};
-		const flagOn = { flags: { teaserUsePromotionalTitle: true } };
-		const flagOff = { flags: { teaserUsePromotionalTitle: false } };
+		const teaserFlagOn = { teaserUsePromotionalTitle: true };
+		const teaserFlagOff = { teaserUsePromotionalTitle: false };
+		const headlineTestVariant = { headlineTesting: 'variant' };
+		const headlineTestControl = { headlineTesting: 'control' };
 
-		it('returns the promotional title if it exists and flag is on', () => {
-			const content = Object.assign({}, title, promotionalTitle, flagOn);
+		it('returns the contentPackageTitle if it exists and headline testing flag returns variant', () => {
+			const flags = Object.assign({}, headlineTestVariant);
+			const content = Object.assign({}, alternativeTitles, {flags});
+			subject = new Presenter(content);
+			expect(subject.displayTitle).to.equal('contentTitle');
+		});
+
+		it('returns the promo title if the headline testing flag returns variant but no alternativeTitles', () => {
+			const flags = Object.assign({}, headlineTestVariant, teaserFlagOn);
+			const content = Object.assign({}, promotionalTitle, {flags});
 			subject = new Presenter(content);
 			expect(subject.displayTitle).to.equal('promotional');
 		});
 
-		it('returns the title if flag is off', () => {
-			const content = Object.assign({}, title, promotionalTitle, flagOff);
+		it('returns the promo title if the headline testing flag returns variant but no contentPackageTitle', () => {
+			const flags = Object.assign({}, headlineTestVariant, teaserFlagOn);
+			const content = Object.assign({}, noContentPackageTitle, promotionalTitle, {flags});
+			subject = new Presenter(content);
+			expect(subject.displayTitle).to.equal('promotional');
+		});
+
+		it('returns the promo title if contentPackageTitle exists but headlineFlag set to control', () => {
+			const flags = Object.assign({}, headlineTestControl, teaserFlagOn);
+			const content = Object.assign({}, promotionalTitle, alternativeTitles, {flags});
+			subject = new Presenter(content);
+			expect(subject.displayTitle).to.equal('promotional');
+		});
+
+		it('returns the promo title if contentPackageTitle exists but headlineFlag not set', () => {
+			const flags = Object.assign({}, teaserFlagOn);
+			const content = Object.assign({}, promotionalTitle, alternativeTitles, {flags});
+			subject = new Presenter(content);
+			expect(subject.displayTitle).to.equal('promotional');
+		});
+
+		it('returns the title if no contentPackageTitle, and no teaser flag', () => {
+			const flags = Object.assign({}, headlineTestVariant);
+			const content = Object.assign({}, title, noContentPackageTitle, promotionalTitle, {flags});
 			subject = new Presenter(content);
 			expect(subject.displayTitle).to.equal('title');
 		});
 
-		it('returns the title if flag is on and no promotional title exists', () => {
-			const content = Object.assign({}, title, flagOn);
+		it('returns the title if no contentPackageTitle, and teaser flag off', () => {
+			const flags = Object.assign({}, headlineTestVariant, teaserFlagOff);
+			const content = Object.assign({}, title, noContentPackageTitle, promotionalTitle, {flags});
 			subject = new Presenter(content);
 			expect(subject.displayTitle).to.equal('title');
 		});
 
+		it('returns the title if no contentPackageTitle and no promotionalTitle', () => {
+			const flags = Object.assign({}, teaserFlagOn, headlineTestVariant);
+			const content = Object.assign({}, title, noContentPackageTitle, {flags});
+			subject = new Presenter(content);
+			expect(subject.displayTitle).to.equal('title');
+		});
+
+		it('returns the title if no flags set', () => {
+			const content = Object.assign({}, title, promotionalTitle);
+			subject = new Presenter(content);
+			expect(subject.displayTitle).to.equal('title');
+		});
 	});
 
 	context('duration', () => {

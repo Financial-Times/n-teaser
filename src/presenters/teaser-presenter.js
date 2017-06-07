@@ -228,7 +228,9 @@ const TeaserPresenter = class TeaserPresenter {
 
 	// returns title either standard or promotional based on flag
 	get displayTitle () {
-		if (this.data.flags && this.data.flags.teaserUsePromotionalTitle && this.data.promotionalTitle) {
+		if (this.data.flags && this.data.flags.headlineTesting && this.data.flags.headlineTesting === 'variant' && this.data.alternativeTitles && this.data.alternativeTitles.contentPackageTitle) {
+			return this.data.alternativeTitles.contentPackageTitle;
+		} else if (this.data.flags && this.data.flags.teaserUsePromotionalTitle && this.data.promotionalTitle) {
 			return this.data.promotionalTitle;
 		}
 		return this.data.title;

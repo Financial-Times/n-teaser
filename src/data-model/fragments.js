@@ -98,6 +98,9 @@ module.exports = {
 	`,
 	teaserTopStory: `
 		fragment TeaserTopStory on Content {
+			alternativeTitles {
+				contentPackageTitle
+			}
 			curatedRelatedContent(limit: 3) {
 				type: __typename
 				relativeUrl
