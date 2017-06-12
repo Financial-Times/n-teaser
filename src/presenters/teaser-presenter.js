@@ -114,7 +114,10 @@ const TeaserPresenter = class TeaserPresenter {
 	//returns concept to be displayed
 	get teaserConcept () {
 		//use package title as display concept if article belongs to package
-		let packageArticle = this.data.containedIn
+		let packageArticle = this.data.containedIn;
+
+		const displayConcept = this.data.flags && this.data.flags.noTeaserConcepts ? null : this.data.displayConcept;
+
 		if (packageArticle && packageArticle[0] && packageArticle[0].title) {
 			return Object.assign(this, { prefLabel: packageArticle[0].title, relativeUrl: packageArticle[0].relativeUrl});
 		} else {
@@ -123,7 +126,7 @@ const TeaserPresenter = class TeaserPresenter {
 				this.data.streamProperties.id &&
 				this.data.brand &&
 				this.data.streamProperties.id === this.data.brand.id) {
-				return this.data.displayConcept || null;
+				return displayConcept || null;
 			}
 			// Use Author Concept if Opinion & Branded unless same as stream
 			if (brandAuthorDouble(this.data) === true &&
@@ -132,7 +135,7 @@ const TeaserPresenter = class TeaserPresenter {
 				this.data.streamProperties.id !== this.data.authors[0].id ))) {
 				return this.data.authors[0];
 			}
-			return this.data.brand || this.data.displayConcept || null;
+			return this.data.brand || displayConcept || null;
 		}
 	}
 
