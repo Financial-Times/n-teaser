@@ -62,7 +62,7 @@ describe('Package Teaser Presenter', () => {
 		})
 
 		it('is Special Report', () => {
-			const content = Object.assign({}, packageFixture, { brand: { prefLabel: 'Special Report' } })
+			const content = Object.assign({}, packageFixture, { brandConcept: { prefLabel: 'Special Report' } })
 			subject = new Presenter(content);
 			expect(subject.genrePrefix).to.equal('Special Report');
 		});
