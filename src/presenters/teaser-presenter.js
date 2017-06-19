@@ -9,7 +9,7 @@ const HEADSHOT_WIDTH = 75;
 const HEADSHOT_URL_PARAMETERS = `?source=next&width=${HEADSHOT_WIDTH * 2}&fit=scale-down&compression=best&tint=054593,d6d5d3`;
 const TEMPLATES_WITH_HEADSHOTS = ['light', 'standard', 'lifestyle'];
 const TEMPLATES_WITH_IMAGES = ['heavy', 'top-story-heavy','lifestyle'];
-const BIG_VIDEO_INVALID_MODS = ['centre', 'has-image'];
+const PLAYABLE_VIDEO_INVALID_MODS = ['centre', 'has-image'];
 const LIVEBLOG_MAPPING = {
 	inprogress: {
 		timestampStatus: 'last post',
@@ -96,11 +96,11 @@ const TeaserPresenter = class TeaserPresenter {
 			mods.push('highlight');
 		}
 
-		if (this.isBigVideo) {
+		if (this.isPlayableVideo) {
 			mods.push('big-video');
 
 			// don't allow these mods! (mutates original array)
-			BIG_VIDEO_INVALID_MODS.forEach((invalid) => {
+			PLAYABLE_VIDEO_INVALID_MODS.forEach((invalid) => {
 				const i = mods.indexOf(invalid);
 				i > -1 && mods.splice(i, 1);
 			});
@@ -271,7 +271,7 @@ const TeaserPresenter = class TeaserPresenter {
 		return this.data.title;
 	}
 
-	get isBigVideo () {
+	get isPlayableVideo () {
 		const isTopStory = this.data.template === 'top-story-heavy';
 		const isBigStory = modsDoesInclude('big-story', this.data.mods);
 		const isHeavy = this.data.template === 'heavy';

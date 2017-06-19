@@ -4,15 +4,15 @@
 
 			{{> n-teaser/templates/partials/display-concept}}
 
-			{{#if @nTeaserPresenter.isBigVideo}}
-				{{> n-teaser/templates/partials/big-video}}
+			{{#if @nTeaserPresenter.isPlayableVideo}}
+				{{> n-teaser/templates/partials/playable-video}}
 			{{/if}}
 
 			{{> n-teaser/templates/partials/title}}
 
 			{{> n-teaser/templates/partials/standfirst}}
 
-			{{#unless @nTeaserPresenter.isBigVideo}}
+			{{#unless @nTeaserPresenter.isPlayableVideo}}
 				{{> n-teaser/templates/partials/timestamp}}
 			{{/unless}}
 
@@ -20,7 +20,7 @@
 
 		</div>
 
-		{{#unless @nTeaserPresenter.isBigVideo}}
+		{{#unless @nTeaserPresenter.isPlayableVideo}}
 			{{> n-teaser/templates/partials/main-image}}
 		{{/unless}}
 
