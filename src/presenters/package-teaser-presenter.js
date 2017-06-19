@@ -30,9 +30,9 @@ const TeaserPresenter = class TeaserPresenter {
 
 	//returns FT Series or Special Reports
 	get genrePrefix () {
-		if (this.data.brand) {
-			if (this.data.brand.prefLabel === 'Special Report' || this.data.brand.prefLabel === 'FT Series') {
-				return this.data.brand.prefLabel;
+		if (this.data.brandConcept) {
+			if (this.data.brandConcept.prefLabel === 'Special Report' || this.data.brandConcept.prefLabel === 'FT Series') {
+				return this.data.brandConcept.prefLabel;
 			}
 		}
 	}

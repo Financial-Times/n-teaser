@@ -7,7 +7,7 @@
   "firstPublishedDate": "2016-10-31T12:18:18Z",
   "id": "f61b93c8-9f5a-11e6-891e-abe238dee8e2",
   "genre": null,
-  "brand": {
+  "brandConcept": {
     "prefLabel": "FT View",
     "relativeUrl": "/comment/ft-view",
     "attributes": []

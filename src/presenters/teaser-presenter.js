@@ -124,8 +124,8 @@ const TeaserPresenter = class TeaserPresenter {
 			// Use Display concept if Brand concept is the same as stream
 			if (this.data.streamProperties &&
 				this.data.streamProperties.id &&
-				this.data.brand &&
-				this.data.streamProperties.id === this.data.brand.id) {
+				this.data.brandConcept &&
+				this.data.streamProperties.id === this.data.brandConcept.id) {
 				return displayConcept || null;
 			}
 			// Use Author Concept if Opinion & Branded unless same as stream
@@ -135,7 +135,7 @@ const TeaserPresenter = class TeaserPresenter {
 				this.data.streamProperties.id !== this.data.authors[0].id ))) {
 				return this.data.authors[0];
 			}
-			return this.data.brand || displayConcept || null;
+			return this.data.brandConcept || displayConcept || null;
 		}
 	}
 
@@ -148,16 +148,16 @@ const TeaserPresenter = class TeaserPresenter {
 		} else {
 			if (brandAuthorDouble(this.data) === true) {
 				// dedupe authors who are also brands and where Author = stream
-				if (this.data.brand &&
-					this.data.brand.prefLabel !== this.data.authors[0].prefLabel &&
+				if (this.data.brandConcept &&
+					this.data.brandConcept.prefLabel !== this.data.authors[0].prefLabel &&
 					(!this.data.streamProperties ||
 					(this.data.streamProperties &&
 					this.data.streamProperties.id !== this.data.authors[0].id))) {
-					return this.data.brand.prefLabel;
+					return this.data.brandConcept.prefLabel;
 				}
 			}
 			// Do not show a genre prefix against brands
-			if (!this.genre || this.data.brand === this.teaserConcept) {
+			if (!this.genre || this.data.brandConcept === this.teaserConcept) {
 				return null;
 			}
 			// Do not show a prefix if the stream is a special report
