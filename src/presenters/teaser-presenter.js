@@ -7,8 +7,9 @@ const MAX_RELATED_CONTENT = 3;
 const HEADSHOT_BASE_URL = 'https://www.ft.com/__origami/service/image/v2/images/raw/';
 const HEADSHOT_WIDTH = 75;
 const HEADSHOT_URL_PARAMETERS = `?source=next&width=${HEADSHOT_WIDTH * 2}&fit=scale-down&compression=best&tint=054593,d6d5d3`;
-const TEMPLATES_WITH_HEADSHOTS = ['light','standard','lifestyle'];
+const TEMPLATES_WITH_HEADSHOTS = ['light', 'standard', 'lifestyle'];
 const TEMPLATES_WITH_IMAGES = ['heavy', 'top-story-heavy','lifestyle'];
+const PLAYABLE_VIDEO_INVALID_MODS = ['centre', 'has-image'];
 const LIVEBLOG_MAPPING = {
 	inprogress: {
 		timestampStatus: 'last post',
@@ -35,9 +36,12 @@ const brandAuthorDouble = (data) => {
 		return false;
 };
 
-const modsDoesNotInclude = (modToTest, modsArray) => {
-	if (!modsArray) return true;
-	return modsArray.indexOf(modToTest) === -1;
+const modsDoesInclude = (modToTest, modsArray = []) => {
+	return modsArray.includes(modToTest);
+};
+
+const modsDoesNotInclude = (modToTest, modsArray = []) => {
+	return !modsArray.includes(modToTest);
 };
 
 const TeaserPresenter = class TeaserPresenter {
@@ -72,15 +76,15 @@ const TeaserPresenter = class TeaserPresenter {
 		if (
 			!this.data.noHeadshot &&
 			this.headshot &&
-			TEMPLATES_WITH_HEADSHOTS.some(template => template === this.data.template)
+			TEMPLATES_WITH_HEADSHOTS.includes(this.data.template)
 		) {
 			mods.push('has-headshot');
 		}
 
 		if (this.data.size) mods.push(this.data.size);
 
-		if (this.data.mainImage &&
-			TEMPLATES_WITH_IMAGES.some(template => template === this.data.template) ) {
+		// if it's an in-situ video card, don't add the overflowing image effect!
+		if (this.data.mainImage && TEMPLATES_WITH_IMAGES.includes(this.data.template)) {
 			mods.push('has-image');
 		}
 
@@ -90,6 +94,16 @@ const TeaserPresenter = class TeaserPresenter {
 
 		if (this.data.isEditorsChoice && modsDoesNotInclude('hero-image', this.data.mods)) {
 			mods.push('highlight');
+		}
+
+		if (this.isPlayableVideo) {
+			mods.push('big-video');
+
+			// don't allow these mods! (mutates original array)
+			PLAYABLE_VIDEO_INVALID_MODS.forEach((invalid) => {
+				const i = mods.indexOf(invalid);
+				i > -1 && mods.splice(i, 1);
+			});
 		}
 
 		if (this.data.type) {
@@ -143,31 +157,51 @@ const TeaserPresenter = class TeaserPresenter {
 	get genrePrefix () {
 		//use package brand if article belongs to package
 		let packageArticle = this.data.containedIn
+
 		if (packageArticle && packageArticle[0] && packageArticle[0].title && packageArticle[0].brand) {
 			return packageArticle[0].brand.prefLabel;
-		} else {
-			if (brandAuthorDouble(this.data) === true) {
-				// dedupe authors who are also brands and where Author = stream
-				if (this.data.brandConcept &&
-					this.data.brandConcept.prefLabel !== this.data.authors[0].prefLabel &&
-					(!this.data.streamProperties ||
-					(this.data.streamProperties &&
-					this.data.streamProperties.id !== this.data.authors[0].id))) {
-					return this.data.brandConcept.prefLabel;
-				}
-			}
-			// Do not show a genre prefix against brands
-			if (!this.genre || this.data.brandConcept === this.teaserConcept) {
-				return null;
-			}
-			// Do not show a prefix if the stream is a special report
-			if (this.genre && this.data.genre.prefLabel === 'Special Report' &&
-				this.data.streamProperties &&
-				this.data.streamProperties.directType === 'http://www.ft.com/ontology/SpecialReport') {
-				return null;
-			}
-			return this.data.genre.prefLabel;
 		}
+
+		if (this.data.type === 'Video') {
+			return 'Video';
+		}
+
+		if (brandAuthorDouble(this.data) === true) {
+			// dedupe authors who are also brands and where Author = stream
+			if (this.data.brandConcept &&
+				this.data.brandConcept.prefLabel !== this.data.authors[0].prefLabel &&
+				(!this.data.streamProperties ||
+				(this.data.streamProperties &&
+				this.data.streamProperties.id !== this.data.authors[0].id))) {
+				return this.data.brandConcept.prefLabel;
+			}
+		}
+
+		// Do not show a genre prefix against brands
+		if (!this.genre || this.data.brandConcept === this.teaserConcept) {
+			return null;
+		}
+
+		// Do not show a prefix if the stream is a special report
+		if (this.genre && this.data.genre.prefLabel === 'Special Report' &&
+			this.data.streamProperties &&
+			this.data.streamProperties.directType === 'http://www.ft.com/ontology/SpecialReport') {
+			return null;
+		}
+
+		// Do not show a genre prefix against brands
+		if (!this.genre || this.data.brand === this.teaserConcept) {
+			return null;
+		}
+
+		// Do not show a prefix if the stream is a special report
+		if (this.genre && this.data.genre.prefLabel === 'Special Report' &&
+			this.data.streamProperties &&
+			this.data.streamProperties.directType === 'http://www.ft.com/ontology/SpecialReport') {
+			return null;
+		}
+
+		return this.data.genre.prefLabel;
 	}
 
 	//returns publishedDate, status, classModifier
@@ -235,6 +269,20 @@ const TeaserPresenter = class TeaserPresenter {
 			return this.data.promotionalTitle;
 		}
 		return this.data.title;
+	}
+
+	get isPlayableVideo () {
+		const isTopStory = this.data.template === 'top-story-heavy';
+		const isBigStory = modsDoesInclude('big-story', this.data.mods);
+		const isHeavy = this.data.template === 'heavy';
+		const isLarge = modsDoesInclude('large', this.data.mods) || modsDoesInclude('hero', this.data.mods);
+
+		return Boolean(
+			this.data.flags
+			&& this.data.flags.insituVideoTeaser
+			&& this.data.type === 'Video'
+			&& ((isTopStory && !isBigStory) || (isHeavy && isLarge))
+		);
 	}
 
 	get advertiserPrefix () {
