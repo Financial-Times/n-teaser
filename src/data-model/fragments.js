@@ -31,6 +31,12 @@ module.exports = {
 				directType
 				id
 			}
+			brandConcept {
+				prefLabel
+				relativeUrl
+				directType
+				id
+			}
 			authors {
 				prefLabel
 				relativeUrl
