@@ -33,15 +33,15 @@
       "sourceParam": "n-teaser"
     },
     "containedIn": [{
-			"title": "Xi’s China",
+      "title": "Xi’s China",
       "url": "https://www.ft.com/content/8b4d2118-0e51-11e7-a88c-50ba212dce4d",
-			"design": {
-				"theme": "basic"
-			},
-			"primaryBrandTag": {
-	      "prefLabel": "FT Series",
-				"relativeUrl": "/"
-	    }
-		}]
+      "design": {
+        "theme": "basic"
+      },
+      "primaryBrandTag": {
+        "prefLabel": "FT Series",
+        "relativeUrl": "/"
+      }
+    }]
   }]
 }

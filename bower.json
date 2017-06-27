@@ -1,18 +1,18 @@
 {
-	"name": "n-teaser",
-	"homepage": "https://github.com/financial-times/n-teaser",
-	"description": "n-card's replacement - better styles, simpler combinations & more basic templating",
-	"ignore": [
-		"**/.*",
-		"node_modules",
-		"bower_components",
-		"test",
-		"tests"
-	],
-	"devDependencies": {
-		"n-ui-foundations": "^1.0.0",
-		"o-teaser": "^1.14.0",
-		"o-labels": "^2.0.3",
-		"n-image": "^4.9.3"
+  "name": "n-teaser",
+  "homepage": "https://github.com/financial-times/n-teaser",
+  "description": "n-card's replacement - better styles, simpler combinations & more basic templating",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "n-ui-foundations": "^1.0.0",
+    "o-teaser": "^1.14.0",
+    "o-labels": "^2.0.3",
+    "n-image": "^4.9.3"
   }
 }

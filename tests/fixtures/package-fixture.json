@@ -1,44 +1,44 @@
 {
-	"canBePackage": true,
-	"type": "package",
-	"id": "a2e41aa4-146c-11e7-80f4-13e067d5072c",
-	"title": "Management’s missing women",
-	"alternativeTitles": {
-	"promotionalTitle": "Management’s missing women"
-	},
-	"standfirst": "Exclusive FT data show how slow progress has been",
-	"relativeUrl": "/content/a2e41aa4-146c-11e7-80f4-13e067d5072c",
-	"isEditorsChoice": false,
-	"isPremium": false,
-	"isOpinion": false,
-	"canBeSyndicated": "verify",
-	"tableOfContents": {
-		"labelType": "none",
-		"sequence": "none"
-	},
-	"brandConcept": {
-		"prefLabel": "FT Series"
-	},
-	"design": {
-		"theme": "extra"
-	},
-	"containedIn": [],
-	"contains": [
-		{
-			"id": "f38eb0c6-0329-11e7-aa5b-6bb07f5c8e12",
-			"title": "Closing the gender gap needs support from the boss"
-		},
-		{
-			"id": "13a73d6e-1951-11e7-a53d-df09f373be87",
-			"title": "Silicon Valley has long way to go on gender diversity"
-		},
-		{
-			"id": "dd9a528e-1abc-11e7-bcac-6d03d067f81f",
-			"title": "Women in finance discuss the gender pay and promotion gap"
-		},
-		{
-			"id": "6ae56540-0f62-11e7-b030-768954394623",
-			"title": "Airbnb’s gender diversity efforts put Uber in shade"
-		}
-	]
+  "canBePackage": true,
+  "type": "package",
+  "id": "a2e41aa4-146c-11e7-80f4-13e067d5072c",
+  "title": "Management’s missing women",
+  "alternativeTitles": {
+  "promotionalTitle": "Management’s missing women"
+  },
+  "standfirst": "Exclusive FT data show how slow progress has been",
+  "relativeUrl": "/content/a2e41aa4-146c-11e7-80f4-13e067d5072c",
+  "isEditorsChoice": false,
+  "isPremium": false,
+  "isOpinion": false,
+  "canBeSyndicated": "verify",
+  "tableOfContents": {
+    "labelType": "none",
+    "sequence": "none"
+  },
+  "brandConcept": {
+    "prefLabel": "FT Series"
+  },
+  "design": {
+    "theme": "extra"
+  },
+  "containedIn": [],
+  "contains": [
+    {
+      "id": "f38eb0c6-0329-11e7-aa5b-6bb07f5c8e12",
+      "title": "Closing the gender gap needs support from the boss"
+    },
+    {
+      "id": "13a73d6e-1951-11e7-a53d-df09f373be87",
+      "title": "Silicon Valley has long way to go on gender diversity"
+    },
+    {
+      "id": "dd9a528e-1abc-11e7-bcac-6d03d067f81f",
+      "title": "Women in finance discuss the gender pay and promotion gap"
+    },
+    {
+      "id": "6ae56540-0f62-11e7-b030-768954394623",
+      "title": "Airbnb’s gender diversity efforts put Uber in shade"
+    }
+  ]
 }
