@@ -24,7 +24,7 @@ describe('Teaser Presenter', () => {
 			const subject = new Presenter(content);
 			expect(subject.classModifiers).to.contain('opinion');
 			expect(mods).to.not.contain('opinion');
-		})
+		});
 
 		it('passes through modifiers from collection', () => {
 			const content = {mods: ['mod1', 'mod2']};
@@ -60,14 +60,14 @@ describe('Teaser Presenter', () => {
 			it('returns extra-article when package theme is extra', () => {
 				subject = new Presenter(articlePackageFixture);
 				expect(subject.classModifiers).to.include('extra-article');
-			})
+			});
 
 			it('returns highlight when package theme is special-report', () => {
-				const content = Object.assign({}, articlePackageFixture, { containedIn: [ { design: { theme: 'special-report'} } ] })
+				const content = Object.assign({}, articlePackageFixture, { containedIn: [ { design: { theme: 'special-report'} } ] });
 				subject = new Presenter(content);
 				expect(subject.classModifiers).to.include('highlight');
-			})
-		})
+			});
+		});
 
 		it('adds a syndication modifier if the given article’s syndication status needs verifying', () => {
 			const content = {canBeSyndicated:'verify'};
@@ -215,7 +215,7 @@ describe('Teaser Presenter', () => {
 		context('package article', () => {
 			it('renders as display concept for package article', () => {
 				subject = new Presenter(articlePackageFixture);
-				expect(subject.teaserConcept.prefLabel).to.equal('Management’s missing women')
+				expect(subject.teaserConcept.prefLabel).to.equal('Management’s missing women');
 			});
 		});
 
@@ -264,8 +264,8 @@ describe('Teaser Presenter', () => {
 
 			it('returns the package brand if article in package', () => {
 				subject = new Presenter(articlePackageFixture);
-				expect(subject.genrePrefix).to.equal('FT Series')
-			})
+				expect(subject.genrePrefix).to.equal('FT Series');
+			});
 
 		});
 
@@ -301,7 +301,7 @@ describe('Teaser Presenter', () => {
 			const brand = { brandConcept: { prefLabel: 'brandName', directType: 'http://www.ft.com/ontology/Brand' } };
 			const brandDupe = { brandConcept: { prefLabel: 'authorName', directType: 'http://www.ft.com/ontology/Brand' } };
 			const authors = { authors: [ { prefLabel: 'authorName', directType: 'http://www.ft.com/ontology/Person', id: 'XYZ' } ] };
-			const isOpinion = { isOpinion: true }
+			const isOpinion = { isOpinion: true };
 
 			it('returns the brand as genrePrefix and author as displayConcept', () => {
 				const content = Object.assign({}, brand, authors, isOpinion);

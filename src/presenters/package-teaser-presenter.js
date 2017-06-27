@@ -45,7 +45,7 @@ const TeaserPresenter = class TeaserPresenter {
 		}
 
 		return packageContent
-			.slice(0, MAX_LIST_CONTENT)
+			.slice(0, MAX_LIST_CONTENT);
 	}
 
 	// returns title either standard or promotional based on flag

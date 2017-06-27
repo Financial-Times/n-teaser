@@ -1,35 +1,35 @@
 {
-	"type": "Article",
-	"id": "dd9a528e-1abc-11e7-bcac-6d03d067f81f",
-	"isEditorsChoice": false,
-	"relativeUrl": "/content/dd9a528e-1abc-11e7-bcac-6d03d067f81f",
-	"title": "Women in finance discuss the gender pay and promotion gap",
-	"promotionalTitle": "Women in finance discuss the gender gap",
-	"publishedDate": "2017-04-09T08:23:47.000Z",
-	"firstPublishedDate": "2017-04-09T08:23:47Z",
-	"isEditorsChoice": false,
-	"canBeSyndicated": "verify",
-	"genre": null,
-	"containedIn": [
-		{
-			"title": "Management’s missing women",
-			"url": "https://www.ft.com/content/a2e41aa4-146c-11e7-80f4-13e067d5072c",
-			"descriptionHTML": "<p>Gender equality has become a highly publicised corporate goal, but exclusive FT data show how slow progress has been. Interviews with executives charged with creating diversity and women trying to break the glass ceiling illustrate the challenges</p>",
-			"design": {
-				"theme": "extra"
-			},
-			"displayConcept": {
-				"id": "3a34141d-e886-3c6f-8985-551ed91e994a",
-				"prefLabel": "Equality in workplace",
-				"directType": "http://www.ft.com/ontology/Topic",
-				"url": "https://www.ft.com/stream/3a34141d-e886-3c6f-8985-551ed91e994a"
-			},
-			"brand": {
-				"idV1": "fb491676-5024-3111-a959-1fbce2fbecc1",
-				"prefLabel": "FT Series",
-				"taxonomy": "http://www.ft.com/ontology/product/Brand",
-				"url": "https://www.ft.com/stream/fb491676-5024-3111-a959-1fbce2fbecc1"
-			}
-		}
-	]
+  "type": "Article",
+  "id": "dd9a528e-1abc-11e7-bcac-6d03d067f81f",
+  "isEditorsChoice": false,
+  "relativeUrl": "/content/dd9a528e-1abc-11e7-bcac-6d03d067f81f",
+  "title": "Women in finance discuss the gender pay and promotion gap",
+  "promotionalTitle": "Women in finance discuss the gender gap",
+  "publishedDate": "2017-04-09T08:23:47.000Z",
+  "firstPublishedDate": "2017-04-09T08:23:47Z",
+  "isEditorsChoice": false,
+  "canBeSyndicated": "verify",
+  "genre": null,
+  "containedIn": [
+    {
+      "title": "Management’s missing women",
+      "url": "https://www.ft.com/content/a2e41aa4-146c-11e7-80f4-13e067d5072c",
+      "descriptionHTML": "<p>Gender equality has become a highly publicised corporate goal, but exclusive FT data show how slow progress has been. Interviews with executives charged with creating diversity and women trying to break the glass ceiling illustrate the challenges</p>",
+      "design": {
+        "theme": "extra"
+      },
+      "displayConcept": {
+        "id": "3a34141d-e886-3c6f-8985-551ed91e994a",
+        "prefLabel": "Equality in workplace",
+        "directType": "http://www.ft.com/ontology/Topic",
+        "url": "https://www.ft.com/stream/3a34141d-e886-3c6f-8985-551ed91e994a"
+      },
+      "brand": {
+        "idV1": "fb491676-5024-3111-a959-1fbce2fbecc1",
+        "prefLabel": "FT Series",
+        "taxonomy": "http://www.ft.com/ontology/product/Brand",
+        "url": "https://www.ft.com/stream/fb491676-5024-3111-a959-1fbce2fbecc1"
+      }
+    }
+  ]
 }

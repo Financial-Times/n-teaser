@@ -35,21 +35,21 @@
             "ratio": 1.7777777777778,
             "sourceParam": "n-teaser"
         },
-				"design": {
-					"theme": "basic"
-				},
+        "design": {
+          "theme": "basic"
+        },
         "contains": [{
-					"id": "e26d3c84-8bad-11e6-8cb7-e7ada1d123b1",
-					"apiUrl": "http://api.ft.com/enrichedcontent/e26d3c84-8bad-11e6-8cb7-e7ada1d123b1",
-					"title": "Political upsets and lack of dynamism drive doubts"
-				},{
-					"id": "e9c1897c-8bad-11e6-8cb7-e7ada1d123b1",
-					"apiUrl": "http://api.ft.com/enrichedcontent/e9c1897c-8bad-11e6-8cb7-e7ada1d123b1",
-					"title": "Foreign minister Sebastian Kurz on migrant crisis"
-				},{
-					"id": "ffa10ed8-8bea-11e6-8cb7-e7ada1d123b1",
-					"apiUrl": "http://api.ft.com/enrichedcontent/ffa10ed8-8bea-11e6-8cb7-e7ada1d123b1",
-					"title": "Is Brand Austria a marketing asset or liability?"
+          "id": "e26d3c84-8bad-11e6-8cb7-e7ada1d123b1",
+          "apiUrl": "http://api.ft.com/enrichedcontent/e26d3c84-8bad-11e6-8cb7-e7ada1d123b1",
+          "title": "Political upsets and lack of dynamism drive doubts"
+        },{
+          "id": "e9c1897c-8bad-11e6-8cb7-e7ada1d123b1",
+          "apiUrl": "http://api.ft.com/enrichedcontent/e9c1897c-8bad-11e6-8cb7-e7ada1d123b1",
+          "title": "Foreign minister Sebastian Kurz on migrant crisis"
+        },{
+          "id": "ffa10ed8-8bea-11e6-8cb7-e7ada1d123b1",
+          "apiUrl": "http://api.ft.com/enrichedcontent/ffa10ed8-8bea-11e6-8cb7-e7ada1d123b1",
+          "title": "Is Brand Austria a marketing asset or liability?"
         }, {
           "id": "6c126eae-b81e-11e6-ba85-95d1533d9a62",
           "apiUrl": "http://api.ft.com/enrichedcontent/6c126eae-b81e-11e6-ba85-95d1533d9a62",
