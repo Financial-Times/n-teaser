@@ -156,7 +156,7 @@ const TeaserPresenter = class TeaserPresenter {
 	//returns genre prefix
 	get genrePrefix () {
 		//use package brand if article belongs to package
-		let packageArticle = this.data.containedIn
+		let packageArticle = this.data.containedIn;
 
 		if (packageArticle && packageArticle[0] && packageArticle[0].title && packageArticle[0].brand) {
 			return packageArticle[0].brand.prefLabel;
@@ -213,7 +213,7 @@ const TeaserPresenter = class TeaserPresenter {
 				publishedDate: this.data.publishedDate,
 				status: this.timeStatus(),
 				classModifier: this.timeStatus()
-			}
+			};
 		}
 	}
 
@@ -228,7 +228,7 @@ const TeaserPresenter = class TeaserPresenter {
 
 		return relatedContent
 			.slice(0, MAX_RELATED_CONTENT)
-			.map(item => ({ data: item, classModifiers: [hyphenatePascalCase(item.type)] }))
+			.map(item => ({ data: item, classModifiers: [hyphenatePascalCase(item.type)] }));
 	}
 
 	// returns url and name for author headshot when brand concept is an author with a headshot
@@ -310,7 +310,7 @@ const TeaserPresenter = class TeaserPresenter {
 				status = 'updated';
 			}
 		}
-		return status
+		return status;
 	}
 
 	// returns publishedDate, status, classModifier
@@ -319,7 +319,7 @@ const TeaserPresenter = class TeaserPresenter {
 			publishedDate: this.data.updates && this.data.updates[0].date,
 			status: LIVEBLOG_MAPPING[this.data.status.toLowerCase()].timestampStatus,
 			classModifier: this.data.status.toLowerCase()
-		}
+		};
 	}
 
 	get duration () {

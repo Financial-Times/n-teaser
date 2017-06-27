@@ -34,13 +34,13 @@ describe('Package Teaser Presenter', () => {
 			});
 
 			it('returns basic-package when package theme is basic', () => {
-				const content = Object.assign({}, packageFixture, { design: { theme: 'basic'} })
+				const content = Object.assign({}, packageFixture, { design: { theme: 'basic'} });
 				subject = new Presenter(content);
 				expect(subject.classModifiers).to.include('basic-package');
 			});
 
 			it('returns special-report-package when package theme is special-report', () => {
-				const content = Object.assign({}, packageFixture, { design: { theme: 'special-report'} })
+				const content = Object.assign({}, packageFixture, { design: { theme: 'special-report'} });
 				subject = new Presenter(content);
 				expect(subject.classModifiers).to.include('special-report-package');
 			});
@@ -58,11 +58,11 @@ describe('Package Teaser Presenter', () => {
 
 		it('is FT Series', () => {
 			subject = new Presenter(packageFixture);
-			expect(subject.genrePrefix).to.equal('FT Series')
-		})
+			expect(subject.genrePrefix).to.equal('FT Series');
+		});
 
 		it('is Special Report', () => {
-			const content = Object.assign({}, packageFixture, { brandConcept: { prefLabel: 'Special Report' } })
+			const content = Object.assign({}, packageFixture, { brandConcept: { prefLabel: 'Special Report' } });
 			subject = new Presenter(content);
 			expect(subject.genrePrefix).to.equal('Special Report');
 		});
