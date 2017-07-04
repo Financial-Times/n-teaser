@@ -22,18 +22,10 @@
     "npm-prepublish": "^1.2.1",
     "pa11y-ci": "^1.1.1"
   },
-  "config": {
-    "pre-git": {
-      "pre-commit": [
-        "node_modules/.bin/secret-squirrel",
-        "make verify -j3"
-      ],
-      "pre-push": [
-        "make unit-test"
-      ]
-    }
-  },
+  "config": {},
   "scripts": {
-    "commit": "commit-wizard"
+    "commit": "commit-wizard",
+    "precommit": "node_modules/.bin/secret-squirrel",
+    "prepush": "make verify -j3"
   }
 }

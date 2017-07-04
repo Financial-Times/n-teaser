@@ -6,5 +6,5 @@ $o-teaser-is-silent: false;
 @import 'o-teaser/main';
 
 .o-labels {
-	@include oTypographySansBold('xs');
+	@include oTypographySansBold($scale: -1);
 }
