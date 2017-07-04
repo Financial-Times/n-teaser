@@ -10,9 +10,9 @@
     "tests"
   ],
   "devDependencies": {
-    "n-ui-foundations": "^1.0.0",
-    "o-teaser": "^1.14.0",
-    "o-labels": "^2.0.3",
-    "n-image": "^4.9.3"
+    "n-ui-foundations": "^2.0.0",
+    "o-teaser": "^2.0.0",
+    "o-labels": "^3.0.0",
+    "n-image": "^5.0.0"
   }
 }
