@@ -16,6 +16,9 @@ module.exports = {
 			relativeUrl
 			title
 			promotionalTitle
+			alternativeTitles {
+				contentPackageTitle
+			}
 			publishedDate
 			firstPublishedDate
 			isEditorsChoice
