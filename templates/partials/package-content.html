@@ -1,12 +1,12 @@
-<ul class="package-teaser__list">
-	{{#if packageList}}
+{{#if packageList}}
+	<ul class="package-teaser__list">
 		{{#each @nTeaserPresenter.packageContent}}
 			<li class="package-teaser__list-item">
 				<a data-trackable="package-list" href="content/{{this.id}}">{{this.title}}</a>
 			</li>
 		{{/each}}
-	{{/if}}
-	<li class="package-teaser__list-item package-teaser__landing-link">
-		<a href="{{{relativeUrl}}}" data-trackable="series-link">Visit {{@nTeaserPresenter.genrePrefix}}</a>
-	</li>
-</ul>
+		<li class="package-teaser__list-item package-teaser__landing-link">
+			<a href="{{{relativeUrl}}}" data-trackable="series-link">Visit {{@nTeaserPresenter.genrePrefix}}</a>
+		</li>
+	</ul>
+{{/if}}
