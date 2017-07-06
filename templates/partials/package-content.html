@@ -5,8 +5,8 @@
 				<a data-trackable="package-list" href="content/{{this.id}}">{{this.title}}</a>
 			</li>
 		{{/each}}
+		<li class="package-teaser__list-item package-teaser__landing-link">
+			<a href="{{{relativeUrl}}}" data-trackable="series-link">Visit {{@nTeaserPresenter.genrePrefix}}</a>
+		</li>
 	{{/if}}
-	<li class="package-teaser__list-item package-teaser__landing-link">
-		<a href="{{{relativeUrl}}}" data-trackable="series-link">Visit {{@nTeaserPresenter.genrePrefix}}</a>
-	</li>
 </ul>
