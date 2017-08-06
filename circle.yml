@@ -3,6 +3,10 @@ machine:
     version: 6.9.0
 
 deployment:
+  production:
+    branch: master
+    commands:
+      - make deploy-by-day
   release:
     tag: /^v?\d+\.\d+\.\d+(?:-beta\.\d+)?$/
     owner: Financial-Times
