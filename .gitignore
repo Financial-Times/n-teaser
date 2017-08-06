@@ -4,3 +4,4 @@ bower_components/
 .eslintrc.js
 /public/main.css
 /pa11y_screenCapture/*
+*.env*
