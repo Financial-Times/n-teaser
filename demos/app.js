@@ -13,7 +13,7 @@ const fixturesVideo = require('./fixtures/fixtures-video');
 const chalk = require('chalk');
 const errorHighlight = chalk.bold.red;
 const highlight = chalk.bold.green;
-
+const path = require('path');
 
 const app = module.exports = express({
 	name: 'public',
@@ -33,7 +33,7 @@ const app = module.exports = express({
 		nTeaserPresenter: require('../').presenter,
 		packageTeaserPresenter: require('../').presenter,
 		marko: function (filename, options) {
-			const tpl = require(__dirname + '/views/marko-partials/' + filename)
+			const tpl = require(path.join(__dirname,  '../components', filename))
 			return tpl.renderSync(Object.assign({$global: this._locals}, this)).toString();
 		}
 	}

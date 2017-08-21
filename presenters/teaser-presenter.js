@@ -1,6 +1,9 @@
 'use strict';
 
-const hyphenatePascalCase = require('../utils/hyphenate-pascal-case');
+const hyphenatePascalCase = value => {
+	return value.replace(/([a-z])([A-Z])/g, '$1-$2')
+		.toLowerCase();
+};
 
 const ONE_HOUR = 1000 * 60 * 60;
 const MAX_RELATED_CONTENT = 3;
