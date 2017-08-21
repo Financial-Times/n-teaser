@@ -2,12 +2,12 @@
 	<div
 		class="o-video n-util-hide-core"
 		data-o-component="o-video"
-		data-o-video-id="{{id}}"
+		data-o-video-id="${id}"
 		data-o-video-placeholder="true"
 		data-o-video-placeholder-info="[]"
 		data-o-video-placeholder-hint="Play video">
 	</div>
-	<a class="n-util-hide-enhanced" href="{{{relativeUrl}}}{{{referrerTracking}}}" data-trackable="image" aria-hidden="true" tabindex="-1">
+	<a class="n-util-hide-enhanced" href="$!{relativeUrl}$!{referrerTracking}" data-trackable="image" aria-hidden="true" tabindex="-1">
 		{{#nImagePresenter srcSet=mainImage.url placeholder=mainImage.ratio colspan=colspan position=position widths=widths lazyLoad=lazyLoad wrapperClasses="o-teaser__image-placeholder" classes="o-teaser__image" sourceParam=mainImage.sourceParam}}
 			{{> n-image/templates/image}}
 		{{/nImagePresenter}}

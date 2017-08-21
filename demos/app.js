@@ -1,6 +1,10 @@
-'use strict';
+require('marko/node-require'); // Allow Node.js to require and load `.marko` files
+
 
 const express = require('@financial-times/n-internal-tool');
+const markoExpress = require('marko/express');
+const marko = require('marko');
+
 const fixtures = require('./fixtures/fixtures.json');
 const fixturesCommercial = require('./fixtures/fixtures-commercial-content');
 const fixturesPackage = require('./fixtures/fixtures-package');
@@ -9,6 +13,7 @@ const fixturesVideo = require('./fixtures/fixtures-video');
 const chalk = require('chalk');
 const errorHighlight = chalk.bold.red;
 const highlight = chalk.bold.green;
+
 
 const app = module.exports = express({
 	name: 'public',
@@ -26,7 +31,11 @@ const app = module.exports = express({
 	s3o: false,
 	helpers:  {
 		nTeaserPresenter: require('../').presenter,
-		packageTeaserPresenter: require('../').presenter
+		packageTeaserPresenter: require('../').presenter,
+		marko: function (filename, options) {
+			const tpl = require(__dirname + '/views/marko-partials/' + filename)
+			return tpl.renderSync(Object.assign({$global: this._locals}, this)).toString();
+		}
 	}
 });
 
