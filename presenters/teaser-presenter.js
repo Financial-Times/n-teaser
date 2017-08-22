@@ -1,5 +1,5 @@
 'use strict';
-
+const Presenter = require('./presenter');
 const hyphenatePascalCase = value => {
 	return value.replace(/([a-z])([A-Z])/g, '$1-$2')
 		.toLowerCase();
@@ -47,9 +47,10 @@ const modsDoesNotInclude = (modToTest, modsArray = []) => {
 	return !modsArray.includes(modToTest);
 };
 
-const TeaserPresenter = class TeaserPresenter {
+const TeaserPresenter = class TeaserPresenter extends Presenter {
 
 	constructor (data) {
+		super();
 		this.data = data || {};
 		const allowedGenres = [
 			'61d707b5-6fab-3541-b017-49b72de80772',

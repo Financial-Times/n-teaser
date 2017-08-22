@@ -1,10 +1,11 @@
 'use strict';
-
+const Presenter = require('./presenter');
 const MAX_LIST_CONTENT = 3;
 
-const TeaserPresenter = class TeaserPresenter {
+const TeaserPresenter = class TeaserPresenter extends Presenter {
 
 	constructor (data) {
+		super();
 		this.data = data || {};
 		this.data.isPremium = false;
 	}

@@ -1,14 +1,13 @@
-<div class="o-teaser__meta" if(!noTag)>
-	<span class="o-labels o-labels--${@nTeaserPresenter.liveBlogLabelModifier}" aria-label="Live blog with status of ${@nTeaserPresenter.liveBlogLabelModifier}" if(status)>Live</span>
-	{{#}
-	<span class="o-teaser__tag-prefix" if(@nTeaserPresenter.genrePrefix)>
-		${@nTeaserPresenter.genrePrefix}
+<div class="o-teaser__meta" if(!input.noTag)>
+	<span class="o-labels o-labels--${input.presenter.liveBlogLabelModifier}" aria-label="Live blog with status of ${input.presenter.liveBlogLabelModifier}" if(input.status)>Live</span>
+	<span class="o-teaser__tag-prefix" if(input.presenter.genrePrefix)>
+		${input.presenter.genrePrefix}
 	</span>
-	<a href="${@nTeaserPresenter.teaserConcept.relativeUrl}" class="o-teaser__tag" data-trackable="primary-concept" if(@nTeaserPresenter.teaserConcept)>
-		${@nTeaserPresenter.teaserConcept.prefLabel}
+	<a href="${input.presenter.teaserConcept.relativeUrl}" class="o-teaser__tag" data-trackable="primary-concept" if(input.presenter.teaserConcept)>
+		${input.presenter.teaserConcept.prefLabel}
 	</a>
-	<time class="o-teaser__duration" datetime="${@nTeaserPresenter.duration.iso}" if(@nTeaserPresenter.duration)>${@nTeaserPresenter.duration.formatted}min</time>
-	<if(advertiser)>
-		<span class="o-teaser__promoted-prefix">${promotedByPrefix}</span>${@nTeaserPresenter.advertiserPrefix}<span class="o-teaser__promoted-by">${advertiser}</span>
+	<time class="o-teaser__duration" datetime="${input.presenter.duration.iso}" if(input.presenter.duration)>${input.presenter.duration.formatted}min</time>
+	<if(input.advertiser)>
+		<span class="o-teaser__promoted-prefix">${input.promotedByPrefix}</span>${input.presenter.advertiserPrefix}<span class="o-teaser__promoted-by">${input.advertiser}</span>
 	</if>
 </div>

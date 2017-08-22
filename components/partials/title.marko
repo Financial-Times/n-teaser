@@ -1,11 +1,11 @@
 <div class="o-teaser__heading js-teaser-heading">
 	<a
-		href="$!{relativeUrl}$!{referrerTracking}"
+		href="$!{input.presenter.relativeUrl}$!{input.referrerTracking}"
 		class="js-teaser-heading-link"
-		data-content-id="${id}"
+		data-content-id="${input.id}"
 		data-trackable="main-link"
-		target=(type ==='promoted-content' && '_blank')>
-		$!{nTeaserPresenter.displayTitle}
+		target=(input.type ==='promoted-content' && '_blank')>
+		$!{input.presenter.displayTitle}
 	</a>
-	<span class="o-labels o-labels--premium" aria-label="Premium content" if(isPremium)>Premium</span>
+	<span class="o-labels o-labels--premium" aria-label="Premium content" if(input.isPremium)>Premium</span>
 </div>

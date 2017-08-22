@@ -1,11 +1,17 @@
-import '../presenters/factory'
+import factory from '../presenters/factory'
+$ {
+	factory(input, {
+		template: 'standard',
+		mods: input.mods,
+		flags: out.global.flags
+	});
+}
+<div class=input.presenter.topLevelClasses data-o-component="o-teaser" data-trackable="teaser">
 
-//{{#nTeaserPresenter @this template='standard' mods=mods flags=@root.flags}}
-<div class="o-teaser{{#each @nTeaserPresenter.classModifiers}} o-teaser--{{this}}{{/each}}" data-o-component="o-teaser" data-trackable="teaser">
 
 	<div class="o-teaser__content">
 
-		{{> n-teaser/templates/partials/display-concept}}
+		<include('./partials/display-concept', input)/>
 
 		{{> n-teaser/templates/partials/title}}
 
