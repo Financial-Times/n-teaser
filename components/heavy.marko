@@ -1,36 +1,24 @@
-/*import factory from '../presenters/factory'
-$ {
-	factory(input, {
-		template: 'heavy',
-		mods: input.mods,
-		flags: out.global.flags
-	});
-}
-<div class=input.presenter.topLevelClasses data-o-component="o-teaser" data-trackable="teaser">
+import { topLevelClasses, isPlayableVideo } from '../helpers'
+$ console.log(out.global)
+$ const isPlayableVideoTeaser = isPlayableVideo(input, out.global.flags);
+
+<div class=(topLevelClasses(input, 'standard')) data-o-component="o-teaser" data-trackable="teaser">
 
 	<div class="o-teaser__content">
-
 		<include('./partials/display-concept', input)/>
-
-		{{#if @nTeaserPresenter.isPlayableVideo}}
+		<if(isPlayableVideoTeaser)>
 			{{> n-teaser/templates/partials/playable-video}}
-		{{/if}}
+		</if>
+		<include('./partials/title', input)/>
+		<include('./partials/standfirst', input)/>
 
-		{{> n-teaser/templates/partials/title}}
-
-		{{> n-teaser/templates/partials/standfirst}}
-
-		{{#unless @nTeaserPresenter.isPlayableVideo}}
-			{{> n-teaser/templates/partials/timestamp}}
-		{{/unless}}
-
-		{{> n-teaser/templates/partials/actions}}
-
+		<if(!isPlayableVideoTeaser)>
+			<include('./partials/timestamp', input)/>
+		</if>
+		<include('./partials/actions', input)/>
+		<include('./partials/headshot', input)/>
 	</div>
-
-	{{#unless @nTeaserPresenter.isPlayableVideo}}
+	<if(!isPlayableVideoTeaser)>
 		{{> n-teaser/templates/partials/main-image}}
-	{{/unless}}
-
+	</if>
 </div>
-

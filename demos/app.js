@@ -39,6 +39,8 @@ const app = module.exports = express({
 	}
 });
 
+app.locals = {flags: {}};
+
 app.get('/package-article', (req, res) => {
 	res.render('demo-package-article', Object.assign({
 		title: 'Content from package teasers',
@@ -54,6 +56,9 @@ app.get('/package', (req, res) => {
 });
 
 app.get('/video', (req, res) => {
+	res.locals.flags = {
+		insituVideoTeaser: true
+	};
 	res.render('demo', Object.assign({
 		title: 'Video teasers',
 		layout: 'demo-layout',
