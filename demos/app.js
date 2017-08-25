@@ -30,8 +30,8 @@ const app = module.exports = express({
 	demo: true,
 	s3o: false,
 	helpers:  {
-		nTeaserPresenter: require('../').presenter,
-		packageTeaserPresenter: require('../').presenter,
+		// nTeaserPresenter: require('../').presenter,
+		// packageTeaserPresenter: require('../').presenter,
 		marko: function (filename, options) {
 			const tpl = require(path.join(__dirname,  '../components', filename))
 			return tpl.renderSync(Object.assign({$global: this._locals}, this)).toString();

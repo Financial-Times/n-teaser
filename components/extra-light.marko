@@ -1,20 +1,11 @@
-import factory from '../presenters/factory'
-$ {
-	factory(input, {
-		template: 'extra-light',
-		mods: input.mods,
-		flags: out.global.flags
-	});
-}
-<div class=input.presenter.topLevelClasses data-o-component="o-teaser" data-trackable="teaser">
+import { topLevelClasses } from '../helpers'
+<div class=(topLevelClasses(input, 'extra-light')) data-o-component="o-teaser" data-trackable="teaser">
 	<div class="o-teaser__content">
-		<if(input.isOpinion || input.brand)>
+		<if(input.isOpinion || input.brandConcept)>
 			<include('./partials/display-concept', input)/>
 		</if>
 		<include('./partials/title', input)/>
-
-		{{> n-teaser/templates/partials/timestamp}}
-
+		<include('./partials/timestamp', input)/>
 	</div>
 </div>
 

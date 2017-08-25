@@ -1,11 +1,13 @@
+import { displayTitle } from '../../helpers';
+
 <div class="o-teaser__heading js-teaser-heading">
 	<a
-		href="$!{input.presenter.relativeUrl}$!{input.referrerTracking}"
+		href="$!{input.relativeUrl}$!{input.referrerTracking}"
 		class="js-teaser-heading-link"
 		data-content-id="${input.id}"
 		data-trackable="main-link"
-		target=(input.type ==='promoted-content' && '_blank')>
-		$!{input.presenter.displayTitle}
+		target=(input.type === 'promoted-content' && '_blank')>
+		$!{displayTitle(input)}
 	</a>
 	<span class="o-labels o-labels--premium" aria-label="Premium content" if(input.isPremium)>Premium</span>
 </div>
