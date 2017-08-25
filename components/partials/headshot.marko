@@ -1,25 +1,14 @@
-{{#unless noHeadshot}}
-	{{#with @nTeaserPresenter.headshot}}
-		{{#nImagePresenter
-				srcSet=url
-				width=width
-				height=height
-				sizes=sizes
-				widths=widths
-				lazyLoad=true
-				alt=alt
-			}}
+import { headshot }  from '../../helpers';
+$ const teaserHeadshot = headshot(input);
+<if(teaserHeadshot && !input.noHeadshot)>
+	<!--HACK: n-image needs refactoring to alow applying lazy, responsive images without the image wrapper and classes -->
+	<img
+	width="75px"
+	height="75px"
+	data-srcset=(teaserHeadshot.imgAttrs['data-srcset'])
+	sizes=(teaserHeadshot.imgAttrs.sizes)
+	role=(teaserHeadshot.imgAttrs.role)
+	alt=(teaserHeadshot.imgAttrs.alt)
+	class="o-teaser__headshot n-image--lazy-loading"/>
+</if>
 
-				{{#with image.imgAttrs}}
-					{{!HACK: n-image needs refactoring to alow applying lazy, responsive images without the image wrapper and classes }}
-					<img
-					width="75px"
-					height="75px"
-					{{#if data-srcset}} data-srcset="{{data-srcset}}"{{/if}}
-					{{#if sizes}} sizes="{{sizes}}"{{/if}}
-					{{#if role}} role="{{role}}"{{/if}}
-					alt="{{alt}}" class="o-teaser__headshot n-image--lazy-loading"/>
-				{{/with}}
-		{{/nImagePresenter}}
-	{{/with}}
-{{/unless}}

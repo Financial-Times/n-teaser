@@ -1,15 +1,15 @@
 import { timeObject, dateFormat } from '../../helpers';
 $ {
-	const timeProps = timeObject(input);
+	const teaserTime = timeObject(input);
 	const classes = ['o-teaser__timestamp'];
-	if (timeProps.classModifier) {
-		classes.push(`o-teaser__timestamp--${timeProps.classModifier}`);
+	if (teaserTime.classModifier) {
+		classes.push(`o-teaser__timestamp--${teaserTime.classModifier}`);
 	}
 }
 
 <if(!input.containedIn)>
 	<div class=(classes)>
-		<span class="o-teaser__timestamp-prefix" if(timeProps.status)>${timeProps.status}</span>
+		<span class="o-teaser__timestamp-prefix" if(teaserTime.status)>${teaserTime.status}</span>
 		<time data-o-component="o-date" class="o-date" data-o-date-format="time-ago-limit-4-hours" datetime="${input.publishedDate}">
 			${dateFormat(input.publishedDate, 'dddd, d mmmm, yyyy')}
 		</time>

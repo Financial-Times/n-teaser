@@ -37,5 +37,52 @@
     },
     "standfirst": null,
     "mainImage": null
+  },
+  {
+    "type": "Article",
+    "id": "c939adf8-8826-11e7-afd2-74b8ecd34d3b",
+    "isPremium": false,
+    "relativeUrl": "/content/c939adf8-8826-11e7-afd2-74b8ecd34d3b",
+    "title": "Central bankers are flying blind on QE",
+    "promotionalTitle": "Central bankers are flying blind on QE",
+    "alternativeTitles": {
+      "contentPackageTitle": null
+    },
+    "publishedDate": "2017-08-25T12:48:49.000Z",
+    "firstPublishedDate": "2017-08-25T12:48:49.000Z",
+    "isEditorsChoice": false,
+    "canBeSyndicated": "yes",
+    "isOpinion": true,
+    "genre": {
+      "id": "e569e23b-0c3e-3d20-8ed0-4c17b8177c05",
+      "prefLabel": "Comment"
+    },
+    "authorConcepts": [
+      {
+        "prefLabel": "Merryn Somerset Webb",
+        "relativeUrl": "/personal-finance/merryn-somerset-webb",
+        "id": "f836143f-dd58-363e-a7b0-4e533ffacb6f",
+        "headshot": {
+          "name": "merryn-somerset-webb"
+        }
+      }
+    ],
+    "displayConcept": {
+      "prefLabel": "The QE retreat",
+      "relativeUrl": "/stream/a56a1299-0f65-3390-89df-71b0e40bda0d"
+    },
+    "standfirst": "The Fed says unwinding radical monetary policy will be boring, but that is unlikely",
+    "mainImage": {
+      "title": "Elected governments have ceded such power over our financial system to central bankers such as Mark Carney, Mario Draghi and Janet Yellen, above, that we have no choice but to listen to their every word",
+      "description": "Mario Draghi (C), President of the European Central Bank (ECB), speaks with Janet Yellen, Chair of the Board of Governors of the Federal Reserve System (R) and the Bank of England Governor Mark Carney (L) as participants in the G20 Finance Ministers and Central Bank Governors Meeting arrive to pose for the Family photo in Baden-Baden, southern Germany, on March 17, 2017. Finance ministers from the world's top nations gather in Germany on March 17, as fears grow of a looming trade war over US President Donald Trump's America First policy. / AFP PHOTO / Thomas KIENZLE (Photo credit should read THOMAS KIENZLE/AFP/Getty Images)",
+      "url": "http://prod-upp-image-read.ft.com/69de5b18-8977-11e7-afd2-74b8ecd34d3b",
+      "width": 2048,
+      "height": 1152,
+      "ratio": 1.7777777777777777
+    }
   }]
 }
+
+
+
+

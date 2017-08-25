@@ -10,5 +10,6 @@ module.exports = {
 	teaserConcept: require('./teaser-concept'),
 	timeObject: require('./time-object'),
 	topLevelClasses: require('./top-level-classes'),
-	dateFormat: require('./date-format')
+	dateFormat: require('./date-format'),
+	nImagePresenter: require('./n-image')
 }

@@ -1,25 +1,13 @@
-/*import factory from '../presenters/factory'
-$ {
-	factory(input, {
-		template: 'light',
-		mods: input.mods,
-		flags: out.global.flags
-	});
-}
-<div class=input.presenter.topLevelClasses data-o-component="o-teaser" data-trackable="teaser">
+import { topLevelClasses } from '../helpers'
+
+<div class=(topLevelClasses(input, 'light')) data-o-component="o-teaser" data-trackable="teaser">
 
 	<div class="o-teaser__content">
-
 		<include('./partials/display-concept', input)/>
-
-		{{> n-teaser/templates/partials/title}}
-
-		{{> n-teaser/templates/partials/timestamp}}
-
-		{{> n-teaser/templates/partials/actions}}
-
-		{{> n-teaser/templates/partials/headshot}}
-
+		<include('./partials/title', input)/>
+		<include('./partials/timestamp', input)/>
+		<include('./partials/actions', input)/>
+		<include('./partials/headshot', input)/>
 	</div>
 </div>
 
