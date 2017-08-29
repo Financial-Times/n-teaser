@@ -72,7 +72,6 @@ const teaser = (input, template) => {
 			mods.push('verify-syndicatable');
 			break;
 	}
-	console.log(mods);
 	return mods;
 }
 
