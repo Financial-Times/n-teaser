@@ -1,0 +1,22 @@
+import { LIVEBLOG_MAPPING }  from '../../helpers/utils';
+import { teaserConcept, genrePrefix, duration }  from '../../helpers';
+
+$ {
+	const liveblogModifier = input.status && LIVEBLOG_MAPPING[input.status.toLowerCase()].labelModifier;
+	const advertiserPrefix =	input.advertiser ? (input.type === 'promoted-content') ? ' paid for by ' : ' by ' : '';
+	const concept = teaserConcept(input);
+	const conceptPrefix = genrePrefix(input);
+	const contentDuration = duration(input);
+}
+
+<div class="o-teaser__meta" if(!input.noTag)>
+	<span class="o-labels o-labels--${liveblogModifier}" aria-label="Live blog with status of ${liveblogModifier}" if(input.status)>Live</span>
+	<span class="o-teaser__tag-prefix" if(conceptPrefix)>
+		${conceptPrefix}
+	</span>
+	<a href="${concept.relativeUrl}" class="o-teaser__tag" data-trackable="primary-concept" if(concept)>
+		${concept.prefLabel}
+	</a>
+	<time class="o-teaser__duration" datetime="${contentDuration.iso}" if(contentDuration)>${contentDuration.formatted}min</time>
+	<span class="o-teaser__promoted-prefix">${input.promotedByPrefix}</span>${advertiserPrefix}<span class="o-teaser__promoted-by" if(input.advertiser)>${input.advertiser}</span>
+</div>

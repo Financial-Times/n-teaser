@@ -1,0 +1,11 @@
+import { topLevelClasses } from '../helpers'
+<div class=(topLevelClasses(input, 'extra-light')) data-o-component="o-teaser" data-trackable="teaser">
+	<div class="o-teaser__content">
+		<if(input.isOpinion || input.brandConcept)>
+			<include('./partials/display-concept', input)/>
+		</if>
+		<include('./partials/title', input)/>
+		<include('./partials/timestamp', input)/>
+	</div>
+</div>
+

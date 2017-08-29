@@ -3,69 +3,86 @@
   "flags": {
     "premiumContentIndicator": true
   },
-  "content": [{
+  "content": [  {
     "type": "Article",
-    "id": "a3d0eff4-c224-11e6-81c2-f57d90f6741a",
-    "isPremium": true,
-    "relativeUrl": "/",
-    "title": "Example content title",
-    "publishedDate": "2016-12-15T05:37:23Z",
+    "id": "a7d28a21-7f6b-30f8-9c4c-079ae46aa98e",
+    "isPremium": false,
+    "relativeUrl": "/content/a7d28a21-7f6b-30f8-9c4c-079ae46aa98e",
+    "title": "US durable goods fall by the most since 2014, driven by transportation",
+    "promotionalTitle": null,
+    "alternativeTitles": null,
+    "publishedDate": "2017-08-25T12:38:56.000Z",
+    "firstPublishedDate": "2017-08-25T12:38:56.000Z",
     "isEditorsChoice": false,
-    "genreTag": null,
-    "primaryBrandTag": null,
-    "canBeSyndicated": true,
-    "authorTags": [{
-      "prefLabel": "Jonathan Ford",
-      "relativeUrl": "/"
-    }],
+    "canBeSyndicated": "verify",
     "isOpinion": false,
-    "teaserTag": {
-      "prefLabel": "Example tag",
-      "relativeUrl": "/"
+    "genreConcept": null,
+    "brandConcept": {
+      "prefLabel": "fastFT",
+      "relativeUrl": "/fastft",
+      "directType": "http://www.ft.com/ontology/product/Brand",
+      "id": "5c7592a8-1f0c-11e4-b0cb-b2227cce2b54"
     },
-    "standfirst": "Example standfirst",
+    "authorConcepts": [
+      {
+        "prefLabel": "Mamta Badkar",
+        "relativeUrl": "/stream/1998e54d-168c-3f28-a488-6aab347a1bdd",
+        "id": "1998e54d-168c-3f28-a488-6aab347a1bdd",
+        "headshot": null
+      }
+    ],
+    "displayConcept": {
+      "prefLabel": "US",
+      "relativeUrl": "/world/us"
+    },
+    "standfirst": null,
+    "mainImage": null
+  },
+  {
+    "type": "Article",
+    "id": "c939adf8-8826-11e7-afd2-74b8ecd34d3b",
+    "isPremium": false,
+    "relativeUrl": "/content/c939adf8-8826-11e7-afd2-74b8ecd34d3b",
+    "title": "Central bankers are flying blind on QE",
+    "promotionalTitle": "Central bankers are flying blind on QE",
+    "alternativeTitles": {
+      "contentPackageTitle": null
+    },
+    "publishedDate": "2017-08-25T12:48:49.000Z",
+    "firstPublishedDate": "2017-08-25T12:48:49.000Z",
+    "isEditorsChoice": false,
+    "canBeSyndicated": "yes",
+    "isOpinion": true,
+    "genre": {
+      "id": "e569e23b-0c3e-3d20-8ed0-4c17b8177c05",
+      "prefLabel": "Comment"
+    },
+    "authorConcepts": [
+      {
+        "prefLabel": "Merryn Somerset Webb",
+        "relativeUrl": "/personal-finance/merryn-somerset-webb",
+        "id": "f836143f-dd58-363e-a7b0-4e533ffacb6f",
+        "headshot": {
+          "name": "merryn-somerset-webb"
+        }
+      }
+    ],
+    "displayConcept": {
+      "prefLabel": "The QE retreat",
+      "relativeUrl": "/stream/a56a1299-0f65-3390-89df-71b0e40bda0d"
+    },
+    "standfirst": "The Fed says unwinding radical monetary policy will be boring, but that is unlikely",
     "mainImage": {
-      "title": "Ringing the changes: inside the Lloyd's of London building",
-      "description": "Lloyds London Insurance City tradition ...Lloyds of London for the big page. Underwriters and brokers cut deals on the trading floor at Lloyds where face to face negotiations still rule.",
-      "url": "http://im.ft-static.com/content/images/a60ae24b-b87f-439c-bf1b-6e54946b4cf2.img",
+      "title": "Elected governments have ceded such power over our financial system to central bankers such as Mark Carney, Mario Draghi and Janet Yellen, above, that we have no choice but to listen to their every word",
+      "description": "Mario Draghi (C), President of the European Central Bank (ECB), speaks with Janet Yellen, Chair of the Board of Governors of the Federal Reserve System (R) and the Bank of England Governor Mark Carney (L) as participants in the G20 Finance Ministers and Central Bank Governors Meeting arrive to pose for the Family photo in Baden-Baden, southern Germany, on March 17, 2017. Finance ministers from the world's top nations gather in Germany on March 17, as fears grow of a looming trade war over US President Donald Trump's America First policy. / AFP PHOTO / Thomas KIENZLE (Photo credit should read THOMAS KIENZLE/AFP/Getty Images)",
+      "url": "http://prod-upp-image-read.ft.com/69de5b18-8977-11e7-afd2-74b8ecd34d3b",
       "width": 2048,
       "height": 1152,
-      "ratio": 1.7777777777778,
-      "sourceParam": "n-teaser"
-    },
-    "curatedRelatedContent": [
-
-    ],
-    "primaryTag": {
-      "latestContent": [{
-        "type": "Article",
-        "relativeUrl": "\/content\/a3d0eff4-c224-11e6-81c2-f57d90f6741a",
-        "isPremium": false,
-        "title": "Lloyd\u2019s of London to establish EU base in the new year",
-        "promotionalTitle": "Lloyd\u2019s of London to establish EU base in new year",
-        "id": "a3d0eff4-c224-11e6-81c2-f57d90f6741a"
-      }, {
-        "type": "Article",
-        "relativeUrl": "\/content\/00adf2a4-b5ae-11e6-961e-a1acd97f622d",
-        "isPremium": false,
-        "title": "Insurers face extra $15bn asbestos bill",
-        "promotionalTitle": "Insurers face extra $15bn asbestos bill",
-        "id": "00adf2a4-b5ae-11e6-961e-a1acd97f622d"
-      }, {
-        "type": "Article",
-        "relativeUrl": "\/content\/acac3a5e-b255-11e6-a37c-f4a01f1b0fa1",
-        "isPremium": false,
-        "title": "Lloyd\u2019s chief urges UK to share cyber attack data",
-        "promotionalTitle": "Lloyd\u2019s chief urges UK to share cyber attack data",
-        "id": "acac3a5e-b255-11e6-a37c-f4a01f1b0fa1"
-      }, {
-        "type": "Article",
-        "relativeUrl": "\/content\/9942f06c-80ae-11e6-bc52-0c7211ef3198",
-        "isPremium": false,
-        "title": "Li Ka-shing means more ka-ching for Grid",
-        "promotionalTitle": "Li Ka-shing means more ka-ching for Grid",
-        "id": "9942f06c-80ae-11e6-bc52-0c7211ef3198"
-      }]
+      "ratio": 1.7777777777777777
     }
   }]
 }
+
+
+
+

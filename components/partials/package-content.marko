@@ -1,0 +1,8 @@
+<ul class="package-teaser__list" if(packageList)>
+	<li class="package-teaser__list-item" for(item in packageContent)>
+		<a data-trackable="package-list" href="${relativeUrl}">${title}</a>
+	</li>
+	<li class="package-teaser__list-item package-teaser__landing-link">
+		<a href="$!{relativeUrl}" data-trackable="series-link">Visit ${genrePrefix}</a>
+	</li>
+</ul>

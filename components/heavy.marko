@@ -1,0 +1,23 @@
+import { topLevelClasses, isPlayableVideo } from '../helpers'
+$ const isPlayableVideoTeaser = isPlayableVideo(input, out.global.flags);
+
+<div class=(topLevelClasses(input, 'standard')) data-o-component="o-teaser" data-trackable="teaser">
+
+	<div class="o-teaser__content">
+		<include('./partials/display-concept', input)/>
+		<if(isPlayableVideoTeaser)>
+			{{> n-teaser/templates/partials/playable-video}}
+		</if>
+		<include('./partials/title', input)/>
+		<include('./partials/standfirst', input)/>
+
+		<if(!isPlayableVideoTeaser)>
+			<include('./partials/timestamp', input)/>
+		</if>
+		<include('./partials/actions', input)/>
+		<include('./partials/headshot', input)/>
+	</div>
+	<if(!isPlayableVideoTeaser)>
+		<include('./partials/main-image', input)/>
+	</if>
+</div>

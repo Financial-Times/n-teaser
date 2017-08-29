@@ -1,6 +1,10 @@
-'use strict';
+require('marko/node-require'); // Allow Node.js to require and load `.marko` files
+
 
 const express = require('@financial-times/n-internal-tool');
+const markoExpress = require('marko/express');
+const marko = require('marko');
+
 const fixtures = require('./fixtures/fixtures.json');
 const fixturesCommercial = require('./fixtures/fixtures-commercial-content');
 const fixturesPackage = require('./fixtures/fixtures-package');
@@ -9,6 +13,7 @@ const fixturesVideo = require('./fixtures/fixtures-video');
 const chalk = require('chalk');
 const errorHighlight = chalk.bold.red;
 const highlight = chalk.bold.green;
+const path = require('path');
 
 const app = module.exports = express({
 	name: 'public',
@@ -25,10 +30,14 @@ const app = module.exports = express({
 	demo: true,
 	s3o: false,
 	helpers:  {
-		nTeaserPresenter: require('../').presenter,
-		packageTeaserPresenter: require('../').presenter
+		marko: function (filename, options) {
+			const tpl = require(path.join(__dirname,  '../components', filename))
+			return tpl.renderSync(Object.assign({$global: options.data.root}, this)).toString();
+		}
 	}
 });
+
+app.locals.flags = {};
 
 app.get('/package-article', (req, res) => {
 	res.render('demo-package-article', Object.assign({
@@ -45,6 +54,9 @@ app.get('/package', (req, res) => {
 });
 
 app.get('/video', (req, res) => {
+	res.locals.flags = {
+		insituVideoTeaser: true
+	};
 	res.render('demo', Object.assign({
 		title: 'Video teasers',
 		layout: 'demo-layout',

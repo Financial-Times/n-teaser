@@ -1,0 +1,13 @@
+import { topLevelClasses } from '../helpers'
+
+<div class=(topLevelClasses(input, 'standard')) data-o-component="o-teaser" data-trackable="teaser">
+
+	<div class="o-teaser__content">
+		<include('./partials/display-concept', input)/>
+		<include('./partials/title', input)/>
+		<include('./partials/standfirst', input)/>
+		<include('./partials/timestamp', input)/>
+		<include('./partials/actions', input)/>
+		<include('./partials/headshot', input)/>
+	</div>
+</div>
