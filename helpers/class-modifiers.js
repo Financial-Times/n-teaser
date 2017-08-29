@@ -5,14 +5,19 @@ const { isPackage, hyphenatePascalCase } = require('./utils');
 const TEMPLATES_WITH_HEADSHOTS = ['light', 'standard', 'lifestyle'];
 const PLAYABLE_VIDEO_INVALID_MODS = ['centre', 'has-image'];
 const TEMPLATES_WITH_IMAGES = ['heavy', 'top-story-heavy','lifestyle'];
+const additionalMods = {
+	'top-story-heavy': ['top-story', 'landscape'],
+	'top-story-standard': ['top-story', 'standalone']
+};
 
 const modsDoesNotInclude = (modToTest, modsArray = []) => {
 	return !modsArray.includes(modToTest);
 };
 
 const teaser = (input, template) => {
-	const mods = [].concat(input.mods || []);
 
+
+	const mods = [].concat(additionalMods[template] || [], input.mods || []);
 	if (input.containedIn && input.containedIn.length) {
 		const { theme } = input.containedIn[0].design || {};
 
@@ -72,6 +77,7 @@ const teaser = (input, template) => {
 			mods.push('verify-syndicatable');
 			break;
 	}
+
 	return mods;
 }
 
@@ -93,4 +99,4 @@ const package = input => {
 	return mods;
 }
 
-module.exports = input => isPackage(input) ? package(input) : teaser(input);
+module.exports = (input, template) => isPackage(input) ? package(input, template) : teaser(input, template);
