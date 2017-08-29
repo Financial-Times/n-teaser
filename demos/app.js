@@ -1,6 +1,5 @@
 require('marko/node-require'); // Allow Node.js to require and load `.marko` files
 
-
 const express = require('@financial-times/n-internal-tool');
 const markoExpress = require('marko/express');
 const marko = require('marko');

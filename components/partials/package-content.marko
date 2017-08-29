@@ -1,6 +1,7 @@
+import { packageContent } from '../../helpers';
 <ul class="package-teaser__list" if(input.packageList)>
-	<li class="package-teaser__list-item" for(item in input.packageContent)>
-		<a data-trackable="package-list" href="$!{relativeUrl}">${title}</a>
+	<li class="package-teaser__list-item" for(item in packageContent(input))>
+		<a data-trackable="package-list" href="$!{item.relativeUrl}">${item.title}</a>
 	</li>
 	<li class="package-teaser__list-item package-teaser__landing-link">
 		<a href="$!{input.relativeUrl}" data-trackable="series-link">Visit ${input.genrePrefix}</a>

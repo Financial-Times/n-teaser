@@ -19,6 +19,7 @@
     "chalk": "^1.1.3",
     "eslint": "^2.10.2",
     "lintspaces-cli": "^0.1.1",
+    "marko": "^4.4.27",
     "mocha": "^2.2.5",
     "node-sass": "^4.0.0",
     "npm-prepublish": "^1.2.1",
@@ -28,6 +29,7 @@
   "scripts": {
     "commit": "commit-wizard",
     "precommit": "node_modules/.bin/secret-squirrel",
-    "prepush": "make verify -j3"
+    "prepush": "make verify -j3",
+    "commitmsg": "node_modules/.bin/secret-squirrel-commitmsg"
   }
 }
