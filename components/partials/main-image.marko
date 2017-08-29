@@ -1,13 +1,38 @@
-<div class="o-teaser__image-container js-teaser-image-container" if(mainImage)>
-	<a href="{{{relativeUrl}}}{{{referrerTracking}}}" data-trackable="image" aria-hidden="true" tabindex="-1">
-		<if(lazyLoad===false)>
-			{{#nImagePresenter srcSet=mainImage.url placeholder=mainImage.ratio colspan=colspan position=position widths=widths lazyLoad=false wrapperClasses="o-teaser__image-placeholder" classes="o-teaser__image" sourceParam=mainImage.sourceParam}}
-				{{> n-image/templates/image}}
-			{{/nImagePresenter}}
-		<else>
-			{{#nImagePresenter srcSet=mainImage.url placeholder=mainImage.ratio colspan=colspan position=position widths=widths lazyLoad=true wrapperClasses="o-teaser__image-placeholder" classes="o-teaser__image" sourceParam=mainImage.sourceParam}}
-				{{> n-image/templates/image}}
-			{{/nImagePresenter}}
-		</if>
+import { nImagePresenter } from '../../helpers'
+
+<div class="o-teaser__image-container js-teaser-image-container" if(input.mainImage)>
+	$ {
+		const image = new nImagePresenter({
+			srcSet: input.mainImage.url,
+			placeholder: input.mainImage.ratio,
+			colspan: input.colspan,
+			position: input.position,
+			widths: input.widths,
+			lazyLoad: input.false,
+			wrapperClasses: "o-teaser__image-placeholder",
+			classes: "o-teaser__image",
+			sourceParam: input.mainImage.sourceParam
+		}).imgAttrs;
+	}
+	<a href="$!{input.relativeUrl}$!{input.referrerTracking}" data-trackable="image" aria-hidden="true" tabindex="-1">
+		<div class="{{image.wrapperAttrs.className}}" style="{{image.wrapperAttrs.styleString}}">
+				<img
+				{{#if image.src}}
+					src=(image.src)
+					width=(image.width)
+					height=(image.height)
+				{{/if}}
+				data-src=(image['data-src'])
+				srcset=(image.srcSet)
+				data-srcset=(image['data-srcset'])
+				sizes=(image.sizes)
+				role=(image.role)
+				alt=(image.alt)
+				class=(image.className)
+			/>
+		</div>
 	</a>
 </div>
+
+
+

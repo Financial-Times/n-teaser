@@ -30,16 +30,14 @@ const app = module.exports = express({
 	demo: true,
 	s3o: false,
 	helpers:  {
-		// nTeaserPresenter: require('../').presenter,
-		// packageTeaserPresenter: require('../').presenter,
 		marko: function (filename, options) {
 			const tpl = require(path.join(__dirname,  '../components', filename))
-			return tpl.renderSync(Object.assign({$global: this._locals}, this)).toString();
+			return tpl.renderSync(Object.assign({$global: options.data.root}, this)).toString();
 		}
 	}
 });
 
-app.locals = {flags: {}};
+app.locals.flags = {};
 
 app.get('/package-article', (req, res) => {
 	res.render('demo-package-article', Object.assign({
