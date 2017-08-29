@@ -1,4 +1,4 @@
-const { brandAuthorDouble } = require('./utils');
+const { brandAuthorDouble } = require('../../lib/utils');
 
 module.exports = input => {
 	//use package title as display concept if article belongs to package

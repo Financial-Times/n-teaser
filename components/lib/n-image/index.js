@@ -1,6 +1,6 @@
-const breakpoints = require('./n-image/breakpoints');
-const buildImageServiceUrl = require('./n-image/build-image-service-url');
-const createImageSizes = require('./n-image/create-image-sizes');
+const breakpoints = require('./breakpoints');
+const buildImageServiceUrl = require('./build-image-service-url');
+const createImageSizes = require('./create-image-sizes');
 
 /**
  * @param {string} src - Actual src to use. If set, assume it's non-responsive, i.e. ignore url, widths, sizes

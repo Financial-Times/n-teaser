@@ -99,4 +99,6 @@ const package = input => {
 	return mods;
 }
 
-module.exports = (input, template) => isPackage(input) ? package(input, template) : teaser(input, template);
+const classModifiers = (input, template) => isPackage(input) ? package(input, template) : teaser(input, template);
+
+module.exports = (input, template) => ['o-teaser'].concat(classModifiers(input, template).map(mod => `o-teaser--${mod}`));

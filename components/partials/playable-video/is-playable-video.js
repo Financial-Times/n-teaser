@@ -7,7 +7,6 @@ module.exports = (input, template, flags) => {
 	const isBigStory = modsDoesInclude('big-story', input.mods);
 	const isHeavy = template === 'heavy';
 	const isLarge = modsDoesInclude('large', input.mods) || modsDoesInclude('hero', input.mods);
-	console.log(template, isTopStory, isBigStory, isHeavy, isLarge);
 	return Boolean(
 		flags.insituVideoTeaser
 		&& input.type === 'Video'

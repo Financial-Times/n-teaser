@@ -1,4 +1,4 @@
-const { LIVEBLOG_MAPPING } = require('./utils');
+const { LIVEBLOG_MAPPING } = require('../../lib/utils');
 const ONE_HOUR = 1000 * 60 * 60;
 
 //returns prefix for timestamp (null / 'new' / 'updated')

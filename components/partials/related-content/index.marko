@@ -1,5 +1,7 @@
+import getRelatedContent from './related-content';
+
 <ul class="o-teaser__related" if(!input.noRelatedContent && input.relatedContent)>
-	<for (item in input.relatedContent)>
+	<for (item in getRelatedContent(input))>
 		$ const classes = ['o-teaser__related-item'].concat((item.classModifiers || []).map(modifier => `o-teaser__related-item--${modifier}`));
 		<li class=(classes) data-content-id="${item.id}">
 			<a data-trackable="related" href="$!{item.relativeUrl}">$!{item.title}</a>

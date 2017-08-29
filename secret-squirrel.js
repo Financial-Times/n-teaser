@@ -1,25 +1,24 @@
 module.exports = {
 	files: {
 		allow: [
+			'components/partials/display-concept/index.marko',
+			'components/partials/headshot/index.marko',
+			'components/partials/package-content/index.marko',
+			'components/partials/playable-video/index.marko',
+			'components/partials/related-content/index.marko',
+			'components/partials/timestamp/index.marko',
+			'components/partials/title/index.marko',
 			'components/extra-light.marko',
 			'components/heavy.marko',
 			'components/lifestyle.marko',
 			'components/light.marko',
 			'components/package-list.marko',
 			'components/partials/actions.marko',
-			'components/partials/display-concept.marko',
-			'components/partials/headshot.marko',
 			'components/partials/main-image.marko',
-			'components/partials/package-content.marko',
-			'components/partials/playable-video.marko',
-			'components/partials/related-content.marko',
 			'components/partials/standfirst.marko',
-			'components/partials/timestamp.marko',
-			'components/partials/title.marko',
 			'components/standard.marko',
 			'components/top-story-heavy.marko',
-			'components/top-story-standard.marko',
-			'helpers/hbs.marko'
+			'components/top-story-standard.marko'
 		],
 		allowOverrides: []
 	},

@@ -1,6 +1,3 @@
-/* eslint no-console: 0 */
-'use strict';
-
 const dateFormat = require('dateformat');
 
 module.exports = function (date, format) {

@@ -1,5 +1,7 @@
-import { LIVEBLOG_MAPPING }  from '../../helpers/utils';
-import { teaserConcept, genrePrefix, duration }  from '../../helpers';
+import { LIVEBLOG_MAPPING }  from '../../lib/utils';
+import teaserConcept from './teaser-concept';
+import genrePrefix from './genre-prefix'
+import duration from './duration'
 
 $ {
 	const liveblogModifier = input.status && LIVEBLOG_MAPPING[input.status.toLowerCase()].labelModifier;

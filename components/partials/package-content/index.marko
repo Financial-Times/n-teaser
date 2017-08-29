@@ -1,4 +1,5 @@
-import { packageContent } from '../../helpers';
+import packageContent from './package-content';
+
 <ul class="package-teaser__list" if(input.packageList)>
 	<li class="package-teaser__list-item" for(item in packageContent(input))>
 		<a data-trackable="package-list" href="$!{item.relativeUrl}">${item.title}</a>

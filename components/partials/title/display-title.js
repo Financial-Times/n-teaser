@@ -1,4 +1,4 @@
-const { isPackage } = require('./utils');
+const { isPackage } = require('../../lib/utils');
 
 const package = input => {
 	if (input.flags && input.flags.teaserUsePromotionalTitle && input.promotionalTitle) {

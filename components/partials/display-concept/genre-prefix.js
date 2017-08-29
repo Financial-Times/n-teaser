@@ -1,4 +1,4 @@
-const { isPackage, brandAuthorDouble } = require('./utils');
+const { isPackage, brandAuthorDouble } = require('../../lib/utils');
 
 const allowedGenres = [
 	'61d707b5-6fab-3541-b017-49b72de80772',

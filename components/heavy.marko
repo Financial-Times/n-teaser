@@ -1,4 +1,5 @@
-import { topLevelClasses, isPlayableVideo } from '../helpers'
+import topLevelClasses from './lib/top-level-classes';
+import isPlayableVideo from './partials/playable-video/is-playable-video';
 $ const isPlayableVideoTeaser = isPlayableVideo(input, 'standard', out.global.flags);
 
 <div class=(topLevelClasses(input, 'heavy')) data-o-component="o-teaser" data-trackable="teaser">
