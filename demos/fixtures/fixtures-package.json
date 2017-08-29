@@ -11,17 +11,17 @@
         "title": "Example content title",
         "publishedDate": "2016-12-15T05:37:23Z",
         "isEditorsChoice": false,
-        "genreTag": null,
-        "primaryBrandTag": {
+        "genreConcept": null,
+        "brnadConcept": {
           "prefLabel": "FT Series"
         },
         "canBeSyndicated": "yes",
-        "authorTags": [{
+        "authorConcepts": [{
             "prefLabel": "Jonathan Ford",
             "relativeUrl": "/package"
         }],
         "isOpinion": false,
-        "teaserTag": {
+        "displayConcept": {
             "prefLabel": "Example tag",
             "relativeUrl": "/"
         },
@@ -70,37 +70,6 @@
           "id": "a9c4758e-b81f-11e6-ba85-95d1533d9a62",
           "apiUrl": "http://api.ft.com/enrichedcontent/a9c4758e-b81f-11e6-ba85-95d1533d9a62",
           "title": "Architecture & design"
-        }],
-        "primaryTag": {
-            "latestContent": [{
-                "type": "Article",
-                "relativeUrl": "\/content\/a3d0eff4-c224-11e6-81c2-f57d90f6741a",
-                "isPremium": false,
-                "title": "Lloyd\u2019s of London to establish EU base in the new year",
-                "promotionalTitle": "Lloyd\u2019s of London to establish EU base in new year",
-                "id": "a3d0eff4-c224-11e6-81c2-f57d90f6741a"
-            }, {
-                "type": "Article",
-                "relativeUrl": "\/content\/00adf2a4-b5ae-11e6-961e-a1acd97f622d",
-                "isPremium": false,
-                "title": "Insurers face extra $15bn asbestos bill",
-                "promotionalTitle": "Insurers face extra $15bn asbestos bill",
-                "id": "00adf2a4-b5ae-11e6-961e-a1acd97f622d"
-            }, {
-                "type": "Article",
-                "relativeUrl": "\/content\/acac3a5e-b255-11e6-a37c-f4a01f1b0fa1",
-                "isPremium": false,
-                "title": "Lloyd\u2019s chief urges UK to share cyber attack data",
-                "promotionalTitle": "Lloyd\u2019s chief urges UK to share cyber attack data",
-                "id": "acac3a5e-b255-11e6-a37c-f4a01f1b0fa1"
-            }, {
-                "type": "Article",
-                "relativeUrl": "\/content\/9942f06c-80ae-11e6-bc52-0c7211ef3198",
-                "isPremium": false,
-                "title": "Li Ka-shing means more ka-ching for Grid",
-                "promotionalTitle": "Li Ka-shing means more ka-ching for Grid",
-                "id": "9942f06c-80ae-11e6-bc52-0c7211ef3198"
-            }]
-        }
+        }]
     }]
 }

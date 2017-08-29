@@ -11,14 +11,14 @@
     "title": "This is a Package Article",
     "publishedDate": "2016-12-15T05:37:23Z",
     "isEditorsChoice": false,
-    "genreTag": null,
+    "genreConcept": null,
     "canBeSyndicated": true,
-    "authorTags": [{
+    "authorConcepts": [{
       "prefLabel": "Jonathan Ford",
       "relativeUrl": "/package-article"
     }],
     "isOpinion": false,
-    "teaserTag": {
+    "displayConcept": {
       "prefLabel": "Example tag",
       "relativeUrl": "/"
     },
