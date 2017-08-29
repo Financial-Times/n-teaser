@@ -82,8 +82,8 @@ const teaser = (input, template) => {
 }
 
 const package = input => {
-	const mods = this.data.mods || [];
-	const theme = this.data.design ? this.data.design.theme : 'basic';
+	const mods = input.mods || [];
+	const theme = input.design ? input.design.theme : 'basic';
 
 	if (theme && (theme === 'extra-wide' || theme === 'extra')) {
 		mods.push('extra-package');
@@ -91,9 +91,9 @@ const package = input => {
 		mods.push(`${theme}-package`);
 	}
 
-	if (this.data.canBeSyndicated === 'yes') {
+	if (input.canBeSyndicated === 'yes') {
 		mods.push('syndicatable');
-	} else if(this.data.canBeSyndicated === 'no') {
+	} else if(input.canBeSyndicated === 'no') {
 		mods.push('not-syndicatable');
 	}
 	return mods;
