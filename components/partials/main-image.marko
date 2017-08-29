@@ -12,23 +12,21 @@ import { nImagePresenter } from '../../helpers'
 			wrapperClasses: "o-teaser__image-placeholder",
 			classes: "o-teaser__image",
 			sourceParam: input.mainImage.sourceParam
-		}).imgAttrs;
+		});
 	}
 	<a href="$!{input.relativeUrl}$!{input.referrerTracking}" data-trackable="image" aria-hidden="true" tabindex="-1">
-		<div class="{{image.wrapperAttrs.className}}" style="{{image.wrapperAttrs.styleString}}">
+		<div class="${image.wrapperAttrs.className}" style="${image.wrapperAttrs.styleString}">
 				<img
-				{{#if image.src}}
-					src=(image.src)
-					width=(image.width)
-					height=(image.height)
-				{{/if}}
+				src=(image.imgAttrs.src)
+				width=(image.imgAttrs.src && image.imgAttrs.width)
+				height=(image.imgAttrs.src && image.imgAttrs.height)
 				data-src=(image['data-src'])
-				srcset=(image.srcSet)
-				data-srcset=(image['data-srcset'])
-				sizes=(image.sizes)
-				role=(image.role)
-				alt=(image.alt)
-				class=(image.className)
+				srcset=(image.imgAttrs.srcSet)
+				data-srcset=(image.imgAttrs['data-srcset'])
+				sizes=(image.imgAttrs.sizes)
+				role=(image.imgAttrs.role)
+				alt=(image.imgAttrs.alt)
+				class=(image.imgAttrs.className)
 			/>
 		</div>
 	</a>

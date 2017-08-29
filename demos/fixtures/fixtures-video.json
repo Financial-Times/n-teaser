@@ -19,11 +19,7 @@
             "primaryBrandTag": null,
             "authorTags": [],
             "isOpinion": false,
-            "teaserTag": {
-                "prefLabel": "Turkish referendum",
-                "relativeUrl": "/stream/topicsId/YTMyNzkzMDMtMTM1MS00N2U5LTg0ZjEtMWI2MmJiNTYwN2My-VG9waWNz"
-            },
-            "primaryTag": {
+            "displayConcept": {
                 "prefLabel": "Turkish referendum",
                 "relativeUrl": "/stream/topicsId/YTMyNzkzMDMtMTM1MS00N2U5LTg0ZjEtMWI2MmJiNTYwN2My-VG9waWNz"
             },
@@ -34,7 +30,7 @@
             "mainImage": {
                 "title": "Video still for Turkey’s constitutional changes",
                 "description": "",
-                "url": "https://bcsecure01-a.akamaihd.net/13/47628783001/201704/3456/47628783001_5402074813001_5402065329001-vs.jpg?pubId=47628783001&videoId=5402065329001",
+                "url": "http://prod-upp-image-read.ft.com/69de5b18-8977-11e7-afd2-74b8ecd34d3b",
                 "width": 640,
                 "height": 360,
                 "ratio": 1.7777777777777777

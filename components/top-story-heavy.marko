@@ -1,5 +1,5 @@
 import { topLevelClasses, isPlayableVideo } from '../helpers'
-$ const isPlayableVideoTeaser = isPlayableVideo(input, out.global.flags);
+$ const isPlayableVideoTeaser = isPlayableVideo(input, 'top-story-heavy', out.global.flags);
 
 <div class=(topLevelClasses(input, 'top-story-heavy')) data-o-component="o-teaser" data-trackable="teaser">
 
@@ -18,7 +18,7 @@ $ const isPlayableVideoTeaser = isPlayableVideo(input, out.global.flags);
 	</div>
 
 	<if(isPlayableVideoTeaser)>
-		{{> n-teaser/templates/partials/playable-video}}
+		<include('./partials/playable-video', input)/>
 	</if>
 	<else>
 		<include('./partials/main-image', input)/>
