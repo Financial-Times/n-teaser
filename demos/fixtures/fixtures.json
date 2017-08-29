@@ -36,7 +36,19 @@
       "relativeUrl": "/world/us"
     },
     "standfirst": null,
-    "mainImage": null
+    "mainImage": null,
+    "relatedContent": [
+      {
+        "id": "abcde",
+        "relativeUrl": "/content/abcde",
+        "title": "Related content 1"
+      },
+      {
+        "id": "abcde",
+        "relativeUrl": "/content/abcde",
+        "title": "Related content 2"
+      }
+    ]
   },
   {
     "type": "Article",

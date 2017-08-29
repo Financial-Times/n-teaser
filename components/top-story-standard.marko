@@ -1,28 +1,19 @@
-/*import factory from '../presenters/factory'
-$ {
-	factory(input, {
-		template: 'top-story-standard',
-		mods: input.mods,
-		flags: out.global.flags
-	});
-}
-// also needs o-teaser--top-story o-teaser--standalone
-<div class=input.presenter.topLevelClasses data-o-component="o-teaser" data-trackable="teaser">
+import { topLevelClasses, isPlayableVideo } from '../helpers'
+<div class=(topLevelClasses(input, 'top-story-standard')) data-o-component="o-teaser" data-trackable="teaser">
 	<div class="o-teaser__content">
 
 		<include('./partials/display-concept', input)/>
 
-		{{> n-teaser/templates/partials/title}}
+		<include('./partials/title', input)/>
 
-		{{> n-teaser/templates/partials/standfirst}}
+		<include('./partials/standfirst', input)/>
 
-		{{> n-teaser/templates/partials/timestamp}}
+		<include('./partials/timestamp', input)/>
 
-		{{> n-teaser/templates/partials/actions}}
+		<include('./partials/actions', input)/>
 
 	</div>
 
-	{{> n-teaser/templates/partials/related-content}}
+	<include('./partials/related-content', input)/>
 
 </div>
-
