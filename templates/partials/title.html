@@ -5,6 +5,7 @@
 		data-content-id="{{this.id}}"
 		data-trackable="main-link"
 		{{#ifEquals type 'promoted-content'}}target="_blank"{{/ifEquals}}
+		{{#if @nTeaserPresenter.headlineTestingVariant}}data-trackable-headline-variant="{{{@nTeaserPresenter.headlineTestingVariant}}}"{{/if}}
 	>
 		{{{@nTeaserPresenter.displayTitle}}}
 	</a>

@@ -273,6 +273,14 @@ const TeaserPresenter = class TeaserPresenter {
 		return this.data.title;
 	}
 
+	// returns the variant name if headline testing is live for this story
+	get headlineTestingVariant () {
+		if (this.data.flags && this.data.flags.headlineTesting && this.data.alternativeTitles && this.data.alternativeTitles.contentPackageTitle) {
+			return this.data.flags.headlineTesting;
+		}
+		return null;
+	}
+
 	get isPlayableVideo () {
 		const isTopStory = this.data.template === 'top-story-heavy';
 		const isBigStory = modsDoesInclude('big-story', this.data.mods);
