@@ -9,7 +9,7 @@
     "test",
     "tests"
   ],
-  "devDependencies": {
+  "dependencies": {
     "n-ui-foundations": "^2.0.0",
     "o-teaser": "^2.0.0",
     "o-labels": "^3.0.0",
