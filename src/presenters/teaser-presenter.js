@@ -288,7 +288,8 @@ const TeaserPresenter = class TeaserPresenter {
 		const isLarge = modsDoesInclude('large', this.data.mods) || modsDoesInclude('hero', this.data.mods);
 
 		return Boolean(
-			this.data.flags
+			!this.data.disablePlayableVideo
+			&& this.data.flags
 			&& this.data.flags.insituVideoTeaser
 			&& this.data.type === 'Video'
 			&& ((isTopStory && !isBigStory) || (isHeavy && isLarge))
