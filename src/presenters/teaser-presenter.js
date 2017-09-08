@@ -130,7 +130,7 @@ const TeaserPresenter = class TeaserPresenter {
 		//use package title as display concept if article belongs to package
 		let packageArticle = this.data.containedIn;
 
-		const displayConcept = this.data.flags && this.data.flags.noTeaserConcepts ? null : this.data.displayConcept;
+		const displayConcept = this.data.displayConcept;
 
 		if (packageArticle && packageArticle[0] && packageArticle[0].title) {
 			return Object.assign(this, { prefLabel: packageArticle[0].title, relativeUrl: packageArticle[0].relativeUrl});
