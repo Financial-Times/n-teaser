@@ -5,3 +5,4 @@ bower_components/
 /public/main.css
 /pa11y_screenCapture/*
 *.env*
+.idea/

@@ -347,6 +347,14 @@ const TeaserPresenter = class TeaserPresenter {
 			return null;
 		}
 	}
+
+    get specialReport () {
+        if(this.data.type === 'special-report') {
+            return 'Special Report';
+        } else {
+            return null;
+        }
+    }
 };
 
 module.exports = TeaserPresenter;
