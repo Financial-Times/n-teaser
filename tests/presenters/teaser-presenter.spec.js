@@ -520,8 +520,8 @@ describe('Teaser Presenter', () => {
 		const title = { title: 'title'};
 		const teaserFlagOn = { teaserUsePromotionalTitle: true };
 		const teaserFlagOff = { teaserUsePromotionalTitle: false };
-		const headlineTestVariant = { headlineTesting: 'variant' };
-		const headlineTestControl = { headlineTesting: 'control' };
+		const headlineTestVariant = { headlineTesting: 'variant2' };
+		const headlineTestControl = { headlineTesting: 'variant1' };
 
 		it('returns the contentPackageTitle if it exists and headline testing flag returns variant', () => {
 			const flags = Object.assign({}, headlineTestVariant);
