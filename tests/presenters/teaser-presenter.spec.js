@@ -267,6 +267,11 @@ describe('Teaser Presenter', () => {
 				expect(subject.genrePrefix).to.equal('FT Series');
 			});
 
+			it('returns "Special Report" if the type is special-report', () => {
+				subject = new Presenter({ type: 'special-report'});
+				expect(subject.genrePrefix).to.equal('Special Report');
+			});
+
 		});
 
 		context('on a stream page', () => {
@@ -612,17 +617,4 @@ describe('Teaser Presenter', () => {
 			expect(subject.duration.ms).to.equal(270655);
 		});
 	});
-
-    context('specialReport', () => {
-        it('returns "Special Report" when type is special-report', () => {
-            subject = new Presenter({ type: 'special-report' });
-            expect(subject.specialReport).to.equal('Special Report');
-        });
-
-        it('returns null when type is anything but special-report', () => {
-            subject = new Presenter({});
-            expect(subject.specialReport).to.be.null;
-        });
-    });
-
 });

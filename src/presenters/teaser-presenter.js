@@ -1,7 +1,6 @@
 'use strict';
 
 const hyphenatePascalCase = require('../utils/hyphenate-pascal-case');
-
 const ONE_HOUR = 1000 * 60 * 60;
 const MAX_RELATED_CONTENT = 3;
 const HEADSHOT_BASE_URL = 'https://www.ft.com/__origami/service/image/v2/images/raw/';
@@ -158,8 +157,14 @@ const TeaserPresenter = class TeaserPresenter {
 		//use package brand if article belongs to package
 		let packageArticle = this.data.containedIn;
 
+		// Editorial Special Report or FT Series
 		if (packageArticle && packageArticle[0] && packageArticle[0].title && packageArticle[0].brand) {
 			return packageArticle[0].brand.prefLabel;
+		}
+
+		// special-report coming from DFP ads
+		if(this.data.type === 'special-report') {
+			return 'Special Report';
 		}
 
 		if (this.data.type === 'Video') {
@@ -179,18 +184,6 @@ const TeaserPresenter = class TeaserPresenter {
 
 		// Do not show a genre prefix against brands
 		if (!this.genre || this.data.brandConcept === this.teaserConcept) {
-			return null;
-		}
-
-		// Do not show a prefix if the stream is a special report
-		if (this.genre && this.data.genre.prefLabel === 'Special Report' &&
-			this.data.streamProperties &&
-			this.data.streamProperties.directType === 'http://www.ft.com/ontology/SpecialReport') {
-			return null;
-		}
-
-		// Do not show a genre prefix against brands
-		if (!this.genre || this.data.brand === this.teaserConcept) {
 			return null;
 		}
 
@@ -347,14 +340,6 @@ const TeaserPresenter = class TeaserPresenter {
 			return null;
 		}
 	}
-
-    get specialReport () {
-        if(this.data.type === 'special-report') {
-            return 'Special Report';
-        } else {
-            return null;
-        }
-    }
 };
 
 module.exports = TeaserPresenter;
