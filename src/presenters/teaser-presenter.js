@@ -234,14 +234,12 @@ const TeaserPresenter = class TeaserPresenter {
 	// returns url and name for author headshot when brand concept is an author with a headshot
 	get headshot () {
 		let headshotName;
-		let author;
 
 		if ((brandAuthorDouble(this.data) === true)
 			&& this.data.authors.length > 0
 			&& this.data.authors[0].headshot
 		) {
 			headshotName = this.data.authors[0].headshot.name;
-			author = this.data.authors[0];
 		}
 
 		if (headshotName) {
@@ -251,7 +249,6 @@ const TeaserPresenter = class TeaserPresenter {
 				height: HEADSHOT_WIDTH,
 				sizes: HEADSHOT_WIDTH,
 				widths: [HEADSHOT_WIDTH, 2 * HEADSHOT_WIDTH],
-				alt: `Photo of ${author.prefLabel}`
 			};
 		} else {
 			return null;
