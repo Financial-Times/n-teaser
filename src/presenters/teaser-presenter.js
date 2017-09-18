@@ -6,7 +6,7 @@ const ONE_HOUR = 1000 * 60 * 60;
 const MAX_RELATED_CONTENT = 3;
 const HEADSHOT_BASE_URL = 'https://www.ft.com/__origami/service/image/v2/images/raw/';
 const HEADSHOT_WIDTH = 75;
-const HEADSHOT_URL_PARAMETERS = `?source=next&width=${HEADSHOT_WIDTH * 2}&fit=scale-down&compression=best&tint=054593,d6d5d3`;
+const HEADSHOT_DEFAULT_TINT = '054593,d6d5d3';
 const TEMPLATES_WITH_HEADSHOTS = ['light', 'standard', 'lifestyle'];
 const TEMPLATES_WITH_IMAGES = ['heavy', 'top-story-heavy','lifestyle'];
 const PLAYABLE_VIDEO_INVALID_MODS = ['centre', 'has-image'];
@@ -24,6 +24,10 @@ const LIVEBLOG_MAPPING = {
 		labelModifier: 'closed'
 	}
 };
+
+const getHeadshotUrlParameters = (width, tint) => {
+	return `?source=next&width=${width * 2}&fit=scale-down&compression=best&tint=${tint}`
+}
 
 const brandAuthorDouble = (data) => {
 	if (
@@ -245,8 +249,10 @@ const TeaserPresenter = class TeaserPresenter {
 		}
 
 		if (headshotName) {
+			const headShotTint = this.data.headshotTint || HEADSHOT_DEFAULT_TINT;
+			const headshotUrlParameters = getHeadshotUrlParameters(HEADSHOT_WIDTH, headShotTint);
 			return {
-				url: `${HEADSHOT_BASE_URL}fthead:${headshotName}${HEADSHOT_URL_PARAMETERS}`,
+				url: `${HEADSHOT_BASE_URL}fthead:${headshotName}${headshotUrlParameters}`,
 				width: HEADSHOT_WIDTH,
 				height: HEADSHOT_WIDTH,
 				sizes: HEADSHOT_WIDTH,
