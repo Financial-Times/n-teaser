@@ -481,6 +481,14 @@ describe('Teaser Presenter', () => {
 			expect(subject.headshot).to.be.null;
 		});
 
+		it('returns the headshot file url with the requested tint when a custom `headshotTint` is specified', () => {
+			const articleOpinionAuthorFixtureCustomTint = Object.assign({}, articleOpinionAuthorFixture, {
+				headshotTint: '00FF00,FF0000'
+			});
+			subject = new Presenter(articleOpinionAuthorFixtureCustomTint);
+			expect(subject.headshot.url).to.equal('https://www.ft.com/__origami/service/image/v2/images/raw/fthead:gideon-rachman?source=next&width=150&fit=scale-down&compression=best&tint=00FF00,FF0000');
+		});
+
 		context('author brand combo', () => {
 
 			const brand = {
