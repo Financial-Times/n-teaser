@@ -1,5 +1,16 @@
 module.exports = {
 	whitelist: [
+		'e52ec40c-42d0-382f-babf-0313412b4dfd',
+		'8a10d200-632d-11e7-8814-0ac7eb84e5f1',
+		'806d05b8-3d29-4e81-8668-e9cdae0ab086',
+		'9b40e89c-e87b-3d4f-b72c-2cf7511d2146',
+		'cfe1c2b3-4ebc-3e0a-81bc-5a3eb7323b4e',
+		'68bd1f0d-70b0-3576-bfe0-d1e27583ef48',
+		'3e8526ea-779d-11e7-90c0-90a9d1bc9691',
+		'ee2cdd29-39c7-3ba2-a5b6-832ec795980b',
+		'f8447d9c-6fed-39f2-801f-06d76d4eb8d9',
+		'8a44c1da-93bd-11e7-a9e6-11d2f0ebb7f0',
+		'c243c590-dfdc-38d9-8115-be850a588efe',
 		'00adf2a4-b5ae-11e6-961e-a1acd97f622d',
 		'0b1809e6-9d30-11e6-8324-be63473ce146',
 		'0ddeb68e-b81f-11e6-ba85-95d1533d9a62',

@@ -110,6 +110,9 @@ const TeaserPresenter = class TeaserPresenter {
 			mods.push(hyphenatePascalCase(this.data.type));
 		}
 
+		if (this.data.type === 'LiveBlog') {
+			mods.push('live');
+		}
 		switch (this.data.canBeSyndicated) {
 			case 'yes':
 				mods.push('syndicatable');

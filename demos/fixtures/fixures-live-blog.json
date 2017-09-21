@@ -1,0 +1,121 @@
+{
+  "javascriptBundles": null,
+  "flags": {
+    "premiumContentIndicator": true
+  },
+  "content": [{
+    "id": "e52ec40c-42d0-382f-babf-0313412b4dfd",
+    "status": "inprogress",
+    "updates": [
+      {
+        "date": "2017-09-21T10:08:01.000Z",
+        "text": "*Euro trims gains as eyes turn to October*\nAnd that's a wrap.\n\nThe euro gave up some of its gains as the conference came to an end, but is still up around 0.76 per cent for the day, just above the $1.20 mark.\n\nAs predicted, today's meeting gave us a preview of what's to come as Mario Draghi said the ECB's board had begun \"very preliminary\" discussions of how to wind down its bond-purchasing programme, but the real decision is likely to come next month. Until then, here's Claire Jones' report on today's events from Frankfurt."
+      }
+    ],
+    "type": "LiveBlog",
+    "isPremium": false,
+    "relativeUrl": "/content/e52ec40c-42d0-382f-babf-0313412b4dfd",
+    "title": "ECB leaves rates unchanged, more news on QE to come in October",
+    "promotionalTitle": null,
+    "alternativeTitles": null,
+    "publishedDate": "2017-09-21T10:10:17.000Z",
+    "firstPublishedDate": "2017-09-21T10:08:17.000Z",
+    "isEditorsChoice": false,
+    "canBeSyndicated": "verify",
+    "isOpinion": false,
+    "genre": {
+      "id": "9b40e89c-e87b-3d4f-b72c-2cf7511d2146",
+      "prefLabel": "News"
+    },
+    "brand": {
+      "prefLabel": "The World blog",
+      "relativeUrl": "/stream/brandId/YmE1NjE5NjMtNWUzOC00MGVlLWJjNjEtYjY5NmMzYTA1MDBk-QnJhbmRz",
+      "directType": "http://www.ft.com/ontology/product/Brand",
+      "id": "806d05b8-3d29-4e81-8668-e9cdae0ab086"
+    },
+    "brandConcept": {
+      "prefLabel": "The World blog",
+      "relativeUrl": "/stream/brandId/YmE1NjE5NjMtNWUzOC00MGVlLWJjNjEtYjY5NmMzYTA1MDBk-QnJhbmRz",
+      "directType": "http://www.ft.com/ontology/product/Brand",
+      "id": "806d05b8-3d29-4e81-8668-e9cdae0ab086"
+    },
+    "authors": [
+      {
+        "prefLabel": "Gemma Tetlow",
+        "relativeUrl": "/gemma-tetlow",
+        "id": "cfe1c2b3-4ebc-3e0a-81bc-5a3eb7323b4e",
+        "headshot": null
+      },
+      {
+        "prefLabel": "Nicholas Megaw",
+        "relativeUrl": "/stream/c243c590-dfdc-38d9-8115-be850a588efe",
+        "id": "c243c590-dfdc-38d9-8115-be850a588efe",
+        "headshot": null
+      },
+      {
+        "prefLabel": "Martin Stabe",
+        "relativeUrl": "/martin-stabe",
+        "id": "68bd1f0d-70b0-3576-bfe0-d1e27583ef48",
+        "headshot": null
+      }
+    ],
+    "displayConcept": {
+      "prefLabel": "EU Economy",
+      "relativeUrl": "/eu-economy",
+      "latestContent": [
+        {
+          "type": "Article",
+          "relativeUrl": "/content/3e8526ea-779d-11e7-90c0-90a9d1bc9691",
+          "isPremium": false,
+          "title": "European recovery is under way and investors are taking notice",
+          "promotionalTitle": "Investors are taking notice of European recovery",
+          "id": "3e8526ea-779d-11e7-90c0-90a9d1bc9691"
+        },
+        {
+          "type": "Article",
+          "relativeUrl": "/content/ee2cdd29-39c7-3ba2-a5b6-832ec795980b",
+          "isPremium": false,
+          "title": "Hungary eases policy with deposit rate cut, base rate held steady",
+          "promotionalTitle": null,
+          "id": "ee2cdd29-39c7-3ba2-a5b6-832ec795980b"
+        },
+        {
+          "type": "Article",
+          "relativeUrl": "/content/f8447d9c-6fed-39f2-801f-06d76d4eb8d9",
+          "isPremium": false,
+          "title": "Analyst sentiment on German economy rebounds in September – ZEW",
+          "promotionalTitle": null,
+          "id": "f8447d9c-6fed-39f2-801f-06d76d4eb8d9"
+        },
+        {
+          "type": "Article",
+          "relativeUrl": "/content/8a10d200-632d-11e7-8814-0ac7eb84e5f1",
+          "isPremium": false,
+          "title": "Romania must avoid association with Europe’s ‘bad boys’",
+          "promotionalTitle": "Romania must avoid association with the ‘bad boys’",
+          "id": "8a10d200-632d-11e7-8814-0ac7eb84e5f1"
+        }
+      ]
+    },
+    "mainImage": {
+      "title": "General Views Inside The European Central Bank's New Headquarters",
+      "description": "European Union (EU) flags fly outside the new headquarters of the European Central Bank (ECB) in Frankfurt, Germany, on Friday, Feb. 13, 2015. The ECB's plan to buy at least 1.1 trillion euros of bonds to boost inflation across the currency union is shielding the bloc's other debtor nations during the latest phase of the Greek crisis. Photographer: Martin Leissl/Bloomberg",
+      "url": "http://blogs.ft.com/the-world/files/2017/09/ECB-HQ.jpg",
+      "width": 2048,
+      "height": 1152,
+      "ratio": 1.7777777777777777
+    },
+    "standfirst": null,
+    "containedIn": [
+      {
+        "title": "ECB September rate decision",
+        "relativeUrl": "/content/8a44c1da-93bd-11e7-a9e6-11d2f0ebb7f0",
+        "design": {
+          "theme": "basic"
+        },
+        "brand": null
+      }
+    ],
+    "curatedRelatedContent": []
+  }]
+}
