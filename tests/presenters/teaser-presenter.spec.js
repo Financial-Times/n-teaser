@@ -405,10 +405,10 @@ describe('Teaser Presenter', () => {
 
 		context('status mapping', () => {
 
-			it('returns status \'last post\' when \'inprogress\'', () => {
+			it('returns status \'live\' when \'inprogress\'', () => {
 				const content = { status: 'InProgress' };
 				subject = new Presenter(content);
-				expect(subject.liveBlog().status).to.equal('last post');
+				expect(subject.liveBlog().status).to.equal('live');
 				expect(subject.liveBlog().classModifier).to.equal('inprogress');
 			});
 
