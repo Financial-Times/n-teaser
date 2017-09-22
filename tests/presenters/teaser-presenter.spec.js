@@ -426,6 +426,18 @@ describe('Teaser Presenter', () => {
 				expect(subject.liveBlog().classModifier).to.equal('closed');
 			});
 
+			it('adds the class live when inprocess', () => {
+				const content = { status: 'inprogress', type: 'LiveBlog' };
+				subject = new Presenter(content);
+				expect(subject.classModifiers).to.include('live');
+			});
+
+			it('adds the class live is not inprocess', () => {
+				const content = { status: 'closed', type: 'LiveBlog' };
+				subject = new Presenter(content);
+				expect(subject.classModifiers).to.not.include('live');
+			});
+
 		});
 
 		context('label modifier', () => {
