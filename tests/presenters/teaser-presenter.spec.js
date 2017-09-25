@@ -437,7 +437,7 @@ describe('Teaser Presenter', () => {
 				expect(subject.classModifiers).to.include('live');
 			});
 
-			it('adds the class live is not inprocess', () => {
+			it('does not add the class live if it is not inprogress', () => {
 				const content = { status: 'closed', type: 'LiveBlog' };
 				subject = new Presenter(content);
 				expect(subject.classModifiers).to.not.include('live');
@@ -467,6 +467,62 @@ describe('Teaser Presenter', () => {
 
 		});
 
+	});
+
+	context('live package', () => {
+		it('adds the class live to the first article in a live package', () => {
+			const content = {
+				id: '123',
+				containedIn: [
+					{
+						contains: [
+							{ id: '123' },
+							{ id: '456', status: 'inprogress' },
+							{ id: '789' }
+						]
+					}
+				]
+			};
+
+			subject = new Presenter(content);
+			expect(subject.classModifiers).to.include('live');
+		});
+
+		it('does not add the class live to other articles in the package', () => {
+			const content = {
+				id: '789',
+				containedIn: [
+					{
+						contains: [
+							{ id: '123' },
+							{ id: '456', status: 'inprogress' },
+							{ id: '789' }
+						]
+					}
+				]
+			};
+
+			subject = new Presenter(content);
+			expect(subject.classModifiers).not.to.include('live');
+		});
+
+		it('does not add the class live if the liveblog is closed', () => {
+			const content = {
+				id: '123',
+				containedIn: [
+					{
+						contains: [
+							{ id: '123' },
+							{ id: '456', status: 'closed' },
+							{ id: '789' }
+						]
+					}
+				]
+			};
+
+			subject = new Presenter(content);
+			expect(subject.classModifiers).not.to.include('live');
+		});
 	});
 
 	context('relatedContent', () => {

@@ -141,5 +141,17 @@ module.exports = {
 				relativeUrl
 			}
 		}
+	`,
+	livePackageSplash: `
+		fragment LivePackageSplash on Content {
+			...on Package {
+				contains(limit: 10) {
+					id
+					...on LiveBlog {
+						status
+					}
+				}
+			}
+		}
 	`
 };

@@ -16,7 +16,9 @@ const viewports = [
 const urls = [
 	'http://localhost:5005/article',
 	'http://localhost:5005/video',
-	'http://localhost:5005/package',
+	'http://localhost:5005/live-blog',
+	'http://localhost:5005/commercial',
+	'http://localhost:5005/package'
 ];
 
 const config = {
