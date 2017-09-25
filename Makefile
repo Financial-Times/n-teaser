@@ -15,7 +15,7 @@ demo-build:
 	@$(DONE)
 
 demo: demo-build
-	@node demos/app
+	@node --inspect demos/app
 
 a11y: demo-build
 	@node .pa11yci.js

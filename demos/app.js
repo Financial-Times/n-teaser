@@ -6,6 +6,7 @@ const fixturesCommercial = require('./fixtures/fixtures-commercial-content');
 const fixturesPackage = require('./fixtures/fixtures-package');
 const fixturesPackageArticle = require('./fixtures/fixtures-article-in-package');
 const fixturesVideo = require('./fixtures/fixtures-video');
+const fixturesLiveBlog = require('./fixtures/fixures-live-blog.json')
 const chalk = require('chalk');
 const errorHighlight = chalk.bold.red;
 const highlight = chalk.bold.green;
@@ -63,6 +64,13 @@ app.get('/article', (req, res) => {
 		title: 'Article teasers',
 		layout: 'demo-layout',
 	}, fixtures));
+});
+
+app.get('/live-blog', (req, res) => {
+	res.render('demo', Object.assign({
+		title: 'Live blog teasers',
+		layout: 'demo-layout',
+	}, fixturesLiveBlog));
 });
 
 function runPa11yTests () {

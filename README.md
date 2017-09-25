@@ -10,7 +10,9 @@ A teaser represents content – usually an article. It helps readers to decide i
 
 ### Demo
 
-Run `make demo` to serve a set of demo templates on http://localhost:5005.
+Install dependencies with `npm install` and `bower install`
+
+Run `make demo` to serve a set of demo templates on http://localhost:5005/{teaser-type} (all available endpoints [here](demos/app.js)).
 
 ### Use in an app
 

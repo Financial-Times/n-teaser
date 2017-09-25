@@ -410,10 +410,10 @@ describe('Teaser Presenter', () => {
 
 		context('status mapping', () => {
 
-			it('returns status \'last post\' when \'inprogress\'', () => {
+			it('returns status \'live\' when \'inprogress\'', () => {
 				const content = { status: 'InProgress' };
 				subject = new Presenter(content);
-				expect(subject.liveBlog().status).to.equal('last post');
+				expect(subject.liveBlog().status).to.equal('live');
 				expect(subject.liveBlog().classModifier).to.equal('inprogress');
 			});
 
@@ -429,6 +429,18 @@ describe('Teaser Presenter', () => {
 				subject = new Presenter(content);
 				expect(subject.liveBlog().status).to.equal('liveblog closed');
 				expect(subject.liveBlog().classModifier).to.equal('closed');
+			});
+
+			it('adds the class live when inprocess', () => {
+				const content = { status: 'inprogress', type: 'LiveBlog' };
+				subject = new Presenter(content);
+				expect(subject.classModifiers).to.include('live');
+			});
+
+			it('adds the class live is not inprocess', () => {
+				const content = { status: 'closed', type: 'LiveBlog' };
+				subject = new Presenter(content);
+				expect(subject.classModifiers).to.not.include('live');
 			});
 
 		});

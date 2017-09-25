@@ -11,7 +11,7 @@ const TEMPLATES_WITH_IMAGES = ['heavy', 'top-story-heavy','lifestyle'];
 const PLAYABLE_VIDEO_INVALID_MODS = ['centre', 'has-image'];
 const LIVEBLOG_MAPPING = {
 	inprogress: {
-		timestampStatus: 'last post',
+		timestampStatus: 'live',
 		labelModifier: 'live'
 	},
 	comingsoon: {
@@ -113,6 +113,13 @@ const TeaserPresenter = class TeaserPresenter {
 			mods.push(hyphenatePascalCase(this.data.type));
 		}
 
+		if (
+			this.data.type === 'LiveBlog' &&
+			this.data.status &&
+			this.data.status.toLowerCase() === 'inprogress'
+		) {
+			mods.push('live');
+		}
 		switch (this.data.canBeSyndicated) {
 			case 'yes':
 				mods.push('syndicatable');
