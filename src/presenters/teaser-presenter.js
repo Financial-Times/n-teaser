@@ -19,7 +19,7 @@ const LIVEBLOG_MAPPING = {
 		labelModifier: 'pending'
 	},
 	closed: {
-		timestampStatus: 'liveblog closed',
+		timestampStatus: '',
 		labelModifier: 'closed'
 	}
 };
