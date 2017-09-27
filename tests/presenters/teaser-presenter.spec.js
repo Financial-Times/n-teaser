@@ -267,6 +267,11 @@ describe('Teaser Presenter', () => {
 				expect(subject.genrePrefix).to.equal('FT Series');
 			});
 
+			it('returns "Special Report" if the type is special-report', () => {
+				subject = new Presenter({ type: 'special-report'});
+				expect(subject.genrePrefix).to.equal('Special Report');
+			});
+
 		});
 
 		context('on a stream page', () => {
@@ -432,7 +437,7 @@ describe('Teaser Presenter', () => {
 				expect(subject.classModifiers).to.include('live');
 			});
 
-			it('adds the class live is not inprocess', () => {
+			it('does not add the class live if it is not inprogress', () => {
 				const content = { status: 'closed', type: 'LiveBlog' };
 				subject = new Presenter(content);
 				expect(subject.classModifiers).to.not.include('live');
@@ -464,6 +469,62 @@ describe('Teaser Presenter', () => {
 
 	});
 
+	context('live package', () => {
+		it('adds the class live to the first article in a live package', () => {
+			const content = {
+				id: '123',
+				containedIn: [
+					{
+						contains: [
+							{ id: '123' },
+							{ id: '456', status: 'inprogress' },
+							{ id: '789' }
+						]
+					}
+				]
+			};
+
+			subject = new Presenter(content);
+			expect(subject.classModifiers).to.include('live');
+		});
+
+		it('does not add the class live to other articles in the package', () => {
+			const content = {
+				id: '789',
+				containedIn: [
+					{
+						contains: [
+							{ id: '123' },
+							{ id: '456', status: 'inprogress' },
+							{ id: '789' }
+						]
+					}
+				]
+			};
+
+			subject = new Presenter(content);
+			expect(subject.classModifiers).not.to.include('live');
+		});
+
+		it('does not add the class live if the liveblog is closed', () => {
+			const content = {
+				id: '123',
+				containedIn: [
+					{
+						contains: [
+							{ id: '123' },
+							{ id: '456', status: 'closed' },
+							{ id: '789' }
+						]
+					}
+				]
+			};
+
+			subject = new Presenter(content);
+			expect(subject.classModifiers).not.to.include('live');
+		});
+	});
+
 	context('relatedContent', () => {
 
 		it('returns the curated related content when they exists', () => {
@@ -486,12 +547,19 @@ describe('Teaser Presenter', () => {
 		it('returns the full headshot file url and author name when a headshot exists', () => {
 			subject = new Presenter(articleOpinionAuthorFixture);
 			expect(subject.headshot.url).to.equal('https://www.ft.com/__origami/service/image/v2/images/raw/fthead:gideon-rachman?source=next&width=150&fit=scale-down&compression=best&tint=054593,d6d5d3');
-			expect(subject.headshot.alt).to.equal('Photo of Gideon Rachman');
 		});
 
 		it('returns null when headshot does not exist', () => {
 			subject = new Presenter(articleBrandFixture);
 			expect(subject.headshot).to.be.null;
+		});
+
+		it('returns the headshot file url with the requested tint when a custom `headshotTint` is specified', () => {
+			const articleOpinionAuthorFixtureCustomTint = Object.assign({}, articleOpinionAuthorFixture, {
+				headshotTint: '00FF00,FF0000'
+			});
+			subject = new Presenter(articleOpinionAuthorFixtureCustomTint);
+			expect(subject.headshot.url).to.equal('https://www.ft.com/__origami/service/image/v2/images/raw/fthead:gideon-rachman?source=next&width=150&fit=scale-down&compression=best&tint=00FF00,FF0000');
 		});
 
 		context('author brand combo', () => {
@@ -624,5 +692,4 @@ describe('Teaser Presenter', () => {
 			expect(subject.duration.ms).to.equal(270655);
 		});
 	});
-
 });

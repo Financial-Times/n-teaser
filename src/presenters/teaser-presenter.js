@@ -1,12 +1,11 @@
 'use strict';
 
 const hyphenatePascalCase = require('../utils/hyphenate-pascal-case');
-
 const ONE_HOUR = 1000 * 60 * 60;
 const MAX_RELATED_CONTENT = 3;
 const HEADSHOT_BASE_URL = 'https://www.ft.com/__origami/service/image/v2/images/raw/';
 const HEADSHOT_WIDTH = 75;
-const HEADSHOT_URL_PARAMETERS = `?source=next&width=${HEADSHOT_WIDTH * 2}&fit=scale-down&compression=best&tint=054593,d6d5d3`;
+const HEADSHOT_DEFAULT_TINT = '054593,d6d5d3';
 const TEMPLATES_WITH_HEADSHOTS = ['light', 'standard', 'lifestyle'];
 const TEMPLATES_WITH_IMAGES = ['heavy', 'top-story-heavy','lifestyle'];
 const PLAYABLE_VIDEO_INVALID_MODS = ['centre', 'has-image'];
@@ -24,6 +23,17 @@ const LIVEBLOG_MAPPING = {
 		labelModifier: 'closed'
 	}
 };
+
+const getHeadshotUrlParameters = (width, tint) => {
+	return `?source=next&width=${width * 2}&fit=scale-down&compression=best&tint=${tint}`
+}
+
+const isLive = (data) => {
+	const isLiveBlogInProgress = (item) => item.status && item.status.toLowerCase() === 'inprogress';
+	const packageHasLiveBlog = data.containedIn && data.containedIn.length && data.containedIn[0].contains && data.containedIn[0].contains.find(isLiveBlogInProgress);
+	const isFirstArticleInLivePackage = packageHasLiveBlog && data.id === data.containedIn[0].contains[0].id;
+	return isLiveBlogInProgress(data) || isFirstArticleInLivePackage;
+}
 
 const brandAuthorDouble = (data) => {
 	if (
@@ -117,6 +127,11 @@ const TeaserPresenter = class TeaserPresenter {
 		) {
 			mods.push('live');
 		}
+
+		if (isLive(this.data)) {
+			mods.push('live');
+		}
+
 		switch (this.data.canBeSyndicated) {
 			case 'yes':
 				mods.push('syndicatable');
@@ -165,8 +180,14 @@ const TeaserPresenter = class TeaserPresenter {
 		//use package brand if article belongs to package
 		let packageArticle = this.data.containedIn;
 
+		// Editorial Special Report or FT Series
 		if (packageArticle && packageArticle[0] && packageArticle[0].title && packageArticle[0].brand) {
 			return packageArticle[0].brand.prefLabel;
+		}
+
+		// special-report coming from DFP ads
+		if(this.data.type === 'special-report') {
+			return 'Special Report';
 		}
 
 		if (this.data.type === 'Video') {
@@ -186,18 +207,6 @@ const TeaserPresenter = class TeaserPresenter {
 
 		// Do not show a genre prefix against brands
 		if (!this.genre || this.data.brandConcept === this.teaserConcept) {
-			return null;
-		}
-
-		// Do not show a prefix if the stream is a special report
-		if (this.genre && this.data.genre.prefLabel === 'Special Report' &&
-			this.data.streamProperties &&
-			this.data.streamProperties.directType === 'http://www.ft.com/ontology/SpecialReport') {
-			return null;
-		}
-
-		// Do not show a genre prefix against brands
-		if (!this.genre || this.data.brand === this.teaserConcept) {
 			return null;
 		}
 
@@ -241,24 +250,23 @@ const TeaserPresenter = class TeaserPresenter {
 	// returns url and name for author headshot when brand concept is an author with a headshot
 	get headshot () {
 		let headshotName;
-		let author;
 
 		if ((brandAuthorDouble(this.data) === true)
 			&& this.data.authors.length > 0
 			&& this.data.authors[0].headshot
 		) {
 			headshotName = this.data.authors[0].headshot.name;
-			author = this.data.authors[0];
 		}
 
 		if (headshotName) {
+			const headShotTint = this.data.headshotTint || HEADSHOT_DEFAULT_TINT;
+			const headshotUrlParameters = getHeadshotUrlParameters(HEADSHOT_WIDTH, headShotTint);
 			return {
-				url: `${HEADSHOT_BASE_URL}fthead:${headshotName}${HEADSHOT_URL_PARAMETERS}`,
+				url: `${HEADSHOT_BASE_URL}fthead:${headshotName}${headshotUrlParameters}`,
 				width: HEADSHOT_WIDTH,
 				height: HEADSHOT_WIDTH,
 				sizes: HEADSHOT_WIDTH,
 				widths: [HEADSHOT_WIDTH, 2 * HEADSHOT_WIDTH],
-				alt: `Photo of ${author.prefLabel}`
 			};
 		} else {
 			return null;

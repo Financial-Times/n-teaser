@@ -8,6 +8,7 @@ const fixturesPackageArticle = require('./fixtures/fixtures-article-in-package')
 const fixturesVideo = require('./fixtures/fixtures-video');
 const fixturesLiveBlog = require('./fixtures/fixures-live-blog.json')
 const fixturesLiveBlogClosed = require('./fixtures/fixures-live-blog-closed.json');
+const fixturesLiveRollingSplash = require('./fixtures/fixtures-live-rolling-splash.json')
 const chalk = require('chalk');
 const errorHighlight = chalk.bold.red;
 const highlight = chalk.bold.green;
@@ -79,6 +80,13 @@ app.get('/live-blog-closed', (req, res) => {
 		title: 'Closed live blog teasers',
 		layout: 'demo-layout',
 	}, fixturesLiveBlogClosed));
+});
+
+app.get('/live-rolling-splash', (req, res) => {
+	res.render('demo', Object.assign({
+		title: 'Live package rolling splash',
+		layout: 'demo-layout',
+	}, fixturesLiveRollingSplash));
 });
 
 function runPa11yTests () {
