@@ -424,10 +424,10 @@ describe('Teaser Presenter', () => {
 				expect(subject.liveBlog().classModifier).to.equal('comingsoon');
 			});
 
-			it('returns status \'liveblog closed\' when \'closed\'', () => {
+			it('returns no status when \'closed\'', () => {
 				const content = { status: 'Closed' };
 				subject = new Presenter(content);
-				expect(subject.liveBlog().status).to.equal('liveblog closed');
+				expect(subject.liveBlog().status).to.equal('');
 				expect(subject.liveBlog().classModifier).to.equal('closed');
 			});
 
