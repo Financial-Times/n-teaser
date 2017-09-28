@@ -7,6 +7,7 @@ const fixturesPackage = require('./fixtures/fixtures-package');
 const fixturesPackageArticle = require('./fixtures/fixtures-article-in-package');
 const fixturesVideo = require('./fixtures/fixtures-video');
 const fixturesLiveBlog = require('./fixtures/fixures-live-blog.json')
+const fixturesLiveBlogClosed = require('./fixtures/fixures-live-blog-closed.json');
 const fixturesLiveRollingSplash = require('./fixtures/fixtures-live-rolling-splash.json')
 const chalk = require('chalk');
 const errorHighlight = chalk.bold.red;
@@ -72,6 +73,13 @@ app.get('/live-blog', (req, res) => {
 		title: 'Live blog teasers',
 		layout: 'demo-layout',
 	}, fixturesLiveBlog));
+});
+
+app.get('/live-blog-closed', (req, res) => {
+	res.render('demo', Object.assign({
+		title: 'Closed live blog teasers',
+		layout: 'demo-layout',
+	}, fixturesLiveBlogClosed));
 });
 
 app.get('/live-rolling-splash', (req, res) => {

@@ -19,7 +19,7 @@ const LIVEBLOG_MAPPING = {
 		labelModifier: 'pending'
 	},
 	closed: {
-		timestampStatus: 'liveblog closed',
+		timestampStatus: '',
 		labelModifier: 'closed'
 	}
 };
@@ -118,6 +118,14 @@ const TeaserPresenter = class TeaserPresenter {
 
 		if (this.data.type) {
 			mods.push(hyphenatePascalCase(this.data.type));
+		}
+
+		if (
+			this.data.type === 'LiveBlog' &&
+			this.data.status &&
+			this.data.status.toLowerCase() === 'inprogress'
+		) {
+			mods.push('live');
 		}
 
 		if (isLive(this.data)) {
