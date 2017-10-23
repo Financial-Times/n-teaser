@@ -110,6 +110,12 @@ describe('Teaser Presenter', () => {
 				expect(subject.classModifiers).to.deep.equal(['has-image']);
 			});
 
+			it('returns has-image when correct template and there is a promotional image', () => {
+				const content = {promotionalImage: true, template: 'heavy'};
+				subject = new Presenter(content);
+				expect(subject.classModifiers).to.deep.equal(['has-image']);
+			});
+
 			it('does not add a modifier if wrong template but has mainImage', () => {
 				const content = {mainImage: true, template: 'standard'};
 				subject = new Presenter(content);
@@ -663,6 +669,51 @@ describe('Teaser Presenter', () => {
 			const content = Object.assign({}, title, promotionalTitle);
 			subject = new Presenter(content);
 			expect(subject.displayTitle).to.equal('title');
+		});
+	});
+
+	context('display standfirst', () => {
+		const standfirst = { standfirst: 'This is the standfirst' };
+		const promotionalStandfirst = { promotionalStandfirst: 'This is promotional' };
+		it('uses the standfirst if no promotional', () => {
+			const content = Object.assign({}, standfirst);
+			subject = new Presenter(content);
+			expect(subject.displayStandfirst).to.equal('This is the standfirst');
+		});
+
+		it('uses the promotional if no standfirst', () => {
+			const content = Object.assign({}, promotionalStandfirst);
+			subject = new Presenter(content);
+			expect(subject.displayStandfirst).to.equal('This is promotional');
+		});
+
+		it('prefers the regular standfirst (because promotionalStandfirst is used for web app skylines)', () => {
+			const content = Object.assign({}, standfirst, promotionalStandfirst);
+			subject = new Presenter(content);
+			expect(subject.displayStandfirst).to.equal('This is the standfirst');
+		});
+	});
+
+	context('display image', () => {
+		const mainImage = { mainImage: { url: 'main-image' }};
+		const promotionalImage = { promotionalImage: { url: 'promotional-image' }};
+
+		it('uses the mainImage if no promotional', () => {
+			const content = Object.assign({}, mainImage);
+			subject = new Presenter(content);
+			expect(subject.displayImage.url).to.equal('main-image');
+		});
+
+		it('uses the promotional if no main image', () => {
+			const content = Object.assign({}, promotionalImage);
+			subject = new Presenter(content);
+			expect(subject.displayImage.url).to.equal('promotional-image');
+		});
+
+		it('prefers the promotional image to the main image', () => {
+			const content = Object.assign({}, mainImage, promotionalImage);
+			subject = new Presenter(content);
+			expect(subject.displayImage.url).to.equal('promotional-image');
 		});
 	});
 

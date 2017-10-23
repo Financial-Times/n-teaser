@@ -73,11 +73,20 @@ module.exports = {
 				height
 				ratio
 			}
+			promotionalImage {
+				title
+				description
+				url
+				width
+				height
+				ratio
+			}
 		}
 	`,
 	teaserStandard: `
 		fragment TeaserStandard on Content {
 			standfirst
+			promotionalStandfirst
 		}
 	`,
 	teaserHeavy: `
@@ -96,6 +105,14 @@ module.exports = {
 				}
 			}
 			mainImage {
+				title
+				description
+				url
+				width
+				height
+				ratio
+			}
+			promotionalImage {
 				title
 				description
 				url

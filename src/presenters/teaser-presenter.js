@@ -94,7 +94,7 @@ const TeaserPresenter = class TeaserPresenter {
 		if (this.data.size) mods.push(this.data.size);
 
 		// if it's an in-situ video card, don't add the overflowing image effect!
-		if (this.data.mainImage && TEMPLATES_WITH_IMAGES.includes(this.data.template)) {
+		if ((this.displayImage) && TEMPLATES_WITH_IMAGES.includes(this.data.template)) {
 			mods.push('has-image');
 		}
 
@@ -286,6 +286,16 @@ const TeaserPresenter = class TeaserPresenter {
 			return this.data.promotionalTitle;
 		}
 		return this.data.title;
+	}
+
+	get displayStandfirst () {
+		//Note: although everywhere else we prefer the promotional version for teasers, we can't do that for standfirsts because the promotionalStandfirst is used for the App Skyline.
+		//So we will only use the promotionalStandfirst if there is no standfirst
+		return this.data.standfirst || this.data.promotionalStandfirst;
+	}
+
+	get displayImage () {
+		return this.data.promotionalImage || this.data.mainImage;
 	}
 
 	// returns the variant name if headline testing is live for this story
