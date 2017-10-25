@@ -112,4 +112,49 @@ describe('Package Teaser Presenter', () => {
 		});
 
 	});
+
+	context('display standfirst', () => {
+		const standfirst = { standfirst: 'This is the standfirst' };
+		const promotionalStandfirst = { promotionalStandfirst: 'This is promotional' };
+		it('uses the standfirst if no promotional', () => {
+			const content = Object.assign({}, standfirst);
+			subject = new Presenter(content);
+			expect(subject.displayStandfirst).to.equal('This is the standfirst');
+		});
+
+		it('uses the promotional if no standfirst', () => {
+			const content = Object.assign({}, promotionalStandfirst);
+			subject = new Presenter(content);
+			expect(subject.displayStandfirst).to.equal('This is promotional');
+		});
+
+		it('prefers the regular standfirst (because promotionalStandfirst is used for web app skylines)', () => {
+			const content = Object.assign({}, standfirst, promotionalStandfirst);
+			subject = new Presenter(content);
+			expect(subject.displayStandfirst).to.equal('This is the standfirst');
+		});
+	});
+
+	context('display image', () => {
+		const mainImage = { mainImage: { url: 'main-image' }};
+		const promotionalImage = { promotionalImage: { url: 'promotional-image' }};
+
+		it('uses the mainImage if no promotional', () => {
+			const content = Object.assign({}, mainImage);
+			subject = new Presenter(content);
+			expect(subject.displayImage.url).to.equal('main-image');
+		});
+
+		it('uses the promotional if no main image', () => {
+			const content = Object.assign({}, promotionalImage);
+			subject = new Presenter(content);
+			expect(subject.displayImage.url).to.equal('promotional-image');
+		});
+
+		it('prefers the promotional image to the main image', () => {
+			const content = Object.assign({}, mainImage, promotionalImage);
+			subject = new Presenter(content);
+			expect(subject.displayImage.url).to.equal('promotional-image');
+		});
+	});
 });
