@@ -154,6 +154,10 @@ const TeaserPresenter = class TeaserPresenter {
 
 		const displayConcept = this.data.displayConcept;
 
+		if(this.data.type === 'special-report') {
+			return this.data.teaserConcept;
+		}
+
 		if (packageArticle && packageArticle[0] && packageArticle[0].title) {
 			return Object.assign(this, { prefLabel: packageArticle[0].title, relativeUrl: packageArticle[0].relativeUrl});
 		} else {

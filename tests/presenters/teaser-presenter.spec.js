@@ -10,7 +10,7 @@ describe('Teaser Presenter', () => {
 
 	let subject;
 
-	context('classModifiers', () => {
+	describe('classModifiers', () => {
 
 		it('produces an empty array if mods undefined', () => {
 			const content = { mods: undefined };
@@ -191,8 +191,23 @@ describe('Teaser Presenter', () => {
 
 	});
 
-	context('teaserConcept', () => {
+	describe('teaserConcept', () => {
 
+		context('special report serverd from DFP', () => {
+			// The response object already contains a teaserConcept property
+			// which is set in n-native-ads. We just need to return this.
+			it('returns the original teaserConcept in the response', () => {
+				const data = {
+					type: 'special-report',
+					teaserConcept: {
+						prefLabel: 'tease me',
+						relativeUrl: 'http://www.teaseme.com'
+					}
+				};
+				subject = new Presenter(data);
+				expect(subject.teaserConcept).to.deep.equal(data.teaserConcept);
+			});
+		});
 		context('not on a stream page', () => {
 
 			const brand = { brandConcept: { isBrand: true } };
@@ -339,7 +354,7 @@ describe('Teaser Presenter', () => {
 
 	});
 
-	context('advertiserPrefix', () => {
+	describe('advertiserPrefix', () => {
 
 		it('paid for by - when has an advertiser and type of promoted content', () => {
 			const content = {
@@ -369,7 +384,7 @@ describe('Teaser Presenter', () => {
 
 	});
 
-	context('timeStatus', () => {
+	describe('timeStatus', () => {
 
 		const FIFTY_NINE_MINUTES = 1000 * 60 * 59;
 		const SIXTY_ONE_MINUTES = 1000 * 60 * 61;
@@ -412,7 +427,7 @@ describe('Teaser Presenter', () => {
 
 	});
 
-	context('liveBlog', () => {
+	describe('liveBlog', () => {
 
 		context('status mapping', () => {
 
@@ -475,7 +490,7 @@ describe('Teaser Presenter', () => {
 
 	});
 
-	context('live package', () => {
+	describe('live package', () => {
 		it('adds the class live to the first article in a live package', () => {
 			const content = {
 				id: '123',
@@ -531,7 +546,7 @@ describe('Teaser Presenter', () => {
 		});
 	});
 
-	context('relatedContent', () => {
+	describe('relatedContent', () => {
 
 		it('returns the curated related content when they exists', () => {
 			subject = new Presenter(articleStandardFixture);
@@ -548,7 +563,7 @@ describe('Teaser Presenter', () => {
 
 	});
 
-	context('headshot', () => {
+	describe('headshot', () => {
 
 		it('returns the full headshot file url and author name when a headshot exists', () => {
 			subject = new Presenter(articleOpinionAuthorFixture);
@@ -598,7 +613,7 @@ describe('Teaser Presenter', () => {
 
 	});
 
-	context('displayTitle', () => {
+	describe('displayTitle', () => {
 
 		const promotionalTitle = { promotionalTitle: 'promotional' };
 		const alternativeTitles = { alternativeTitles: { contentPackageTitle: 'contentTitle' }};
@@ -672,7 +687,7 @@ describe('Teaser Presenter', () => {
 		});
 	});
 
-	context('display standfirst', () => {
+	describe('display standfirst', () => {
 		const standfirst = { standfirst: 'This is the standfirst' };
 		const promotionalStandfirst = { promotionalStandfirst: 'This is promotional' };
 		it('uses the standfirst if no promotional', () => {
@@ -694,7 +709,7 @@ describe('Teaser Presenter', () => {
 		});
 	});
 
-	context('display image', () => {
+	describe('display image', () => {
 		const mainImage = { mainImage: { url: 'main-image' }};
 		const promotionalImage = { promotionalImage: { url: 'promotional-image' }};
 
@@ -717,7 +732,7 @@ describe('Teaser Presenter', () => {
 		});
 	});
 
-	context('duration', () => {
+	describe('duration', () => {
 		it('returns null when data is not available', () => {
 			subject = new Presenter({});
 			expect(subject.duration).to.be.null;
