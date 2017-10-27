@@ -25,15 +25,15 @@ const LIVEBLOG_MAPPING = {
 };
 
 const getHeadshotUrlParameters = (width, tint) => {
-	return `?source=next&width=${width * 2}&fit=scale-down&compression=best&tint=${tint}`
-}
+	return `?source=next&width=${width * 2}&fit=scale-down&compression=best&tint=${tint}`;
+};
 
 const isLive = (data) => {
 	const isLiveBlogInProgress = (item) => item.status && item.status.toLowerCase() === 'inprogress';
 	const packageHasLiveBlog = data.containedIn && data.containedIn.length && data.containedIn[0].contains && data.containedIn[0].contains.find(isLiveBlogInProgress);
 	const isFirstArticleInLivePackage = packageHasLiveBlog && data.id === data.containedIn[0].contains[0].id;
 	return isLiveBlogInProgress(data) || isFirstArticleInLivePackage;
-}
+};
 
 const brandAuthorDouble = (data) => {
 	if (
