@@ -24,7 +24,7 @@ In the consuming app:
 
 - Register the presenter in the express options
 ```
-    helpers:  { nTeaserPresenter: require('@financial-times/n-teaser').presenter }
+	helpers:  { nTeaserPresenter: require('@financial-times/n-teaser').presenter }
 ```
 - Get the data from `next-api`
 
@@ -86,9 +86,9 @@ Additional arguments can be passed to control display.
 Example of a teaser without an image;
 ```
 <div data-o-grid-colspan="12 L6">
-  {{#slice items offset=1 limit=3}}
-    {{>n-teaser/templates/standard mods=(array 'small')}}
-  {{/slice}}
+	{{#slice items offset=1 limit=3}}
+		{{>n-teaser/templates/standard mods=(array 'small')}}
+	{{/slice}}
 </div>
 ```
 The `mods` argument is for class modifiers that are added to the base `o-teaser` class name.
@@ -97,9 +97,9 @@ Details on these can be found in the `o-teaser` repository.
 Example of a teaser with an image;
 ```
 <div data-o-grid-colspan="12 L6">
-  {{#slice items offset=0 limit=1}}
-    {{>n-teaser/templates/heavy mods=(array 'large') colspan='{"default": 12, "L": 6}' position='{"default": "bottom"}' widths="[500, 332]"}}
-  {{/slice}}
+	{{#slice items offset=0 limit=1}}
+		{{>n-teaser/templates/heavy mods=(array 'large') colspan='{"default": 12, "L": 6}' position='{"default": "bottom"}' widths="[500, 332]"}}
+	{{/slice}}
 </div>
 ```
 The `colspan`, `position` and `widths` arguments are passed on to `n-image` to determine the properties of how the image is displayed in the teaser.
