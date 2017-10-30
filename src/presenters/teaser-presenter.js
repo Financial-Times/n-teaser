@@ -25,25 +25,14 @@ const LIVEBLOG_MAPPING = {
 };
 
 const getHeadshotUrlParameters = (width, tint) => {
-	return `?source=next&width=${width * 2}&fit=scale-down&compression=best&tint=${tint}`
-}
+	return `?source=next&width=${width * 2}&fit=scale-down&compression=best&tint=${tint}`;
+};
 
 const isLive = (data) => {
 	const isLiveBlogInProgress = (item) => item.status && item.status.toLowerCase() === 'inprogress';
 	const packageHasLiveBlog = data.containedIn && data.containedIn.length && data.containedIn[0].contains && data.containedIn[0].contains.find(isLiveBlogInProgress);
 	const isFirstArticleInLivePackage = packageHasLiveBlog && data.id === data.containedIn[0].contains[0].id;
 	return isLiveBlogInProgress(data) || isFirstArticleInLivePackage;
-}
-
-const brandAuthorDouble = (data) => {
-	if (
-		data.authors &&
-		data.authors.length &&
-		data.isOpinion === true
-	) {
-		return true;
-	}
-		return false;
 };
 
 const modsDoesInclude = (modToTest, modsArray = []) => {
@@ -59,14 +48,30 @@ const TeaserPresenter = class TeaserPresenter {
 	constructor (data) {
 		this.data = data || {};
 		const allowedGenres = [
-			'61d707b5-6fab-3541-b017-49b72de80772',
-			'9c2af23a-ee61-303f-97e8-2026fb031bd5',
-			'dc9332a7-453d-3b80-a53d-5a19579d9359',
-			'b3ecdf0e-68bb-3303-8773-ec9c05e80234',
-			'3094f0a9-1e1c-3ec3-b7e3-4d4885a826ed'
+			'61d707b5-6fab-3541-b017-49b72de80772', // Analysis
+			'9c2af23a-ee61-303f-97e8-2026fb031bd5', // Interview
+			'dc9332a7-453d-3b80-a53d-5a19579d9359', // Q&A
+			'b3ecdf0e-68bb-3303-8773-ec9c05e80234', // Review
+			'3094f0a9-1e1c-3ec3-b7e3-4d4885a826ed' // Special Report
 		];
 		this.genre = (this.data.genre && allowedGenres.includes(this.data.genre.id)) ? this.data.genre : undefined;
 	}
+
+	get isOpinion () {
+		return this.data.isOpinion || (this.data.genreConcept && this.data.genreConcept.id === 'e569e23b-0c3e-3d20-8ed0-4c17b8177c05');
+	}
+
+	get brandAuthorDouble () {
+		if (
+			this.data.authors &&
+			this.data.authors.length &&
+			this.isOpinion === true
+		) {
+			return true;
+		}
+			return false;
+	};
+
 
 	// returns all top level class names appropriate for the teaser
 	get classModifiers () {
@@ -98,7 +103,7 @@ const TeaserPresenter = class TeaserPresenter {
 			mods.push('has-image');
 		}
 
-		if (this.data.isOpinion && modsDoesNotInclude('hero-image', this.data.mods)) {
+		if (this.isOpinion && modsDoesNotInclude('hero-image', this.data.mods)) {
 			mods.push('opinion');
 		}
 
@@ -165,7 +170,7 @@ const TeaserPresenter = class TeaserPresenter {
 				return displayConcept || null;
 			}
 			// Use Author Concept if Opinion & Branded unless same as stream
-			if (brandAuthorDouble(this.data) === true &&
+			if (this.brandAuthorDouble &&
 				(!this.data.streamProperties ||
 				(this.data.streamProperties &&
 				this.data.streamProperties.id !== this.data.authors[0].id ))) {
@@ -194,7 +199,7 @@ const TeaserPresenter = class TeaserPresenter {
 			return 'Video';
 		}
 
-		if (brandAuthorDouble(this.data) === true) {
+		if (this.brandAuthorDouble) {
 			// dedupe authors who are also brands and where Author = stream
 			if (this.data.brandConcept &&
 				this.data.brandConcept.prefLabel !== this.data.authors[0].prefLabel &&
@@ -251,7 +256,7 @@ const TeaserPresenter = class TeaserPresenter {
 	get headshot () {
 		let headshotName;
 
-		if ((brandAuthorDouble(this.data) === true)
+		if (this.brandAuthorDouble
 			&& this.data.authors.length > 0
 			&& this.data.authors[0].headshot
 		) {
