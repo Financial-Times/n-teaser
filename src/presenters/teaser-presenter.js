@@ -282,8 +282,13 @@ const TeaserPresenter = class TeaserPresenter {
 	get displayTitle () {
 		if (this.data.flags && this.data.flags.headlineTesting && this.data.flags.headlineTesting === 'variant2' && this.data.alternativeTitles && this.data.alternativeTitles.contentPackageTitle) {
 			return this.data.alternativeTitles.contentPackageTitle;
-		} else if (this.data.flags && this.data.flags.teaserUsePromotionalTitle && this.data.promotionalTitle) {
-			return this.data.promotionalTitle;
+		} else if (this.data.flags && this.data.flags.teaserUsePromotionalTitle) {
+			if (this.data.promotionalTitle) {
+				return this.data.promotionalTitle;
+			}
+			if (this.data.alternativeTitles && this.data.alternativeTitles.promotionalTitle) {
+				return this.data.alternativeTitles.promotionalTitle;
+			}
 		}
 		return this.data.title;
 	}
