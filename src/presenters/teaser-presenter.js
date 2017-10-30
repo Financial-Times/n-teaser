@@ -68,6 +68,10 @@ const TeaserPresenter = class TeaserPresenter {
 		this.genre = (this.data.genre && allowedGenres.includes(this.data.genre.id)) ? this.data.genre : undefined;
 	}
 
+	get isOpinion () {
+		return this.data.isOpinion || (!!this.data.annotations && this.data.annotations.some(({ id } = {}) => id === 'e569e23b-0c3e-3d20-8ed0-4c17b8177c05'));
+	}
+
 	// returns all top level class names appropriate for the teaser
 	get classModifiers () {
 		const mods = [].concat(this.data.mods || []);
@@ -98,7 +102,7 @@ const TeaserPresenter = class TeaserPresenter {
 			mods.push('has-image');
 		}
 
-		if (this.data.isOpinion && modsDoesNotInclude('hero-image', this.data.mods)) {
+		if (this.isOpinion && modsDoesNotInclude('hero-image', this.data.mods)) {
 			mods.push('opinion');
 		}
 
