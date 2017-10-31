@@ -54,7 +54,9 @@ const TeaserPresenter = class TeaserPresenter {
 			'b3ecdf0e-68bb-3303-8773-ec9c05e80234', // Review
 			'3094f0a9-1e1c-3ec3-b7e3-4d4885a826ed' // Special Report
 		];
-		this.genre = (this.data.genre && allowedGenres.includes(this.data.genre.id)) ? this.data.genre : undefined;
+		const genreConcept = this.data.genre || this.data.genreConcept;
+		this.genre = (genreConcept && allowedGenres.includes(genreConcept.id)) ? genreConcept : undefined;
+		this.authorConcept = (this.data.authors || this.data.authorConcepts || [])[0];
 	}
 
 	get isOpinion () {
@@ -63,8 +65,7 @@ const TeaserPresenter = class TeaserPresenter {
 
 	get brandAuthorDouble () {
 		if (
-			this.data.authors &&
-			this.data.authors.length &&
+			this.authorConcept &&
 			this.isOpinion === true
 		) {
 			return true;
@@ -172,8 +173,8 @@ const TeaserPresenter = class TeaserPresenter {
 			if (this.brandAuthorDouble &&
 				(!this.data.streamProperties ||
 				(this.data.streamProperties &&
-				this.data.streamProperties.id !== this.data.authors[0].id ))) {
-				return this.data.authors[0];
+				this.data.streamProperties.id !== this.authorConcept.id ))) {
+				return this.authorConcept;
 			}
 			return this.data.brandConcept || displayConcept || null;
 		}
@@ -201,10 +202,10 @@ const TeaserPresenter = class TeaserPresenter {
 		if (this.brandAuthorDouble) {
 			// dedupe authors who are also brands and where Author = stream
 			if (this.data.brandConcept &&
-				this.data.brandConcept.prefLabel !== this.data.authors[0].prefLabel &&
+				this.data.brandConcept.prefLabel !== this.authorConcept.prefLabel &&
 				(!this.data.streamProperties ||
 				(this.data.streamProperties &&
-				this.data.streamProperties.id !== this.data.authors[0].id))) {
+				this.data.streamProperties.id !== this.authorConcept.id))) {
 				return this.data.brandConcept.prefLabel;
 			}
 		}
@@ -256,10 +257,10 @@ const TeaserPresenter = class TeaserPresenter {
 		let headshotName;
 
 		if (this.brandAuthorDouble
-			&& this.data.authors.length > 0
-			&& this.data.authors[0].headshot
+			&& this.authorConcept
+			&& this.authorConcept.headshot
 		) {
-			headshotName = this.data.authors[0].headshot.name;
+			headshotName = this.authorConcept.headshot.name;
 		}
 
 		if (headshotName) {
