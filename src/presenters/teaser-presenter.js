@@ -70,8 +70,7 @@ const TeaserPresenter = class TeaserPresenter {
 			return true;
 		}
 			return false;
-	};
-
+	}
 
 	// returns all top level class names appropriate for the teaser
 	get classModifiers () {
