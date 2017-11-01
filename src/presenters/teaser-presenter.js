@@ -55,7 +55,7 @@ const TeaserPresenter = class TeaserPresenter {
 			'3094f0a9-1e1c-3ec3-b7e3-4d4885a826ed' // Special Report
 		];
 		const genreConcept = this.data.genre || this.data.genreConcept;
-		this.genre = (genreConcept && allowedGenres.includes(genreConcept.id)) ? genreConcept : undefined;
+		this.genreConcept = (genreConcept && allowedGenres.includes(genreConcept.id)) ? genreConcept : undefined;
 		this.authorConcept = (this.data.authors || this.data.authorConcepts || [])[0];
 	}
 
@@ -215,18 +215,18 @@ const TeaserPresenter = class TeaserPresenter {
 		}
 
 		// Do not show a genre prefix against brands
-		if (!this.genre || this.data.brandConcept === this.teaserConcept) {
+		if (!this.genreConcept || this.data.brandConcept === this.teaserConcept) {
 			return null;
 		}
 
 		// Do not show a prefix if the stream is a special report
-		if (this.genre && this.data.genre.prefLabel === 'Special Report' &&
+		if (this.genreConcept && this.genreConcept.prefLabel === 'Special Report' &&
 			this.data.streamProperties &&
 			this.data.streamProperties.directType === 'http://www.ft.com/ontology/SpecialReport') {
 			return null;
 		}
 
-		return this.data.genre.prefLabel;
+		return this.genreConcept.prefLabel;
 	}
 
 	//returns publishedDate, status, classModifier
