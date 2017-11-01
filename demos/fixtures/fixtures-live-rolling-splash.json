@@ -42,18 +42,18 @@
         "prefLabel": "FT Series",
         "relativeUrl": "/"
       },
-			"contains": [
-				{
-					"id": "57371736-4b69-11e6-88c5-db83e98a590a"
-				},
-				{
-					"id": "57371736-4b69-11e6-88c5-db83e98a590a",
-					"status": "inprogress"
-				},
-				{
-					"id": "b135ff23-b289-3471-9162-71f0a147e7f2"
-				}
-			]
+      "contains": [
+        {
+          "id": "57371736-4b69-11e6-88c5-db83e98a590a"
+        },
+        {
+          "id": "57371736-4b69-11e6-88c5-db83e98a590a",
+          "status": "inprogress"
+        },
+        {
+          "id": "b135ff23-b289-3471-9162-71f0a147e7f2"
+        }
+      ]
     }]
   }]
 }

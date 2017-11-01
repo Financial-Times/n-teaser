@@ -35,17 +35,6 @@ const isLive = (data) => {
 	return isLiveBlogInProgress(data) || isFirstArticleInLivePackage;
 };
 
-const brandAuthorDouble = (data) => {
-	if (
-		data.authors &&
-		data.authors.length &&
-		data.isOpinion === true
-	) {
-		return true;
-	}
-		return false;
-};
-
 const modsDoesInclude = (modToTest, modsArray = []) => {
 	return modsArray.includes(modToTest);
 };
@@ -59,13 +48,29 @@ const TeaserPresenter = class TeaserPresenter {
 	constructor (data) {
 		this.data = data || {};
 		const allowedGenres = [
-			'61d707b5-6fab-3541-b017-49b72de80772',
-			'9c2af23a-ee61-303f-97e8-2026fb031bd5',
-			'dc9332a7-453d-3b80-a53d-5a19579d9359',
-			'b3ecdf0e-68bb-3303-8773-ec9c05e80234',
-			'3094f0a9-1e1c-3ec3-b7e3-4d4885a826ed'
+			'61d707b5-6fab-3541-b017-49b72de80772', // Analysis
+			'9c2af23a-ee61-303f-97e8-2026fb031bd5', // Interview
+			'dc9332a7-453d-3b80-a53d-5a19579d9359', // Q&A
+			'b3ecdf0e-68bb-3303-8773-ec9c05e80234', // Review
+			'3094f0a9-1e1c-3ec3-b7e3-4d4885a826ed' // Special Report
 		];
-		this.genre = (this.data.genre && allowedGenres.includes(this.data.genre.id)) ? this.data.genre : undefined;
+		const genreConcept = this.data.genre || this.data.genreConcept;
+		this.genre = (genreConcept && allowedGenres.includes(genreConcept.id)) ? genreConcept : undefined;
+		this.authorConcept = (this.data.authors || this.data.authorConcepts || [])[0];
+	}
+
+	get isOpinion () {
+		return this.data.isOpinion || (this.data.genreConcept && this.data.genreConcept.id === 'e569e23b-0c3e-3d20-8ed0-4c17b8177c05');
+	}
+
+	get brandAuthorDouble () {
+		if (
+			this.authorConcept &&
+			this.isOpinion === true
+		) {
+			return true;
+		}
+			return false;
 	}
 
 	// returns all top level class names appropriate for the teaser
@@ -98,7 +103,7 @@ const TeaserPresenter = class TeaserPresenter {
 			mods.push('has-image');
 		}
 
-		if (this.data.isOpinion && modsDoesNotInclude('hero-image', this.data.mods)) {
+		if (this.isOpinion && modsDoesNotInclude('hero-image', this.data.mods)) {
 			mods.push('opinion');
 		}
 
@@ -169,11 +174,11 @@ const TeaserPresenter = class TeaserPresenter {
 				return displayConcept || null;
 			}
 			// Use Author Concept if Opinion & Branded unless same as stream
-			if (brandAuthorDouble(this.data) === true &&
+			if (this.brandAuthorDouble &&
 				(!this.data.streamProperties ||
 				(this.data.streamProperties &&
-				this.data.streamProperties.id !== this.data.authors[0].id ))) {
-				return this.data.authors[0];
+				this.data.streamProperties.id !== this.authorConcept.id ))) {
+				return this.authorConcept;
 			}
 			return this.data.brandConcept || displayConcept || null;
 		}
@@ -198,13 +203,13 @@ const TeaserPresenter = class TeaserPresenter {
 			return 'Video';
 		}
 
-		if (brandAuthorDouble(this.data) === true) {
+		if (this.brandAuthorDouble) {
 			// dedupe authors who are also brands and where Author = stream
 			if (this.data.brandConcept &&
-				this.data.brandConcept.prefLabel !== this.data.authors[0].prefLabel &&
+				this.data.brandConcept.prefLabel !== this.authorConcept.prefLabel &&
 				(!this.data.streamProperties ||
 				(this.data.streamProperties &&
-				this.data.streamProperties.id !== this.data.authors[0].id))) {
+				this.data.streamProperties.id !== this.authorConcept.id))) {
 				return this.data.brandConcept.prefLabel;
 			}
 		}
@@ -255,11 +260,11 @@ const TeaserPresenter = class TeaserPresenter {
 	get headshot () {
 		let headshotName;
 
-		if ((brandAuthorDouble(this.data) === true)
-			&& this.data.authors.length > 0
-			&& this.data.authors[0].headshot
+		if (this.brandAuthorDouble
+			&& this.authorConcept
+			&& this.authorConcept.headshot
 		) {
-			headshotName = this.data.authors[0].headshot.name;
+			headshotName = this.authorConcept.headshot.name;
 		}
 
 		if (headshotName) {
@@ -286,8 +291,13 @@ const TeaserPresenter = class TeaserPresenter {
 	get displayTitle () {
 		if (this.data.flags && this.data.flags.headlineTesting && this.data.flags.headlineTesting === 'variant2' && this.data.alternativeTitles && this.data.alternativeTitles.contentPackageTitle) {
 			return this.data.alternativeTitles.contentPackageTitle;
-		} else if (this.data.flags && this.data.flags.teaserUsePromotionalTitle && this.data.promotionalTitle) {
-			return this.data.promotionalTitle;
+		} else if (this.data.flags && this.data.flags.teaserUsePromotionalTitle) {
+			if (this.data.promotionalTitle) {
+				return this.data.promotionalTitle;
+			}
+			if (this.data.alternativeTitles && this.data.alternativeTitles.promotionalTitle) {
+				return this.data.alternativeTitles.promotionalTitle;
+			}
 		}
 		return this.data.title;
 	}
