@@ -616,66 +616,89 @@ describe('Teaser Presenter', () => {
 	describe('displayTitle', () => {
 
 		const promotionalTitle = { promotionalTitle: 'promotional' };
-		const alternativeTitles = { alternativeTitles: { contentPackageTitle: 'contentTitle' }};
-		const noContentPackageTitle = { alternativeTitles: { contentPackageTitle: null }};
+		const headlineTestingVariants = { alternativeTitles: { contentPackageTitle: 'contentTitle', promotionalTitleVariant: 'variantHeadline' }};
+		const contentPackageOnly = { alternativeTitles: { contentPackageTitle: 'contentTitle' }};
+		const promoVariantOnly = { alternativeTitles: { promotionalTitleVariant: 'variantHeadline' }};
+		const alternativePromo = { alternativeTitles: { promotionalTitle: 'altPromotional' } };
 		const title = { title: 'title'};
 		const teaserFlagOn = { teaserUsePromotionalTitle: true };
 		const teaserFlagOff = { teaserUsePromotionalTitle: false };
 		const headlineTestVariant = { headlineTesting: 'variant2' };
 		const headlineTestControl = { headlineTesting: 'variant1' };
 
-		it('returns the contentPackageTitle if it exists and headline testing flag returns variant', () => {
+		it('returns the promoVariant if both headlineTestingVariants are present and headline testing flag returns variant', () => {
 			const flags = Object.assign({}, headlineTestVariant);
-			const content = Object.assign({}, alternativeTitles, {flags});
+			const content = Object.assign({}, headlineTestingVariants, {flags});
+			subject = new Presenter(content);
+			expect(subject.displayTitle).to.equal('variantHeadline');
+		});
+
+		it('returns the promoVariant if promotionalTitleVariant present and headline testing flag returns variant', () => {
+			const flags = Object.assign({}, headlineTestVariant);
+			const content = Object.assign({}, promoVariantOnly, {flags});
+			subject = new Presenter(content);
+			expect(subject.displayTitle).to.equal('variantHeadline');
+		});
+
+		it('returns the contentPackageHeadline if present and there is no promotionalHeadlineVariant and headline testing flag returns variant', () => {
+			const flags = Object.assign({}, headlineTestVariant);
+			const content = Object.assign({}, contentPackageOnly, {flags});
 			subject = new Presenter(content);
 			expect(subject.displayTitle).to.equal('contentTitle');
 		});
 
-		it('returns the promo title if the headline testing flag returns variant but no alternativeTitles', () => {
+		it('returns the promo title if exists and if the headline testing flag returns variant but no contentPackageTitle or promotionlHeadlineVariant', () => {
 			const flags = Object.assign({}, headlineTestVariant, teaserFlagOn);
 			const content = Object.assign({}, promotionalTitle, {flags});
 			subject = new Presenter(content);
 			expect(subject.displayTitle).to.equal('promotional');
 		});
 
-		it('returns the promo title if the headline testing flag returns variant but no contentPackageTitle', () => {
-			const flags = Object.assign({}, headlineTestVariant, teaserFlagOn);
-			const content = Object.assign({}, noContentPackageTitle, promotionalTitle, {flags});
-			subject = new Presenter(content);
-			expect(subject.displayTitle).to.equal('promotional');
-		});
-
-		it('returns the promo title if contentPackageTitle exists but headlineFlag set to control', () => {
+		it('returns the promo title if headlineTestingVariants exist but headlineFlag set to control', () => {
 			const flags = Object.assign({}, headlineTestControl, teaserFlagOn);
-			const content = Object.assign({}, promotionalTitle, alternativeTitles, {flags});
+			const content = Object.assign({}, promotionalTitle, headlineTestingVariants, {flags});
 			subject = new Presenter(content);
 			expect(subject.displayTitle).to.equal('promotional');
 		});
 
-		it('returns the promo title if contentPackageTitle exists but headlineFlag not set', () => {
+		it('returns the promo title if headlineTestingVariants exist but headlineFlag not set', () => {
 			const flags = Object.assign({}, teaserFlagOn);
-			const content = Object.assign({}, promotionalTitle, alternativeTitles, {flags});
+			const content = Object.assign({}, promotionalTitle, headlineTestingVariants, {flags});
 			subject = new Presenter(content);
 			expect(subject.displayTitle).to.equal('promotional');
 		});
 
-		it('returns the title if no contentPackageTitle, and no teaser flag', () => {
-			const flags = Object.assign({}, headlineTestVariant);
-			const content = Object.assign({}, title, noContentPackageTitle, promotionalTitle, {flags});
-			subject = new Presenter(content);
-			expect(subject.displayTitle).to.equal('title');
-		});
-
-		it('returns the title if no contentPackageTitle, and teaser flag off', () => {
-			const flags = Object.assign({}, headlineTestVariant, teaserFlagOff);
-			const content = Object.assign({}, title, noContentPackageTitle, promotionalTitle, {flags});
-			subject = new Presenter(content);
-			expect(subject.displayTitle).to.equal('title');
-		});
-
-		it('returns the title if no contentPackageTitle and no promotionalTitle', () => {
+		it('returns the promo title if exists and no headlineTestingVariants exist but altPromo exists', () => {
 			const flags = Object.assign({}, teaserFlagOn, headlineTestVariant);
-			const content = Object.assign({}, title, noContentPackageTitle, {flags});
+			const content = Object.assign({}, promotionalTitle, alternativePromo, {flags});
+			subject = new Presenter(content);
+			expect(subject.displayTitle).to.equal('promotional');
+		});
+
+		it('returns the alternative promo title if exists and teaser flag on and no headlineTestingVariants and no promo title', () => {
+			const flags = Object.assign({}, headlineTestVariant, teaserFlagOn);
+			const content = Object.assign({}, alternativePromo, {flags});
+			subject = new Presenter(content);
+			expect(subject.displayTitle).to.equal('altPromotional');
+		});
+
+		it('returns the title if no headlineTestingVariants and no teaser flag', () => {
+			const flags = Object.assign({}, headlineTestVariant);
+			const content = Object.assign({}, title, promotionalTitle, {flags});
+			subject = new Presenter(content);
+			expect(subject.displayTitle).to.equal('title');
+		});
+
+		it('returns the title if no headlineTestingVariants, and teaser flag off', () => {
+			const flags = Object.assign({}, headlineTestVariant, teaserFlagOff);
+			const content = Object.assign({}, title, promotionalTitle, {flags});
+			subject = new Presenter(content);
+			expect(subject.displayTitle).to.equal('title');
+		});
+
+		it('returns the title if no headlineTestingVariants and no promotionalTitle and no alternative promo', () => {
+			const flags = Object.assign({}, teaserFlagOn, headlineTestVariant);
+			const content = Object.assign({}, title, {flags});
 			subject = new Presenter(content);
 			expect(subject.displayTitle).to.equal('title');
 		});
