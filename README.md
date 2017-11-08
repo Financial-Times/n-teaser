@@ -19,8 +19,7 @@ Run `make demo` to serve a set of demo templates on http://localhost:5005/{tease
 In the consuming app:
 
 - Add to package.json
-
-    It’s a node module only - no need to add to bower.json
+>> It’s a node module only - no need to add to bower.json
 
 - Register the presenter in the express options
 ```
@@ -28,10 +27,10 @@ In the consuming app:
 ```
 - Get the data from `next-api`
 
-    Use the data fragments from nTeaser that correspond to the teaser type(s) you will be using.
+>> Use the data fragments from nTeaser that correspond to the teaser type(s) you will be using.
 - Add the teaser partials to your templates
 
-    Should be referenced as `> n-teaser/templates/standard`
+>> Should be referenced as `> n-teaser/templates/standard`
 
 ## Teaser Types
 
