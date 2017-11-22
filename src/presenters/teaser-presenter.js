@@ -366,7 +366,7 @@ const TeaserPresenter = class TeaserPresenter {
 	// returns publishedDate, status, classModifier
 	liveBlog () {
 		return {
-			publishedDate: this.data.updates && Array.isArray(this.data.updates) && this.data.updates[0].date,
+			publishedDate: this.data.updates && Array.isArray(this.data.updates) && this.data.updates[0] && this.data.updates[0].date,
 			status: LIVEBLOG_MAPPING[this.data.status.toLowerCase()].timestampStatus,
 			classModifier: this.data.status.toLowerCase()
 		};
