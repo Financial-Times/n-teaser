@@ -1,5 +1,5 @@
 {{#nTeaserPresenter @this template='lifestyle' mods=mods flags=@root.flags}}
-	<div class="o-teaser{{#each @nTeaserPresenter.classModifiers}} o-teaser--{{this}}{{/each}}" data-o-component="o-teaser" data-trackable="teaser">
+	<div class="o-teaser{{#each @nTeaserPresenter.classModifiers}} o-teaser--{{this}}{{/each}}" data-o-component="o-teaser" data-trackable="teaser{{#if tracking}}--{{tracking}}{{/if}}">
 
 		{{> n-teaser/templates/partials/main-image}}
 
