@@ -1,5 +1,5 @@
 {{#nTeaserPresenter @this template='light' mods=mods flags=@root.flags}}
-	<div class="o-teaser{{#each @nTeaserPresenter.classModifiers}} o-teaser--{{this}}{{/each}}" data-o-component="o-teaser" data-trackable="teaser">
+	<div class="o-teaser{{#each @nTeaserPresenter.classModifiers}} o-teaser--{{this}}{{/each}}" data-o-component="o-teaser" data-trackable="teaser"{{#if originator}} data-trackable-context-originator="{{originator}}"{{/if}}>
 		<div class="o-teaser__content">
 
 			{{> n-teaser/templates/partials/display-concept}}
