@@ -315,7 +315,8 @@ const TeaserPresenter = class TeaserPresenter {
 
 	// returns the variant name if headline testing is live for this story
 	get headlineTestingVariant () {
-		if (this.data.flags && this.data.flags.headlineTesting && this.data.alternativeTitles && this.data.alternativeTitles.contentPackageTitle) {
+		const altTitles = this.data.alternativeTitles;
+		if (this.data.flags && this.data.flags.headlineTesting && altTitles && (altTitles.promotionalTitleVariant || altTitles.contentPackageTitle)) {
 			return this.data.flags.headlineTesting;
 		}
 		return null;
