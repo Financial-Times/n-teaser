@@ -18,6 +18,7 @@ module.exports = {
 			promotionalTitle
 			alternativeTitles {
 				contentPackageTitle
+				promotionalTitleVariant
 			}
 			publishedDate
 			firstPublishedDate
