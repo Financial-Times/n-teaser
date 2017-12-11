@@ -52,7 +52,8 @@ const TeaserPresenter = class TeaserPresenter {
 			'9c2af23a-ee61-303f-97e8-2026fb031bd5', // Interview
 			'dc9332a7-453d-3b80-a53d-5a19579d9359', // Q&A
 			'b3ecdf0e-68bb-3303-8773-ec9c05e80234', // Review
-			'3094f0a9-1e1c-3ec3-b7e3-4d4885a826ed' // Special Report
+			'3094f0a9-1e1c-3ec3-b7e3-4d4885a826ed', // Special Report
+			'b2fa15d1-56b4-3767-8bcd-595b23a5ff22' // Explainer
 		];
 		const genreConcept = this.data.genre || this.data.genreConcept;
 		this.genreConcept = (genreConcept && allowedGenres.includes(genreConcept.id)) ? genreConcept : undefined;
