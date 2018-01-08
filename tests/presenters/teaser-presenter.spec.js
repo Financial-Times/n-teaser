@@ -170,8 +170,8 @@ describe('Teaser Presenter', () => {
 		});
 
 		context('type', () => {
-			it('returns `article` when content has `type` set to `Article`', () => {
-				const content = {type: 'Article'};
+			it('returns `article` when content has `type` set to `article`', () => {
+				const content = {type: 'article'};
 				subject = new Presenter(content);
 				expect(subject.classModifiers).to.deep.equal(['article']);
 			});

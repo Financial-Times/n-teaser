@@ -4,7 +4,7 @@
     "premiumContentIndicator": true
   },
   "content": [{
-    "type": "Article",
+    "type": "article",
     "id": "57371736-4b69-11e6-88c5-db83e98a590a",
     "canBePackage": false,
     "relativeUrl": "/package",

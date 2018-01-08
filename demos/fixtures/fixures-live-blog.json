@@ -64,7 +64,7 @@
       "relativeUrl": "/eu-economy",
       "latestContent": [
         {
-          "type": "Article",
+          "type": "article",
           "relativeUrl": "/content/3e8526ea-779d-11e7-90c0-90a9d1bc9691",
           "isPremium": false,
           "title": "European recovery is under way and investors are taking notice",
@@ -72,7 +72,7 @@
           "id": "3e8526ea-779d-11e7-90c0-90a9d1bc9691"
         },
         {
-          "type": "Article",
+          "type": "article",
           "relativeUrl": "/content/ee2cdd29-39c7-3ba2-a5b6-832ec795980b",
           "isPremium": false,
           "title": "Hungary eases policy with deposit rate cut, base rate held steady",
@@ -80,7 +80,7 @@
           "id": "ee2cdd29-39c7-3ba2-a5b6-832ec795980b"
         },
         {
-          "type": "Article",
+          "type": "article",
           "relativeUrl": "/content/f8447d9c-6fed-39f2-801f-06d76d4eb8d9",
           "isPremium": false,
           "title": "Analyst sentiment on German economy rebounds in September – ZEW",
@@ -88,7 +88,7 @@
           "id": "f8447d9c-6fed-39f2-801f-06d76d4eb8d9"
         },
         {
-          "type": "Article",
+          "type": "article",
           "relativeUrl": "/content/8a10d200-632d-11e7-8814-0ac7eb84e5f1",
           "isPremium": false,
           "title": "Romania must avoid association with Europe’s ‘bad boys’",
