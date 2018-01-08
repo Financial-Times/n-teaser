@@ -200,7 +200,7 @@ const TeaserPresenter = class TeaserPresenter {
 			return 'Special Report';
 		}
 
-		if (this.data.type === 'Video') {
+		if (this.data.type === 'video') {
 			return 'Video';
 		}
 
@@ -333,7 +333,7 @@ const TeaserPresenter = class TeaserPresenter {
 			!!this.data.enablePlayableVideo
 			&& this.data.flags
 			&& this.data.flags.insituVideoTeaser
-			&& this.data.type === 'Video'
+			&& this.data.type === 'video'
 			&& ((isTopStory && !isBigStory) || (isHeavy && isLarge))
 		);
 	}
