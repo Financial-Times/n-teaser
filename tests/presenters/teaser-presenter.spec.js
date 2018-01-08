@@ -176,8 +176,8 @@ describe('Teaser Presenter', () => {
 				expect(subject.classModifiers).to.deep.equal(['article']);
 			});
 
-			it('returns `video` when content has `type` set to `Video`', () => {
-				const content = {type: 'Video'};
+			it('returns `video` when content has `type` set to `video`', () => {
+				const content = {type: 'video'};
 				subject = new Presenter(content);
 				expect(subject.classModifiers).to.deep.equal(['video']);
 			});
