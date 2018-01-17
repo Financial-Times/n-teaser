@@ -1,5 +1,7 @@
 'use strict';
 
+const moment = require('moment');
+require('moment-duration-format');
 const hyphenatePascalCase = require('../utils/hyphenate-pascal-case');
 const ONE_HOUR = 1000 * 60 * 60;
 const MAX_RELATED_CONTENT = 3;
@@ -376,18 +378,29 @@ const TeaserPresenter = class TeaserPresenter {
 	}
 
 	get duration () {
-		if (this.data.duration) {
-			const date = new Date(this.data.duration);
+		const date = new Date(this.data.duration);
+		let duration = undefined;
+		let formattedDuration = undefined;
 
-			return {
-				// https://en.wikipedia.org/wiki/ISO_8601#Durations
-				iso: `PT${date.getMinutes()}M${date.getSeconds()}S`,
-				ms: this.data.duration,
-				formatted: this.data.formattedDuration
-			};
-		} else {
-			return null;
+		if (this.data.duration) {
+			duration = this.data.duration;
+			formattedDuration = this.data.formattedDuration;
+		} else if (this.data.attachments) {
+			duration = this.data.attachments.filter(({ mediaType }) => mediaType === 'video/mp4')
+				.slice(0, 1)
+				.map(({ duration }) => duration)
+				.shift();
+			formattedDuration = moment.duration(duration).format('m:ss', { trim: false });
 		}
+
+		const durationData = {
+			// https://en.wikipedia.org/wiki/ISO_8601#Durations
+			iso: `PT${date.getMinutes()}M${date.getSeconds()}S`,
+			ms: duration,
+			formatted: formattedDuration
+		};
+
+		return formattedDuration ? durationData : null;
 	}
 };
 
