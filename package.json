@@ -9,7 +9,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "moment": "^2.20.1"
+    "moment": "^2.20.1",
+    "moment-duration-format": "^2.2.0"
   },
   "devDependencies": {
     "@financial-times/n-gage": "^1.5.2",
