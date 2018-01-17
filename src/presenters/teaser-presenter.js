@@ -1,7 +1,6 @@
 'use strict';
 
-const moment = require('moment');
-require('moment-duration-format');
+const dateFnsformat = require('date-fns/format');
 const hyphenatePascalCase = require('../utils/hyphenate-pascal-case');
 const ONE_HOUR = 1000 * 60 * 60;
 const MAX_RELATED_CONTENT = 3;
@@ -396,7 +395,7 @@ const TeaserPresenter = class TeaserPresenter {
 				.map(({ duration }) => duration)
 				.shift();
 			date = new Date(duration);
-			formattedDuration = duration ? moment.duration(duration).format('m:ss', { trim: false }) : undefined;
+			formattedDuration = duration ? dateFnsformat(duration,'m:ss') : undefined;
 		}
 
 		const durationData = {
