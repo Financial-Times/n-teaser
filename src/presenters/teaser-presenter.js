@@ -382,10 +382,13 @@ const TeaserPresenter = class TeaserPresenter {
 		let duration = undefined;
 		let formattedDuration = undefined;
 
-		if (this.data.duration) {
+		if (this.data.duration && this.data.formattedDuration) {
+			//this root is for video data from next-api
 			duration = this.data.duration;
 			formattedDuration = this.data.formattedDuration;
 		} else if (this.data.attachments) {
+			//this root is for video data from next-es-interface
+			//these code come from next-api/server/v2/graphql/types/content/video.js to set duration
 			duration = this.data.attachments.filter(({ mediaType }) => mediaType === 'video/mp4')
 				.slice(0, 1)
 				.map(({ duration }) => duration)
