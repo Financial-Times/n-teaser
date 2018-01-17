@@ -379,7 +379,7 @@ const TeaserPresenter = class TeaserPresenter {
 
 	get duration () {
 
-		let data = undefined;
+		let date = undefined;
 		let duration = undefined;
 		let formattedDuration = undefined;
 
