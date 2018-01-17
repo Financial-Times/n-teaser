@@ -378,12 +378,14 @@ const TeaserPresenter = class TeaserPresenter {
 	}
 
 	get duration () {
-		const date = new Date(this.data.duration);
+
+		let data = undefined;
 		let duration = undefined;
 		let formattedDuration = undefined;
 
 		if (this.data.duration && this.data.formattedDuration) {
 			//this root is for video data from next-api
+			date = new Date(this.data.duration);
 			duration = this.data.duration;
 			formattedDuration = this.data.formattedDuration;
 		} else if (this.data.attachments) {
@@ -393,12 +395,13 @@ const TeaserPresenter = class TeaserPresenter {
 				.slice(0, 1)
 				.map(({ duration }) => duration)
 				.shift();
+			date = new Date(duration);
 			formattedDuration = duration ? moment.duration(duration).format('m:ss', { trim: false }) : undefined;
 		}
 
 		const durationData = {
 			// https://en.wikipedia.org/wiki/ISO_8601#Durations
-			iso: `PT${date.getMinutes()}M${date.getSeconds()}S`,
+			iso: date ? `PT${date.getMinutes()}M${date.getSeconds()}S` : undefined,
 			ms: duration,
 			formatted: formattedDuration
 		};
