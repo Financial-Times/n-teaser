@@ -393,7 +393,7 @@ const TeaserPresenter = class TeaserPresenter {
 				.slice(0, 1)
 				.map(({ duration }) => duration)
 				.shift();
-			formattedDuration = moment.duration(duration).format('m:ss', { trim: false });
+			formattedDuration = duration ? moment.duration(duration).format('m:ss', { trim: false }) : undefined;
 		}
 
 		const durationData = {
