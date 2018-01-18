@@ -8,7 +8,9 @@
     "url": "git+https://github.com/Financial-Times/n-teaser.git"
   },
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "date-fns": "^1.29.0"
+  },
   "devDependencies": {
     "@financial-times/n-gage": "^1.5.2",
     "@financial-times/n-internal-tool": "^1.2.3",

@@ -1,5 +1,6 @@
 'use strict';
 
+const dateFnsformat = require('date-fns/format');
 const hyphenatePascalCase = require('../utils/hyphenate-pascal-case');
 const ONE_HOUR = 1000 * 60 * 60;
 const MAX_RELATED_CONTENT = 3;
@@ -376,18 +377,35 @@ const TeaserPresenter = class TeaserPresenter {
 	}
 
 	get duration () {
-		if (this.data.duration) {
-			const date = new Date(this.data.duration);
 
-			return {
-				// https://en.wikipedia.org/wiki/ISO_8601#Durations
-				iso: `PT${date.getMinutes()}M${date.getSeconds()}S`,
-				ms: this.data.duration,
-				formatted: this.data.formattedDuration
-			};
-		} else {
-			return null;
+		let date = undefined;
+		let duration = undefined;
+		let formattedDuration = undefined;
+
+		if (this.data.duration && this.data.formattedDuration) {
+			//this route is for video data from next-api
+			date = new Date(this.data.duration);
+			duration = this.data.duration;
+			formattedDuration = this.data.formattedDuration;
+		} else if (this.data.attachments) {
+			//this route is for video data from next-es-interface
+			//these code come from next-api/server/v2/graphql/types/content/video.js to set duration
+			duration = this.data.attachments.filter(({ mediaType }) => mediaType === 'video/mp4')
+				.slice(0, 1)
+				.map(({ duration }) => duration)
+				.shift();
+			date = new Date(duration);
+			formattedDuration = duration ? dateFnsformat(duration,'m:ss') : undefined;
 		}
+
+		const durationData = {
+			// https://en.wikipedia.org/wiki/ISO_8601#Durations
+			iso: date ? `PT${date.getMinutes()}M${date.getSeconds()}S` : undefined,
+			ms: duration,
+			formatted: formattedDuration
+		};
+
+		return formattedDuration ? durationData : null;
 	}
 };
 

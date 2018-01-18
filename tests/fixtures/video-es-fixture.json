@@ -1,0 +1,27 @@
+{
+    "type": "Video",
+    "id": "7c24c36f-00e7-3b0b-8620-f91a3bd3b174",
+    "title": "Dutch election, Fed rate meeting",
+    "standfirst": "A round-up of the big stories being watched by the FT in the coming week",
+    "url": "https://www.ft.com/content/7c24c36f-00e7-3b0b-8620-f91a3bd3b174",
+    "publishedDate": "2017-03-10T16:13:37.267Z",
+    "mainImage": {
+        "url": "https://bcsecure01-a.akamaihd.net/13/47628783001/201703/187/47628783001_5354915265001_5354877735001-vs.jpg?pubId=47628783001&videoId=5354877735001",
+        "width": 640,
+        "height": 360
+    },
+    "displayConcept": {
+        "prefLabel": "Week Ahead",
+        "relativeUrl": "/stream/c24d6335-076a-366a-98e2-500bb26401d6"
+    },
+    "attachments": [
+      {
+        "duration": 270655,
+        "mediaType": "video/mp4"
+      },
+      {
+        "mediaType": "text/vtt",
+        "url": "https://next-media-api.ft.com/captions/15161943195240.vtt"
+      }
+    ]
+}
