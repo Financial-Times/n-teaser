@@ -62,7 +62,7 @@ const TeaserPresenter = class TeaserPresenter {
 	}
 
 	get isOpinion () {
-		return this.data.isOpinion || (this.data.genreConcept && this.data.genreConcept.id === 'e569e23b-0c3e-3d20-8ed0-4c17b8177c05');
+		return this.data.isOpinion || (this.data.genreConcept && this.data.genreConcept.id === '6da31a37-691f-4908-896f-2829ebe2309e');
 	}
 
 	get brandAuthorDouble () {
