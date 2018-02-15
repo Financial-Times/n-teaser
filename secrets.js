@@ -57,7 +57,7 @@ module.exports = {
 		'fb491676-5024-3111-a959-1fbce2fbecc1',
 		'ffa10ed8-8bea-11e6-8cb7-e7ada1d123b1',
 		'flags=@root.flags',
-		'e569e23b-0c3e-3d20-8ed0-4c17b8177c05', // opinion concept uuid
+		'6da31a37-691f-4908-896f-2829ebe2309e', // opinion concept uuid
 		'b2fa15d1-56b4-3767-8bcd-595b23a5ff22'
 	]
 };
