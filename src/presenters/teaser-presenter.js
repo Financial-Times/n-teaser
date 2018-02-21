@@ -239,6 +239,8 @@ const TeaserPresenter = class TeaserPresenter {
 			return {
 				publishedDate: this.data.publishedDate,
 				status: this.timeStatus(),
+				skipPerfAbTesting: !this.data.flags || !this.data.flags.perfDate2,
+				isNewerThanFourHours: this.isNewerThanFourHours(),
 				classModifier: this.timeStatus()
 			};
 		}
@@ -365,6 +367,12 @@ const TeaserPresenter = class TeaserPresenter {
 			}
 		}
 		return status;
+	}
+
+	isNewerThanFourHours () {
+		const now = Date.now();
+		const publishedDate = new Date(this.data.publishedDate).getTime();
+		return (now - publishedDate < 4 * 60 * 60 * 1000);
 	}
 
 	// returns publishedDate, status, classModifier
