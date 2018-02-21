@@ -1,8 +1,11 @@
 {{#with @nTeaserPresenter.timeObject}}
-	<div class="o-teaser__timestamp{{#if classModifier}} o-teaser__timestamp--{{classModifier}}{{/if}}">
-		{{#if status}}
-			<span class="o-teaser__timestamp-prefix">{{status}}</span>
-		{{/if}}
-		<time data-o-component="o-date" class="o-date" data-o-date-format="time-ago-limit-4-hours" datetime="{{publishedDate}}">{{#dateformat "dddd, d mmmm, yyyy"}}{{publishedDate}}{{/dateformat}}</time>
-	</div>
+	{{!-- perf A/B testing: don't render if older than 4 hours --}}
+	{{#ifSome isNewerThanFourHours skipPerfAbTesting}}
+		<div class="o-teaser__timestamp{{#if classModifier}} o-teaser__timestamp--{{classModifier}}{{/if}}">
+			{{#if status}}
+				<span class="o-teaser__timestamp-prefix">{{status}}</span>
+			{{/if}}
+			<time data-o-component="o-date" class="o-date" data-o-date-format="time-ago-limit-4-hours" datetime="{{publishedDate}}">{{#dateformat "dddd, d mmmm, yyyy"}}{{publishedDate}}{{/dateformat}}</time>
+		</div>
+	{{/ifSome}}
 {{/with}}

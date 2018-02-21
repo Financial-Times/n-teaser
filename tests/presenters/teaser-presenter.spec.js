@@ -411,6 +411,14 @@ describe('Teaser Presenter', () => {
 				expect(subject.timeStatus()).to.equal('updated');
 			});
 
+			it('is newer than 4 hours', () => {
+				const content = {
+					publishedDate: Date.now() - FIFTY_NINE_MINUTES
+				};
+				subject = new Presenter(content);
+				expect(subject.isNewerThanFourHours()).to.be.true;
+			});
+
 		});
 
 		context('more than an hour since the article published', () => {
@@ -423,6 +431,20 @@ describe('Teaser Presenter', () => {
 				};
 				subject = new Presenter(content);
 				expect(subject.timeStatus()).to.be.null;
+			});
+		});
+
+		context('more than 4 hours since the article published', () => {
+
+			const FOUR_HOURS = 1000 * 60 * 60 * 4;
+
+			it('is not newer than 4 hours', () => {
+				const fourHoursAgo = Date.now() - FOUR_HOURS;
+				const content = {
+					publishedDate: fourHoursAgo
+				};
+				subject = new Presenter(content);
+				expect(subject.isNewerThanFourHours()).to.be.false;
 			});
 		});
 
