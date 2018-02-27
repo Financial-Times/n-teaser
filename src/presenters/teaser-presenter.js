@@ -239,7 +239,7 @@ const TeaserPresenter = class TeaserPresenter {
 			return {
 				publishedDate: this.data.publishedDate,
 				status: this.timeStatus(),
-				skipPerfAbTesting: !this.data.flags || !this.data.flags.perfDate2,
+				skipPerfAbTesting: !this.data.flags || !(this.data.flags.perfDate2 || this.data.flags.perfJanky),
 				isNewerThanFourHours: this.isNewerThanFourHours(),
 				classModifier: this.timeStatus()
 			};
