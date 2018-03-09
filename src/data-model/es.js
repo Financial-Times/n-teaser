@@ -9,7 +9,7 @@ module.exports = [
 	'firstPublishedDate',
 
 	'isEditorsChoice',
-	'isPremium',
+	'accessLevel',
 	'canBeSyndicated',
 
 	'mainImage.title',
