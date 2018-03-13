@@ -12,6 +12,8 @@ module.exports = [
 	'accessLevel',
 	'canBeSyndicated',
 
+	'type',
+
 	'mainImage.title',
 	'mainImage.description',
 	'mainImage.url',
