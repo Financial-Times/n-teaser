@@ -150,6 +150,20 @@ describe('Teaser Presenter', () => {
 			});
 		});
 
+		context('video', () => {
+			it('returns true for isVideo when the type is a video', () => {
+				const content = {type: 'Video'};
+				subject = new Presenter(content);
+				expect(subject.isVideo).to.equal(true);
+			});
+
+			it('does not return true for isVideo when the type is not a video', () => {
+				const content = {type: 'Package'};
+				subject = new Presenter(content);
+				expect(subject.isVideo).to.equal(false);
+			});
+		});
+
 		context('highlight', () => {
 			it('returns highlight when content has isEditorsChoice set to true', () => {
 				const content = {isEditorsChoice: true, mods: []};
