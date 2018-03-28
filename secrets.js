@@ -58,6 +58,7 @@ module.exports = {
 		'ffa10ed8-8bea-11e6-8cb7-e7ada1d123b1',
 		'flags=@root.flags',
 		'6da31a37-691f-4908-896f-2829ebe2309e', // opinion concept uuid
-		'b2fa15d1-56b4-3767-8bcd-595b23a5ff22'
+		'b2fa15d1-56b4-3767-8bcd-595b23a5ff22',
+		'5c7592a8-1f0c-11e4-b0cb-b2227cce2b54', // FastFT
 	]
 };
