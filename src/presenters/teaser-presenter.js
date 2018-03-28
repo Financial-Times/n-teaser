@@ -65,6 +65,10 @@ const TeaserPresenter = class TeaserPresenter {
 		return this.data.isOpinion || (this.data.genreConcept && this.data.genreConcept.id === '6da31a37-691f-4908-896f-2829ebe2309e');
 	}
 
+	get isVideo () {
+		return this.data.type && this.data.type.toLowerCase() === 'video';
+	}
+
 	get brandAuthorDouble () {
 		if (
 			this.authorConcept &&

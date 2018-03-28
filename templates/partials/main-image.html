@@ -4,8 +4,12 @@
 			href="{{{relativeUrl}}}{{{referrerTracking}}}"
 			data-trackable="image"
 			{{#if @nTeaserPresenter.headlineTestingVariant}}data-trackable-context-headline-variant="{{{@nTeaserPresenter.headlineTestingVariant}}}"{{/if}}
+			{{#if @nTeaserPresenter.isVideo}}
+			aria-label="Watch video {{{@nTeaserPresenter.displayTitle}}}"
+			{{else}}
 			aria-hidden="true"
 			tabindex="-1"
+			{{/if}}
 		>
 			{{#ifEquals lazyLoad false}}
 				{{#nImagePresenter srcSet=@nTeaserPresenter.displayImage.url placeholder=@nTeaserPresenter.displayImage.ratio alt=@nTeaserPresenter.data.title colspan=colspan position=position widths=widths lazyLoad=false wrapperClasses="o-teaser__image-placeholder" classes="o-teaser__image" sourceParam=@nTeaserPresenter.displayImage.sourceParam}}
