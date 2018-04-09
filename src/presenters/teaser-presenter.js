@@ -57,7 +57,7 @@ const TeaserPresenter = class TeaserPresenter {
 			'b2fa15d1-56b4-3767-8bcd-595b23a5ff22' // Explainer
 		];
 		const disallowedBrands = [
-			// HACK: temporary measure until UPP provides a way to model evolving 
+			// HACK: temporary measure until UPP provides a way to model evolving
 			// stories that start life as FastFT articles.
 			'5c7592a8-1f0c-11e4-b0cb-b2227cce2b54' // FastFT
 		];
