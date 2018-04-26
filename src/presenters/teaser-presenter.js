@@ -428,12 +428,6 @@ const TeaserPresenter = class TeaserPresenter {
 		return formattedDuration ? durationData : null;
 	}
 
-	get visited () {
-		if (this.data.flags && this.data.flags.visitedStoriesOnTeaser) {
-			return true;
-		}
-	}
-
 };
 
 module.exports = TeaserPresenter;
