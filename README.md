@@ -104,6 +104,11 @@ Example of a teaser with an image;
 The `colspan`, `position` and `widths` arguments are passed on to `n-image` to determine the properties of how the image is displayed in the teaser.
 More details on what is supported by `n-image` can be found in that repository.
 
+By default in timestamp `data-o-date-format="time-ago-limit-4-hours"`, but you can change it by passing `dataDateFormat` argument, e.g.
+```
+{{>n-teaser/templates/heavy widths="[150, 210]" mods=(array 'small') dataDateFormat="time-ago-no-seconds"}}
+```
+
 ### Display options
 Parameters can be passed to suppress some elements of teasers that would otherwise appear.
 
