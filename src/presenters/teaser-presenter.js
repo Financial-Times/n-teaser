@@ -68,6 +68,10 @@ const TeaserPresenter = class TeaserPresenter {
 		this.brandConcept = this.data.brandConcept && disallowedBrands.includes(this.data.brandConcept.id) ? undefined : this.data.brandConcept;
 	}
 
+	get dataDateFormat () {
+		return this.data.dataDateFormat ? this.data.dataDateFormat : 'time-ago-limit-4-hours';
+	}
+
 	get isOpinion () {
 		return this.data.isOpinion || (this.data.genreConcept && this.data.genreConcept.id === '6da31a37-691f-4908-896f-2829ebe2309e');
 	}
