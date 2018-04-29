@@ -108,6 +108,7 @@ By default in timestamp `data-o-date-format="time-ago-limit-4-hours"`, but you c
 ```
 {{>n-teaser/templates/heavy widths="[150, 210]" mods=(array 'small') dataDateFormat="time-ago-no-seconds"}}
 ```
+More about available options for `data-o-date-format` you can find [here](https://github.com/Financial-Times/o-date/blob/f4096227408b3991861c1c6b8f4d409a6c5446cd/main.js#L105).
 
 ### Display options
 Parameters can be passed to suppress some elements of teasers that would otherwise appear.
