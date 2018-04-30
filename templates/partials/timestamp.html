@@ -5,7 +5,7 @@
 			{{#if status}}
 				<span class="o-teaser__timestamp-prefix">{{status}}</span>
 			{{/if}}
-			<time data-o-component="o-date" class="o-date" data-o-date-format="time-ago-limit-4-hours" datetime="{{publishedDate}}">{{#dateformat "dddd, d mmmm, yyyy"}}{{publishedDate}}{{/dateformat}}</time>
+			<time data-o-component="o-date" class="o-date" data-o-date-format="{{@nTeaserPresenter.dataDateFormat}}" datetime="{{publishedDate}}">{{#dateformat "dddd, d mmmm, yyyy"}}{{publishedDate}}{{/dateformat}}</time>
 		</div>
 	{{/ifSome}}
 {{/with}}

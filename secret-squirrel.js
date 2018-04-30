@@ -63,8 +63,9 @@ module.exports = {
 			'f38eb0c6-0329-11e7-aa5b-6bb07f5c8e12', // secrets.js:55, tests/fixtures/package-fixture.json:28
 			'f61b93c8-9f5a-11e6-891e-abe238dee8e2', // secrets.js:56, tests/fixtures/article-brand-fixture.json:4|8|38|41
 			'fb491676-5024-3111-a959-1fbce2fbecc1', // secrets.js:57, tests/fixtures/article-package-fixture.json:28|31
-			'6da31a37-691f-4908-896f-2829ebe2309e', // secrets.js:60, src/presenters/teaser-presenter.js:65
-			'b2fa15d1-56b4-3767-8bcd-595b23a5ff22' // secrets.js:61, src/presenters/teaser-presenter.js:57
+			'6da31a37-691f-4908-896f-2829ebe2309e', // secrets.js:60, src/presenters/teaser-presenter.js:76
+			'b2fa15d1-56b4-3767-8bcd-595b23a5ff22', // secrets.js:61, src/presenters/teaser-presenter.js:57
+			'5c7592a8-1f0c-11e4-b0cb-b2227cce2b54' // secrets.js:62, src/presenters/teaser-presenter.js:62
 		]
 	}
 };

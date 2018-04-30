@@ -104,6 +104,12 @@ Example of a teaser with an image;
 The `colspan`, `position` and `widths` arguments are passed on to `n-image` to determine the properties of how the image is displayed in the teaser.
 More details on what is supported by `n-image` can be found in that repository.
 
+By default in timestamp `data-o-date-format="time-ago-limit-4-hours"`, but you can change it by passing `dataDateFormat` argument, e.g.
+```
+{{>n-teaser/templates/heavy widths="[150, 210]" mods=(array 'small') dataDateFormat="time-ago-no-seconds"}}
+```
+More about available options for `data-o-date-format` you can find [here](https://github.com/Financial-Times/o-date/blob/f4096227408b3991861c1c6b8f4d409a6c5446cd/main.js#L105).
+
 ### Display options
 Parameters can be passed to suppress some elements of teasers that would otherwise appear.
 
