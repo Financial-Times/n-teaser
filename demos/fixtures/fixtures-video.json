@@ -1,8 +1,5 @@
 {
     "javascriptBundles": null,
-    "flags": {
-        "premiumContentIndicator": true
-    },
     "content": [
         {
             "type": "video",
