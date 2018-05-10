@@ -1,8 +1,5 @@
 {
     "javascriptBundles": null,
-    "flags": {
-      "premiumContentIndicator": true
-    },
     "content": [{
       "id": "e52ec40c-42d0-382f-babf-0313412b4dfd",
       "status": "closed",
