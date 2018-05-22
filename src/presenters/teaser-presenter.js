@@ -1,5 +1,6 @@
 'use strict';
 
+const nDisplayMetadata = require('@financial-times/n-display-metadata');
 const dateFnsformat = require('date-fns/format');
 const hyphenatePascalCase = require('../utils/hyphenate-pascal-case');
 const ONE_HOUR = 1000 * 60 * 60;
@@ -44,7 +45,7 @@ const modsDoesNotInclude = (modToTest, modsArray = []) => {
 	return !modsArray.includes(modToTest);
 };
 
-const TeaserPresenter = class TeaserPresenter {
+class TeaserPresenter {
 
 	constructor (data) {
 		this.data = data || {};
@@ -171,6 +172,17 @@ const TeaserPresenter = class TeaserPresenter {
 
 	//returns concept to be displayed
 	get teaserConcept () {
+		// Testing new teaser metadata provided by n-display-metadata
+		if (Array.isArray(this.data.annotations) && this.data.flags.useNewTeaserMetadata) {
+			const { link, altLink } = nDisplayMetadata.teaser(this.data);
+
+			if (this.data.streamProperties && this.data.streamProperties.id === link.id) {
+				return altLink;
+			} else {
+				return link;
+			}
+		}
+
 		//use package title as display concept if article belongs to package
 		let packageArticle = this.data.containedIn;
 
@@ -204,6 +216,17 @@ const TeaserPresenter = class TeaserPresenter {
 
 	//returns genre prefix
 	get genrePrefix () {
+		// Testing new teaser metadata provided by n-display-metadata
+		if (Array.isArray(this.data.annotations) && this.data.flags.useNewTeaserMetadata) {
+			const { prefixText } = nDisplayMetadata.teaser(this.data);
+
+			if (this.data.streamProperties && this.data.streamProperties.prefLabel === prefixText) {
+				return;
+			} else {
+				return prefixText;
+			}
+		}
+
 		//use package brand if article belongs to package
 		let packageArticle = this.data.containedIn;
 
