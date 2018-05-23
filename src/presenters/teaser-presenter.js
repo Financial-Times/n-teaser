@@ -173,7 +173,7 @@ class TeaserPresenter {
 	//returns concept to be displayed
 	get teaserConcept () {
 		// Testing new teaser metadata provided by n-display-metadata
-		if (Array.isArray(this.data.annotations) && this.data.flags.newDisplayMetadata) {
+		if (Array.isArray(this.data.annotations) && this.data.flags && this.data.flags.newDisplayMetadata) {
 			const { link, altLink } = nDisplayMetadata.teaser(this.data);
 
 			const sameId = this.data.streamProperties.id === link.id;
@@ -237,7 +237,7 @@ class TeaserPresenter {
 		}
 
 		// Testing new teaser metadata provided by n-display-metadata
-		if (Array.isArray(this.data.annotations) && this.data.flags.newDisplayMetadata) {
+		if (Array.isArray(this.data.annotations) && this.data.flags && this.data.flags.newDisplayMetadata) {
 			const { prefixText } = nDisplayMetadata.teaser(this.data);
 
 			if (this.data.streamProperties && this.data.streamProperties.prefLabel === prefixText) {
