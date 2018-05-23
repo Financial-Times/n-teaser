@@ -21,6 +21,8 @@ module.exports = [
 	'mainImage.height',
 	'mainImage.ratio',
 
+	'annotations',
+
 	'displayConcept.id',
 	'displayConcept.prefLabel',
 	'displayConcept.relativeUrl',

@@ -2,7 +2,7 @@
 
 const MAX_LIST_CONTENT = 3;
 
-const TeaserPresenter = class TeaserPresenter {
+class TeaserPresenter {
 
 	constructor (data) {
 		this.data = data || {};
