@@ -74,7 +74,7 @@ class TeaserPresenter {
 	}
 
 	get isOpinion () {
-		return this.data.isOpinion || (this.data.genreConcept && this.data.genreConcept.id === '6da31a37-691f-4908-896f-2829ebe2309e');
+		return this.data.isOpinion || (this.data.genreConcept && this.data.genreConcept.predicate === 'http://www.ft.com/ontology/classification/isClassifiedBy' && this.data.genreConcept.id === '6da31a37-691f-4908-896f-2829ebe2309e');
 	}
 
 	get isVideo () {
