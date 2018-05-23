@@ -219,17 +219,6 @@ class TeaserPresenter {
 
 	//returns genre prefix
 	get genrePrefix () {
-		// Testing new teaser metadata provided by n-display-metadata
-		if (Array.isArray(this.data.annotations) && this.data.flags.newDisplayMetadata) {
-			const { prefixText } = nDisplayMetadata.teaser(this.data);
-
-			if (this.data.streamProperties && this.data.streamProperties.prefLabel === prefixText) {
-				return;
-			} else {
-				return prefixText;
-			}
-		}
-
 		//use package brand if article belongs to package
 		let packageArticle = this.data.containedIn;
 
@@ -245,6 +234,17 @@ class TeaserPresenter {
 
 		if (this.data.type && this.data.type.toLowerCase() === 'video') {
 			return 'Video';
+		}
+
+		// Testing new teaser metadata provided by n-display-metadata
+		if (Array.isArray(this.data.annotations) && this.data.flags.newDisplayMetadata) {
+			const { prefixText } = nDisplayMetadata.teaser(this.data);
+
+			if (this.data.streamProperties && this.data.streamProperties.prefLabel === prefixText) {
+				return;
+			} else {
+				return prefixText;
+			}
 		}
 
 		if (this.brandAuthorDouble) {
