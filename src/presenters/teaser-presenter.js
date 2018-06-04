@@ -172,18 +172,21 @@ class TeaserPresenter {
 
 	//returns concept to be displayed
 	get teaserConcept () {
-		// Testing new teaser metadata provided by n-display-metadata
+		// HACK: Testing new teaser metadata provided by n-display-metadata
 		if (Array.isArray(this.data.annotations) && this.data.flags && this.data.flags.newDisplayMetadata) {
 			const { link, altLink } = nDisplayMetadata.teaser(this.data);
 
-			const sameId = this.data.streamProperties.id === link.id;
-			const sameLabel = this.data.streamProperties.prefLabel === link.prefLabel;
+			if (this.data.streamProperties) {
+				const { id, prefLabel } = this.data.streamProperties;
+				const sameId = id && id === link.id;
+				const sameLabel = prefLabel && prefLabel === link.prefLabel;
 
-			if (this.data.streamProperties && (sameId || sameLabel)) {
-				return altLink;
-			} else {
-				return link;
+				if (sameId || sameLabel) {
+					return altLink;
+				}
 			}
+
+			return link;
 		}
 
 		//use package title as display concept if article belongs to package
