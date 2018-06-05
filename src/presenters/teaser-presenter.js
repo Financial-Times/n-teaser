@@ -176,7 +176,7 @@ class TeaserPresenter {
 		if (Array.isArray(this.data.annotations) && this.data.flags && this.data.flags.newDisplayMetadata) {
 			const { link, altLink } = nDisplayMetadata.teaser(this.data);
 
-			if (this.data.streamProperties) {
+			if (this.data.streamProperties && link) {
 				const { id, prefLabel } = this.data.streamProperties;
 				const sameId = id && id === link.id;
 				const sameLabel = prefLabel && prefLabel === link.prefLabel;
