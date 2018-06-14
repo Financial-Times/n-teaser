@@ -425,7 +425,8 @@ class TeaserPresenter {
 		return {
 			publishedDate: this.data.updates && Array.isArray(this.data.updates) && this.data.updates[0] && this.data.updates[0].date,
 			status: LIVEBLOG_MAPPING[this.data.status.toLowerCase()].timestampStatus,
-			classModifier: this.data.status.toLowerCase()
+			classModifier: this.data.status.toLowerCase(),
+			isNewerThanFourHours: true //always show timestamp for liveblogs
 		};
 	}
 
