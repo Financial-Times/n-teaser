@@ -6,3 +6,4 @@ bower_components/
 /pa11y_screenCapture/*
 *.env*
 package-lock.json
+.idea/
