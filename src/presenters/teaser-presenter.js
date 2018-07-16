@@ -284,7 +284,7 @@ class TeaserPresenter {
 			return {
 				publishedDate: this.data.publishedDate,
 				status: this.timeStatus(),
-				skipPerfAbTesting: !this.data.flags || this.data.flags.perfJanky !== 'calm',
+				skipPerfAbTesting: !this.data.flags || (this.data.flags.perfJanky !== 'calm' && this.data.flags.perfJanky !== 'calm-middle'),
 				isNewerThanFourHours: this.isNewerThanFourHours(),
 				classModifier: this.timeStatus()
 			};
