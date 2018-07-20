@@ -5,7 +5,7 @@
 			data-trackable="image"
 			{{#if @nTeaserPresenter.headlineTestingVariant}}data-trackable-context-headline-variant="{{{@nTeaserPresenter.headlineTestingVariant}}}"{{/if}}
 			{{#if @nTeaserPresenter.isVideo}}
-			aria-label="Watch video {{{@nTeaserPresenter.displayTitle}}}"
+			aria-label="Watch video {{@nTeaserPresenter.displayTitle}}"
 			{{else}}
 			aria-hidden="true"
 			tabindex="-1"
