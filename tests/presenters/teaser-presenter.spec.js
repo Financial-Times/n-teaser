@@ -750,19 +750,14 @@ describe('Teaser Presenter', () => {
 	describe('display standfirst', () => {
 		const standfirst = { standfirst: 'This is the standfirst' };
 		const promotionalStandfirst = { promotionalStandfirst: 'This is promotional' };
+
 		it('uses the standfirst if no promotional', () => {
 			const content = Object.assign({}, standfirst);
 			subject = new Presenter(content);
 			expect(subject.displayStandfirst).to.equal('This is the standfirst');
 		});
 
-		it('uses the promotional if no standfirst', () => {
-			const content = Object.assign({}, promotionalStandfirst);
-			subject = new Presenter(content);
-			expect(subject.displayStandfirst).to.equal('This is promotional');
-		});
-
-		it('prefers the regular standfirst (because promotionalStandfirst is used for web app skylines)', () => {
+		it('prefers the promotional standfirst if available', () => {
 			const content = Object.assign({}, standfirst, promotionalStandfirst);
 			subject = new Presenter(content);
 			expect(subject.displayStandfirst).to.equal('This is the standfirst');
