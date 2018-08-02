@@ -353,9 +353,7 @@ class TeaserPresenter {
 	}
 
 	get displayStandfirst () {
-		//Note: although everywhere else we prefer the promotional version for teasers, we can't do that for standfirsts because the promotionalStandfirst is used for the App Skyline.
-		//So we will only use the promotionalStandfirst if there is no standfirst
-		return this.data.standfirst || this.data.promotionalStandfirst;
+		return this.data.promotionalStandfirst || this.data.standfirst;
 	}
 
 	get displayImage () {
