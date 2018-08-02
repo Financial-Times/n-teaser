@@ -760,7 +760,7 @@ describe('Teaser Presenter', () => {
 		it('prefers the promotional standfirst if available', () => {
 			const content = Object.assign({}, standfirst, promotionalStandfirst);
 			subject = new Presenter(content);
-			expect(subject.displayStandfirst).to.equal('This is the standfirst');
+			expect(subject.displayStandfirst).to.equal('This is promotional');
 		});
 	});
 
