@@ -379,8 +379,6 @@ class TeaserPresenter {
 
 		return Boolean(
 			!!this.data.enablePlayableVideo
-			&& this.data.flags
-			&& this.data.flags.insituVideoTeaser
 			&& (this.data.type && this.data.type.toLowerCase() === 'video')
 			&& ((isTopStory && !isBigStory) || (isHeavy && isLarge))
 		);
