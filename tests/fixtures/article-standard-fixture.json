@@ -40,6 +40,7 @@
   "displayConcept": {
     "prefLabel": "UK Politics & Policy",
     "relativeUrl": "/world/uk/politics",
+    "isDisplayTag": true,
     "latestContent": [
       {
         "type": "Article",

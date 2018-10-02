@@ -12,7 +12,8 @@
     },
     "displayConcept": {
         "prefLabel": "Week Ahead",
-        "relativeUrl": "/stream/c24d6335-076a-366a-98e2-500bb26401d6"
+        "relativeUrl": "/stream/c24d6335-076a-366a-98e2-500bb26401d6",
+        "isDisplayTag": true
     },
     "duration": 270655,
     "formattedDuration": "4:30"

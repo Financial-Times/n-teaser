@@ -25,6 +25,7 @@
   "displayConcept": {
     "prefLabel": "FT View",
     "relativeUrl": "/comment/ft-view",
+    "isDisplayTag": true,
     "latestContent": [
       {
         "type": "Article",

@@ -59,6 +59,7 @@
     "displayConcept": {
       "prefLabel": "EU Economy",
       "relativeUrl": "/eu-economy",
+      "isDisplayTag": true,
       "latestContent": [
         {
           "type": "Article",
