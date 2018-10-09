@@ -27,6 +27,7 @@ module.exports = [
 	'displayConcept.prefLabel',
 	'displayConcept.relativeUrl',
 	'displayConcept.directType',
+	'displayConcept.isDisplayTag',
 
 	'brandConcept.id',
 	'brandConcept.prefLabel',

@@ -28,6 +28,7 @@
   "displayConcept": {
     "prefLabel": "Global politics",
     "relativeUrl": "/topics/themes/Global_politics",
+    "isDisplayTag": true,
     "latestContent": [
       {
         "type": "Article",

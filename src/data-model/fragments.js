@@ -64,6 +64,7 @@ module.exports = {
 			displayConcept {
 				prefLabel
 				relativeUrl
+				isDisplayTag
 			}
 			...on Video {
 				duration
