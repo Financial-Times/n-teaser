@@ -25,13 +25,6 @@ module.exports = {
 			isEditorsChoice
 			canBeSyndicated
 			isOpinion
-			annotations {
-				id
-				types
-				predicate
-				prefLabel
-				relativeUrl
-			}
 			genre {
 				id
 				prefLabel

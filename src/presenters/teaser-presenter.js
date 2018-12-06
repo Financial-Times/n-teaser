@@ -1,6 +1,5 @@
 'use strict';
 
-const nDisplayMetadata = require('@financial-times/n-display-metadata');
 const dateFnsformat = require('date-fns/format');
 const hyphenatePascalCase = require('../utils/hyphenate-pascal-case');
 const ONE_HOUR = 1000 * 60 * 60;
@@ -172,23 +171,6 @@ class TeaserPresenter {
 
 	//returns concept to be displayed
 	get teaserConcept () {
-		// HACK: Testing new teaser metadata provided by n-display-metadata
-		if (Array.isArray(this.data.annotations) && this.data.flags && this.data.flags.newDisplayMetadata) {
-			const { link, altLink } = nDisplayMetadata.teaser(this.data);
-
-			if (this.data.streamProperties && link) {
-				const { id, prefLabel } = this.data.streamProperties;
-				const sameId = id && id === link.id;
-				const sameLabel = prefLabel && prefLabel === link.prefLabel;
-
-				if (sameId || sameLabel) {
-					return altLink;
-				}
-			}
-
-			return link;
-		}
-
 		//use package title as display concept if article belongs to package
 		let packageArticle = this.data.containedIn;
 
@@ -237,17 +219,6 @@ class TeaserPresenter {
 
 		if (this.data.type && this.data.type.toLowerCase() === 'video') {
 			return 'Video';
-		}
-
-		// Testing new teaser metadata provided by n-display-metadata
-		if (Array.isArray(this.data.annotations) && this.data.flags && this.data.flags.newDisplayMetadata) {
-			const { prefixText } = nDisplayMetadata.teaser(this.data);
-
-			if (this.data.streamProperties && this.data.streamProperties.prefLabel === prefixText) {
-				return;
-			} else {
-				return prefixText;
-			}
 		}
 
 		if (this.brandAuthorDouble) {
