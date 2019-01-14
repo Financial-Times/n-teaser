@@ -309,15 +309,24 @@ class TeaserPresenter {
 
 	// returns title either standard or promotional based on flag
 	get displayTitle () {
+
 		const altTitles = this.data.alternativeTitles;
+
+		if (this.isTeaserTestActive && this.teaserTestVariant === 'variant2') {
+			return this.teaserTestVariantText;
+		}
+				
+		// Support the old 'headlineTesting' mechanism of identifying a test until article-specific testing is available end-to-end. 
 		if (this.data.flags && this.data.flags.headlineTesting && this.data.flags.headlineTesting === 'variant2' && altTitles && (altTitles.promotionalTitleVariant || altTitles.contentPackageTitle)) {
-			return altTitles.promotionalTitleVariant ? altTitles.promotionalTitleVariant : altTitles.contentPackageTitle;
-		} else if (this.data.flags && this.data.flags.teaserUsePromotionalTitle) {
+			return altTitles.promotionalTitleVariant ? altTitles.promotionalTitleVariant: altTitles.contentPackageTitle ;
+		}
+		
+		if (this.data.flags && this.data.flags.teaserUsePromotionalTitle) {
 			if (this.data.promotionalTitle) {
 				return this.data.promotionalTitle;
 			}
 			if (this.data.alternativeTitles && this.data.alternativeTitles.promotionalTitle) {
-				return this.data.alternativeTitles.promotionalTitle;
+				return this.data.alternativeTitles.promotionalTitle ;
 			}
 		}
 		return this.data.title;
@@ -341,6 +350,30 @@ class TeaserPresenter {
 		}
 		return null;
 	}
+
+	// returns true if there is a active headline testing flag created for this story AND a variant headline has been configured 
+	get isTeaserTestActive () {
+		return this.teaserTestVariant && this.teaserTestVariantText;
+	}
+
+	// returns the variant name specified by this teaser's flag 
+	get teaserTestVariant () {
+		const teaserTestFlagName = 'teaser-test-' + this.data.id;
+		if (this.data.flags && this.data.flags[teaserTestFlagName]) {
+			return this.data.flags[teaserTestFlagName] 
+		}
+		return null;
+	}
+
+	// the variant text configured for a teaser
+	get teaserTestVariantText () {
+		const altTitles = this.data.alternativeTitles;
+		if (altTitles && (altTitles.promotionalTitleVariant || altTitles.contentPackageTitle)) {
+			return altTitles.promotionalTitleVariant ? altTitles.promotionalTitleVariant: altTitles.contentPackageTitle ;
+		}
+		return null;
+	}
+
 
 	get isPlayableVideo () {
 		const isTopStory = this.data.template === 'top-story-heavy';

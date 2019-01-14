@@ -650,7 +650,8 @@ describe('Teaser Presenter', () => {
 
 	});
 
-	describe('displayTitle', () => {
+	// todo rip this out when headline testing has been replaced with teaserTesting
+	describe('displayTitle_headlineTesting', () => {
 
 		const promotionalTitle = { promotionalTitle: 'promotional' };
 		const headlineTestingVariants = { alternativeTitles: { contentPackageTitle: 'contentTitle', promotionalTitleVariant: 'variantHeadline' }};
@@ -742,6 +743,111 @@ describe('Teaser Presenter', () => {
 
 		it('returns the title if no flags set', () => {
 			const content = Object.assign({}, title, promotionalTitle);
+			subject = new Presenter(content);
+			expect(subject.displayTitle).to.equal('title');
+		});
+	});
+
+	describe('displayTitle', () => {
+
+		const id = { id: '111111111111-111111-111111-111111-11111111' };
+		const promotionalTitle = { promotionalTitle: 'promotional' };
+		const teaserTestingVariants = { alternativeTitles: { contentPackageTitle: 'contentTitle', promotionalTitleVariant: 'variantHeadline' }};
+		const contentPackageOnly = { alternativeTitles: { contentPackageTitle: 'contentTitle' }};
+		const promoVariantOnly = { alternativeTitles: { promotionalTitleVariant: 'variantHeadline' }};
+		const alternativePromo = { alternativeTitles: { promotionalTitle: 'altPromotional' } };
+		const title = { title: 'title'};
+		const teaserFlagOn = { teaserUsePromotionalTitle: true };
+		const teaserFlagOff = { teaserUsePromotionalTitle: false };
+		const teaserTestVariant = { 'teaser-test-111111111111-111111-111111-111111-11111111': 'variant2' };
+		const teaserTestControl = { 'teaser-test-111111111111-111111-111111-111111-11111111' : 'variant1' };
+
+		it('returns the promoVariant if both teaserTestingVariants are present and teaser testing flag returns variant', () => {
+			const flags = Object.assign({}, teaserTestVariant);
+			const content = Object.assign({}, id, teaserTestingVariants, {flags});
+			subject = new Presenter(content);
+			expect(subject.displayTitle).to.equal('variantHeadline');
+		});
+
+		it('returns the promoVariant if promotionalTitleVariant present and teaser testing flag returns variant', () => {
+			const flags = Object.assign({}, teaserTestVariant);
+			const content = Object.assign({}, { id: '111111111111-111111-111111-111111-11111111'} , promoVariantOnly, {flags});
+			subject = new Presenter(content);
+			expect(subject.displayTitle).to.equal('variantHeadline');
+		});
+
+		it('returns title if promotionalTitleVariant present but teaser testing flag does not exist FOR THAT ARTICLE', () => {
+			const flags = Object.assign({}, teaserTestVariant);
+			const content = Object.assign({id: '222222222222-222222-222222-222222-22222222'}, title, teaserTestingVariants, {flags});
+			subject = new Presenter(content);
+			expect(subject.displayTitle).to.equal('title');
+		});
+
+		it('returns the contentPackageHeadline if present and there is no promotionalHeadlineVariant and teaser testing flag returns variant', () => {
+			const flags = Object.assign({}, teaserTestVariant);
+			const content = Object.assign({}, id, contentPackageOnly, {flags});
+			subject = new Presenter(content);
+			expect(subject.displayTitle).to.equal('contentTitle');
+		});
+
+		it('returns the promo title if exists and if the teaser testing flag returns variant but no contentPackageTitle or promotionlHeadlineVariant', () => {
+			const flags = Object.assign({}, teaserTestVariant, teaserFlagOn);
+			const content = Object.assign({}, id, promotionalTitle, {flags});
+			subject = new Presenter(content);
+			expect(subject.displayTitle).to.equal('promotional');
+		});
+
+		it('returns the promo title if teaserTestingVariants exist but teaser testing flag set to control', () => {
+			const flags = Object.assign({}, teaserTestControl, teaserFlagOn);
+			const content = Object.assign({}, id, promotionalTitle, teaserTestingVariants, {flags});
+			subject = new Presenter(content);
+			expect(subject.displayTitle).to.equal('promotional');
+		});
+
+		it('returns the promo title if teaserTestingVariants exist but teaser testing flag not set', () => {
+			const flags = Object.assign({}, teaserFlagOn);
+			const content = Object.assign({}, promotionalTitle, teaserTestingVariants, {flags});
+			subject = new Presenter(content);
+			expect(subject.displayTitle).to.equal('promotional');
+		});
+
+		it('returns the promo title if exists and no teaserTestingVariants exist but altPromo exists', () => {
+			const flags = Object.assign({}, teaserFlagOn, teaserTestVariant);
+			const content = Object.assign({}, id, promotionalTitle, alternativePromo, {flags});
+			subject = new Presenter(content);
+			expect(subject.displayTitle).to.equal('promotional');
+		});
+
+		it('returns the alternative promo title if exists and teaser flag on and teaserTestingVariants and no promo title', () => {
+			const flags = Object.assign({}, teaserTestVariant, teaserFlagOn);
+			const content = Object.assign({}, id, alternativePromo, {flags});
+			subject = new Presenter(content);
+			expect(subject.displayTitle).to.equal('altPromotional');
+		});
+
+		it('returns the title if no teaserTestingVariants and no teaser flag', () => {
+			const flags = Object.assign({}, teaserTestVariant);
+			const content = Object.assign({}, id, title, promotionalTitle, {flags});
+			subject = new Presenter(content);
+			expect(subject.displayTitle).to.equal('title');
+		});
+
+		it('returns the title if no teaserTestingVariants, and teaser flag off', () => {
+			const flags = Object.assign({}, teaserTestVariant, teaserFlagOff);
+			const content = Object.assign({}, id, title, promotionalTitle, {flags});
+			subject = new Presenter(content);
+			expect(subject.displayTitle).to.equal('title');
+		});
+
+		it('returns the title if no teaserTestingVariants and no promotionalTitle and no alternative promo', () => {
+			const flags = Object.assign({}, teaserFlagOn, teaserTestVariant);
+			const content = Object.assign({}, id, title, {flags});
+			subject = new Presenter(content);
+			expect(subject.displayTitle).to.equal('title');
+		});
+
+		it('returns the title if no flags set innit', () => {
+			const content = Object.assign({}, id, title, promotionalTitle);
 			subject = new Presenter(content);
 			expect(subject.displayTitle).to.equal('title');
 		});
