@@ -353,7 +353,7 @@ class TeaserPresenter {
 
 	// returns true if there is a active headline testing flag created for this story AND a variant headline has been configured 
 	get isTeaserTestActive () {
-		return this.teaserTestVariant && this.teaserTestVariantText;
+		return (this.teaserTestVariant && this.teaserTestVariantText) ? true : false;
 	}
 
 	// returns the variant name specified by this teaser's flag 
