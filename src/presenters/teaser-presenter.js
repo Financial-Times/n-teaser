@@ -309,7 +309,6 @@ class TeaserPresenter {
 
 	// returns title either standard or promotional based on flag
 	get displayTitle () {
-
 		const altTitles = this.data.alternativeTitles;
 
 		if (this.isTeaserTestActive && this.teaserTestVariant === 'variant2') {
@@ -321,14 +320,10 @@ class TeaserPresenter {
 			return altTitles.promotionalTitleVariant ? altTitles.promotionalTitleVariant: altTitles.contentPackageTitle ;
 		}
 		
-		if (this.data.flags && this.data.flags.teaserUsePromotionalTitle) {
-			if (this.data.promotionalTitle) {
-				return this.data.promotionalTitle;
-			}
-			if (this.data.alternativeTitles && this.data.alternativeTitles.promotionalTitle) {
-				return this.data.alternativeTitles.promotionalTitle ;
-			}
+		if (this.isTeaserPromoActive) {
+			return this.teaserPromoTitleText;
 		}
+
 		return this.data.title;
 	}
 
@@ -351,7 +346,23 @@ class TeaserPresenter {
 		return null;
 	}
 
-	// returns true if there is a active headline testing flag created for this story AND a variant headline has been configured 
+	// returns true if there the teaser promo flag is enabled AND teaser promo text has been configured 
+	get isTeaserPromoActive () {
+		return (this.data.flags && this.data.flags.teaserUsePromotionalTitle && this.teaserPromoTitleText) ? true : false;
+	}
+
+	// returns the text configured for a teaserPromo
+	get teaserPromoTitleText () {
+		if (this.data.promotionalTitle) {
+			return this.data.promotionalTitle;
+		}
+		if (this.data.alternativeTitles && this.data.alternativeTitles.promotionalTitle) {
+			return this.data.alternativeTitles.promotionalTitle ;
+		}
+		return null;
+	}
+
+	// returns true if there is a active teaser testing flag created for this story AND a variant headline has been configured 
 	get isTeaserTestActive () {
 		return (this.teaserTestVariant && this.teaserTestVariantText) ? true : false;
 	}
@@ -365,7 +376,7 @@ class TeaserPresenter {
 		return null;
 	}
 
-	// the variant text configured for a teaser
+	// the text configured for a teaser VARIANT
 	get teaserTestVariantText () {
 		const altTitles = this.data.alternativeTitles;
 		if (altTitles && (altTitles.promotionalTitleVariant || altTitles.contentPackageTitle)) {
