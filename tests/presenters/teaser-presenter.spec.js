@@ -1,4 +1,5 @@
 const expect = require('chai').expect;
+const sinon = require('sinon');
 const Presenter = require('../../src/presenters/teaser-presenter');
 const articleBrandFixture = require('../fixtures/article-brand-fixture');
 const articleOpinionAuthorFixture = require('../fixtures/article-opinion-author-fixture');
@@ -650,7 +651,8 @@ describe('Teaser Presenter', () => {
 
 	});
 
-	describe('displayTitle', () => {
+	// todo rip this out when headline testing has been replaced with teaserTesting
+	describe('displayTitle_headlineTesting', () => {
 
 		const promotionalTitle = { promotionalTitle: 'promotional' };
 		const headlineTestingVariants = { alternativeTitles: { contentPackageTitle: 'contentTitle', promotionalTitleVariant: 'variantHeadline' }};
@@ -744,6 +746,156 @@ describe('Teaser Presenter', () => {
 			const content = Object.assign({}, title, promotionalTitle);
 			subject = new Presenter(content);
 			expect(subject.displayTitle).to.equal('title');
+		});
+	});
+
+	
+	describe('displayTitle', () => {
+		const title = { title: 'title'};
+		const promotionalTitle = { promotionalTitle: 'promotional' };
+		const alternativeTitles = { alternativeTitles: { contentPackageTitle: 'contentTitle', promotionalTitleVariant: 'variantHeadline' }};
+		const allTitles = Object.assign({}, title, promotionalTitle, alternativeTitles);
+		
+		it('Returns the title if teaserTest inactive and teaserPromo inactive', () => {
+			const content = Object.assign({}, allTitles);
+			subject = new Presenter(content);
+			sinon.stub(subject, 'isTeaserTestActive').get(() => false);
+			sinon.stub(subject, 'isTeaserPromoActive').get(() => false);
+			expect(subject.displayTitle).to.equal('title');
+		});
+
+		it('Returns the relevant teaser promoTitle if teaserTest inactive, teaserPromo active', () => {
+			subject = new Presenter( {} );
+			sinon.stub(subject, 'isTeaserTestActive').get(() => false);
+			sinon.stub(subject, 'isTeaserPromoActive').get(() => true);
+			sinon.stub(subject, 'teaserPromoTitleText').get(() => 'a promo title');
+			expect(subject.displayTitle).to.equal('a promo title');
+		});
+
+		it('Returns the teaser variant if teaserTest active AND teaser variant is variant2', () => {
+			subject = new Presenter( {} );
+			sinon.stub(subject, 'isTeaserTestActive').get(() => true);
+			sinon.stub(subject, 'teaserTestVariant').get(() => 'variant2');
+			sinon.stub(subject, 'teaserTestVariantText').get(() => 'teaser variant headline');
+			expect(subject.displayTitle).to.equal('teaser variant headline');
+		});
+
+		it('Returns title if teaserTest active but teaser variant is NOT variant2', () => {
+			subject = new Presenter( Object.assign({}, allTitles ));
+			sinon.stub(subject, 'isTeaserTestActive').get(() => true);
+			sinon.stub(subject, 'teaserTestVariant').get(() => 'variant1');
+			sinon.stub(subject, 'teaserTestVariantText').get(() => 'teaser variant headline');
+			expect(subject.displayTitle).to.equal('title');
+		});
+
+		it('Gives precendence to Teaser testing over teaserPromo display', () => {
+			subject = new Presenter( {} );
+			sinon.stub(subject, 'isTeaserPromoActive').get(() => true);
+			sinon.stub(subject, 'teaserPromoTitleText').get(() => 'a promo title');
+			sinon.stub(subject, 'isTeaserTestActive').get(() => true);
+			sinon.stub(subject, 'teaserTestVariant').get(() => 'variant2');
+			sinon.stub(subject, 'teaserTestVariantText').get(() => 'teaser variant headline');
+			expect(subject.displayTitle).to.equal('teaser variant headline');
+		});
+
+	});
+
+	describe('get isTeaserPromoActive', () => {
+		const flagOn =  { teaserUsePromotionalTitle: true };
+
+		it('returns true if promo title configured AND flag is on', () => {
+			const flags = Object.assign({}, flagOn);
+			subject = new Presenter( Object.assign({}, {flags} ) );
+			sinon.stub(subject, 'teaserPromoTitleText').get(() => 'somePromoText');
+			expect(subject.isTeaserPromoActive).to.equal(true);
+		});
+		it('returns false if flag is on but no promo title configured', () => {
+			const flags = Object.assign({}, flagOn);
+			subject = new Presenter(Object.assign({}, {flags} ));
+			sinon.stub(subject, 'teaserPromoTitleText').get(() => null);
+			expect(subject.isTeaserPromoActive).to.equal(false);
+		});
+		it('returns false if promo title configured but flag is OFF', () => {
+			subject = new Presenter( {} );
+			sinon.stub(subject, 'teaserPromoTitleText').get(() => 'somePromoText');
+			expect(subject.isTeaserPromoActive).to.equal(false);
+		});
+
+	});
+
+	describe('get teaserPromoTitleText', () => {
+		const title = { title: 'title'};
+		const promotionalTitle = { promotionalTitle: 'promotional' };
+		const alternativeTitles = { alternativeTitles: { contentPackageTitle: 'contentTitle', promotionalTitleVariant: 'variantHeadline', promotionalTitle: 'altPromotional' } };
+		const allTitles = Object.assign({}, title, promotionalTitle, alternativeTitles);
+
+		it('uses promotionalTitle if present', () => {
+			const content = Object.assign({},  allTitles );
+			subject = new Presenter(Object.assign({}, content ));
+			expect(subject.teaserPromoTitleText).to.equal('promotional');
+		});
+
+		it('uses alternativeTitles.promotionalTitle if promotionalTitle not present', () => {
+			const content = Object.assign({}, alternativeTitles, title );
+			subject = new Presenter(Object.assign({}, content ));
+			expect(subject.teaserPromoTitleText).to.equal('altPromotional');
+		});
+
+		it('returns null if neither promoTitle found', () => {
+			const content = Object.assign({}, { title: 'the-title',  alternativeTitles: { promotionalTitleVariant: 'variantHeadline' } } );
+			subject = new Presenter(Object.assign({}, content ));
+			expect(subject.teaserPromoTitleText).to.equal(null);
+		});
+	});
+
+	describe('get teaserTestVariant', () => {
+		it('inspects the right flag to see what variant specified for this particular teaser', () => {
+			const flags = {'teaser-test-content-uuid-1': 'variant1', 'teaser-test-content-uuid-2': 'variant2'};
+			subject1 = new Presenter(Object.assign({}, {id: 'content-uuid-1'}, {flags} ));
+			subject2 = new Presenter(Object.assign({}, {id: 'content-uuid-2'}, {flags} ));
+			subject3 = new Presenter(Object.assign({}, {id: 'content-uuid-3'}, {flags} ));  // no flag at all for this teaser
+			expect(subject1.teaserTestVariant).to.equal('variant1');
+			expect(subject2.teaserTestVariant).to.equal('variant2');
+			expect(subject3.teaserTestVariant).to.equal(null);
+		});
+	});
+
+	describe('isTeaserTestActive', () => {
+		it('returns true if flag is set for that teaser AND variant headlines are configured for that teaser', () => {
+			const flags = {'teaser-test-content-uuid-1': 'some-variant'};
+			const content = Object.assign({}, { id: 'content-uuid-1'}, { alternativeTitles: { promotionalTitleVariant: 'the-promotional-title-variant' }} );
+			subject = new Presenter(Object.assign( {}, content, {flags} ));
+			expect(subject.isTeaserTestActive).to.equal(true);
+		});
+		it('returns false if flag not set for that teaser', () => {
+			const content = Object.assign({}, { id: 'content-uuid-1'}, { alternativeTitles: { promotionalTitleVariant: 'the-promotional-title-variant' }} );
+			subject = new Presenter(Object.assign( {}, content ));
+			expect(subject.isTeaserTestActive).to.equal(false);
+		});
+		it('returns false if no alt titles configured for that teaser', () => {
+			const content = Object.assign({}, { id: 'content-uuid-1'}, { title: 'the-title' } );
+			subject = new Presenter(Object.assign( {}, content ));
+			expect(subject.isTeaserTestActive).to.equal(false);
+		});
+	});
+
+	describe('get teaserTestVariantText', () => {
+		it('uses promotionalTitleVariant if present', () => {
+			const content = Object.assign({}, { alternativeTitles: { promotionalTitleVariant: 'the-promotional-title-variant', contentPackageTitle: 'the-content-package-title'}, title: 'the-title' } );
+			subject = new Presenter(Object.assign({}, content ));
+			expect(subject.teaserTestVariantText).to.equal('the-promotional-title-variant');
+		});
+
+		it('uses contentPackageTitle if promotionalTitleVariant not present', () => {
+			const content = Object.assign({}, { alternativeTitles: { promotionalTitleVariant: null, contentPackageTitle: 'the-content-package-title'}, title: 'the-title' } );
+			subject = new Presenter(Object.assign({}, content ));
+			expect(subject.teaserTestVariantText).to.equal('the-content-package-title');
+		});
+
+		it('returns null if neither alternativeTitle found', () => {
+			const content = Object.assign({}, { title: 'the-title' } );
+			subject = new Presenter(Object.assign({}, content ));
+			expect(subject.teaserTestVariantText).to.equal(null);
 		});
 	});
 
