@@ -314,11 +314,6 @@ class TeaserPresenter {
 		if (this.isTeaserTestActive && this.teaserTestVariant === 'variant2') {
 			return this.teaserTestVariantText;
 		}
-				
-		// Support the old 'headlineTesting' mechanism of identifying a test until article-specific testing is available end-to-end. 
-		if (this.data.flags && this.data.flags.headlineTesting && this.data.flags.headlineTesting === 'variant2' && altTitles && (altTitles.promotionalTitleVariant || altTitles.contentPackageTitle)) {
-			return altTitles.promotionalTitleVariant ? altTitles.promotionalTitleVariant: altTitles.contentPackageTitle ;
-		}
 		
 		if (this.isTeaserPromoActive) {
 			return this.teaserPromoTitleText;
@@ -335,15 +330,6 @@ class TeaserPresenter {
 
 	get displayImage () {
 		return this.data.promotionalImage || this.data.mainImage;
-	}
-
-	// returns the variant name if headline testing is live for this story
-	get headlineTestingVariant () {
-		const altTitles = this.data.alternativeTitles;
-		if (this.data.flags && this.data.flags.headlineTesting && altTitles && (altTitles.promotionalTitleVariant || altTitles.contentPackageTitle)) {
-			return this.data.flags.headlineTesting;
-		}
-		return null;
 	}
 
 	// returns true if there the teaser promo flag is enabled AND teaser promo text has been configured 
