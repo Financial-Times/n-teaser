@@ -752,9 +752,9 @@ describe('Teaser Presenter', () => {
 	describe('get teaserTestVariant', () => {
 		it('inspects the right flag to see what variant specified for this particular teaser', () => {
 			const flags = {'teaser-test-content-uuid-1': 'variant1', 'teaser-test-content-uuid-2': 'variant2'};
-			subject1 = new Presenter(Object.assign({}, {id: 'content-uuid-1'}, {flags} ));
-			subject2 = new Presenter(Object.assign({}, {id: 'content-uuid-2'}, {flags} ));
-			subject3 = new Presenter(Object.assign({}, {id: 'content-uuid-3'}, {flags} ));  // no flag at all for this teaser
+			const subject1 = new Presenter(Object.assign({}, {id: 'content-uuid-1'}, {flags} ));
+			const subject2 = new Presenter(Object.assign({}, {id: 'content-uuid-2'}, {flags} ));
+			const subject3 = new Presenter(Object.assign({}, {id: 'content-uuid-3'}, {flags} ));  // no flag at all for this teaser
 			expect(subject1.teaserTestVariant).to.equal('variant1');
 			expect(subject2.teaserTestVariant).to.equal('variant2');
 			expect(subject3.teaserTestVariant).to.equal(null);

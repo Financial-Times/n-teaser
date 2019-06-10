@@ -309,8 +309,6 @@ class TeaserPresenter {
 
 	// returns title either standard or promotional based on flag
 	get displayTitle () {
-		const altTitles = this.data.alternativeTitles;
-
 		if (this.isTeaserTestActive && this.teaserTestVariant === 'variant2') {
 			return this.teaserTestVariantText;
 		}
