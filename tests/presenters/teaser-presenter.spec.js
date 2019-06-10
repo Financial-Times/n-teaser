@@ -656,7 +656,7 @@ describe('Teaser Presenter', () => {
 		const promotionalTitle = { promotionalTitle: 'promotional' };
 		const alternativeTitles = { alternativeTitles: { contentPackageTitle: 'contentTitle', promotionalTitleVariant: 'variantHeadline' }};
 		const allTitles = Object.assign({}, title, promotionalTitle, alternativeTitles);
-		
+
 		it('Returns the title if teaserTest inactive and teaserPromo inactive', () => {
 			const content = Object.assign({}, allTitles);
 			subject = new Presenter(content);
@@ -702,7 +702,7 @@ describe('Teaser Presenter', () => {
 	});
 
 	describe('get isTeaserPromoActive', () => {
-		const flagOn =  { teaserUsePromotionalTitle: true };
+		const flagOn = { teaserUsePromotionalTitle: true };
 
 		it('returns true if promo title configured AND flag is on', () => {
 			const flags = Object.assign({}, flagOn);
@@ -731,7 +731,7 @@ describe('Teaser Presenter', () => {
 		const allTitles = Object.assign({}, title, promotionalTitle, alternativeTitles);
 
 		it('uses promotionalTitle if present', () => {
-			const content = Object.assign({},  allTitles );
+			const content = Object.assign({}, allTitles );
 			subject = new Presenter(Object.assign({}, content ));
 			expect(subject.teaserPromoTitleText).to.equal('promotional');
 		});
@@ -743,7 +743,7 @@ describe('Teaser Presenter', () => {
 		});
 
 		it('returns null if neither promoTitle found', () => {
-			const content = Object.assign({}, { title: 'the-title',  alternativeTitles: { promotionalTitleVariant: 'variantHeadline' } } );
+			const content = Object.assign({}, { title: 'the-title', alternativeTitles: { promotionalTitleVariant: 'variantHeadline' } } );
 			subject = new Presenter(Object.assign({}, content ));
 			expect(subject.teaserPromoTitleText).to.equal(null);
 		});

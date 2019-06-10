@@ -87,7 +87,7 @@ class TeaserPresenter {
 		) {
 			return true;
 		}
-			return false;
+		return false;
 	}
 
 	// returns all top level class names appropriate for the teaser
@@ -314,7 +314,7 @@ class TeaserPresenter {
 		if (this.isTeaserTestActive && this.teaserTestVariant === 'variant2') {
 			return this.teaserTestVariantText;
 		}
-		
+
 		if (this.isTeaserPromoActive) {
 			return this.teaserPromoTitleText;
 		}
@@ -332,7 +332,7 @@ class TeaserPresenter {
 		return this.data.promotionalImage || this.data.mainImage;
 	}
 
-	// returns true if there the teaser promo flag is enabled AND teaser promo text has been configured 
+	// returns true if there the teaser promo flag is enabled AND teaser promo text has been configured
 	get isTeaserPromoActive () {
 		return (this.data.flags && this.data.flags.teaserUsePromotionalTitle && this.teaserPromoTitleText) ? true : false;
 	}
@@ -348,16 +348,16 @@ class TeaserPresenter {
 		return null;
 	}
 
-	// returns true if there is a active teaser testing flag created for this story AND a variant headline has been configured 
+	// returns true if there is a active teaser testing flag created for this story AND a variant headline has been configured
 	get isTeaserTestActive () {
 		return (this.teaserTestVariant && this.teaserTestVariantText) ? true : false;
 	}
 
-	// returns the variant name specified by this teaser's flag 
+	// returns the variant name specified by this teaser's flag
 	get teaserTestVariant () {
 		const teaserTestFlagName = 'teaser-test-' + this.data.id;
 		if (this.data.flags && this.data.flags[teaserTestFlagName]) {
-			return this.data.flags[teaserTestFlagName] 
+			return this.data.flags[teaserTestFlagName];
 		}
 		return null;
 	}
