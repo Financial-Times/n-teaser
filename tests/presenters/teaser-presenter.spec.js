@@ -656,7 +656,7 @@ describe('Teaser Presenter', () => {
 		const promotionalTitle = { promotionalTitle: 'promotional' };
 		const alternativeTitles = { alternativeTitles: { contentPackageTitle: 'contentTitle', promotionalTitleVariant: 'variantHeadline' }};
 		const allTitles = Object.assign({}, title, promotionalTitle, alternativeTitles);
-		
+
 		it('Returns the title if teaserTest inactive and teaserPromo inactive', () => {
 			const content = Object.assign({}, allTitles);
 			subject = new Presenter(content);
@@ -702,7 +702,7 @@ describe('Teaser Presenter', () => {
 	});
 
 	describe('get isTeaserPromoActive', () => {
-		const flagOn =  { teaserUsePromotionalTitle: true };
+		const flagOn = { teaserUsePromotionalTitle: true };
 
 		it('returns true if promo title configured AND flag is on', () => {
 			const flags = Object.assign({}, flagOn);
@@ -731,7 +731,7 @@ describe('Teaser Presenter', () => {
 		const allTitles = Object.assign({}, title, promotionalTitle, alternativeTitles);
 
 		it('uses promotionalTitle if present', () => {
-			const content = Object.assign({},  allTitles );
+			const content = Object.assign({}, allTitles );
 			subject = new Presenter(Object.assign({}, content ));
 			expect(subject.teaserPromoTitleText).to.equal('promotional');
 		});
@@ -743,7 +743,7 @@ describe('Teaser Presenter', () => {
 		});
 
 		it('returns null if neither promoTitle found', () => {
-			const content = Object.assign({}, { title: 'the-title',  alternativeTitles: { promotionalTitleVariant: 'variantHeadline' } } );
+			const content = Object.assign({}, { title: 'the-title', alternativeTitles: { promotionalTitleVariant: 'variantHeadline' } } );
 			subject = new Presenter(Object.assign({}, content ));
 			expect(subject.teaserPromoTitleText).to.equal(null);
 		});
@@ -752,9 +752,9 @@ describe('Teaser Presenter', () => {
 	describe('get teaserTestVariant', () => {
 		it('inspects the right flag to see what variant specified for this particular teaser', () => {
 			const flags = {'teaser-test-content-uuid-1': 'variant1', 'teaser-test-content-uuid-2': 'variant2'};
-			subject1 = new Presenter(Object.assign({}, {id: 'content-uuid-1'}, {flags} ));
-			subject2 = new Presenter(Object.assign({}, {id: 'content-uuid-2'}, {flags} ));
-			subject3 = new Presenter(Object.assign({}, {id: 'content-uuid-3'}, {flags} ));  // no flag at all for this teaser
+			const subject1 = new Presenter(Object.assign({}, {id: 'content-uuid-1'}, {flags} ));
+			const subject2 = new Presenter(Object.assign({}, {id: 'content-uuid-2'}, {flags} ));
+			const subject3 = new Presenter(Object.assign({}, {id: 'content-uuid-3'}, {flags} ));  // no flag at all for this teaser
 			expect(subject1.teaserTestVariant).to.equal('variant1');
 			expect(subject2.teaserTestVariant).to.equal('variant2');
 			expect(subject3.teaserTestVariant).to.equal(null);

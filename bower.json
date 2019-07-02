@@ -10,12 +10,9 @@
     "tests"
   ],
   "dependencies": {
-    "n-ui-foundations": "^2.5.0",
+    "n-ui-foundations": "^3.0.0",
     "o-teaser": "^2.0.0",
     "o-labels": "^3.0.0",
     "n-image": "^5.0.0"
-  },
-  "resolutions": {
-    "n-ui-foundations": "^2.5.0"
   }
 }
