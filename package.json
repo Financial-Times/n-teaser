@@ -23,13 +23,15 @@
     "node-sass": "^4.0.0",
     "npm-prepublish": "^1.2.1",
     "pa11y-ci": "^2.1.1",
-    "sinon": "^6.0.1"
+    "sinon": "^6.0.1",
+    "snyk": "^1.168.0"
   },
   "config": {},
   "scripts": {
     "commit": "commit-wizard",
     "precommit": "node_modules/.bin/secret-squirrel",
     "prepush": "make verify -j3",
-    "commitmsg": "node_modules/.bin/secret-squirrel-commitmsg"
+    "commitmsg": "node_modules/.bin/secret-squirrel-commitmsg",
+    "prepare": "npx snyk protect || npx snyk protect -d || true"
   }
 }
