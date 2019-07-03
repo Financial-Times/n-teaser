@@ -50,10 +50,7 @@ class TeaserPresenter {
 
 	// returns title either standard or promotional based on flag
 	get displayTitle () {
-		if (this.data.flags && this.data.flags.teaserUsePromotionalTitle && this.data.promotionalTitle) {
-			return this.data.promotionalTitle;
-		}
-		return this.data.title;
+		return this.data.promotionalTitle || this.data.title;
 	}
 
 	get displayStandfirst () {

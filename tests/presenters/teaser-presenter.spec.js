@@ -665,7 +665,7 @@ describe('Teaser Presenter', () => {
 			expect(subject.displayTitle).to.equal('title');
 		});
 
-		it('Returns the relevant teaser promoTitle if teaserTest inactive, teaserPromo active', () => {
+		it('Returns the relevant teaser promoTitle if teaserPromo active', () => {
 			subject = new Presenter( {} );
 			sinon.stub(subject, 'isTeaserTestActive').get(() => false);
 			sinon.stub(subject, 'isTeaserPromoActive').get(() => true);
@@ -673,52 +673,21 @@ describe('Teaser Presenter', () => {
 			expect(subject.displayTitle).to.equal('a promo title');
 		});
 
-		it('Returns the teaser variant if teaserTest active AND teaser variant is variant2', () => {
-			subject = new Presenter( {} );
-			sinon.stub(subject, 'isTeaserTestActive').get(() => true);
-			sinon.stub(subject, 'teaserTestVariant').get(() => 'variant2');
-			sinon.stub(subject, 'teaserTestVariantText').get(() => 'teaser variant headline');
-			expect(subject.displayTitle).to.equal('teaser variant headline');
-		});
-
-		it('Returns title if teaserTest active but teaser variant is NOT variant2', () => {
-			subject = new Presenter( Object.assign({}, allTitles ));
-			sinon.stub(subject, 'isTeaserTestActive').get(() => true);
-			sinon.stub(subject, 'teaserTestVariant').get(() => 'variant1');
-			sinon.stub(subject, 'teaserTestVariantText').get(() => 'teaser variant headline');
-			expect(subject.displayTitle).to.equal('title');
-		});
-
-		it('Gives precendence to Teaser testing over teaserPromo display', () => {
-			subject = new Presenter( {} );
-			sinon.stub(subject, 'isTeaserPromoActive').get(() => true);
-			sinon.stub(subject, 'teaserPromoTitleText').get(() => 'a promo title');
-			sinon.stub(subject, 'isTeaserTestActive').get(() => true);
-			sinon.stub(subject, 'teaserTestVariant').get(() => 'variant2');
-			sinon.stub(subject, 'teaserTestVariantText').get(() => 'teaser variant headline');
-			expect(subject.displayTitle).to.equal('teaser variant headline');
-		});
-
 	});
 
 	describe('get isTeaserPromoActive', () => {
 		const flagOn = { teaserUsePromotionalTitle: true };
 
-		it('returns true if promo title configured AND flag is on', () => {
+		it('returns true if promo title configured', () => {
 			const flags = Object.assign({}, flagOn);
 			subject = new Presenter( Object.assign({}, {flags} ) );
 			sinon.stub(subject, 'teaserPromoTitleText').get(() => 'somePromoText');
 			expect(subject.isTeaserPromoActive).to.equal(true);
 		});
-		it('returns false if flag is on but no promo title configured', () => {
+		it('returns false if no promo title configured', () => {
 			const flags = Object.assign({}, flagOn);
 			subject = new Presenter(Object.assign({}, {flags} ));
 			sinon.stub(subject, 'teaserPromoTitleText').get(() => null);
-			expect(subject.isTeaserPromoActive).to.equal(false);
-		});
-		it('returns false if promo title configured but flag is OFF', () => {
-			subject = new Presenter( {} );
-			sinon.stub(subject, 'teaserPromoTitleText').get(() => 'somePromoText');
 			expect(subject.isTeaserPromoActive).to.equal(false);
 		});
 
