@@ -332,7 +332,7 @@ class TeaserPresenter {
 
 	// returns true if there the teaser promo flag is enabled AND teaser promo text has been configured
 	get isTeaserPromoActive () {
-		return (this.data.flags && this.data.flags.teaserUsePromotionalTitle && this.teaserPromoTitleText) ? true : false;
+		return !!this.teaserPromoTitleText;
 	}
 
 	// returns the text configured for a teaserPromo
