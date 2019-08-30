@@ -6,7 +6,7 @@
 			</span>
 		{{/if}}
 		{{#if @nTeaserPresenter.teaserConcept}}
-			<a href="{{{@nTeaserPresenter.teaserConcept.relativeUrl}}}" class="o-teaser__tag" data-trackable="primary-concept">
+			<a href="{{{@nTeaserPresenter.teaserConcept.relativeUrl}}}" class="o-teaser__tag" data-trackable="primary-concept" aria-label="Category:{{{@nTeaserPresenter.teaserConcept.prefLabel}}}">
 				{{@nTeaserPresenter.teaserConcept.prefLabel}}
 			</a>
 		{{/if}}
