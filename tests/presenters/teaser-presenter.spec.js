@@ -675,24 +675,6 @@ describe('Teaser Presenter', () => {
 
 	});
 
-	describe('get isTeaserPromoActive', () => {
-		const flagOn = { teaserUsePromotionalTitle: true };
-
-		it('returns true if promo title configured', () => {
-			const flags = Object.assign({}, flagOn);
-			subject = new Presenter( Object.assign({}, {flags} ) );
-			sinon.stub(subject, 'teaserPromoTitleText').get(() => 'somePromoText');
-			expect(subject.isTeaserPromoActive).to.equal(true);
-		});
-		it('returns false if no promo title configured', () => {
-			const flags = Object.assign({}, flagOn);
-			subject = new Presenter(Object.assign({}, {flags} ));
-			sinon.stub(subject, 'teaserPromoTitleText').get(() => null);
-			expect(subject.isTeaserPromoActive).to.equal(false);
-		});
-
-	});
-
 	describe('get teaserPromoTitleText', () => {
 		const title = { title: 'title'};
 		const promotionalTitle = { promotionalTitle: 'promotional' };
