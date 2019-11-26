@@ -1,10 +1,8 @@
+$system-code: 'n-teaser-demo';
+
 @import 'n-ui-foundations/main';
 
-$o-labels-is-silent: false;
-@import 'o-labels/main';
 $o-teaser-is-silent: false;
 @import 'o-teaser/main';
 
-.o-labels {
-	@include oTypographySansBold($scale: -1);
-}
+@include oLabels();
