@@ -3,7 +3,6 @@
 const express = require('@financial-times/n-internal-tool');
 const fixtures = require('./fixtures/fixtures.json');
 const fixturesCommercial = require('./fixtures/fixtures-commercial-content');
-const fixturesPackage = require('./fixtures/fixtures-package');
 const fixturesPackageArticle = require('./fixtures/fixtures-article-in-package');
 const fixturesVideo = require('./fixtures/fixtures-video');
 const fixturesLiveBlog = require('./fixtures/fixures-live-blog.json');
@@ -38,13 +37,6 @@ app.get('/package-article', (req, res) => {
 		title: 'Content from package teasers',
 		layout: 'demo-layout',
 	}, fixturesPackageArticle));
-});
-
-app.get('/package', (req, res) => {
-	res.render('demo-package', Object.assign({
-		title: 'Package with content teasers',
-		layout: 'demo-layout',
-	}, fixturesPackage));
 });
 
 app.get('/video', (req, res) => {
